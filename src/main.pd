@@ -1,4 +1,4 @@
-#N canvas 66 196 1521 619 10;
+#N canvas 1642 246 1521 619 10;
 #X obj 66 372 send sound1-volume;
 #X msg 173 423 list 0 0.5 300;
 #X msg 72 423 list 1 0.5 500;
@@ -64,7 +64,7 @@
 #X msg 202 123 8;
 #X msg 160 118 7;
 #X msg 710 401 30000;
-#X msg 216 31 trumpet55.wav;
+#X msg 217 36 trumpet55.wav;
 #X msg 379 130 8;
 #X msg 210 7 sine400.wav;
 #X msg 457 279 2;
