@@ -1,4 +1,4 @@
-#N canvas 444 91 1190 779 10;
+#N canvas 1689 164 1190 779 10;
 #X obj -491 180 float;
 #X obj -424 197 *;
 #X obj -538 180 float;
@@ -51,7 +51,7 @@
 #X text 601 -6 loop start;
 #X text 736 -7 loop end;
 #X msg 841 115 set \$1;
-#X msg 718 338 44100;
+#X msg 718 338 131824;
 #X obj 149 287 trigger float bang;
 #X obj 133 700 *~ 0;
 #X obj 385 14 inlet;
@@ -234,8 +234,8 @@
 #X obj 31 627 r \$3-filtersustain;
 #X obj 45 649 r \$3-filterrelease;
 #X obj -11 564 r \$3-filtercutoff;
-#N canvas 1656 283 883 570 filtersmanager 0;
-#N canvas 262 506 560 307 highpass 0;
+#N canvas 1692 385 883 570 filtersmanager 1;
+#N canvas 1691 638 560 307 highpass 1;
 #X obj 19 112 inlet~;
 #X obj 19 165 outlet~;
 #X obj 289 178 s \$0-gain;
@@ -253,10 +253,10 @@
 #X msg 207 154 1;
 #X msg 124 154 0.5;
 #X obj 124 131 loadbang;
-#N canvas 271 119 558 632 workings 0;
+#N canvas 1900 318 558 632 workings 1;
 #X obj 80 36 inlet~ signal;
 #X obj 225 580 outlet~;
-#X obj 210 74 r \$0-cutoff;
+#X obj 230 43 r \$0-cutoff;
 #X msg 267 144 20;
 #X msg 313 144 40000;
 #X obj 267 116 loadbang;
@@ -328,6 +328,13 @@
 #X obj 352 490 r \$0-loadbang;
 #X obj 351 55 s \$0-loadbang;
 #X obj 351 19 loadbang;
+#X obj 182 136 snapshot~;
+#X obj 120 93 metro 10;
+#X obj 134 62 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 184 83 osc~ 1;
+#X obj 418 120 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 5000 1;
 #X connect 0 0 8 0;
 #X connect 0 0 20 0;
 #X connect 2 0 6 0;
@@ -357,6 +364,9 @@
 #X connect 23 0 17 0;
 #X connect 23 0 18 0;
 #X connect 25 0 24 0;
+#X connect 27 0 26 0;
+#X connect 28 0 27 0;
+#X connect 29 0 26 0;
 #X restore 20 138 pd workings;
 #X obj 374 105 inlet;
 #X obj 374 179 switch~;
@@ -629,11 +639,11 @@
 #X msg 97 704 0;
 #X obj 133 703 loadbang;
 #X obj 60 674 r \$3-filterselect;
-#X obj -346 616 receive \$3-lfo;
-#X obj -346 686 spigot;
-#X obj -289 663 select 0;
-#X obj -313 639 receive \$3-lfofilterenable;
-#X msg -289 686 0.5;
+#X obj -415 570 receive \$3-lfo;
+#X obj -415 640 spigot;
+#X obj -358 617 select 0;
+#X obj -382 593 receive \$3-lfofilterenable;
+#X msg -358 640 0.5;
 #X connect 0 0 1 0;
 #X connect 1 0 5 1;
 #X connect 2 0 5 0;

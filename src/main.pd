@@ -1,4 +1,4 @@
-#N canvas 1642 246 1521 619 10;
+#N canvas 83 87 1521 619 10;
 #X obj 66 372 send sound1-volume;
 #X msg 173 423 list 0 0.5 300;
 #X msg 72 423 list 1 0.5 500;
@@ -72,6 +72,9 @@
 #X msg 374 279 0;
 #X obj 393 320 send sound1-lfoconnection;
 #X msg 123 23 saw400.wav;
+#X msg 506 280 3;
+#X obj 507 253 loadbang;
+#X obj 300 268 loadbang;
 #X obj 925 81 sampleplayer sound5;
 #X obj 1063 53 sampleplayer sound2;
 #X obj 1064 114 sampleplayer sound10;
@@ -87,9 +90,7 @@
 #X obj 1065 141 sampleplayer sound14;
 #X obj 1200 141 sampleplayer sound15;
 #X obj 1338 140 sampleplayer sound16;
-#X msg 506 280 3;
-#X obj 507 253 loadbang;
-#X obj 300 268 loadbang;
+#X msg 298 68 ohh.wav;
 #X connect 1 0 5 0;
 #X connect 2 0 5 0;
 #X connect 3 0 6 0;
@@ -143,6 +144,7 @@
 #X connect 68 0 70 0;
 #X connect 69 0 70 0;
 #X connect 71 0 13 0;
-#X connect 87 0 70 0;
-#X connect 88 0 87 0;
-#X connect 89 0 38 0;
+#X connect 72 0 70 0;
+#X connect 73 0 72 0;
+#X connect 74 0 38 0;
+#X connect 90 0 13 0;
