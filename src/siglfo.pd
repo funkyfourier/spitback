@@ -1,4 +1,4 @@
-#N canvas 66 97 465 445 10;
+#N canvas 1896 239 494 567 10;
 #X obj -139 118 soundfiler;
 #X obj -215 24 table \$0-wave;
 #X obj -139 76 float \$0;
@@ -7,7 +7,7 @@
 #X obj -61 207 phasor~;
 #X obj -46 234 receive samplesize;
 #X obj -139 145 send samplesize;
-#X obj -60 389 outlet~;
+#X obj -60 425 outlet~;
 #X obj -61 299 tabread~ \$0-wave;
 #X msg -139 190 1;
 #X obj -61 181 inlet;
@@ -19,6 +19,7 @@
 #X msg -139 97 read -resize ../sounds/sine1hz.wav \$1-wave;
 #X obj 145 233 switch~;
 #X obj 145 177 inlet;
+#X obj -60 394 expr~ ($v1+1)*0.5;
 #X connect 0 0 7 0;
 #X connect 2 0 17 0;
 #X connect 3 0 2 0;
@@ -30,8 +31,9 @@
 #X connect 9 0 12 0;
 #X connect 10 0 5 0;
 #X connect 11 0 5 0;
-#X connect 12 0 8 0;
+#X connect 12 0 20 0;
 #X connect 13 0 12 1;
 #X connect 14 0 12 1;
 #X connect 17 0 0 0;
 #X connect 19 0 18 0;
+#X connect 20 0 8 0;

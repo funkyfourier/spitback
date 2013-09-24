@@ -1,4 +1,4 @@
-#N canvas 103 178 1521 619 10;
+#N canvas 66 196 1521 619 10;
 #X obj 66 372 send sound1-volume;
 #X msg 173 423 list 0 0.5 300;
 #X msg 72 423 list 1 0.5 500;
@@ -69,7 +69,7 @@
 #X msg 374 279 0;
 #X obj 393 320 send sound1-lfoconnection;
 #X msg 506 280 3;
-#X obj 507 253 loadbang;
+#X obj 372 242 loadbang;
 #X obj 300 268 loadbang;
 #X obj 925 81 sampleplayer sound5;
 #X obj 1063 53 sampleplayer sound2;
@@ -141,7 +141,7 @@
 #X connect 65 0 67 0;
 #X connect 66 0 67 0;
 #X connect 68 0 67 0;
-#X connect 69 0 68 0;
+#X connect 69 0 66 0;
 #X connect 70 0 37 0;
 #X connect 86 0 13 0;
 #X connect 87 0 13 0;
