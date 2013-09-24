@@ -1,0 +1,88 @@
+#N canvas 313 414 1174 414 10;
+#X obj 24 -373 notein;
+#X obj 76 -356 == 127;
+#X obj 24 -192 send sound1-noteon;
+#X obj 33 -213 send sound1-noteoff;
+#X obj 24 -323 - 47;
+#X obj 24 -256 spigot;
+#X obj 76 -323 moses 1;
+#X obj 76 -285 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 76 -256 int;
+#X obj 195 -345 vsl 15 128 0 1 0 0 sound1-filtercutoff empty empty
+0 -9 0 10 -262144 -1 -1 0 1;
+#X obj 217 -310 vradio 15 1 0 3 sound1-filterselect empty empty 0 -8
+0 10 -262144 -1 -1 0;
+#X text 233 -310 off;
+#X text 234 -277 lowpass;
+#X text 234 -294 highpass;
+#X obj 300 -344 hsl 45 15 0 2000 0 0 sound1-filterattack empty empty
+-2 -8 0 5 -262144 -1 -1 0 1;
+#X text 350 -345 attack;
+#X obj 300 -324 hsl 45 15 0 2000 0 0 sound1-filterdecay empty empty
+-2 -8 0 5 -262144 -1 -1 0 1;
+#X obj 300 -304 hsl 45 15 0 1 0 0 sound1-filtersustain empty empty
+-2 -8 0 5 -262144 -1 -1 0 1;
+#X obj 300 -283 hsl 45 15 0 2000 0 0 sound1-filterrelease empty empty
+-2 -8 0 5 -262144 -1 -1 0 1;
+#X text 350 -305 sustain;
+#X text 350 -284 release;
+#X text 350 -325 decay;
+#X text 183 -365 cutoff;
+#X obj 173 -390 cnv 15 230 25 empty empty FILTER2 20 12 0 20 -257985
+-66577 0;
+#X text 183 -365 cutoff;
+#X obj 173 -390 cnv 15 230 25 empty empty FILTER 20 12 0 20 -257985
+-66577 0;
+#X obj 467 -389 cnv 15 200 25 empty empty LFO 20 12 0 20 -257985 -66577
+0;
+#X obj 478 -345 vsl 15 128 0 10 0 0 sound1-lforate empty empty 0 -9
+0 10 -262144 -1 -1 0 1;
+#X text 472 -364 rate;
+#X obj 514 -345 vsl 15 128 0 1 0 0 sound1-lfodepth empty empty 0 -9
+0 10 -262144 -1 -1 0 1;
+#X text 508 -364 depth;
+#X obj 557 -338 vradio 15 1 0 4 sound1-lfoconnection empty empty 0
+-8 0 10 -262144 -1 -1 0;
+#X text 575 -339 off;
+#X text 574 -324 volume;
+#X text 575 -309 pitch;
+#X text 573 -292 filter;
+#X obj 710 -389 cnv 15 100 25 sound1-loopon empty LOOP 20 12 0 20 -257985
+-66577 0;
+#X obj 872 -388 cnv 15 150 25 empty empty VOL-ENV 20 12 0 25 -257985
+-66577 0;
+#X obj 879 -335 hsl 128 15 0 2000 0 0 sound1-attack empty empty -2
+-8 0 10 -262144 -1 -1 0 1;
+#X text 873 -351 attack;
+#X obj 879 -302 hsl 128 15 0 2000 0 0 sound1-decay empty empty -2 -8
+0 10 -262144 -1 -1 0 1;
+#X obj 880 -269 hsl 128 15 0 1 0 0 sound1-sustain empty empty -2 -8
+0 10 -262144 -1 -1 0 1;
+#X obj 881 -237 hsl 128 15 0 2000 0 0 sound1-release empty empty -2
+-8 0 10 -262144 -1 -1 0 1;
+#X text 873 -318 decay;
+#X text 874 -285 sustain;
+#X text 875 -253 release;
+#X obj 697 -299 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X text 690 -320 loop start;
+#X obj 698 -255 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X text 691 -276 loop end;
+#X obj 695 -344 tgl 15 1 sound1-loopon empty empty 17 7 0 10 -262144
+-1 -1 1 1;
+#X text 715 -343 loop on;
+#X obj 692 -208 receive sound1-samplelength;
+#X connect 0 0 4 0;
+#X connect 0 1 1 0;
+#X connect 1 0 6 0;
+#X connect 4 0 5 0;
+#X connect 4 0 8 1;
+#X connect 5 0 2 0;
+#X connect 6 0 7 0;
+#X connect 6 0 5 1;
+#X connect 6 1 5 1;
+#X connect 7 0 8 0;
+#X connect 8 0 3 0;
+#X coords 0 0 1 1 85 60 0;
