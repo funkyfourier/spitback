@@ -1,4 +1,4 @@
-#N canvas 1625 99 1254 923 10;
+#N canvas 1623 100 1254 923 10;
 #X obj 214 -504 soundfiler;
 #X obj 95 -578 table \$0-lyden;
 #X obj 345 -566 float \$0;
