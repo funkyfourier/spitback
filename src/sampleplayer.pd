@@ -1,4 +1,4 @@
-#N canvas 1658 -35 1254 923 10;
+#N canvas 1625 99 1254 923 10;
 #X obj 214 -504 soundfiler;
 #X obj 95 -578 table \$0-lyden;
 #X obj 345 -566 float \$0;
@@ -87,6 +87,7 @@
 #X obj 396 -119 playit \$0-lyden 0.529732 \$1;
 #X obj 397 -171 playit \$0-lyden 0.66742 \$1;
 #X obj 398 -226 playit \$0-lyden 0.793701 \$1;
+#X text -65 49 TODO: lfo's are running when no notes;
 #X connect 0 0 23 0;
 #X connect 2 0 3 1;
 #X connect 3 0 6 0;

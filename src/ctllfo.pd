@@ -1,4 +1,4 @@
-#N canvas 692 160 605 634 10;
+#N canvas 1784 290 605 634 10;
 #X obj -552 122 soundfiler;
 #X obj -628 28 table \$0-wave;
 #X obj -552 80 float \$0;
@@ -37,11 +37,11 @@
 #X text -259 227 on/off;
 #X obj -195 318 + 0.01;
 #X obj -162 158 loadbang;
-#X msg -162 181 1;
 #X msg -552 101 read -resize ../sounds/sine1hz.wav \$1-wave;
+#X msg -162 181 0.25;
 #X connect 0 0 5 0;
 #X connect 0 0 29 0;
-#X connect 2 0 38 0;
+#X connect 2 0 37 0;
 #X connect 3 0 2 0;
 #X connect 4 0 14 1;
 #X connect 6 0 33 0;
@@ -72,6 +72,6 @@
 #X connect 32 0 16 0;
 #X connect 33 0 35 1;
 #X connect 35 0 16 1;
-#X connect 36 0 37 0;
-#X connect 37 0 33 0;
-#X connect 38 0 0 0;
+#X connect 36 0 38 0;
+#X connect 37 0 0 0;
+#X connect 38 0 33 0;

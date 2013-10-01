@@ -1,4 +1,4 @@
-#N canvas 864 278 494 567 10;
+#N canvas 1818 279 494 567 10;
 #X obj -139 118 soundfiler;
 #X obj -215 24 table \$0-wave;
 #X obj -139 76 float \$0;

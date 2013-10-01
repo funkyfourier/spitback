@@ -1,4 +1,4 @@
-#N canvas 1601 224 1521 619 10;
+#N canvas 1390 160 1521 619 10;
 #X obj 66 372 send sound1-volume;
 #X msg 173 423 list 0 0.5 300;
 #X msg 72 423 list 1 0.5 500;
@@ -14,7 +14,7 @@
 #X msg 632 525 2;
 #X obj 54 88 send sound1-filename;
 #X obj 1042 199 catch~ soundoutput;
-#X obj 1083 359 dac~;
+#X obj 983 285 dac~;
 #X obj 79 289 send fx1-reverb;
 #X msg 32 236 list 0.7 1 1 0.5;
 #X msg 119 257 list 0.9 1 0.9 0.3;
@@ -95,6 +95,14 @@
 #X obj 852 227 vsl 15 128 0 1 0 0 sound1-filtercutoff empty empty 0
 -9 0 10 -262144 -1 -1 0 1;
 #X text 806 207 sound1-filtercutoff;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array outputmonitor 100 float 0;
+#X coords 0 -1 100 1 200 100 1;
+#X restore 976 438 graph;
+#X obj 1173 338 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 1116 394 tabwrite~ outputmonitor;
+#X obj 1153 366 metro 50;
 #X connect 1 0 5 0;
 #X connect 2 0 5 0;
 #X connect 3 0 6 0;
@@ -105,6 +113,7 @@
 #X connect 12 0 10 0;
 #X connect 14 0 15 0;
 #X connect 14 0 15 1;
+#X connect 14 0 96 0;
 #X connect 17 0 16 0;
 #X connect 18 0 16 0;
 #X connect 21 0 20 0;
@@ -152,3 +161,5 @@
 #X connect 73 0 13 0;
 #X connect 74 0 13 0;
 #X connect 76 0 53 0;
+#X connect 95 0 97 0;
+#X connect 97 0 96 0;
