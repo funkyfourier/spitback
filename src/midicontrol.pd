@@ -37,10 +37,10 @@ empty -2 -8 0 5 -262144 -1 -1 4400 1;
 #X obj 358 -377 cnv 15 200 25 empty empty LFO 20 12 0 20 -257985 -66577
 0;
 #X obj 369 -333 vsl 15 128 0.25 10 0 0 sound1-lforate empty empty 0
--9 0 10 -262144 -1 -1 0 1;
+-9 0 10 -262144 -1 -1 2000 1;
 #X text 363 -352 rate;
 #X obj 405 -333 vsl 15 128 0 1 0 0 sound1-lfodepth empty empty 0 -9
-0 10 -262144 -1 -1 10800 1;
+0 10 -262144 -1 -1 0 1;
 #X text 399 -352 depth;
 #X obj 448 -326 vradio 15 1 0 4 sound1-lfoconnection empty empty 0
 -8 0 10 -262144 -1 -1 2;
