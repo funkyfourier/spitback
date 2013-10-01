@@ -1,4 +1,4 @@
-#N canvas 1390 160 1521 619 10;
+#N canvas 1601 235 1521 619 10;
 #X obj 66 372 send sound1-volume;
 #X msg 173 423 list 0 0.5 300;
 #X msg 72 423 list 1 0.5 500;
@@ -73,7 +73,7 @@
 #X msg 19 12 ../sounds/fluidc4.wav;
 #X msg 39 35 ../sounds/saw400.wav;
 #X msg 235 8 ../sounds/trumpet55.wav;
-#X msg 240 36 ../sounds/sine400.wav;
+#X msg 232 33 ../sounds/sine400.wav;
 #X msg 246 60 ../sounds/ohh.wav;
 #X obj 732 42 midicontrol;
 #X msg 251 134 1;
@@ -103,6 +103,7 @@
 -1 -1;
 #X obj 1116 394 tabwrite~ outputmonitor;
 #X obj 1153 366 metro 50;
+#X msg 243 89 ../sounds/sine400one.wav;
 #X connect 1 0 5 0;
 #X connect 2 0 5 0;
 #X connect 3 0 6 0;
@@ -163,3 +164,4 @@
 #X connect 76 0 53 0;
 #X connect 95 0 97 0;
 #X connect 97 0 96 0;
+#X connect 98 0 13 0;
