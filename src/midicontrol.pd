@@ -1,4 +1,4 @@
-#N canvas 162 109 1179 648 10;
+#N canvas 270 309 1179 648 10;
 #X obj -85 -361 notein;
 #X obj -33 -344 == 127;
 #X obj -85 -180 send sound1-noteon;
@@ -37,13 +37,13 @@ empty -2 -8 0 5 -262144 -1 -1 4400 1;
 #X obj 358 -377 cnv 15 200 25 empty empty LFO 20 12 0 20 -257985 -66577
 0;
 #X obj 369 -333 vsl 15 128 0.25 10 0 0 sound1-lforate empty empty 0
--9 0 10 -262144 -1 -1 0 1;
+-9 0 10 -262144 -1 -1 10700 1;
 #X text 363 -352 rate;
 #X obj 405 -333 vsl 15 128 0 1 0 0 sound1-lfodepth empty empty 0 -9
-0 10 -262144 -1 -1 0 1;
+0 10 -262144 -1 -1 800 1;
 #X text 399 -352 depth;
 #X obj 448 -326 vradio 15 1 0 4 sound1-lfoconnection empty empty 0
--8 0 10 -262144 -1 -1 0;
+-8 0 10 -262144 -1 -1 1;
 #X text 466 -327 off;
 #X text 465 -312 volume;
 #X text 466 -297 pitch;
