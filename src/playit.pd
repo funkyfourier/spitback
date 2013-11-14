@@ -1,4 +1,4 @@
-#N canvas 2137 238 1190 851 10;
+#N canvas 2040 175 1190 851 10;
 #X obj -491 180 float;
 #X obj -424 197 *;
 #X obj -538 180 float;
@@ -13,7 +13,7 @@
 #X obj -660 504 line~;
 #X msg -660 481 \$1 50;
 #X obj -38 759 throw~ soundoutput;
-#N canvas 1829 223 1056 757 lineloop 1;
+#N canvas 1761 137 1056 757 lineloop 1;
 #X obj 149 17 inlet;
 #X text 130 -1 samples \, ms;
 #X obj 607 11 inlet;
@@ -381,6 +381,7 @@
 #X obj -3 588 receive~ \$3-siglfo;
 #X msg -216 266 stop;
 #X obj -17 511 expr 1-$f1;
+#X obj -537 396 +~ 1;
 #X connect 0 0 1 0;
 #X connect 1 0 5 1;
 #X connect 2 0 5 0;
@@ -398,7 +399,7 @@
 #X connect 10 0 12 0;
 #X connect 11 0 8 1;
 #X connect 12 0 11 0;
-#X connect 14 0 40 0;
+#X connect 14 0 64 0;
 #X connect 14 1 28 0;
 #X connect 14 1 31 0;
 #X connect 15 0 14 3;
@@ -455,3 +456,4 @@
 #X connect 61 0 55 3;
 #X connect 62 0 37 0;
 #X connect 63 0 38 1;
+#X connect 64 0 40 0;
