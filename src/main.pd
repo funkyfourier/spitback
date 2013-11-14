@@ -1,4 +1,4 @@
-#N canvas 1601 235 1521 619 10;
+#N canvas 1601 240 1521 619 10;
 #X obj 66 372 send sound1-volume;
 #X msg 173 423 list 0 0.5 300;
 #X msg 72 423 list 1 0.5 500;
