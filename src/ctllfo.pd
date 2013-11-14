@@ -1,4 +1,4 @@
-#N canvas 1782 295 605 634 10;
+#N canvas 1780 300 605 634 10;
 #X obj -552 122 soundfiler;
 #X obj -628 28 table \$0-wave;
 #X obj -552 80 float \$0;
@@ -10,7 +10,7 @@
 #X text -324 178 rate;
 #X text -286 464 depth;
 #X obj -300 259 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
-0 1;
+1 1;
 #X obj -300 500 *;
 #X obj -300 542 outlet;
 #X obj -300 396 *;
@@ -34,14 +34,14 @@
 #X obj -300 282 metro 10;
 #X obj -162 209 / 100;
 #X text -259 227 on/off;
-#X obj -195 318 + 0.01;
 #X obj -162 158 loadbang;
 #X msg -552 101 read -resize ../sounds/sine1hz.wav \$1-wave;
 #X msg -162 181 0.25;
 #X msg -214 483 0;
+#X obj -195 318 + 0.01;
 #X connect 0 0 5 0;
 #X connect 0 0 28 0;
-#X connect 2 0 36 0;
+#X connect 2 0 35 0;
 #X connect 3 0 2 0;
 #X connect 4 0 13 1;
 #X connect 6 0 32 0;
@@ -49,14 +49,14 @@
 #X connect 10 0 31 0;
 #X connect 11 0 12 0;
 #X connect 13 0 30 0;
-#X connect 14 0 34 0;
+#X connect 14 0 38 0;
 #X connect 14 1 16 0;
 #X connect 15 0 14 0;
 #X connect 15 0 13 0;
 #X connect 16 0 15 1;
 #X connect 17 0 10 0;
 #X connect 18 0 25 0;
-#X connect 19 0 38 0;
+#X connect 19 0 37 0;
 #X connect 21 0 22 0;
 #X connect 22 0 23 0;
 #X connect 24 0 21 0;
@@ -69,9 +69,9 @@
 #X connect 29 0 27 0;
 #X connect 30 0 11 0;
 #X connect 31 0 15 0;
-#X connect 32 0 34 1;
-#X connect 34 0 15 1;
-#X connect 35 0 37 0;
-#X connect 36 0 0 0;
-#X connect 37 0 32 0;
-#X connect 38 0 11 1;
+#X connect 32 0 38 1;
+#X connect 34 0 36 0;
+#X connect 35 0 0 0;
+#X connect 36 0 32 0;
+#X connect 37 0 11 1;
+#X connect 38 0 15 1;
