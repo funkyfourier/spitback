@@ -55,7 +55,7 @@
 #X text -57 66 TODO: lfo's are running when no notes;
 #X obj 96 -543 table \$0-tmp;
 #X msg 214 -525 read -resize \$1 \$2-tmp;
-#N canvas 520 295 685 630 makeguardpoints 0;
+#N canvas 518 300 685 630 makeguardpoints 0;
 #X obj 28 32 inlet;
 #X text 24 10 nr of samples;
 #X obj 28 62 trigger bang float float float float float;
