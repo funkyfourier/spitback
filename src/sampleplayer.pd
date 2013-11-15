@@ -1,4 +1,4 @@
-#N canvas 1640 87 1254 923 10;
+#N canvas 1633 82 1254 923 10;
 #X obj 214 -504 soundfiler;
 #X obj 95 -578 table \$0-lyden;
 #X obj 345 -566 float \$0;
@@ -156,6 +156,7 @@
 #X obj 395 -90 playit \$0-lyden 0.5 \$1;
 #X obj 397 -171 playit \$0-lyden 0.66742 \$1;
 #X obj 398 -226 playit \$0-lyden 0.793701 \$1;
+#X obj 420 -399 susloop~;
 #X connect 0 0 22 0;
 #X connect 0 0 55 0;
 #X connect 2 0 3 1;
