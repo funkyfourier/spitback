@@ -1,4 +1,4 @@
-#N canvas 1924 153 637 829 10;
+#N canvas 1922 158 637 829 10;
 #X obj -473 180 float;
 #X obj -406 197 *;
 #X obj -520 180 float;
@@ -13,7 +13,7 @@
 #X obj -642 543 line~;
 #X msg -642 520 \$1 50;
 #X obj -265 780 throw~ soundoutput;
-#N canvas 1728 123 1080 885 lineloop 0;
+#N canvas 1726 128 1080 885 lineloop 1;
 #X obj 149 17 inlet;
 #X text 130 -1 samples \, ms;
 #X obj 607 11 inlet;
@@ -39,7 +39,7 @@
 #X msg 341 60 0;
 #X obj 761 560 send \$0-cut;
 #X msg 761 530 1;
-#X msg 637 392 0;
+#X msg 637 392 40481.4;
 #X obj 341 87 send \$0-samplestart;
 #X obj 149 314 send \$0-samplesize;
 #X obj 149 359 receive \$0-samplesize;
@@ -51,7 +51,7 @@
 #X text 601 -6 loop start;
 #X text 736 -7 loop end;
 #X msg 841 115 set \$1;
-#X msg 718 338 44100;
+#X msg 718 338 79924.8;
 #X obj 149 287 trigger float bang;
 #X obj 133 824 *~ 0;
 #X obj 385 14 inlet;
@@ -106,13 +106,14 @@
 #X obj 192 494 +~;
 #X obj 193 468 expr~ 1-$v1;
 #X obj 193 446 inlet~;
-#X obj 356 814 hsl 128 15 0 44100 0 0 empty empty empty -2 -8 0 10
--262144 -1 -1 0 1;
+#X obj 356 814 hsl 128 15 0 131824 0 0 empty indicator empty -2 -8
+0 10 -262144 -1 -1 6507 1;
 #X obj 251 834 snapshot~;
 #X msg 335 771 set \$1;
 #X obj 264 797 metro 10;
-#X obj 264 770 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 264 770 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
+#X msg -15 343 \; indicator range 0 \$1 \;;
 #X connect 0 0 4 0;
 #X connect 0 0 52 0;
 #X connect 2 0 50 0;
@@ -153,6 +154,7 @@
 #X connect 37 0 72 0;
 #X connect 37 0 73 0;
 #X connect 38 0 27 0;
+#X connect 38 0 95 0;
 #X connect 38 1 8 0;
 #X connect 39 0 5 0;
 #X connect 39 0 91 0;

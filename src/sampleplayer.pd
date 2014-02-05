@@ -1,4 +1,4 @@
-#N canvas 1633 82 1254 923 10;
+#N canvas 1625 87 1254 923 10;
 #X obj 214 -504 soundfiler;
 #X obj 95 -578 table \$0-lyden;
 #X obj 345 -566 float \$0;
@@ -55,7 +55,7 @@
 #X text -57 66 TODO: lfo's are running when no notes;
 #X obj 96 -543 table \$0-tmp;
 #X msg 214 -525 read -resize \$1 \$2-tmp;
-#N canvas 518 300 685 630 makeguardpoints 0;
+#N canvas 516 305 685 630 makeguardpoints 0;
 #X obj 28 32 inlet;
 #X text 24 10 nr of samples;
 #X obj 28 62 trigger bang float float float float float;
@@ -156,7 +156,6 @@
 #X obj 395 -90 playit \$0-lyden 0.5 \$1;
 #X obj 397 -171 playit \$0-lyden 0.66742 \$1;
 #X obj 398 -226 playit \$0-lyden 0.793701 \$1;
-#X obj 420 -399 susloop~;
 #X connect 0 0 22 0;
 #X connect 0 0 55 0;
 #X connect 2 0 3 1;

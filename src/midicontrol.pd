@@ -1,4 +1,4 @@
-#N canvas 148 336 1209 648 10;
+#N canvas 344 345 1209 648 10;
 #X obj -85 -361 notein;
 #X obj -33 -344 == 127;
 #X obj -85 -180 send sound1-noteon;
@@ -10,7 +10,7 @@
 -1 -1;
 #X obj -33 -244 int;
 #X obj 86 -333 vsl 15 128 0 1 0 0 sound1-filtercutoff empty empty 0
--9 0 10 -262144 -1 -1 9600 1;
+-9 0 10 -262144 -1 -1 0 1;
 #X obj 108 -298 vradio 15 1 0 3 sound1-filterselect empty empty 0 -8
 0 10 -262144 -1 -1 0;
 #X text 124 -298 off;
@@ -37,13 +37,13 @@ empty -2 -8 0 5 -262144 -1 -1 4400 1;
 #X obj 358 -377 cnv 15 200 25 empty empty LFO 20 12 0 20 -257985 -66577
 0;
 #X obj 369 -333 vsl 15 128 0.25 10 0 0 sound1-lforate empty empty 0
--9 0 10 -262144 -1 -1 2800 1;
+-9 0 10 -262144 -1 -1 0 1;
 #X text 363 -352 rate;
 #X obj 405 -333 vsl 15 128 0 1 0 0 sound1-lfodepth empty empty 0 -9
-0 10 -262144 -1 -1 12700 1;
+0 10 -262144 -1 -1 0 1;
 #X text 399 -352 depth;
 #X obj 448 -326 vradio 15 1 0 4 sound1-lfoconnection empty empty 0
--8 0 10 -262144 -1 -1 1;
+-8 0 10 -262144 -1 -1 0;
 #X text 466 -327 off;
 #X text 465 -312 volume;
 #X text 466 -297 pitch;
@@ -64,10 +64,10 @@ empty -2 -8 0 10 -262144 -1 -1 0 1;
 #X text 804 -306 decay;
 #X text 805 -273 sustain;
 #X text 806 -241 release;
-#X obj 588 -294 hsl 128 15 0 44100 0 0 sound1-loopstart sound1-loopstart-ui
-empty -2 -8 0 10 -262144 -1 -1 0 1;
+#X obj 588 -294 hsl 128 15 0 131824 0 0 sound1-loopstart sound1-loopstart-ui
+empty -2 -8 0 10 -262144 -1 -1 700 1;
 #X text 581 -309 loop start;
-#X obj 589 -238 hsl 128 15 0 44100 0 0 sound1-loopend sound1-loopend-ui
+#X obj 589 -238 hsl 128 15 0 131824 0 0 sound1-loopend sound1-loopend-ui
 empty -2 -8 0 10 -262144 -1 -1 12700 1;
 #X text 582 -253 loop end;
 #X obj 586 -332 tgl 15 1 sound1-loopon empty empty 17 7 0 10 -262144
