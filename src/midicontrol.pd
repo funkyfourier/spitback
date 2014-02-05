@@ -1,4 +1,4 @@
-#N canvas 344 345 1209 648 10;
+#N canvas 343 343 1209 648 10;
 #X obj -85 -361 notein;
 #X obj -33 -344 == 127;
 #X obj -85 -180 send sound1-noteon;
@@ -64,10 +64,10 @@ empty -2 -8 0 10 -262144 -1 -1 0 1;
 #X text 804 -306 decay;
 #X text 805 -273 sustain;
 #X text 806 -241 release;
-#X obj 588 -294 hsl 128 15 0 131824 0 0 sound1-loopstart sound1-loopstart-ui
-empty -2 -8 0 10 -262144 -1 -1 700 1;
+#X obj 588 -294 hsl 128 15 0 44100 0 0 sound1-loopstart sound1-loopstart-ui
+empty -2 -8 0 10 -262144 -1 -1 0 1;
 #X text 581 -309 loop start;
-#X obj 589 -238 hsl 128 15 0 131824 0 0 sound1-loopend sound1-loopend-ui
+#X obj 589 -238 hsl 128 15 0 44100 0 0 sound1-loopend sound1-loopend-ui
 empty -2 -8 0 10 -262144 -1 -1 12700 1;
 #X text 582 -253 loop end;
 #X obj 586 -332 tgl 15 1 sound1-loopon empty empty 17 7 0 10 -262144
