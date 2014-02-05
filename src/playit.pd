@@ -1,4 +1,4 @@
-#N canvas 1923 127 942 829 10;
+#N canvas 1747 133 942 829 10;
 #X obj -483 274 inlet;
 #X obj -518 561 *~;
 #X obj -642 433 loadbang;
@@ -31,7 +31,7 @@
 #X obj -138 637 r \$3-filtersustain;
 #X obj -126 659 r \$3-filterrelease;
 #X obj -188 548 r \$3-filtercutoff;
-#N canvas 1755 264 914 689 filtersmanager 0;
+#N canvas 621 269 914 689 filtersmanager 1;
 #X obj 251 339 inlet;
 #X obj 156 16 inlet~;
 #X obj 156 439 outlet~;
@@ -115,7 +115,7 @@
 #X text 332 355 cutoff lfo;
 #X obj 281 522 inlet;
 #X text 263 506 cutoff slider;
-#X obj 345 407 expr~ 1-$v1;
+#X obj 345 435 expr~ 1-$v1;
 #X connect 0 0 4 0;
 #X connect 1 0 18 0;
 #X connect 1 0 19 0;
@@ -170,8 +170,8 @@
 #X obj -113 684 r \$3-filterselect;
 #X msg -146 307 stop;
 #X obj -518 697 *~;
-#X obj -502 670 expr~ 1-$v1;
-#X obj -501 643 receive~ \$3-siglfovolume;
+#X obj -503 674 expr~ 1-$v1;
+#X obj -502 637 receive~ \$3-siglfovolume;
 #X obj -174 572 receive~ \$3-siglfofilter;
 #N canvas 222 298 1033 511 sampleindexer 0;
 #X obj 296 78 inlet;
