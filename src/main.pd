@@ -1,7 +1,7 @@
-#N canvas 1663 119 699 552 10;
+#N canvas 543 318 699 552 10;
 #X obj 54 88 send sound1-filename;
 #X obj 46 404 catch~ soundoutput;
-#X obj 46 522 dac~;
+#X obj 40 531 dac~;
 #X obj 448 199 send android;
 #X obj 482 116 receive playlist;
 #X obj 449 29 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
@@ -14,7 +14,7 @@
 #X msg 481 163 123 \;;
 #X obj 483 23 receive timerstart;
 #X obj 448 68 metro 250;
-#X msg 35 114 1;
+#X msg 37 114 1;
 #X obj 35 185 send sound1-noteon;
 #X msg 338 142 7;
 #X obj 244 191 send sound1-noteoff;
@@ -31,8 +31,8 @@
 #X array outputmonitor 100 float 0;
 #X coords 0 -1 100 1 200 100 1;
 #X restore 293 387 graph;
-#X obj 99 489 tabwrite~ outputmonitor;
-#X obj 99 457 metro 50;
+#X obj 128 524 tabwrite~ outputmonitor;
+#X obj 128 492 metro 50;
 #X msg 101 142 6;
 #X msg 289 149 6;
 #X msg 222 81 ../sounds/sine400lowamp.wav;
@@ -45,7 +45,7 @@
 #X msg 323 117 3;
 #X msg 359 117 4;
 #X msg 244 147 5;
-#X obj 99 433 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 128 468 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 42 283 sampleplayer sound5;
 #X obj 180 255 sampleplayer sound2;
@@ -62,8 +62,31 @@
 #X obj 182 343 sampleplayer sound14;
 #X obj 317 343 sampleplayer sound15;
 #X obj 455 342 sampleplayer sound16;
-#X obj 47 479 *~ 0.5;
-#X connect 1 0 28 0;
+#N canvas 141 591 489 314 limiter 1;
+#X obj 109 42 inlet~;
+#X obj 107 272 outlet~;
+#X obj 108 240 *~;
+#X obj 171 58 env~;
+#X obj 171 86 dbtorms;
+#X msg 171 141 1 \$1;
+#X obj 171 169 /;
+#X obj 171 197 min 1;
+#X obj 171 113 + 0.5;
+#X obj 171 224 lop~ 5;
+#X text 17 2 Simple limiter from http://puredata.hurleur.com/sujet-5718-limiter-vanilla-objects-expr
+;
+#X connect 0 0 2 0;
+#X connect 0 0 3 0;
+#X connect 2 0 1 0;
+#X connect 3 0 4 0;
+#X connect 4 0 8 0;
+#X connect 5 0 6 0;
+#X connect 6 0 7 0;
+#X connect 7 0 9 0;
+#X connect 8 0 5 0;
+#X connect 9 0 2 1;
+#X restore 47 462 pd limiter;
+#X obj 46 506 *~ 0.25;
 #X connect 1 0 58 0;
 #X connect 4 0 11 0;
 #X connect 5 0 13 0;
@@ -97,5 +120,7 @@
 #X connect 40 0 17 0;
 #X connect 41 0 17 0;
 #X connect 42 0 29 0;
-#X connect 58 0 2 0;
-#X connect 58 0 2 1;
+#X connect 58 0 28 0;
+#X connect 58 0 59 0;
+#X connect 59 0 2 0;
+#X connect 59 0 2 1;
