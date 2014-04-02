@@ -1,7 +1,7 @@
-#N canvas 1665 114 699 552 10;
+#N canvas 1663 119 699 552 10;
 #X obj 54 88 send sound1-filename;
 #X obj 46 404 catch~ soundoutput;
-#X obj 38 488 dac~;
+#X obj 46 522 dac~;
 #X obj 448 199 send android;
 #X obj 482 116 receive playlist;
 #X obj 449 29 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
@@ -62,9 +62,9 @@
 #X obj 182 343 sampleplayer sound14;
 #X obj 317 343 sampleplayer sound15;
 #X obj 455 342 sampleplayer sound16;
-#X connect 1 0 2 0;
-#X connect 1 0 2 1;
+#X obj 47 479 *~ 0.5;
 #X connect 1 0 28 0;
+#X connect 1 0 58 0;
 #X connect 4 0 11 0;
 #X connect 5 0 13 0;
 #X connect 6 0 7 0;
@@ -97,3 +97,5 @@
 #X connect 40 0 17 0;
 #X connect 41 0 17 0;
 #X connect 42 0 29 0;
+#X connect 58 0 2 0;
+#X connect 58 0 2 1;
