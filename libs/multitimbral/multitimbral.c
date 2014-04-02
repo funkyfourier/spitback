@@ -36,7 +36,7 @@ void noteon(t_multitimbral *x, t_floatarg note_number){
 
 	int i;	
 	for(i=0; i<x->nr_of_slots; i++){
-		if(slotstr_array[i].notenumber == (int)note_number && slotstr_array[i].state == SLOT_QUEUED){
+		if(slotstr_array[i].notenumber == (int)note_number && slotstr_array[i].state != SLOT_AVAILABLE){
 			queue_delete_element(i);
 			slotstr_array[i].state = SLOT_UNAVAILABLE;
 			t_atom list[2];
