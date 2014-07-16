@@ -1,4 +1,4 @@
-#N canvas 543 318 699 552 10;
+#N canvas 302 289 994 573 10;
 #X obj 54 88 send sound1-filename;
 #X obj 46 404 catch~ soundoutput;
 #X obj 40 531 dac~;
@@ -27,7 +27,7 @@
 #X msg 206 29 ../sounds/sine400.wav;
 #X msg 206 51 ../sounds/ohh.wav;
 #X obj 365 31 midicontrol;
-#N canvas 0 0 450 300 (subpatch) 0;
+#N canvas 0 50 450 300 (subpatch) 0;
 #X array outputmonitor 100 float 0;
 #X coords 0 -1 100 1 200 100 1;
 #X restore 293 387 graph;
@@ -62,7 +62,7 @@
 #X obj 182 343 sampleplayer sound14;
 #X obj 317 343 sampleplayer sound15;
 #X obj 455 342 sampleplayer sound16;
-#N canvas 141 591 489 314 limiter 1;
+#N canvas 138 596 489 314 limiter 1;
 #X obj 109 42 inlet~;
 #X obj 107 272 outlet~;
 #X obj 108 240 *~;
@@ -87,6 +87,8 @@
 #X connect 9 0 2 1;
 #X restore 47 462 pd limiter;
 #X obj 46 506 *~ 0.25;
+#X obj 606 25 receive timerstop;
+#X msg 606 51 stop;
 #X connect 1 0 58 0;
 #X connect 4 0 11 0;
 #X connect 5 0 13 0;
@@ -124,3 +126,5 @@
 #X connect 58 0 59 0;
 #X connect 59 0 2 0;
 #X connect 59 0 2 1;
+#X connect 60 0 61 0;
+#X connect 61 0 13 0;
