@@ -1,4 +1,4 @@
-#N canvas 1839 239 796 749 10;
+#N canvas 1869 195 776 671 10;
 #X obj -479 131 inlet;
 #X obj -514 424 *~;
 #X obj -638 296 loadbang;
@@ -20,7 +20,7 @@
 #X obj -257 378 adsr 500 5 0.2 200;
 #X obj -142 211 delay;
 #X obj -515 336 tabread4~ \$1;
-#N canvas 252 219 815 668 filtersmanager 1;
+#N canvas 252 219 815 668 filtersmanager 0;
 #X obj 123 340 inlet;
 #X obj 28 17 inlet~;
 #X obj 28 440 outlet~;
@@ -263,14 +263,16 @@
 #X obj -152 352 receive \$2-release;
 #X obj -638 357 receive \$2-volume;
 #X obj -498 500 receive~ \$2-siglfovolume;
-#X obj -184 411 r \$2-filtercutoff;
-#X obj -170 435 r~ \$2-siglfofilter;
-#X obj -159 457 r \$2-filterattack;
-#X obj -147 479 r \$2-filterdecay;
-#X obj -134 500 r \$2-filtersustain;
-#X obj -122 522 r \$2-filterrelease;
+#X obj -184 420 r \$2-filtercutoff;
+#X obj -170 440 r~ \$2-siglfofilter;
+#X obj -159 462 r \$2-filterattack;
+#X obj -147 484 r \$2-filterdecay;
+#X obj -134 505 r \$2-filtersustain;
+#X obj -122 526 r \$2-filterrelease;
 #X obj -109 547 r \$2-filterselect;
 #X obj -516 298 +~ 1;
+#X obj -196 400 r notefilter;
+#X obj -249 240 s notefilter;
 #X connect 0 0 24 2;
 #X connect 0 0 33 0;
 #X connect 1 0 22 0;
@@ -281,9 +283,9 @@
 #X connect 7 0 1 0;
 #X connect 8 0 14 0;
 #X connect 8 0 17 0;
-#X connect 8 0 20 1;
+#X connect 8 0 57 0;
 #X connect 9 0 17 0;
-#X connect 9 0 20 1;
+#X connect 9 0 57 0;
 #X connect 10 0 13 0;
 #X connect 13 0 9 0;
 #X connect 13 0 18 0;
@@ -330,3 +332,4 @@
 #X connect 53 0 20 7;
 #X connect 54 0 20 8;
 #X connect 55 0 19 0;
+#X connect 56 0 20 1;
