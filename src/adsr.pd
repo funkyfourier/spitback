@@ -1,4 +1,4 @@
-#N canvas 1818 275 810 704 10;
+#N canvas 1815 280 810 704 10;
 #X obj 259 400 r \$0-attack;
 #X obj 457 171 timer;
 #X obj 541 104 r \$0-attack;
@@ -67,7 +67,6 @@
 #X obj 355 579 r \$0-velocity;
 #X msg 474 571 stop;
 #X obj 636 422 unpack f f f;
-#X obj 637 537 print;
 #X connect 0 0 26 4;
 #X connect 1 0 18 0;
 #X connect 2 0 5 1;

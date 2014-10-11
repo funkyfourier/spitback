@@ -9,7 +9,7 @@
 #X msg 527 416 add 123;
 #X obj 524 481 send playlist;
 #X msg 518 389 set \;;
-#X obj 41 255 sampleplayer sound1;
+#X obj 40 255 sampleplayer sound1;
 #X obj 489 60 receive timerstart;
 #X obj 483 99 metro 250;
 #X msg 37 114 1;
@@ -43,7 +43,7 @@
 #X msg 323 117 3;
 #X msg 359 117 4;
 #X msg 244 147 5;
-#X obj 128 468 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 128 468 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #N canvas 132 606 489 314 limiter 0;
 #X obj 109 42 inlet~;
@@ -75,6 +75,7 @@
 #X obj 550 82 receive setdelayms;
 #X msg 546 443 add sound1-noteon 3;
 #X msg 490 506 add sound1-line-attack 1 4000;
+#X msg 537 153 123 \;;
 #X obj 42 283 sampleplayer sound5;
 #X obj 180 255 sampleplayer sound2;
 #X obj 181 316 sampleplayer sound10;
@@ -90,14 +91,13 @@
 #X obj 182 343 sampleplayer sound14;
 #X obj 317 343 sampleplayer sound15;
 #X obj 455 342 sampleplayer sound16;
-#X msg 537 153 123 \;;
 #X connect 1 0 41 0;
-#X connect 4 0 63 0;
+#X connect 4 0 48 0;
 #X connect 5 0 11 0;
 #X connect 6 0 7 0;
 #X connect 8 0 7 0;
 #X connect 10 0 11 0;
-#X connect 11 0 63 0;
+#X connect 11 0 48 0;
 #X connect 11 0 3 0;
 #X connect 12 0 13 0;
 #X connect 14 0 15 0;
