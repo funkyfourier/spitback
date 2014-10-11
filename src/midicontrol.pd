@@ -1,4 +1,4 @@
-#N canvas 1682 425 1113 533 10;
+#N canvas 1676 435 1113 533 10;
 #X obj 72 -362 vsl 15 128 0 1 0 0 sound1-filtercutoff empty empty 0
 -9 0 10 -262144 -1 -1 0 1;
 #X obj 94 -327 vradio 15 1 0 3 sound1-filterselect empty empty 0 -8
@@ -46,11 +46,11 @@ empty -2 -8 0 5 -262144 -1 -1 4400 1;
 empty -2 -8 0 10 -262144 -1 -1 1000 1;
 #X text 790 -368 attack;
 #X obj 796 -319 hsl 128 15 0 2000 0 0 sound1-decay sound1-decay-ui
-empty -2 -8 0 10 -262144 -1 -1 600 1;
+empty -2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 797 -286 hsl 128 15 0 1 0 0 sound1-sustain sound1-sustain-ui
-empty -2 -8 0 10 -262144 -1 -1 8200 1;
+empty -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 798 -254 hsl 128 15 0 2000 0 0 sound1-release sound1-release-ui
-empty -2 -8 0 10 -262144 -1 -1 1000 1;
+empty -2 -8 0 10 -262144 -1 -1 0 1;
 #X text 790 -335 decay;
 #X text 791 -302 sustain;
 #X text 792 -270 release;
