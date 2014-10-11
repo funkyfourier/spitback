@@ -1,4 +1,4 @@
-#N canvas 1624 267 1069 533 10;
+#N canvas 1682 425 1113 533 10;
 #X obj 72 -362 vsl 15 128 0 1 0 0 sound1-filtercutoff empty empty 0
 -9 0 10 -262144 -1 -1 0 1;
 #X obj 94 -327 vradio 15 1 0 3 sound1-filterselect empty empty 0 -8
@@ -43,14 +43,14 @@ empty -2 -8 0 5 -262144 -1 -1 4400 1;
 #X obj 789 -405 cnv 15 150 25 empty empty VOL-ENV 20 12 0 25 -257985
 -66577 0;
 #X obj 796 -352 hsl 128 15 0 2000 0 0 sound1-attack sound1-attack-ui
-empty -2 -8 0 10 -262144 -1 -1 0 1;
+empty -2 -8 0 10 -262144 -1 -1 1000 1;
 #X text 790 -368 attack;
 #X obj 796 -319 hsl 128 15 0 2000 0 0 sound1-decay sound1-decay-ui
-empty -2 -8 0 10 -262144 -1 -1 0 1;
+empty -2 -8 0 10 -262144 -1 -1 600 1;
 #X obj 797 -286 hsl 128 15 0 1 0 0 sound1-sustain sound1-sustain-ui
-empty -2 -8 0 10 -262144 -1 -1 12700 1;
+empty -2 -8 0 10 -262144 -1 -1 8200 1;
 #X obj 798 -254 hsl 128 15 0 2000 0 0 sound1-release sound1-release-ui
-empty -2 -8 0 10 -262144 -1 -1 0 1;
+empty -2 -8 0 10 -262144 -1 -1 1000 1;
 #X text 790 -335 decay;
 #X text 791 -302 sustain;
 #X text 792 -270 release;
@@ -83,8 +83,8 @@ empty -2 -8 0 10 -262144 -1 -1 12700 1;
 #X msg 386 -16 set \$1;
 #X obj 386 -43 trigger f f;
 #X obj 386 36 send sound1-loopend-ui;
-#X floatatom 572 -249 10 0 0 0 - - -;
-#X floatatom 571 -304 10 0 0 0 - - -;
+#X floatatom 572 -249 10 0 0 0 - - -, f 10;
+#X floatatom 571 -302 10 0 0 0 - - -, f 10;
 #X msg 449 -16 \; sound1-loopend-ui range 0 \$1 \; sound1-loopstart-ui
 range 0 \$1;
 #X msg -103 -32 0;
@@ -98,6 +98,14 @@ range 0 \$1;
 #X obj -92 -311 list prepend;
 #X obj -23 -333 > 0;
 #X obj -92 -334 - 47;
+#X floatatom 935 -337 10 0 0 0 - - -, f 10;
+#X floatatom 935 -304 10 0 0 0 - - -, f 10;
+#X floatatom 935 -271 10 0 0 0 - - -, f 10;
+#X floatatom 936 -239 10 0 0 0 - - -, f 10;
+#X connect 29 0 76 0;
+#X connect 31 0 77 0;
+#X connect 32 0 78 0;
+#X connect 33 0 79 0;
 #X connect 37 0 63 0;
 #X connect 39 0 62 0;
 #X connect 43 0 60 0;

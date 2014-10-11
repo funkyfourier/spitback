@@ -1,4 +1,4 @@
-#N canvas 2132 146 683 802 10;
+#N canvas 2129 151 683 802 10;
 #X obj 169 -654 soundfiler;
 #X obj 50 -728 table \$0-lyden;
 #X obj 300 -716 float \$0;
@@ -134,16 +134,18 @@
 #X obj -5 -269 line;
 #X obj 13 -291 print;
 #X text -5 -336 remove:;
-#N canvas 1701 244 565 265 automationhub 1;
+#N canvas 1873 388 565 265 automationhub 1;
 #X obj 25 46 line;
 #X obj 25 73 s \$1-attack;
 #X obj 25 23 r \$1-auto-attack;
 #X obj 145 46 line;
 #X obj 145 23 r \$1-auto-volume;
 #X obj 145 73 s \$1-volume;
+#X obj 246 63 print;
 #X connect 0 0 1 0;
 #X connect 2 0 0 0;
 #X connect 3 0 5 0;
+#X connect 3 0 6 0;
 #X connect 4 0 3 0;
 #X restore 409 -671 pd automationhub;
 #X obj 224 -424 playit \$0-lyden \$1;
