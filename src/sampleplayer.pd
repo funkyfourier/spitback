@@ -1,4 +1,4 @@
-#N canvas 1647 100 673 799 10;
+#N canvas 1690 204 673 799 10;
 #X obj 169 -731 soundfiler;
 #X obj 50 -805 table \$0-lyden;
 #X obj 300 -793 float \$0;
@@ -130,7 +130,7 @@
 #X obj 138 -131 siglfo~;
 #X obj 281 -122 siglfo~;
 #X obj 445 -128 siglfo~;
-#N canvas 1870 393 565 265 automationhub 1;
+#N canvas 1870 393 565 265 automationhub 0;
 #X obj 25 46 line;
 #X obj 25 73 s \$1-attack;
 #X obj 25 23 r \$1-auto-attack;
