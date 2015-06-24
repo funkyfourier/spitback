@@ -1,4 +1,4 @@
-#N canvas 1761 504 392 430 10;
+#N canvas 1758 509 392 430 10;
 #X obj 102 -1100 soundfiler;
 #X obj -17 -1174 table \$0-lyden;
 #X obj 233 -1162 float \$0;
@@ -204,9 +204,9 @@
 #X connect 14 0 9 0;
 #X connect 15 0 10 0;
 #X restore 99 -980 pd polyconnections;
-#N canvas 1682 298 1065 470 effects 1;
+#N canvas 1679 303 1065 470 effects 1;
 #X obj 19 27 inlet~;
-#X obj 24 426 outlet~;
+#X obj 21 327 outlet~;
 #N canvas 1965 608 352 216 reverb 0;
 #X obj -10 122 pureverb;
 #X obj 236 35 switch~;
@@ -316,7 +316,7 @@
 #X connect 13 0 1 0;
 #X connect 15 0 6 0;
 #X restore 91 135 pd repatch;
-#N canvas 1897 475 334 218 flanger 0;
+#N canvas 1894 480 334 218 flanger 0;
 #X obj 30 114 johsflanger;
 #X obj 238 15 switch~;
 #X obj 238 -13 inlet disable;
@@ -351,7 +351,7 @@
 #X obj 807 143 listmover;
 #X msg 835 116 4;
 #X msg 953 118 4;
-#X obj 23 394 catch~ \$0-signal-1;
+#X obj 20 295 catch~ \$0-signal-1;
 #X obj 33 164 pack f \$0;
 #X msg 33 192 set \$2-signal-\$1;
 #X obj 322 36 r \$1-rev-moveup;
@@ -383,14 +383,14 @@
 #X obj 594 400 s \$0-list;
 #X obj 828 403 s \$0-list;
 #X obj 33 52 r \$0-list;
-#N canvas 1906 410 482 499 makefxlist 1;
+#N canvas 1906 410 482 499 makefxlist 0;
 #X obj 47 10 inlet;
 #X obj 23 133 list-seek;
 #X obj 47 101 t b l;
 #X obj 23 76 r \$0-fxagain;
 #X obj 23 162 t b f;
 #X obj 23 198 s \$0-fxagain;
-#X msg 50 449 list delay flanger reverb;
+#X msg 50 449 list (reverb) (delay) (flanger);
 #X obj 47 38 t l b;
 #X obj 135 384 r \$0-clear;
 #X obj 116 55 s \$0-clear;
