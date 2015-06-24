@@ -1,6 +1,6 @@
-#N canvas 613 500 1379 534 10;
-#X obj 72 -362 vsl 15 128 0 1 0 0 sound1-filtercutoff empty empty 0
--9 0 10 -262144 -1 -1 0 1;
+#N canvas 140 419 1379 534 10;
+#X obj 72 -362 vsl 15 128 0 1 0 0 sound1-filtercutoff empty cutoff
+0 -9 0 10 -262144 -1 -1 12700 1;
 #X obj 94 -327 vradio 15 1 0 3 sound1-filterselect empty empty 0 -8
 0 10 -262144 -1 -1 0;
 #X text 110 -327 off;
@@ -18,19 +18,17 @@ empty -2 -8 0 5 -262144 -1 -1 4400 1;
 #X text 227 -322 sustain;
 #X text 227 -301 release;
 #X text 227 -342 decay;
-#X text 60 -382 cutoff;
 #X obj 50 -407 cnv 15 230 25 empty empty FILTER2 20 12 0 20 -257985
 -66577 0;
-#X text 60 -382 cutoff;
 #X obj 50 -407 cnv 15 230 25 empty empty FILTER 20 12 0 20 -257985
 -66577 0;
 #X obj 344 -406 cnv 15 200 25 empty empty LFO 20 12 0 20 -257985 -66577
 0;
 #X obj 355 -362 vsl 15 128 0.25 10 0 0 sound1-lforate empty empty 0
--9 0 10 -262144 -1 -1 0 1;
+-9 0 10 -262144 -1 -1 3900 1;
 #X text 349 -381 rate;
 #X obj 391 -362 vsl 15 128 0 1 0 0 sound1-lfodepth empty empty 0 -9
-0 10 -262144 -1 -1 0 1;
+0 10 -262144 -1 -1 12700 1;
 #X text 385 -381 depth;
 #X obj 434 -355 vradio 15 1 0 4 sound1-lfoconnection empty empty 0
 -8 0 10 -262144 -1 -1 0;
@@ -39,8 +37,6 @@ empty -2 -8 0 5 -262144 -1 -1 4400 1;
 #X text 452 -326 pitch;
 #X text 450 -309 filter;
 #X obj 737 -406 cnv 15 100 25 sound1-loopon empty LOOP 20 12 0 20 -257985
--66577 0;
-#X obj 785 -127 cnv 15 160 15 empty empty Reverb 10 8 0 12 -191407
 -66577 0;
 #X obj 909 -352 hsl 128 15 0 2000 0 0 sound1-attack sound1-attack-ui
 empty -2 -8 0 10 -262144 -1 -1 0 1;
@@ -57,7 +53,7 @@ empty -2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 743 -323 hsl 128 15 0 103897 0 0 sound1-loopstart sound1-loopstart-ui
 loopstart -2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 744 -267 hsl 128 15 0 103897 0 0 sound1-loopend sound1-loopend-ui
-loopend -2 -8 0 10 -262144 -1 -1 4900 1;
+loopend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 741 -361 tgl 15 1 sound1-loopon empty loop 17 7 0 10 -262144
 -1 -1 1 1;
 #X obj 347 -111 receive sound1-samplelength;
@@ -97,23 +93,12 @@ loopend -2 -8 0 10 -262144 -1 -1 4900 1;
 #X floatatom 1049 -239 10 0 0 0 - - -, f 10;
 #X obj 902 -405 cnv 15 150 25 empty empty VOL-ENV 20 12 0 25 -257985
 -66577 0;
-#X obj 783 -159 cnv 15 160 25 empty empty FX 10 12 0 25 -257985 -66577
-0;
-#X obj 785 -103 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
-0 1;
-#X text 803 -104 enable;
-#X obj 853 -103 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
-#X text 872 -104 up;
-#X obj 900 -103 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
-#X text 919 -104 down;
 #X obj 567 -406 cnv 15 100 25 sound1-loopon empty SAMPLE 20 12 0 20
 -257985 -66577 0;
 #X obj 572 -352 hsl 128 15 0 103897 0 0 sound1-samplestart sound1-samplestart-ui
-samplestart -2 -8 0 10 -262144 -1 -1 1500 1;
+samplestart -2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 573 -296 hsl 128 15 0 103897 0 0 sound1-sampleend sound1-sampleend-ui
-sampleend -2 -8 0 10 -262144 -1 -1 9500 1;
+sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X floatatom 570 -278 10 0 0 0 - - -, f 10;
 #X floatatom 569 -331 10 0 0 0 - - -, f 10;
 #X msg 444 -63 \; sound1-loopend-ui range 0 \$1 \; sound1-loopstart-ui
@@ -125,43 +110,91 @@ range 0 \$1;
 #X obj 397 12 send sound1-loopend-ui;
 #X obj 384 35 send sound1-sampleend-ui;
 #X obj 347 81 send sound1-loopstart-ui;
-#X connect 29 0 70 0;
-#X connect 31 0 71 0;
-#X connect 32 0 72 0;
-#X connect 33 0 73 0;
-#X connect 37 0 58 0;
-#X connect 38 0 57 0;
-#X connect 40 0 88 0;
-#X connect 42 0 59 0;
-#X connect 42 0 60 0;
-#X connect 42 0 61 0;
-#X connect 42 0 62 0;
-#X connect 47 0 52 0;
-#X connect 47 0 53 0;
-#X connect 47 0 54 0;
-#X connect 47 0 55 0;
+#X obj 749 -155 cnv 15 160 15 empty empty Reverb 10 8 0 12 -191407
+-66577 0;
+#X obj 747 -187 cnv 15 160 25 empty empty FX 10 12 0 25 -257985 -66577
+0;
+#X obj 749 -131 tgl 15 0 sound1-rev-enable empty enable 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 817 -131 bng 15 250 50 0 sound1-rev-moveup empty up 17 7 0 10
+-262144 -1 -1;
+#X obj 864 -131 bng 15 250 50 0 sound1-rev-movedown empty down 17 7
+0 10 -262144 -1 -1;
+#X obj 917 -155 cnv 15 160 15 empty empty Delay 10 8 0 12 -191407 -66577
+0;
+#X obj 917 -131 tgl 15 0 sound1-del-enable empty enable 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 985 -131 bng 15 250 50 0 sound1-del-moveup empty up 17 7 0 10
+-262144 -1 -1;
+#X obj 1032 -131 bng 15 250 50 0 sound1-del-movedown empty down 17
+7 0 10 -262144 -1 -1;
+#X obj 1084 -155 cnv 15 160 15 empty empty Flanger 10 8 0 12 -191407
+-66577 0;
+#X obj 1084 -131 tgl 15 0 sound1-flg-enable empty enable 17 7 0 10
+-262144 -1 -1 0 1;
+#X obj 1143 -131 bng 15 250 50 0 sound1-flg-moveup empty up 17 7 0
+10 -262144 -1 -1;
+#X obj 1190 -131 bng 15 250 50 0 sound1-flg-movedown empty down 17
+7 0 10 -262144 -1 -1;
+#X obj 752 -93 hsl 128 15 0 1 0 0 sound1-rev-damp empty damp -2 -8
+0 10 -262144 -1 -1 7800 1;
+#X obj 752 -60 hsl 128 15 0 1 0 0 sound1-rev-roomsize empty roomsize
+-2 -8 0 10 -262144 -1 -1 9600 1;
+#X obj 752 -28 hsl 128 15 0 1 0 0 sound1-rev-dry empty dry -2 -8 0
+10 -262144 -1 -1 12700 1;
+#X obj 752 5 hsl 128 15 0 1 0 0 sound1-rev-wet empty wet -2 -8 0 10
+-262144 -1 -1 7000 1;
+#X obj 924 -93 hsl 128 15 0 1 0 0 sound1-del-delay empty delay -2 -8
+0 10 -262144 -1 -1 1700 1;
+#X obj 924 -60 hsl 128 15 0 1 0 0 sound1-del-feedback empty feedback
+-2 -8 0 10 -262144 -1 -1 12700 1;
+#X obj 924 -29 hsl 128 15 0 1 0 0 sound1-del-wet empty wet -2 -8 0
+10 -262144 -1 -1 12700 1;
+#X obj 1086 -93 hsl 128 15 0.001 10 0 0 sound1-flg-speed empty speed
+-2 -8 0 10 -262144 -1 -1 0 1;
+#X obj 1086 -60 hsl 128 15 0 10 0 0 sound1-flg-offset empty offset
+-2 -8 0 10 -262144 -1 -1 12400 1;
+#X obj 1086 -29 hsl 128 15 0 20 0 0 sound1-flg-delay empty delay -2
+-8 0 10 -262144 -1 -1 12700 1;
+#X obj 1086 5 hsl 128 15 0 0.99 0 0 sound1-flg-feedback empty feedback
+-2 -8 0 10 -262144 -1 -1 5500 1;
+#X connect 26 0 67 0;
+#X connect 28 0 68 0;
+#X connect 29 0 69 0;
+#X connect 30 0 70 0;
+#X connect 34 0 55 0;
+#X connect 35 0 54 0;
+#X connect 37 0 78 0;
+#X connect 39 0 56 0;
+#X connect 39 0 57 0;
+#X connect 39 0 58 0;
+#X connect 39 0 59 0;
+#X connect 44 0 49 0;
+#X connect 44 0 50 0;
+#X connect 44 0 51 0;
+#X connect 44 0 52 0;
+#X connect 49 0 45 0;
+#X connect 50 0 46 0;
+#X connect 51 0 47 0;
 #X connect 52 0 48 0;
-#X connect 53 0 49 0;
-#X connect 54 0 50 0;
-#X connect 55 0 51 0;
-#X connect 56 0 91 0;
-#X connect 56 0 92 0;
+#X connect 53 0 81 0;
+#X connect 53 0 82 0;
+#X connect 56 0 40 0;
+#X connect 57 0 41 0;
+#X connect 58 0 42 0;
 #X connect 59 0 43 0;
-#X connect 60 0 44 0;
-#X connect 61 0 45 0;
-#X connect 62 0 46 0;
-#X connect 63 0 69 0;
-#X connect 63 1 68 0;
-#X connect 66 0 65 0;
-#X connect 66 1 64 0;
-#X connect 67 0 66 0;
-#X connect 68 0 67 1;
-#X connect 69 0 67 0;
-#X connect 83 0 86 0;
-#X connect 84 0 85 0;
-#X connect 88 0 89 0;
-#X connect 88 1 87 0;
-#X connect 88 1 56 0;
-#X connect 89 0 90 0;
-#X connect 89 0 93 0;
+#X connect 60 0 66 0;
+#X connect 60 1 65 0;
+#X connect 63 0 62 0;
+#X connect 63 1 61 0;
+#X connect 64 0 63 0;
+#X connect 65 0 64 1;
+#X connect 66 0 64 0;
+#X connect 73 0 76 0;
+#X connect 74 0 75 0;
+#X connect 78 0 79 0;
+#X connect 78 1 77 0;
+#X connect 78 1 53 0;
+#X connect 79 0 80 0;
+#X connect 79 0 83 0;
 #X coords 0 0 1 1 85 60 0;
