@@ -1,4 +1,4 @@
-#N canvas 1730 365 771 370 10;
+#N canvas 262 406 771 370 10;
 #X obj 9 327 dac~;
 #X obj 574 183 send android;
 #X obj 628 125 receive playlist;
@@ -45,6 +45,8 @@
 #X obj 574 102 metro 1500;
 #X obj 15 200 catch~ mainoutput;
 #X obj 97 288 metro 50;
+#X obj 147 14 controlsui sound2;
+#X obj 5 15 controlsui sound1;
 #X obj 8 68 sampleplayer sound5;
 #X obj 146 40 sampleplayer sound2;
 #X obj 147 101 sampleplayer sound10;
@@ -60,8 +62,6 @@
 #X obj 148 128 sampleplayer sound14;
 #X obj 283 128 sampleplayer sound15;
 #X obj 421 127 sampleplayer sound16;
-#X obj 147 14 controlsui sound2;
-#X obj 5 15 controlsui sound1;
 #X connect 2 0 14 0;
 #X connect 3 0 15 0;
 #X connect 5 0 15 0;
