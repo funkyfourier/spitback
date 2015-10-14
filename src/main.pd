@@ -1,4 +1,4 @@
-#N canvas 262 406 771 370 10;
+#N canvas 256 416 771 370 10;
 #X obj 9 327 dac~;
 #X obj 574 183 send android;
 #X obj 628 125 receive playlist;
