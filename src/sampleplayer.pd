@@ -1,4 +1,4 @@
-#N canvas 1719 381 715 393 10;
+#N canvas 1716 386 715 393 10;
 #X obj 102 -1137 soundfiler;
 #X obj -17 -1211 table \$0-lyden;
 #X obj 233 -1199 float \$0;
@@ -88,7 +88,7 @@
 #X connect 32 0 33 0;
 #X restore 172 -1071 pd makeguardpoints;
 #X obj 102 -1071 - 1;
-#N canvas 385 493 662 507 automationhub 0;
+#N canvas 382 498 662 507 automationhub 0;
 #X obj 165 71 line;
 #X obj 165 98 s \$1-attack;
 #X obj 165 16 r \$1-auto-attack;
@@ -186,7 +186,7 @@
 #X connect 26 0 15 0;
 #X connect 27 0 21 0;
 #X restore 99 -965 pd lfoconnections;
-#N canvas 1962 311 672 270 polyconnections 0;
+#N canvas 1956 321 672 270 polyconnections 1;
 #X obj 280 -656 receive \$1-noteon;
 #X obj 361 -612 receive \$1-noteoff;
 #X obj 280 -585 multitimbral 5;
