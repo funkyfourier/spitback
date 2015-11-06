@@ -1,4 +1,4 @@
-#N canvas 1758 384 565 385 10;
+#N canvas 1697 452 565 385 10;
 #X obj 102 -1145 soundfiler;
 #X obj 233 -1207 float \$0;
 #X obj 102 -1190 pack s f;
@@ -7,7 +7,7 @@
 #X obj 102 -1057 send \$1-samplelength;
 #X obj -16 -1184 table \$0-tmp;
 #X msg 102 -1166 read -resize \$1 \$2-tmp;
-#N canvas 492 394 685 630 makeguardpoints 1;
+#N canvas 492 394 685 630 makeguardpoints 0;
 #X obj 28 32 inlet;
 #X text 24 10 nr of samples;
 #X obj 28 62 trigger bang float float float float float;
@@ -186,7 +186,7 @@
 #X connect 26 0 15 0;
 #X connect 27 0 21 0;
 #X restore 99 -973 pd lfoconnections;
-#N canvas 1750 145 672 270 polyconnections 1;
+#N canvas 1747 150 672 270 polyconnections 1;
 #X obj 280 -656 receive \$1-noteon;
 #X obj 361 -612 receive \$1-noteoff;
 #X obj 280 -585 multitimbral 5;
@@ -559,6 +559,7 @@
 #X msg 330 -1037 \; \$2-tmp resize \$1;
 #X obj 145 -1101 t f f;
 #X obj -17 -1218 table \$0-lyden;
+#X obj -16 -1138 table \$1-params;
 #X connect 0 0 8 0;
 #X connect 0 0 9 0;
 #X connect 1 0 2 1;
