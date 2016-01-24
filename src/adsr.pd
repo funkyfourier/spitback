@@ -1,4 +1,4 @@
-#N canvas 331 444 810 704 10;
+#N canvas 319 307 810 704 10;
 #X obj 259 400 r \$0-attack;
 #X obj 457 171 timer;
 #X obj 541 104 r \$0-attack;

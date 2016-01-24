@@ -1,16 +1,16 @@
-#N canvas 357 367 771 370 10;
-#X obj 9 327 dac~;
-#X obj 628 125 receive playlist;
-#X obj 553 66 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#N canvas 1753 285 771 371 10;
+#X obj 403 332 dac~;
+#X obj 638 116 receive playlist;
+#X obj 563 60 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 6 40 sampleplayer sound1;
-#X obj 580 63 receive timerstart;
+#X obj 590 57 receive timerstart;
 #N canvas 0 50 450 300 (subpatch) 0;
 #X array outputmonitor 100 float 0;
 #X coords 0 -1 100 1 200 100 1;
-#X restore 262 183 graph;
-#X obj 97 320 tabwrite~ outputmonitor;
-#X obj 97 264 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X restore 554 209 graph;
+#X obj 491 325 tabwrite~ outputmonitor;
+#X obj 491 269 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #N canvas 132 606 489 314 limiter 0;
 #X obj 109 42 inlet~;
@@ -35,25 +35,26 @@
 #X connect 7 0 9 0;
 #X connect 8 0 5 0;
 #X connect 9 0 2 1;
-#X restore 16 258 pd limiter;
-#X obj 15 302 *~ 0.25;
-#X obj 574 14 receive timerstop;
-#X msg 574 40 stop;
-#X obj 641 85 receive setdelayms;
-#X msg 628 156 123 \;;
-#X obj 574 102 metro 1500;
-#X obj 15 200 catch~ mainoutput;
-#X obj 97 288 metro 50;
+#X restore 410 263 pd limiter;
+#X obj 409 307 *~ 0.25;
+#X obj 584 8 receive timerstop;
+#X msg 584 34 stop;
+#X obj 651 79 receive setdelayms;
+#X msg 638 138 123 \;;
+#X obj 584 96 metro 1500;
+#X obj 409 205 catch~ mainoutput;
+#X obj 491 293 metro 50;
 #X obj 147 14 controlsui sound2;
 #X obj 5 15 controlsui sound1;
 #X obj 8 68 sampleplayer sound5;
 #X obj 146 40 sampleplayer sound2;
-#X obj 147 101 sampleplayer sound10;
 #X obj 147 68 sampleplayer sound6;
 #X obj 281 40 sampleplayer sound3;
 #X obj 419 39 sampleplayer sound4;
 #X obj 282 68 sampleplayer sound7;
 #X obj 420 67 sampleplayer sound8;
+#X obj 584 160 send android-tick;
+#X obj 147 101 sampleplayer sound10;
 #X obj 8 100 sampleplayer sound9;
 #X obj 282 100 sampleplayer sound11;
 #X obj 420 99 sampleplayer sound12;
@@ -61,7 +62,8 @@
 #X obj 148 128 sampleplayer sound14;
 #X obj 283 128 sampleplayer sound15;
 #X obj 421 127 sampleplayer sound16;
-#X obj 574 182 send android-tick;
+#X obj 29 199 drumplayer drums1;
+#X obj 27 172 drumcontrolsui drums1;
 #X connect 1 0 13 0;
 #X connect 2 0 14 0;
 #X connect 4 0 14 0;
@@ -74,6 +76,6 @@
 #X connect 11 0 14 0;
 #X connect 12 0 14 1;
 #X connect 14 0 13 0;
-#X connect 14 0 34 0;
+#X connect 14 0 26 0;
 #X connect 15 0 8 0;
 #X connect 16 0 6 0;
