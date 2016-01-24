@@ -1,4 +1,4 @@
-#N canvas 1697 452 565 385 10;
+#N canvas 1688 467 565 385 10;
 #X obj 102 -1145 soundfiler;
 #X obj 233 -1207 float \$0;
 #X obj 102 -1190 pack s f;
@@ -7,7 +7,7 @@
 #X obj 102 -1057 send \$1-samplelength;
 #X obj -16 -1184 table \$0-tmp;
 #X msg 102 -1166 read -resize \$1 \$2-tmp;
-#N canvas 489 399 685 630 makeguardpoints 0;
+#N canvas 486 376 685 630 makeguardpoints 1;
 #X obj 28 32 inlet;
 #X text 24 10 nr of samples;
 #X obj 28 62 trigger bang float float float float float;
@@ -40,10 +40,10 @@
 #X obj 382 145 symbol \$1;
 #X obj 277 162 pack f s;
 #X obj -114 567 tabwrite \$1-wave;
-#X obj 34 330 tabwrite \$0-wave;
 #X obj 178 450 tabwrite \$1-wave;
 #X obj 243 304 tabwrite \$1-wave;
 #X msg 277 189 \; \$2-wave resize \$1;
+#X obj 34 330 tabwrite \$1-wave;
 #X connect 0 0 2 0;
 #X connect 2 0 28 0;
 #X connect 2 1 17 0;
@@ -57,13 +57,13 @@
 #X connect 5 0 6 0;
 #X connect 5 1 7 0;
 #X connect 6 0 8 0;
-#X connect 7 0 33 1;
-#X connect 8 0 33 0;
+#X connect 7 0 32 1;
+#X connect 8 0 32 0;
 #X connect 9 0 10 0;
 #X connect 9 1 11 0;
 #X connect 10 0 12 0;
-#X connect 11 0 32 1;
-#X connect 12 0 32 0;
+#X connect 11 0 35 1;
+#X connect 12 0 35 0;
 #X connect 13 0 15 0;
 #X connect 14 0 13 0;
 #X connect 15 0 16 0;
@@ -81,11 +81,11 @@
 #X connect 23 0 18 1;
 #X connect 24 0 26 0;
 #X connect 24 1 25 0;
-#X connect 25 0 34 1;
-#X connect 26 0 34 0;
+#X connect 25 0 33 1;
+#X connect 26 0 33 0;
 #X connect 28 0 27 0;
 #X connect 29 0 30 1;
-#X connect 30 0 35 0;
+#X connect 30 0 34 0;
 #X restore 172 -1079 pd makeguardpoints;
 #X obj 102 -1079 - 1;
 #N canvas 379 503 662 507 automationhub 0;
@@ -122,7 +122,7 @@
 #X connect 16 0 15 0;
 #X restore 99 -1013 pd automationhub;
 #X obj 99 -881 throw~ mainoutput;
-#N canvas 65 344 681 450 lfoconnections 0;
+#N canvas 1713 524 681 450 lfoconnections 0;
 #X obj 249 -336 select 1;
 #X obj 328 -336 select 2;
 #X obj 172 -336 select 0;
@@ -559,7 +559,7 @@
 #X msg 330 -1037 \; \$2-tmp resize \$1;
 #X obj 145 -1101 t f f;
 #X obj -17 -1218 table \$1-wave;
-#N canvas 367 741 621 344 paramwriters 1;
+#N canvas 367 741 621 344 paramwriters 0;
 #X obj -919 -178 paramwriter \$1 0;
 #X obj -811 -206 r \$1-samplestart;
 #X obj -811 -178 paramwriter \$1 1;
