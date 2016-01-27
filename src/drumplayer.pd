@@ -1,4 +1,4 @@
-#N canvas 427 332 847 563 10;
+#N canvas 349 317 847 563 10;
 #X obj 53 324 == 1;
 #X obj 104 322 == 2;
 #X obj 53 350 moses 1;
@@ -17,7 +17,7 @@
 #X obj 259 52 pack s f;
 #X obj 277 526 throw~ mainoutput;
 #X obj 277 504 catch~ \$1-instrumentoutput;
-#X obj 156 281 receive \$1-noteon;
+#X obj 124 277 receive \$1-noteon;
 #X obj 173 103 unpack s f;
 #X obj 259 75 t l l;
 #X obj 259 156 pack f f s;
@@ -48,6 +48,7 @@
 #X msg 689 413 3;
 #X obj 689 434 s drums1-tabindex;
 #X msg 720 287 20;
+#X obj 258 274 receive \$1-noteoff;
 #X connect 0 0 2 0;
 #X connect 1 0 3 0;
 #X connect 2 1 25 0;
