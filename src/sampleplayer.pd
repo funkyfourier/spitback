@@ -1,4 +1,4 @@
-#N canvas 1673 631 565 385 10;
+#N canvas 2245 463 565 385 10;
 #X obj 102 -1145 soundfiler;
 #X obj 233 -1207 float \$0;
 #X obj 102 -1190 pack s f;
@@ -186,7 +186,7 @@
 #X connect 26 0 15 0;
 #X connect 27 0 21 0;
 #X restore 99 -973 pd lfoconnections;
-#N canvas 1735 170 722 325 polyconnections 1;
+#N canvas 1806 176 722 325 polyconnections 1;
 #X obj 294 -107 receive \$1-noteon;
 #X obj 375 -58 receive \$1-noteoff;
 #X obj 294 -31 multitimbral 5;
@@ -204,22 +204,21 @@
 #X obj 371 127 playit \$1-wave \$1;
 #X obj 514 127 playit \$1-wave \$1;
 #X obj -22 67 delaynote;
+#X text -40 -107 [notenumber milliseconds] (0 or negative for infinite):
+;
 #X obj 108 67 delaynote;
 #X obj 222 66 delaynote;
 #X obj 347 66 delaynote;
 #X obj 482 66 delaynote;
-#X text -40 -107 [notenumber milliseconds] (0 or negative for infinite):
-;
 #X connect 0 0 2 0;
 #X connect 1 0 2 2;
 #X connect 2 0 3 0;
 #X connect 2 1 4 0;
 #X connect 3 0 16 0;
-#X connect 3 1 17 0;
-#X connect 3 2 18 0;
-#X connect 3 3 19 0;
-#X connect 3 4 15 0;
-#X connect 3 5 20 0;
+#X connect 3 1 18 0;
+#X connect 3 2 19 0;
+#X connect 3 3 20 0;
+#X connect 3 4 21 0;
 #X connect 4 0 11 1;
 #X connect 4 1 12 1;
 #X connect 4 2 13 1;
@@ -233,14 +232,14 @@
 #X connect 15 0 10 0;
 #X connect 16 0 11 0;
 #X connect 16 1 11 1;
-#X connect 17 0 12 0;
-#X connect 17 1 12 1;
-#X connect 18 0 13 0;
-#X connect 18 1 13 1;
-#X connect 19 0 14 0;
-#X connect 19 1 14 1;
-#X connect 20 0 15 0;
-#X connect 20 1 15 1;
+#X connect 18 0 12 0;
+#X connect 18 1 12 1;
+#X connect 19 0 13 0;
+#X connect 19 1 13 1;
+#X connect 20 0 14 0;
+#X connect 20 1 14 1;
+#X connect 21 0 15 0;
+#X connect 21 1 15 1;
 #X restore 99 -993 pd polyconnections;
 #N canvas 1673 313 1065 470 effects 0;
 #X obj 19 27 inlet~;
