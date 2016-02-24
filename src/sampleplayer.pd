@@ -1,4 +1,4 @@
-#N canvas 2239 473 565 385 10;
+#N canvas 2233 483 565 385 10;
 #X obj 102 -1145 soundfiler;
 #X obj 233 -1207 float \$0;
 #X obj 102 -1190 pack s f;
@@ -186,7 +186,7 @@
 #X connect 26 0 15 0;
 #X connect 27 0 21 0;
 #X restore 99 -973 pd lfoconnections;
-#N canvas 1610 205 633 268 polyconnections 1;
+#N canvas 1830 237 633 268 polyconnections 1;
 #X obj 294 -107 receive \$1-noteon;
 #X obj 375 -58 receive \$1-noteoff;
 #X obj 294 -31 multitimbral 5;
