@@ -1,4 +1,4 @@
-#N canvas 1710 427 1255 426 10;
+#N canvas 349 319 1255 426 10;
 #X obj 72 -362 vsl 15 128 0 1 0 0 \$1-filtercutoff empty cutoff -10
 -9 0 10 -262144 -1 -1 0 1;
 #X obj 94 -327 vradio 15 1 0 3 \$1-filterselect empty empty 0 -8 0
