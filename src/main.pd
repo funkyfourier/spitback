@@ -1,4 +1,4 @@
-#N canvas 1672 348 771 371 10;
+#N canvas 1669 353 771 371 10;
 #X obj 403 332 dac~;
 #X obj 6 40 sampleplayer sound1;
 #N canvas 0 50 450 300 (subpatch) 0;
@@ -60,18 +60,17 @@
 #X obj 283 128 sampleplayer sound15;
 #X obj 421 127 sampleplayer sound16;
 #X obj 147 14 controlsui sound2;
-#N canvas 892 320 450 300 ticks 1;
-#X obj 103 168 receive playlist;
-#X obj 28 74 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+#N canvas 889 353 226 233 ticks 1;
+#X obj 88 157 receive playlist;
+#X obj 13 63 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
 ;
-#X obj 55 71 receive timerstart;
-#X obj 49 22 receive timerstop;
-#X msg 49 48 stop;
-#X obj 116 93 receive setdelayms;
-#X obj 49 148 metro 1500;
-#X obj 49 250 send android-tick;
-#X msg 103 190 123 \;;
-#X obj 138 121 / 2;
+#X obj 40 60 receive timerstart;
+#X obj 34 11 receive timerstop;
+#X msg 34 37 stop;
+#X obj 101 82 receive setdelayms;
+#X obj 34 137 metro 1500;
+#X obj 34 206 send android-tick;
+#X msg 88 179 123 \;;
 #X connect 0 0 8 0;
 #X connect 1 0 6 0;
 #X connect 2 0 6 0;
