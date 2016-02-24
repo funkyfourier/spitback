@@ -1,4 +1,4 @@
-#N canvas 2245 463 565 385 10;
+#N canvas 2242 468 565 385 10;
 #X obj 102 -1145 soundfiler;
 #X obj 233 -1207 float \$0;
 #X obj 102 -1190 pack s f;
@@ -186,7 +186,7 @@
 #X connect 26 0 15 0;
 #X connect 27 0 21 0;
 #X restore 99 -973 pd lfoconnections;
-#N canvas 1806 176 722 325 polyconnections 1;
+#N canvas 1811 405 857 529 polyconnections 1;
 #X obj 294 -107 receive \$1-noteon;
 #X obj 375 -58 receive \$1-noteoff;
 #X obj 294 -31 multitimbral 5;
@@ -210,6 +210,8 @@
 #X obj 222 66 delaynote;
 #X obj 347 66 delaynote;
 #X obj 482 66 delaynote;
+#X obj 63 242 send android-noteon;
+#X obj 252 239 send android-noteoff;
 #X connect 0 0 2 0;
 #X connect 1 0 2 2;
 #X connect 2 0 3 0;
