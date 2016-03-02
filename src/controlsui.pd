@@ -1,4 +1,4 @@
-#N canvas 1622 541 1255 426 10;
+#N canvas 1619 546 1255 426 10;
 #X obj 72 -362 vsl 15 128 0 1 0 0 \$1-filtercutoff empty cutoff -10
 -9 0 10 -262144 -1 -1 0 1;
 #X obj 94 -327 vradio 15 1 0 3 \$1-filterselect empty empty 0 -8 0
@@ -208,6 +208,8 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X msg 107 -53 75;
 #X msg 147 -53 76;
 #X floatatom 361 -55 5 0 0 0 - - -, f 5;
+#X msg 224 -112 60 0;
+#X msg 195 -58 60;
 #X connect 20 0 30 0;
 #X connect 21 0 31 0;
 #X connect 22 0 32 0;
@@ -238,4 +240,6 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X connect 93 0 68 0;
 #X connect 94 0 68 0;
 #X connect 95 0 78 0;
+#X connect 96 0 67 0;
+#X connect 97 0 68 0;
 #X coords 0 0 1 1 85 60 0;
