@@ -1,11 +1,11 @@
-#N canvas 1990 271 395 306 10;
+#N canvas 2092 543 395 306 10;
 #X obj 9 176 s \$1-setavailable;
 #X obj 9 142 playit \$1-wave \$1;
-#X text 127 240 TODO Consider sending to android-noteoff at the same
+#X text 127 262 TODO Consider sending to android-noteoff at the same
 point as setavailable, f 29;
 #X obj 9 12 r \$1-noteon-\$2;
 #X obj 108 119 r \$1-noteoff-\$2;
-#N canvas 1775 209 232 252 delaynote 1;
+#N canvas 1775 209 232 252 delaynote 0;
 #X obj 19 18 inlet;
 #X obj 19 159 outlet noteon;
 #X obj 117 210 outlet noteoff;
@@ -27,21 +27,23 @@ point as setavailable, f 29;
 #X connect 8 1 7 0;
 #X restore 9 58 pd delaynote;
 #X obj 242 135 s android-noteon;
-#X obj 128 224 s android-noteoff;
+#X obj 128 246 s android-noteoff;
 #X obj 78 81 s \$1-noteoff;
 #X obj 242 113 list;
 #X obj 242 85 symbol \$1;
-#X obj 128 198 list;
-#X obj 128 147 symbol \$1;
+#X obj 128 220 list;
+#X obj 128 169 symbol \$1;
 #X obj 242 59 t b l;
 #X obj 242 36 r \$0-notenumdur;
 #X obj 22 36 s \$0-notenumdur;
-#X obj 149 175 r \$0-notenumdur;
+#X obj 149 197 r \$0-notenumdur;
+#X obj 128 145 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
 #X connect 1 0 0 0;
 #X connect 3 0 5 0;
 #X connect 3 0 15 0;
 #X connect 4 0 1 1;
-#X connect 4 0 12 0;
+#X connect 4 0 17 0;
 #X connect 5 0 1 0;
 #X connect 5 1 8 0;
 #X connect 9 0 6 0;
@@ -52,3 +54,4 @@ point as setavailable, f 29;
 #X connect 13 1 9 1;
 #X connect 14 0 13 0;
 #X connect 16 0 11 1;
+#X connect 17 0 12 0;
