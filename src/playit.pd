@@ -1,4 +1,4 @@
-#N canvas 2112 349 762 532 10;
+#N canvas 2106 359 762 532 10;
 #X obj -661 323 line~;
 #X msg -661 300 \$1 50;
 #X obj -544 259 *~;
@@ -192,7 +192,7 @@
 #X obj -239 507 throw~ \$2-instrumentoutput;
 #X obj -459 83 inlet noteon;
 #X obj -243 29 inlet noteoff;
-#N canvas 1753 432 595 326 samplelooper 1;
+#N canvas 1747 442 595 326 samplelooper 1;
 #X obj -272 39 inlet~ lfosignal;
 #X obj -298 181 samplelooper~;
 #X obj -297 229 outlet~;
@@ -220,9 +220,9 @@
 #X obj -83 163 s \$2-sampleend;
 #X obj 11 163 s \$2-loopend;
 #X obj 23 15 mtof;
-#X obj -15 32 /;
 #X obj 23 -9 r \$2-setrootnote;
 #X obj -15 10 mtof;
+#X obj -15 32 / 440;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
 #X connect 1 1 22 0;
@@ -233,7 +233,7 @@
 #X connect 8 0 4 0;
 #X connect 9 0 5 0;
 #X connect 10 0 11 0;
-#X connect 10 1 29 0;
+#X connect 10 1 28 0;
 #X connect 13 0 1 0;
 #X connect 14 0 1 1;
 #X connect 15 0 1 2;
@@ -247,10 +247,10 @@
 #X connect 22 0 3 0;
 #X connect 23 0 24 0;
 #X connect 23 0 25 0;
-#X connect 26 0 27 1;
-#X connect 27 0 12 0;
-#X connect 28 0 26 0;
-#X connect 29 0 27 0;
+#X connect 26 0 29 1;
+#X connect 27 0 26 0;
+#X connect 28 0 29 0;
+#X connect 29 0 12 0;
 #X restore -546 135 pd samplelooper;
 #X obj -385 225 r \$0-stopplay;
 #X obj -38 91 r \$0-stopplay;
