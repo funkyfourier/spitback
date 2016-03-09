@@ -1,4 +1,4 @@
-#N canvas 1619 546 1255 426 10;
+#N canvas 442 428 1255 426 10;
 #X obj 72 -362 vsl 15 128 0 1 0 0 \$1-filtercutoff empty cutoff -10
 -9 0 10 -262144 -1 -1 0 1;
 #X obj 94 -327 vradio 15 1 0 3 \$1-filterselect empty empty 0 -8 0
@@ -33,13 +33,13 @@ release 52 7 0 10 -262144 -1 -1 4400 1;
 #X obj 737 -406 cnv 15 100 25 sound1-loopon empty LOOP 20 12 0 20 -257985
 -66577 0;
 #X obj 909 -352 hsl 128 15 0 2000 0 1 \$1-attack \$1-attack-ui attack
--2 -8 0 10 -262144 -1 -1 1200 1;
+-2 -8 0 10 -262144 -1 -1 1300 1;
 #X obj 909 -319 hsl 128 15 0 2000 0 1 \$1-decay \$1-decay-ui decay
--2 -8 0 10 -262144 -1 -1 3900 1;
+-2 -8 0 10 -262144 -1 -1 4100 1;
 #X obj 910 -286 hsl 128 15 0 1 0 1 \$1-sustain \$1-sustain-ui sustain
 -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 911 -254 hsl 128 15 0 2000 0 1 \$1-release \$1-release-ui release
--2 -8 0 10 -262144 -1 -1 12200 1;
+-2 -8 0 10 -262144 -1 -1 1000 1;
 #X obj 743 -323 hsl 128 15 0 44099 0 0 \$1-loopstart \$1-loopstart-ui
 loopstart -2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 744 -267 hsl 128 15 0 44099 0 0 \$1-loopend \$1-loopend-ui loopend
@@ -210,6 +210,7 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X floatatom 361 -55 5 0 0 0 - - -, f 5;
 #X msg 224 -112 60 0;
 #X msg 195 -58 60;
+#X msg 278 -110 69 2000;
 #X connect 20 0 30 0;
 #X connect 21 0 31 0;
 #X connect 22 0 32 0;
@@ -242,4 +243,5 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X connect 95 0 78 0;
 #X connect 96 0 67 0;
 #X connect 97 0 68 0;
+#X connect 98 0 67 0;
 #X coords 0 0 1 1 85 60 0;
