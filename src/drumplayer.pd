@@ -1,4 +1,4 @@
-#N canvas 699 244 847 563 10;
+#N canvas 696 249 847 563 10;
 #X obj 21 277 moses 1;
 #X obj 72 277 moses 1;
 #X obj 124 277 moses 1;
@@ -58,6 +58,12 @@
 #X obj 405 440 loadbang;
 #X msg 405 461 1 0;
 #X obj 437 254 receive \$1-noteoff;
+#N canvas 233 567 621 344 paramwriters 1;
+#X obj -919 -178 paramwriter \$1 0;
+#X obj -919 -206 r \$1-volume;
+#X obj -761 -239 table \$1-params;
+#X connect 1 0 0 0;
+#X restore 34 474 pd paramwriters;
 #X connect 0 1 21 0;
 #X connect 1 1 22 0;
 #X connect 2 1 23 0;
