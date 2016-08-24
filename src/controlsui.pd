@@ -1,4 +1,4 @@
-#N canvas 442 428 1255 426 10;
+#N canvas 216 482 1255 426 10;
 #X obj 72 -362 vsl 15 128 0 1 0 0 \$1-filtercutoff empty cutoff -10
 -9 0 10 -262144 -1 -1 0 1;
 #X obj 94 -327 vradio 15 1 0 3 \$1-filterselect empty empty 0 -8 0
@@ -39,13 +39,13 @@ release 52 7 0 10 -262144 -1 -1 4400 1;
 #X obj 910 -286 hsl 128 15 0 1 0 1 \$1-sustain \$1-sustain-ui sustain
 -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 911 -254 hsl 128 15 0 2000 0 1 \$1-release \$1-release-ui release
--2 -8 0 10 -262144 -1 -1 1000 1;
+-2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 743 -323 hsl 128 15 0 44099 0 0 \$1-loopstart \$1-loopstart-ui
 loopstart -2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 744 -267 hsl 128 15 0 44099 0 0 \$1-loopend \$1-loopend-ui loopend
 -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 741 -361 tgl 15 1 \$1-loopon empty loop 17 7 0 10 -262144 -1
--1 1 1;
+-1 0 1;
 #X obj -103 -158 cnv 15 610 30 empty empty CONTROLS 20 12 0 18 -233017
 -66577 0;
 #X floatatom 741 -249 10 0 0 0 - - -, f 10;
@@ -191,8 +191,6 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X connect 4 0 2 0;
 #X restore -92 -384 pd receivemidi;
 #X obj 361 -28 send \$1-setrootnote;
-#X msg -87 -113 69 0;
-#X msg -48 -114 70 0;
 #X msg -9 -113 71 0;
 #X msg 27 -113 72 0;
 #X msg 64 -113 73 0;
@@ -211,6 +209,8 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X msg 224 -112 60 0;
 #X msg 195 -58 60;
 #X msg 278 -110 69 2000;
+#X msg -48 -114 70 10;
+#X msg -88 -113 69 70;
 #X connect 20 0 30 0;
 #X connect 21 0 31 0;
 #X connect 22 0 32 0;
@@ -230,18 +230,18 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X connect 82 0 67 0;
 #X connect 83 0 67 0;
 #X connect 84 0 67 0;
-#X connect 85 0 67 0;
-#X connect 86 0 67 0;
+#X connect 85 0 68 0;
+#X connect 86 0 68 0;
 #X connect 87 0 68 0;
 #X connect 88 0 68 0;
 #X connect 89 0 68 0;
 #X connect 90 0 68 0;
 #X connect 91 0 68 0;
 #X connect 92 0 68 0;
-#X connect 93 0 68 0;
-#X connect 94 0 68 0;
-#X connect 95 0 78 0;
+#X connect 93 0 78 0;
+#X connect 94 0 67 0;
+#X connect 95 0 68 0;
 #X connect 96 0 67 0;
-#X connect 97 0 68 0;
+#X connect 97 0 67 0;
 #X connect 98 0 67 0;
 #X coords 0 0 1 1 85 60 0;
