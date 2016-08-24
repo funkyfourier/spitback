@@ -1,4 +1,4 @@
-#N canvas 216 482 1255 426 10;
+#N canvas 213 487 1255 426 10;
 #X obj 72 -362 vsl 15 128 0 1 0 0 \$1-filtercutoff empty cutoff -10
 -9 0 10 -262144 -1 -1 0 1;
 #X obj 94 -327 vradio 15 1 0 3 \$1-filterselect empty empty 0 -8 0
@@ -45,7 +45,7 @@ loopstart -2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 744 -267 hsl 128 15 0 44099 0 0 \$1-loopend \$1-loopend-ui loopend
 -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 741 -361 tgl 15 1 \$1-loopon empty loop 17 7 0 10 -262144 -1
--1 0 1;
+-1 1 1;
 #X obj -103 -158 cnv 15 610 30 empty empty CONTROLS 20 12 0 18 -233017
 -66577 0;
 #X floatatom 741 -249 10 0 0 0 - - -, f 10;
