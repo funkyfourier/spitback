@@ -1,4 +1,4 @@
-#N canvas 420 320 771 371 10;
+#N canvas 417 324 771 371 10;
 #X obj 403 332 dac~;
 #X obj 6 40 sampleplayer sound1;
 #N canvas 0 50 450 300 (subpatch) 0;
