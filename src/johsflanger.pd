@@ -1,4 +1,4 @@
-#N canvas 74 354 613 619 10;
+#N canvas 1807 343 662 619 10;
 #X obj 311 214 +~ 1;
 #X obj 54 398 +~;
 #X obj 311 278 +~ 1;
@@ -30,6 +30,8 @@ user to fully control the internals of the patch with no range-limits
 #X obj 431 328 expr if($f1 > 1 \, 0.99 \, $f1);
 #X obj 431 305 expr if($f1 < -1 \, -0.99 \, $f1);
 #X text 59 19 From AndrewLngdn/basic-pure-data-audio-effects;
+#X obj 361 52 inlet;
+#X obj 361 77 switch~;
 #X connect 0 0 3 0;
 #X connect 1 0 24 0;
 #X connect 2 0 23 0;
@@ -50,4 +52,5 @@ user to fully control the internals of the patch with no range-limits
 #X connect 23 0 9 0;
 #X connect 26 0 9 1;
 #X connect 27 0 26 0;
+#X connect 29 0 30 0;
 #X coords 0 619 1 618 200 70 0;
