@@ -1,4 +1,4 @@
-#N canvas 1820 375 610 407 10;
+#N canvas 1638 144 610 407 10;
 #X obj 125 107 soundfiler;
 #X obj 269 23 loadbang;
 #X obj 125 32 receive \$1-filename;
@@ -276,7 +276,7 @@
 #X msg 369 215 \; \$2-tmp resize \$1;
 #X obj 168 151 t f f;
 #X obj 6 34 table \$1-wave;
-#N canvas 1625 181 900 610 paramwriters 1;
+#N canvas 1709 274 900 610 paramwriters 1;
 #X obj 25 42 paramwriter \$1 0;
 #X obj 25 80 r \$1-samplestart;
 #X obj 25 108 paramwriter \$1 1;
@@ -344,6 +344,8 @@
 #X obj 472 509 paramwriter \$1 31;
 #X obj 613 476 r \$1-flg-feedback;
 #X obj 613 509 paramwriter \$1 32;
+#X obj 743 79 r \$1-loopon;
+#X obj 743 108 paramwriter \$1 33;
 #X connect 1 0 2 0;
 #X connect 3 0 0 0;
 #X connect 4 0 5 0;
@@ -377,6 +379,7 @@
 #X connect 61 0 62 0;
 #X connect 63 0 64 0;
 #X connect 65 0 66 0;
+#X connect 67 0 68 0;
 #X restore 248 239 pd paramwriters;
 #X obj 269 45 symbol \$1;
 #X obj 7 68 table \$1-tmp;
@@ -384,7 +387,7 @@
 #X obj 440 172 symbol \$1;
 #X obj 369 189 pack f s;
 #X obj 371 79 tabwrite \$1-tmp;
-#N canvas 1720 450 658 435 polyconnections 0;
+#N canvas 1717 454 658 435 polyconnections 0;
 #X obj 209 28 receive \$1-noteon;
 #X obj 336 28 receive \$1-noteoff;
 #X obj 336 50 pack 0 0;
