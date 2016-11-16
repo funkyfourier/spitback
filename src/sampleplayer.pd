@@ -1,4 +1,4 @@
-#N canvas 1638 144 610 407 10;
+#N canvas 852 506 610 407 10;
 #X obj 125 107 soundfiler;
 #X obj 269 23 loadbang;
 #X obj 125 32 receive \$1-filename;
@@ -276,7 +276,7 @@
 #X msg 369 215 \; \$2-tmp resize \$1;
 #X obj 168 151 t f f;
 #X obj 6 34 table \$1-wave;
-#N canvas 1709 274 900 610 paramwriters 1;
+#N canvas 1709 274 900 610 paramwriters 0;
 #X obj 25 42 paramwriter \$1 0;
 #X obj 25 80 r \$1-samplestart;
 #X obj 25 108 paramwriter \$1 1;
