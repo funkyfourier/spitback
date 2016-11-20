@@ -1,4 +1,4 @@
-#N canvas 101 259 714 626 10;
+#N canvas 492 264 714 626 10;
 #X obj 40 38 table \$1-drum2;
 #X obj 40 57 table \$1-drum3;
 #X obj 40 76 table \$1-drum4;
@@ -42,8 +42,8 @@
 #X obj 194 503 receive \$1-volume;
 #X msg 194 524 \$1 50;
 #X obj 178 572 *~;
-#X obj 303 503 loadbang;
-#X msg 303 524 1 0;
+#X obj 326 503 loadbang;
+#X msg 326 524 1 0;
 #X obj 563 415 receive \$1-noteoff;
 #N canvas 230 572 621 344 paramwriters 0;
 #X obj -919 -178 paramwriter \$1 0;
