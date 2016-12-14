@@ -1,0 +1,8 @@
+#N canvas 1013 600 321 93 10;
+#X obj 10 7 inlet;
+#X obj 152 7 loadbang;
+#X obj 152 28 float \$3;
+#X obj 10 48 tabwrite \$1-params-\$2;
+#X connect 0 0 3 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 1;

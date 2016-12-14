@@ -1,4 +1,4 @@
-#N canvas 1713 218 1010 605 10;
+#N canvas 1695 242 1010 605 10;
 #X obj 13 338 openpanel;
 #X obj 13 320 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
@@ -20,20 +20,20 @@
 -1;
 #X obj 13 795 send \$1-filename;
 #X obj 13 773 pack s 4;
-#X obj 149 321 hsl 128 15 0 11375 0 0 \$1-samplestart-1 \$1-samplestart-ui-1
+#X obj 149 321 hsl 128 15 0 16482 0 0 \$1-samplestart-1 \$1-samplestart-ui-1
 samplestart -2 -8 0 10 -262144 -1 -1 0 1;
-#X obj 150 377 hsl 128 15 0 11375 0 0 \$1-sampleend-1 \$1-sampleend-ui-1
+#X obj 150 377 hsl 128 15 0 16482 0 0 \$1-sampleend-1 \$1-sampleend-ui-1
 sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
-#X floatatom 147 395 10 0 0 0 - - -, f 10;
-#X floatatom 146 342 10 0 0 0 - - -, f 10;
-#X obj 149 457 hsl 128 15 0 16482 0 0 \$1-samplestart-2 \$1-samplestart-ui-2
+#X floatatom 147 395 10 0 0 0 - #1-sampleend-1 -, f 10;
+#X floatatom 146 342 10 0 0 0 - #1-samplestart-1 -, f 10;
+#X obj 149 457 hsl 128 15 0 29271 0 0 \$1-samplestart-2 \$1-samplestart-ui-2
 samplestart -2 -8 0 10 -262144 -1 -1 0 1;
-#X obj 150 513 hsl 128 15 0 16482 0 0 \$1-sampleend-2 \$1-sampleend-ui-2
-sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
-#X floatatom 147 531 10 0 0 0 - - -, f 10;
-#X floatatom 146 478 10 0 0 0 - - -, f 10;
-#N canvas 489 616 258 141 setsamplelengths 0;
-#N canvas 1006 313 345 277 setsamplelength1 0;
+#X obj 150 513 hsl 128 15 0 29271 0 0 \$1-sampleend-2 \$1-sampleend-ui-2
+sampleend -2 -8 0 10 -262144 -1 -1 0 1;
+#X floatatom 147 531 10 0 0 0 - #1-sampleend-2 -, f 10;
+#X floatatom 146 478 10 0 0 0 - #1-samplestart-2 -, f 10;
+#N canvas 486 647 258 141 setsamplelengths 0;
+#N canvas 1003 317 345 277 setsamplelength1 0;
 #X msg 59 124 set \$1;
 #X obj 22 51 trigger b f f;
 #X msg 22 109 0;
@@ -125,41 +125,31 @@ range 0 \$1;
 #X obj 149 595 hsl 128 15 0 17361 0 0 \$1-samplestart-3 \$1-samplestart-ui-3
 samplestart -2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 150 651 hsl 128 15 0 17361 0 0 \$1-sampleend-3 \$1-sampleend-ui-3
-sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
+sampleend -2 -8 0 10 -262144 -1 -1 0 1;
 #X floatatom 147 669 10 0 0 0 - - -, f 10;
 #X floatatom 146 616 10 0 0 0 - - -, f 10;
 #X obj 149 729 hsl 128 15 0 29271 0 0 \$1-samplestart-4 \$1-samplestart-ui-4
 samplestart -2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 150 785 hsl 128 15 0 29271 0 0 \$1-sampleend-4 \$1-sampleend-ui-4
-sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
+sampleend -2 -8 0 10 -262144 -1 -1 0 1;
 #X floatatom 147 803 10 0 0 0 - - -, f 10;
 #X floatatom 146 750 10 0 0 0 - - -, f 10;
-#X obj 308 305 hsl 128 15 -12 12 0 0 empty empty basenote -2 -8 0 10
--262144 -1 -1 6600 1;
-#X obj 307 372 hsl 128 15 -12 12 0 0 \$1-drum1-finetune empty finetune
--2 -8 0 10 -262144 -1 -1 6700 1;
-#X floatatom 304 392 5 0 0 0 - - -, f 5;
-#X floatatom 305 344 5 0 0 0 - - -, f 5;
-#X obj 491 342 hsl 128 15 0 1 0 0 \$1-drum1-volume empty volume -2
--8 0 10 -262144 -1 -1 12700 1;
-#X floatatom 488 362 5 0 0 0 - - -, f 5;
+#X obj 302 320 hsl 128 15 -12 12 0 0 \$1-finetune-1 \$1-finetune-1
+finetune -2 -8 0 10 -262144 -1 -1 0 1;
+#X floatatom 299 340 5 0 0 0 - #1-finetune-1 -, f 5;
+#X obj 301 377 hsl 128 15 0 1 0 0 \$1-volume-1 \$1-volume-1 volume
+-2 -8 0 10 -262144 -1 -1 12700 1;
+#X floatatom 298 397 5 0 0 0 - #1-volume-1 -, f 5;
 #X msg 28 44 35 127;
 #X msg 90 44 36 127;
 #X msg 211 44 38 127;
 #X msg 144 44 37 127;
-#X obj 305 322 expr floor($f1 \, 1) \;;
-#X obj 345 341 s \$1-drum1-basenote;
-#X obj 307 448 hsl 128 15 -12 12 0 0 empty empty basenote -2 -8 0 10
--262144 -1 -1 6400 1;
-#X obj 306 515 hsl 128 15 -12 12 0 0 \$1-drum2-finetune empty finetune
--2 -8 0 10 -262144 -1 -1 6400 1;
-#X floatatom 303 535 5 0 0 0 - - -, f 5;
-#X floatatom 304 487 5 0 0 0 - - -, f 5;
-#X obj 490 485 hsl 128 15 0 1 0 0 \$1-drum2-volume empty volume -2
--8 0 10 -262144 -1 -1 12700 1;
-#X floatatom 487 505 5 0 0 0 - - -, f 5;
-#X obj 304 465 expr floor($f1 \, 1) \;;
-#X obj 344 484 s \$1-drum2-basenote;
+#X obj 306 456 hsl 128 15 -12 12 0 0 \$1-finetune-2 \$1-finetune-2
+finetune -2 -8 0 10 -262144 -1 -1 0 1;
+#X floatatom 303 476 5 0 0 0 - #1-finetune-2 -, f 5;
+#X obj 305 514 hsl 128 15 0 1 0 0 \$1-volume-2 \$1-volume-2 volume
+-2 -8 0 10 -262144 -1 -1 12700 1;
+#X floatatom 302 534 5 0 0 0 - #1-volume-2 -, f 5;
 #X obj 827 50 cnv 15 160 15 empty empty Reverb(2) 10 8 0 12 -191407
 -66577 0;
 #X obj 827 74 tgl 15 0 \$1-rev-enable empty enable 17 7 0 10 -262144
@@ -193,21 +183,21 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 830 210 hsl 128 15 0 1 0 1 \$1-rev-wet empty wet -2 -8 0 10
 -262144 -1 -1 12700 1;
 #X obj 501 112 hsl 128 15 0 1 0 0 \$1-del-delay empty delay -2 -8 0
-10 -262144 -1 -1 600 1;
+10 -262144 -1 -1 0 1;
 #X obj 501 145 hsl 128 15 0 1 0 0 \$1-del-feedback empty feedback -2
--8 0 10 -262144 -1 -1 12600 1;
+-8 0 10 -262144 -1 -1 0 1;
 #X obj 501 176 hsl 128 15 0 1 0 0 \$1-del-wet empty wet -2 -8 0 10
--262144 -1 -1 12600 1;
+-262144 -1 -1 0 1;
 #X obj 662 112 hsl 128 15 0.001 10 0 0 \$1-flg-speed empty speed -2
--8 0 10 -262144 -1 -1 8900 1;
+-8 0 10 -262144 -1 -1 0 1;
 #X obj 662 145 hsl 128 15 0 10 0 0 \$1-flg-offset empty offset -2 -8
-0 10 -262144 -1 -1 900 1;
+0 10 -262144 -1 -1 0 1;
 #X obj 662 176 hsl 128 15 0 20 0 0 \$1-flg-delay empty delay -2 -8
-0 10 -262144 -1 -1 2200 1;
+0 10 -262144 -1 -1 0 1;
 #X obj 662 210 hsl 128 15 0 0.99 0 0 \$1-flg-feedback empty feedback
--2 -8 0 10 -262144 -1 -1 11700 1;
+-2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 372 50 r \$1-fxlistctl;
-#X msg 372 96 2 0 1;
+#X msg 372 96 0 1 2;
 #X msg 372 72 set \$1 \$2 \$3;
 #X obj 371 15 cnv 15 616 25 empty empty FX 10 12 0 25 -257985 -66577
 0;
@@ -231,27 +221,13 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X connect 13 0 16 0;
 #X connect 14 0 13 0;
 #X connect 16 0 15 0;
-#X connect 17 0 20 0;
-#X connect 18 0 19 0;
-#X connect 21 0 24 0;
-#X connect 22 0 23 0;
 #X connect 26 0 29 0;
 #X connect 27 0 28 0;
 #X connect 30 0 33 0;
 #X connect 31 0 32 0;
-#X connect 34 0 44 0;
-#X connect 35 0 36 0;
-#X connect 38 0 39 0;
+#X connect 38 0 2 0;
+#X connect 39 0 2 0;
 #X connect 40 0 2 0;
 #X connect 41 0 2 0;
-#X connect 42 0 2 0;
-#X connect 43 0 2 0;
-#X connect 44 0 37 0;
-#X connect 44 0 45 0;
-#X connect 46 0 52 0;
-#X connect 47 0 48 0;
-#X connect 50 0 51 0;
-#X connect 52 0 49 0;
-#X connect 52 0 53 0;
-#X connect 77 0 79 0;
-#X connect 79 0 78 0;
+#X connect 69 0 71 0;
+#X connect 71 0 70 0;
