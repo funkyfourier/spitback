@@ -1,4 +1,4 @@
-#N canvas 1731 243 661 507 10;
+#N canvas 1728 247 663 494 10;
 #X obj 67 112 inlet~;
 #X obj 156 300 outlet~;
 #X obj 68 208 fxchain~ 3, f 17;
@@ -30,7 +30,7 @@
 #X connect 10 0 11 0;
 #X connect 11 0 12 0;
 #X restore 562 334 pd reverb;
-#N canvas 1647 290 461 230 delay 1;
+#N canvas 1647 290 461 230 delay 0;
 #X obj 107 125 johsdelay;
 #X obj 122 31 r \$1-del-delay;
 #X obj 137 53 r \$1-del-feedback;

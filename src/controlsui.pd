@@ -1,4 +1,4 @@
-#N canvas 123 366 1281 464 10;
+#N canvas 117 374 1281 464 10;
 #X obj 186 57 vsl 15 128 0 1 0 0 \$1-filtercutoff empty cutoff -10
 -9 0 10 -262144 -1 -1 0 1;
 #X obj 208 92 vradio 15 1 0 3 \$1-filterselect empty empty 0 -8 0 10
@@ -38,10 +38,10 @@ release 52 7 0 10 -262144 -1 -1 4400 1;
 -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 1025 165 hsl 128 15 0 2000 0 1 \$1-release \$1-release-ui release
 -2 -8 0 10 -262144 -1 -1 0 1;
-#X obj 857 96 hsl 128 15 0 103897 0 0 \$1-loopstart \$1-loopstart-ui
+#X obj 857 96 hsl 128 15 0 44099 0 0 \$1-loopstart \$1-loopstart-ui
 loopstart -2 -8 0 10 -262144 -1 -1 0 1;
-#X obj 858 152 hsl 128 15 0 103897 0 0 \$1-loopend \$1-loopend-ui loopend
--2 -8 0 10 -262144 -1 -1 0 1;
+#X obj 858 152 hsl 128 15 0 44099 0 0 \$1-loopend \$1-loopend-ui loopend
+-2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 855 58 tgl 15 1 \$1-loopon empty loop 17 7 0 10 -262144 -1 -1
 1 1;
 #X obj 11 261 cnv 15 610 30 empty empty CONTROLS 20 12 0 18 -233017
@@ -56,10 +56,10 @@ loopstart -2 -8 0 10 -262144 -1 -1 0 1;
 -66577 0;
 #X obj 681 13 cnv 15 100 25 sound1-loopon empty SAMPLE 20 12 0 20 -257985
 -66577 0;
-#X obj 686 67 hsl 128 15 0 103897 0 0 \$1-samplestart \$1-samplestart-ui
+#X obj 686 67 hsl 128 15 0 44099 0 0 \$1-samplestart \$1-samplestart-ui
 samplestart -2 -8 0 10 -262144 -1 -1 0 1;
-#X obj 687 123 hsl 128 15 0 103897 0 0 \$1-sampleend \$1-sampleend-ui
-sampleend -2 -8 0 10 -262144 -1 -1 0 1;
+#X obj 687 123 hsl 128 15 0 44099 0 0 \$1-sampleend \$1-sampleend-ui
+sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X floatatom 684 141 10 0 0 0 - - -, f 10;
 #X floatatom 683 88 10 0 0 0 - - -, f 10;
 #X obj 1097 249 cnv 15 160 15 empty empty Reverb(2) 10 8 0 12 -191407
@@ -184,13 +184,13 @@ sampleend -2 -8 0 10 -262144 -1 -1 0 1;
 #X floatatom 475 364 5 0 0 0 - - -, f 5;
 #X msg 309 361 60;
 #X msg 66 305 70 10;
-#X msg 26 306 69 70;
 #X msg 340 307 60 120;
 #X obj 642 249 r \$1-fxlistctl;
 #X msg 642 295 0 1 2;
 #X msg 642 271 set \$1 \$2 \$3;
 #X text 565 110 filter;
 #X text 566 63 none;
+#X msg 26 306 69 127;
 #X connect 18 0 28 0;
 #X connect 19 0 29 0;
 #X connect 20 0 30 0;
@@ -220,7 +220,7 @@ sampleend -2 -8 0 10 -262144 -1 -1 0 1;
 #X connect 89 0 63 0;
 #X connect 90 0 62 0;
 #X connect 91 0 62 0;
-#X connect 92 0 62 0;
-#X connect 93 0 95 0;
-#X connect 95 0 94 0;
+#X connect 92 0 94 0;
+#X connect 94 0 93 0;
+#X connect 97 0 62 0;
 #X coords 0 0 1 1 85 60 0;
