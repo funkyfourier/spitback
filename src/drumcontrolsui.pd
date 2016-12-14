@@ -1,4 +1,4 @@
-#N canvas 1695 242 1010 605 10;
+#N canvas 465 303 1010 605 10;
 #X obj 13 338 openpanel;
 #X obj 13 320 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
@@ -20,9 +20,9 @@
 -1;
 #X obj 13 795 send \$1-filename;
 #X obj 13 773 pack s 4;
-#X obj 149 321 hsl 128 15 0 16482 0 0 \$1-samplestart-1 \$1-samplestart-ui-1
+#X obj 149 321 hsl 128 15 0 44100 0 0 \$1-samplestart-1 \$1-samplestart-ui-1
 samplestart -2 -8 0 10 -262144 -1 -1 0 1;
-#X obj 150 377 hsl 128 15 0 16482 0 0 \$1-sampleend-1 \$1-sampleend-ui-1
+#X obj 150 377 hsl 128 15 0 44100 0 0 \$1-sampleend-1 \$1-sampleend-ui-1
 sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X floatatom 147 395 10 0 0 0 - #1-sampleend-1 -, f 10;
 #X floatatom 146 342 10 0 0 0 - #1-samplestart-1 -, f 10;
@@ -209,6 +209,8 @@ finetune -2 -8 0 10 -262144 -1 -1 0 1;
 0;
 #X obj 12 694 cnv 15 700 15 empty empty empty 20 12 0 14 -233017 -66577
 0;
+#X obj 26 160 hsl 128 15 0 1 0 0 \$1-volume \$1-volume empty -2 -8
+0 10 -262144 -1 -1 12700 1;
 #X connect 0 0 8 0;
 #X connect 1 0 0 0;
 #X connect 4 0 7 0;

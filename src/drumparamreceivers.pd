@@ -1,0 +1,16 @@
+#N canvas 216 645 905 87 10;
+#X obj 15 16 r \$1-samplestart-\$2;
+#X obj 15 44 drumparamwriter \$1 \$2 1;
+#X obj 189 44 drumparamwriter \$1 \$2 2;
+#X obj 358 44 drumparamwriter \$1 \$2 3;
+#X obj 529 44 drumparamwriter \$1 \$2 4;
+#X obj 701 44 drumparamwriter \$1 \$2 5;
+#X obj 189 16 r \$1-sampleend-\$2;
+#X obj 358 15 r \$1-samplelength-\$2;
+#X obj 529 15 r \$1-volume-\$2;
+#X obj 701 15 r \$1-finetune-\$2;
+#X connect 0 0 1 0;
+#X connect 6 0 2 0;
+#X connect 7 0 3 0;
+#X connect 8 0 4 0;
+#X connect 9 0 5 0;
