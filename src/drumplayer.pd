@@ -1,4 +1,4 @@
-#N canvas 642 378 642 421 10;
+#N canvas 639 382 642 421 10;
 #X obj 58 371 throw~ mainoutput;
 #X obj 57 210 catch~ \$1-instrumentoutput;
 #X obj 235 20 receive \$1-noteon;
@@ -9,7 +9,7 @@
 #X obj 206 291 loadbang;
 #X msg 206 312 1 0;
 #X obj 456 101 receive \$1-noteoff;
-#N canvas 669 500 408 451 paramwriters 1;
+#N canvas 669 500 408 451 paramwriters 0;
 #X obj 15 42 r \$1-volume;
 #X obj 253 48 table \$1-params;
 #X obj 15 70 paramwriter \$1 0;
@@ -48,13 +48,13 @@
 #X connect 0 0 2 0;
 #X restore 456 51 pd paramwriters;
 #X obj 57 245 effects \$1;
-#N canvas 939 509 450 300 setinitvolumes 0;
+#N canvas 101 512 450 300 setinitvolumes 1;
 #X msg 94 82 1;
 #X obj 94 18 loadbang;
-#X obj 155 117 s \$1-volume-1;
-#X obj 154 145 s \$1-volume-2;
-#X obj 155 172 s \$1-volume-3;
-#X obj 155 199 s \$1-volume-4;
+#X obj 155 117 s \$1-volume-0;
+#X obj 154 145 s \$1-volume-1;
+#X obj 155 172 s \$1-volume-2;
+#X obj 155 199 s \$1-volume-3;
 #X connect 0 0 2 0;
 #X connect 0 0 3 0;
 #X connect 0 0 4 0;
@@ -65,7 +65,7 @@
 #X obj 235 63 pack f f f;
 #X obj 301 109 playdrumpoly \$1;
 #X obj 235 87 route 1 2 3 4;
-#N canvas 620 462 450 300 wavetables 1;
+#N canvas 620 462 450 300 wavetables 0;
 #X obj 40 19 table \$1-drum0;
 #X obj 40 38 table \$1-drum1;
 #X obj 40 57 table \$1-drum2;
