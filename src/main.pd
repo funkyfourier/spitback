@@ -1,4 +1,4 @@
-#N canvas 251 334 792 507 10;
+#N canvas 487 253 792 507 10;
 #X obj 215 455 dac~;
 #N canvas 0 50 450 300 (subpatch) 0;
 #X array outputmonitor 100 float 0;
@@ -258,9 +258,7 @@
 -1;
 #X obj 5 15 controlsui testsampleplayer;
 #X msg 350 85 loadbang;
-#N canvas 242 365 325 57 test 1;
-#X obj 10 30 drumplayer testdrumplayer;
-#X obj 10 10 sampleplayer testsampleplayer;
+#N canvas 233 377 325 57 test 1;
 #X restore 7 270 pd test;
 #X obj 412 129 send pd-test;
 #X obj 350 149 send pd-test;
