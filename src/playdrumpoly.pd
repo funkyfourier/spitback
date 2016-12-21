@@ -1,6 +1,6 @@
-#N canvas 237 308 615 644 10;
+#N canvas 234 312 615 644 10;
 #X obj 101 10 inlet noteon;
-#N canvas 829 495 654 370 samplelooper 1;
+#N canvas 826 499 654 370 samplelooper 1;
 #X obj 122 254 samplelooper~;
 #X obj 121 291 outlet~;
 #X obj 210 306 outlet;
@@ -23,7 +23,6 @@
 #X obj 166 184 r \$0-sampleend-\$3;
 #X obj 188 204 r \$0-loopstart-\$3;
 #X obj 210 224 r \$0-loopend-\$3;
-#X obj 274 292 print samplep;
 #X connect 0 0 1 0;
 #X connect 0 1 12 0;
 #X connect 3 0 0 0;
@@ -42,7 +41,6 @@
 #X connect 15 0 17 0;
 #X connect 18 0 0 1;
 #X connect 19 0 0 2;
-#X connect 19 0 22 0;
 #X connect 20 0 0 3;
 #X connect 21 0 0 4;
 #X restore 101 395 pd samplelooper;
