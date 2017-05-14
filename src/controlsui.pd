@@ -1,4 +1,4 @@
-#N canvas 117 374 1281 464 10;
+#N canvas 108 386 1281 464 10;
 #X obj 186 57 vsl 15 128 0 1 0 0 \$1-filtercutoff empty cutoff -10
 -9 0 10 -262144 -1 -1 0 1;
 #X obj 208 92 vradio 15 1 0 3 \$1-filterselect empty empty 0 -8 0 10
@@ -38,9 +38,9 @@ release 52 7 0 10 -262144 -1 -1 4400 1;
 -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 1025 165 hsl 128 15 0 2000 0 1 \$1-release \$1-release-ui release
 -2 -8 0 10 -262144 -1 -1 0 1;
-#X obj 857 96 hsl 128 15 0 44099 0 0 \$1-loopstart \$1-loopstart-ui
+#X obj 857 96 hsl 128 15 0 103897 0 0 \$1-loopstart \$1-loopstart-ui
 loopstart -2 -8 0 10 -262144 -1 -1 0 1;
-#X obj 858 152 hsl 128 15 0 44099 0 0 \$1-loopend \$1-loopend-ui loopend
+#X obj 858 152 hsl 128 15 0 103897 0 0 \$1-loopend \$1-loopend-ui loopend
 -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 855 58 tgl 15 1 \$1-loopon empty loop 17 7 0 10 -262144 -1 -1
 1 1;
@@ -56,9 +56,9 @@ loopstart -2 -8 0 10 -262144 -1 -1 0 1;
 -66577 0;
 #X obj 681 13 cnv 15 100 25 sound1-loopon empty SAMPLE 20 12 0 20 -257985
 -66577 0;
-#X obj 686 67 hsl 128 15 0 44099 0 0 \$1-samplestart \$1-samplestart-ui
+#X obj 686 67 hsl 128 15 0 103897 0 0 \$1-samplestart \$1-samplestart-ui
 samplestart -2 -8 0 10 -262144 -1 -1 0 1;
-#X obj 687 123 hsl 128 15 0 44099 0 0 \$1-sampleend \$1-sampleend-ui
+#X obj 687 123 hsl 128 15 0 103897 0 0 \$1-sampleend \$1-sampleend-ui
 sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X floatatom 684 141 10 0 0 0 - - -, f 10;
 #X floatatom 683 88 10 0 0 0 - - -, f 10;
@@ -67,7 +67,7 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 641 214 cnv 15 616 25 empty empty FX 10 12 0 25 -257985 -66577
 0;
 #X obj 1097 273 tgl 15 0 \$1-rev-enable empty enable 17 7 0 10 -262144
--1 -1 0 1;
+-1 -1 1 1;
 #X obj 1165 273 bng 15 250 50 0 \$1-rev-moveup empty up 17 7 0 10 -262144
 -1 -1;
 #X obj 1212 273 bng 15 250 50 0 \$1-rev-movedown empty down 17 7 0
@@ -75,7 +75,7 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 764 249 cnv 15 160 15 empty empty Delay(0) 10 8 0 12 -191407
 -66577 0;
 #X obj 764 273 tgl 15 0 \$1-del-enable empty enable 17 7 0 10 -262144
--1 -1 0 1;
+-1 -1 1 1;
 #X obj 832 273 bng 15 250 50 0 \$1-del-moveup empty up 17 7 0 10 -262144
 -1 -1;
 #X obj 879 273 bng 15 250 50 0 \$1-del-movedown empty down 17 7 0 10
@@ -83,33 +83,33 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 930 249 cnv 15 160 15 empty empty Flanger(1) 10 8 0 12 -191407
 -66577 0;
 #X obj 930 273 tgl 15 0 \$1-flg-enable empty enable 17 7 0 10 -262144
--1 -1 0 1;
+-1 -1 1 1;
 #X obj 989 273 bng 15 250 50 0 \$1-flg-moveup empty up 17 7 0 10 -262144
 -1 -1;
 #X obj 1036 273 bng 15 250 50 0 \$1-flg-movedown empty down 17 7 0
 10 -262144 -1 -1;
 #X obj 1100 311 hsl 128 15 0 1 0 1 \$1-rev-damp empty damp -2 -8 0
-10 -262144 -1 -1 5500 1;
+10 -262144 -1 -1 3700 1;
 #X obj 1100 344 hsl 128 15 0 1 0 1 \$1-rev-roomsize empty roomsize
--2 -8 0 10 -262144 -1 -1 9600 1;
+-2 -8 0 10 -262144 -1 -1 11100 1;
 #X obj 1100 376 hsl 128 15 0 1 0 1 \$1-rev-dry empty dry -2 -8 0 10
 -262144 -1 -1 12700 1;
 #X obj 1100 409 hsl 128 15 0 1 0 1 \$1-rev-wet empty wet -2 -8 0 10
 -262144 -1 -1 10200 1;
 #X obj 771 311 hsl 128 15 0 1 0 0 \$1-del-delay empty delay -2 -8 0
-10 -262144 -1 -1 0 1;
+10 -262144 -1 -1 9500 1;
 #X obj 771 344 hsl 128 15 0 1 0 0 \$1-del-feedback empty feedback -2
--8 0 10 -262144 -1 -1 0 1;
+-8 0 10 -262144 -1 -1 9300 1;
 #X obj 771 375 hsl 128 15 0 1 0 0 \$1-del-wet empty wet -2 -8 0 10
--262144 -1 -1 0 1;
+-262144 -1 -1 7300 1;
 #X obj 932 311 hsl 128 15 0.001 10 0 0 \$1-flg-speed empty speed -2
--8 0 10 -262144 -1 -1 0 1;
+-8 0 10 -262144 -1 -1 12300 1;
 #X obj 932 344 hsl 128 15 0 10 0 0 \$1-flg-offset empty offset -2 -8
-0 10 -262144 -1 -1 0 1;
+0 10 -262144 -1 -1 5400 1;
 #X obj 932 375 hsl 128 15 0 20 0 0 \$1-flg-delay empty delay -2 -8
-0 10 -262144 -1 -1 0 1;
+0 10 -262144 -1 -1 7300 1;
 #X obj 932 409 hsl 128 15 0 0.99 0 0 \$1-flg-feedback empty feedback
--2 -8 0 10 -262144 -1 -1 0 1;
+-2 -8 0 10 -262144 -1 -1 11000 1;
 #X obj 105 340 send \$1-noteon;
 #X obj 105 400 send \$1-noteoff;
 #X obj 355 374 openpanel;
@@ -191,6 +191,11 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X text 565 110 filter;
 #X text 566 63 none;
 #X msg 26 306 69 127;
+#X obj 408 194 cnv 15 100 25 empty empty PAN 20 12 0 20 -257985 -66577
+0;
+#X obj 417 225 hsl 128 15 0 1 0 1 \$1-pan \$1-pan empty -2 -8 0 10
+-262144 -1 -1 6400 1;
+#X floatatom 557 240 5 0 0 0 - - -, f 5;
 #X connect 18 0 28 0;
 #X connect 19 0 29 0;
 #X connect 20 0 30 0;
@@ -223,4 +228,5 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X connect 92 0 94 0;
 #X connect 94 0 93 0;
 #X connect 97 0 62 0;
+#X connect 99 0 100 0;
 #X coords 0 0 1 1 85 60 0;
