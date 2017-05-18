@@ -1,19 +1,19 @@
-#N canvas 316 395 1281 464 10;
+#N canvas 313 399 1281 464 10;
 #X obj 186 57 vsl 15 128 0 1 0 0 \$1-filtercutoff empty cutoff -10
--9 0 10 -262144 -1 -1 7200 1;
+-9 0 10 -262144 -1 -1 5400 1;
 #X obj 208 92 vradio 15 1 0 3 \$1-filterselect empty empty 0 -8 0 10
--262144 -1 -1 0;
+-262144 -1 -1 1;
 #X text 224 92 off;
 #X text 225 125 lowpass;
 #X text 225 108 highpass;
 #X obj 291 58 hsl 45 15 0 2000 0 1 \$1-filterattack \$1-filterattack-ui
 attack 52 7 0 10 -262144 -1 -1 0 1;
 #X obj 291 78 hsl 45 15 0 2000 0 1 \$1-filterdecay \$1-filterdecay-ui
-decay 52 7 0 10 -262144 -1 -1 3100 1;
+decay 52 7 0 10 -262144 -1 -1 3200 1;
 #X obj 291 98 hsl 45 15 0 1 0 1 \$1-filtersustain \$1-filtersustain-ui
-sustain 52 7 0 10 -262144 -1 -1 4400 1;
+sustain 52 7 0 10 -262144 -1 -1 4200 1;
 #X obj 291 119 hsl 45 15 0 2000 0 1 \$1-filterrelease \$1-filterrelease-ui
-release 52 7 0 10 -262144 -1 -1 2500 1;
+release 52 7 0 10 -262144 -1 -1 3600 1;
 #X obj 171 194 cnv 15 230 25 empty empty MASTER_VOL 20 12 0 20 -257985
 -66577 0;
 #X obj 164 12 cnv 15 230 25 empty empty FILTER 20 12 0 20 -257985 -66577
@@ -31,13 +31,13 @@ release 52 7 0 10 -262144 -1 -1 2500 1;
 #X obj 851 13 cnv 15 100 25 sound1-loopon empty LOOP 20 12 0 20 -257985
 -66577 0;
 #X obj 1023 67 hsl 128 15 0 2000 0 1 \$1-attack \$1-attack-ui attack
--2 -8 0 10 -262144 -1 -1 0 1;
+-2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 1023 100 hsl 128 15 0 2000 0 1 \$1-decay \$1-decay-ui decay
 -2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 1024 133 hsl 128 15 0 1 0 1 \$1-sustain \$1-sustain-ui sustain
--2 -8 0 10 -262144 -1 -1 12700 1;
+-2 -8 0 10 -262144 -1 -1 2700 1;
 #X obj 1025 165 hsl 128 15 0 2000 0 1 \$1-release \$1-release-ui release
--2 -8 0 10 -262144 -1 -1 10500 1;
+-2 -8 0 10 -262144 -1 -1 11200 1;
 #X obj 857 96 hsl 128 15 0 44099 0 0 \$1-loopstart \$1-loopstart-ui
 loopstart -2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 858 152 hsl 128 15 0 44099 0 0 \$1-loopend \$1-loopend-ui loopend
