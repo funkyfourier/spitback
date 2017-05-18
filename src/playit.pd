@@ -1,4 +1,4 @@
-#N canvas 1685 309 828 637 10;
+#N canvas 1682 313 828 637 10;
 #X obj 21 336 line~;
 #X msg 21 313 \$1 50;
 #X obj 154 272 *~;
@@ -10,7 +10,7 @@
 #X msg 599 123 0;
 #X obj 599 92 loadbang;
 #X obj 153 213 tabread4~ \$1;
-#N canvas 649 350 735 655 filtersmanager 1;
+#N canvas 646 354 735 655 filtersmanager 1;
 #X obj 109 268 inlet;
 #X obj 33 17 inlet~;
 #X obj 33 227 outlet~;
@@ -47,7 +47,7 @@
 #X obj 408 198 s \$0-bypass;
 #X obj 516 198 s \$0-bypass;
 #X obj 194 34 *~ 1;
-#N canvas 716 552 496 261 filter 0;
+#N canvas 713 556 496 261 filter 1;
 #X obj 35 2 inlet~;
 #X obj 42 232 outlet~;
 #X obj 273 25 inlet;
@@ -72,6 +72,7 @@
 #X obj 75 23 inlet~;
 #X obj 74 46 *~ 12000;
 #X obj 44 89 r \$0-filtermsg;
+#X text 173 197 filter from: https://github.com/porres/pd-cyclone;
 #X connect 0 0 4 0;
 #X connect 2 0 9 0;
 #X connect 2 0 11 0;
