@@ -1,4 +1,4 @@
-#N canvas 834 530 641 471 10;
+#N canvas 1822 389 641 471 10;
 #X obj 125 98 soundfiler;
 #X obj 269 14 loadbang;
 #X obj 125 23 receive \$1-filename;
@@ -386,7 +386,7 @@
 #X obj 440 163 symbol \$1;
 #X obj 369 180 pack f s;
 #X obj 371 70 tabwrite \$1-tmp;
-#N canvas 1705 470 658 435 polyconnections 0;
+#N canvas 1699 478 658 435 polyconnections 1;
 #X obj 209 28 receive \$1-noteon;
 #X obj 336 28 receive \$1-noteoff;
 #X obj 336 50 pack 0 0;
@@ -434,6 +434,7 @@
 #X obj 263 276 playit \$1-wave \$1;
 #X obj 390 276 playit \$1-wave \$1;
 #X obj 519 276 playit \$1-wave \$1;
+#X msg 449 81 clear;
 #X connect 0 0 13 0;
 #X connect 1 0 2 0;
 #X connect 2 0 13 0;
@@ -469,6 +470,7 @@
 #X connect 18 0 16 0;
 #X connect 19 0 16 0;
 #X connect 20 0 16 0;
+#X connect 21 0 13 0;
 #X restore 122 250 pd polyconnections;
 #X obj 123 361 effects \$1;
 #X obj 122 336 pan;
