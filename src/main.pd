@@ -1,4 +1,4 @@
-#N canvas 416 319 888 507 10;
+#N canvas 1904 147 888 507 10;
 #X obj 292 455 dac~;
 #N canvas 0 50 450 300 (subpatch) 0;
 #X array outputmonitor 100 float 0;
@@ -53,7 +53,7 @@
 #X connect 6 0 8 0;
 #X connect 6 0 7 0;
 #X restore 10 181 pd ticks;
-#N canvas 842 255 681 434 sampleplayers 0;
+#N canvas 839 259 649 363 sampleplayers 1;
 #N canvas 65 205 450 300 subpatchsampler1 0;
 #X restore 16 38 pd subpatchsampler1;
 #N canvas 65 205 450 300 subpatchsampler2 0;
@@ -257,7 +257,7 @@
 -1;
 #X obj 5 15 controlsui testsampleplayer;
 #X msg 350 85 loadbang;
-#N canvas 221 393 325 57 test 0;
+#N canvas 1974 375 325 57 test 0;
 #X obj 10 30 drumplayer testdrumplayer;
 #X obj 10 10 sampleplayer testsampleplayer;
 #X restore 7 270 pd test;
