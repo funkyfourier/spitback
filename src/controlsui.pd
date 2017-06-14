@@ -1,4 +1,4 @@
-#N canvas 1600 278 1280 464 10;
+#N canvas 1600 282 1280 464 10;
 #X obj 186 57 vsl 15 128 0 1 0 0 \$1-filtercutoff empty cutoff -10
 -9 0 10 -262144 -1 -1 0 1;
 #X obj 208 92 vradio 15 1 0 3 \$1-filterselect empty empty 0 -8 0 10
@@ -97,19 +97,19 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 1115 441 hsl 128 15 0 1 0 1 \$1-rev-wet empty wet -2 -8 0 10
 -262144 -1 -1 11200 1;
 #X obj 627 311 hsl 128 15 0 1 0 0 \$1-del-delay empty delay -2 -8 0
-10 -262144 -1 -1 4100 1;
+10 -262144 -1 -1 0 1;
 #X obj 627 344 hsl 128 15 0 1 0 0 \$1-del-feedback empty feedback -2
--8 0 10 -262144 -1 -1 10000 1;
-#X obj 627 377 hsl 128 15 0 1 0 0 \$1-del-wet empty wet -2 -8 0 10
--262144 -1 -1 12700 1;
-#X obj 786 311 hsl 128 15 0.001 10 0 0 \$1-flg-speed empty speed -2
 -8 0 10 -262144 -1 -1 0 1;
-#X obj 786 344 hsl 128 15 0 10 0 0 \$1-flg-offset empty offset -2 -8
-0 10 -262144 -1 -1 0 1;
-#X obj 786 375 hsl 128 15 0 20 0 0 \$1-flg-delay empty delay -2 -8
-0 10 -262144 -1 -1 0 1;
-#X obj 786 409 hsl 128 15 0 0.99 0 0 \$1-flg-feedback empty feedback
--2 -8 0 10 -262144 -1 -1 0 1;
+#X obj 627 377 hsl 128 15 0 1 0 0 \$1-del-wet empty wet -2 -8 0 10
+-262144 -1 -1 0 1;
+#X obj 786 311 hsl 128 15 0 1 0 0 \$1-flg-freq empty freq -2 -8 0 10
+-262144 -1 -1 0 1;
+#X obj 786 344 hsl 128 15 0 1 0 0 \$1-flg-width empty width -2 -8 0
+10 -262144 -1 -1 0 1;
+#X obj 786 375 hsl 128 15 0 1 0 0 \$1-flg-feedback empty feedback -2
+-8 0 10 -262144 -1 -1 0 1;
+#X obj 786 409 hsl 128 15 0 1 0 0 \$1-flg-wet empty wet -2 -8 0 10
+-262144 -1 -1 0 1;
 #X obj 105 340 send \$1-noteon;
 #X obj 105 400 send \$1-noteoff;
 #X obj 374 407 openpanel;
@@ -195,7 +195,7 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 1115 376 hsl 128 15 1 2 0 1 \$1-rev-spread empty stereo_spread
 -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 627 409 hsl 128 15 0 1 0 0 \$1-del-spread empty spread -2 -8
-0 10 -262144 -1 -1 12700 1;
+0 10 -262144 -1 -1 0 1;
 #X obj 374 367 s \$1-setrootnote;
 #X obj 374 427 s \$1-filename;
 #X msg 498 271 set \$1 \$2 \$3 \$4;

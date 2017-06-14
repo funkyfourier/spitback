@@ -1,4 +1,4 @@
-#N canvas 372 355 737 611 10;
+#N canvas 290 286 737 647 10;
 #X obj 146 56 inlet~;
 #X obj 14 9 inlet~;
 #X obj 329 580 outlet~;
@@ -76,6 +76,8 @@
 #X obj 366 108 r \$0-speed;
 #X obj 479 108 r \$0-speed;
 #X obj 596 108 r \$0-speed;
+#X text 24 613 inspired by flanger4896 from https://github.com/AndrewLngdn/basic-pure-data-audio-effects
+;
 #X connect 0 0 5 0;
 #X connect 0 0 68 0;
 #X connect 1 0 4 0;
