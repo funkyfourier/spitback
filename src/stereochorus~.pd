@@ -1,4 +1,4 @@
-#N canvas 290 286 737 647 10;
+#N canvas 1837 233 737 647 10;
 #X obj 146 56 inlet~;
 #X obj 14 9 inlet~;
 #X obj 329 580 outlet~;
@@ -62,14 +62,14 @@
 #X obj 568 57 s \$0-drywet;
 #X obj 380 559 r \$0-drywet;
 #X obj 567 529 r \$0-drywet;
-#X obj 14 564 *~;
+#X obj 16 562 *~;
 #X obj 329 559 *~ 0.5;
 #X obj 517 529 *~ 0.5;
-#X obj 32 524 r \$0-drywet;
-#X obj 32 544 expr 1-$f1;
-#X obj 147 533 *~;
-#X obj 165 493 r \$0-drywet;
-#X obj 165 513 expr 1-$f1;
+#X obj 34 522 r \$0-drywet;
+#X obj 34 542 expr 1-$f1;
+#X obj 149 531 *~;
+#X obj 167 491 r \$0-drywet;
+#X obj 167 511 expr 1-$f1;
 #X obj 668 14 inlet;
 #X obj 668 56 switch~;
 #X obj 241 108 r \$0-speed;
