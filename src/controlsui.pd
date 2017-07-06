@@ -1,19 +1,19 @@
-#N canvas 122 228 1209 721 10;
+#N canvas 1644 157 1209 721 10;
 #X obj 186 57 vsl 15 128 0 1 0 0 \$1-filtercutoff empty cutoff -10
--9 0 10 -262144 -1 -1 0 1;
+-9 0 10 -262144 -1 -1 12700 1;
 #X obj 208 92 vradio 15 1 0 3 \$1-filterselect empty empty 0 -8 0 10
--262144 -1 -1 0;
+-262144 -1 -1 1;
 #X text 224 92 off;
 #X text 225 125 lowpass;
 #X text 225 108 highpass;
 #X obj 291 58 hsl 45 15 0 2000 0 1 \$1-filterattack \$1-filterattack-ui
-attack 52 7 0 10 -262144 -1 -1 500 1;
+attack 52 7 0 10 -262144 -1 -1 0 1;
 #X obj 291 78 hsl 45 15 0 2000 0 1 \$1-filterdecay \$1-filterdecay-ui
 decay 52 7 0 10 -262144 -1 -1 3200 1;
 #X obj 291 98 hsl 45 15 0 1 0 1 \$1-filtersustain \$1-filtersustain-ui
-sustain 52 7 0 10 -262144 -1 -1 4200 1;
+sustain 52 7 0 10 -262144 -1 -1 4400 1;
 #X obj 291 119 hsl 45 15 0 2000 0 1 \$1-filterrelease \$1-filterrelease-ui
-release 52 7 0 10 -262144 -1 -1 3600 1;
+release 52 7 0 10 -262144 -1 -1 4400 1;
 #X obj 21 194 cnv 15 230 25 empty empty MASTER_VOL 20 12 0 20 -257985
 -66577 0;
 #X obj 164 12 cnv 15 230 25 empty empty FILTER 20 12 0 20 -257985 -66577
@@ -33,11 +33,11 @@ release 52 7 0 10 -262144 -1 -1 3600 1;
 #X obj 986 67 hsl 128 15 0 2000 0 1 \$1-attack \$1-attack-ui attack
 -2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 986 100 hsl 128 15 0 2000 0 1 \$1-decay \$1-decay-ui decay -2
--8 0 10 -262144 -1 -1 0 1;
+-8 0 10 -262144 -1 -1 200 1;
 #X obj 987 133 hsl 128 15 0 1 0 1 \$1-sustain \$1-sustain-ui sustain
 -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 988 165 hsl 128 15 0 2000 0 1 \$1-release \$1-release-ui release
--2 -8 0 10 -262144 -1 -1 7600 1;
+-2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 820 96 hsl 128 15 0 44099 0 0 \$1-loopstart \$1-loopstart-ui
 loopstart -2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 821 152 hsl 128 15 0 44099 0 0 \$1-loopend \$1-loopend-ui loopend
@@ -199,7 +199,7 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 661 469 cnv 15 160 15 empty empty Chorus(5) 10 8 0 12 -191407
 -66577 0;
 #X obj 661 493 tgl 15 0 \$1-chorus-enable empty enable 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 729 493 bng 15 250 50 0 \$1-chorus-moveup empty up 17 7 0 10
 -262144 -1 -1;
 #X obj 776 493 bng 15 250 50 0 \$1-chorus-movedown empty down 17 7
@@ -215,7 +215,7 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 824 249 cnv 15 160 15 empty empty Tremolo(2) 10 8 0 12 -191407
 -66577 0;
 #X obj 824 273 tgl 15 0 \$1-tremolo-enable empty enable 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 892 273 bng 15 250 50 0 \$1-tremolo-moveup empty up 17 7 0 10
 -262144 -1 -1;
 #X obj 939 273 bng 15 250 50 0 \$1-tremolo-movedown empty down 17 7
