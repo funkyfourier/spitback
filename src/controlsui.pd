@@ -1,4 +1,4 @@
-#N canvas 195 237 1209 721 10;
+#N canvas 122 228 1209 721 10;
 #X obj 186 57 vsl 15 128 0 1 0 0 \$1-filtercutoff empty cutoff -10
 -9 0 10 -262144 -1 -1 0 1;
 #X obj 208 92 vradio 15 1 0 3 \$1-filterselect empty empty 0 -8 0 10
@@ -41,7 +41,7 @@ release 52 7 0 10 -262144 -1 -1 3600 1;
 #X obj 820 96 hsl 128 15 0 44099 0 0 \$1-loopstart \$1-loopstart-ui
 loopstart -2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 821 152 hsl 128 15 0 44099 0 0 \$1-loopend \$1-loopend-ui loopend
--2 -8 0 10 -262144 -1 -1 0 1;
+-2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 818 58 tgl 15 1 \$1-loopon empty loop 17 7 0 10 -262144 -1 -1
 1 1;
 #X obj 11 262 cnv 15 480 30 empty empty CONTROLS 20 12 0 18 -233017
@@ -59,7 +59,7 @@ loopstart -2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 649 67 hsl 128 15 0 44099 0 0 \$1-samplestart \$1-samplestart-ui
 samplestart -2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 650 123 hsl 128 15 0 44099 0 0 \$1-sampleend \$1-sampleend-ui
-sampleend -2 -8 0 10 -262144 -1 -1 0 1;
+sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X floatatom 647 141 10 0 0 0 - - -, f 10;
 #X floatatom 646 88 10 0 0 0 - - -, f 10;
 #X obj 825 469 cnv 15 160 15 empty empty Reverb(6) 10 8 0 12 -191407
@@ -89,12 +89,10 @@ sampleend -2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 603 493 bng 15 250 50 0 \$1-flg-movedown empty down 17 7 0 10
 -262144 -1 -1;
 #X obj 828 531 hsl 128 15 0 1 0 1 \$1-rev-damp empty damp -2 -8 0 10
--262144 -1 -1 4600 1;
+-262144 -1 -1 7100 1;
 #X obj 828 564 hsl 128 15 0 1 0 1 \$1-rev-roomsize empty roomsize -2
 -8 0 10 -262144 -1 -1 12700 1;
-#X obj 828 628 hsl 128 15 0 1 0 1 \$1-rev-dry empty dry -2 -8 0 10
--262144 -1 -1 12700 1;
-#X obj 828 661 hsl 128 15 0 1 0 1 \$1-rev-wet empty wet -2 -8 0 10
+#X obj 828 628 hsl 128 15 0 1 0 1 \$1-rev-wet empty wet -2 -8 0 10
 -262144 -1 -1 12700 1;
 #X obj 994 311 hsl 128 15 0 1 0 0 \$1-del-delay empty delay -2 -8 0
 10 -262144 -1 -1 0 1;
@@ -201,33 +199,33 @@ sampleend -2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 661 469 cnv 15 160 15 empty empty Chorus(5) 10 8 0 12 -191407
 -66577 0;
 #X obj 661 493 tgl 15 0 \$1-chorus-enable empty enable 17 7 0 10 -262144
--1 -1 0 1;
+-1 -1 1 1;
 #X obj 729 493 bng 15 250 50 0 \$1-chorus-moveup empty up 17 7 0 10
 -262144 -1 -1;
 #X obj 776 493 bng 15 250 50 0 \$1-chorus-movedown empty down 17 7
 0 10 -262144 -1 -1;
 #X obj 664 531 hsl 128 15 0.5 50 0 1 \$1-chorus-depth empty depth -2
--8 0 10 -262144 -1 -1 12700 1;
+-8 0 10 -262144 -1 -1 5500 1;
 #X obj 664 564 hsl 128 15 0.05 15 0 1 \$1-chorus-speed empty speed
 -2 -8 0 10 -262144 -1 -1 4000 1;
-#X obj 664 628 hsl 128 15 0 1 0 1 \$1-chorus-drywet empty drywet -2
--8 0 10 -262144 -1 -1 5800 1;
+#X obj 664 628 hsl 128 15 0 1 0 1 \$1-chorus-wet empty wet -2 -8 0
+10 -262144 -1 -1 0 1;
 #X obj 664 596 hsl 128 15 0 1 0 1 \$1-chorus-spread empty spread -2
 -8 0 10 -262144 -1 -1 10600 1;
 #X obj 824 249 cnv 15 160 15 empty empty Tremolo(2) 10 8 0 12 -191407
 -66577 0;
 #X obj 824 273 tgl 15 0 \$1-tremolo-enable empty enable 17 7 0 10 -262144
--1 -1 0 1;
+-1 -1 1 1;
 #X obj 892 273 bng 15 250 50 0 \$1-tremolo-moveup empty up 17 7 0 10
 -262144 -1 -1;
 #X obj 939 273 bng 15 250 50 0 \$1-tremolo-movedown empty down 17 7
 0 10 -262144 -1 -1;
 #X obj 827 311 hsl 128 15 500 20 0 1 \$1-tremolo-rate empty rate -2
--8 0 10 -262144 -1 -1 11300 1;
+-8 0 10 -262144 -1 -1 3500 1;
 #X obj 827 344 hsl 128 15 0 1 0 1 \$1-tremolo-smooth empty smooth -2
--8 0 10 -262144 -1 -1 4200 1;
+-8 0 10 -262144 -1 -1 800 1;
 #X obj 827 376 hsl 128 15 0 1 0 1 \$1-tremolo-depth empty depth -2
--8 0 10 -262144 -1 -1 10900 1;
+-8 0 10 -262144 -1 -1 12700 1;
 #X obj 497 249 cnv 15 160 15 empty empty Filter(0) 10 8 0 12 -191407
 -66577 0;
 #X obj 497 273 tgl 15 0 \$1-fxfilter-enable empty enable 17 7 0 10
@@ -273,29 +271,29 @@ sampleend -2 -8 0 10 -262144 -1 -1 0 1;
 #X connect 23 0 26 0;
 #X connect 34 0 37 0;
 #X connect 35 0 36 0;
-#X connect 64 0 100 0;
-#X connect 65 0 64 0;
-#X connect 68 0 69 0;
-#X connect 72 0 62 0;
-#X connect 73 0 62 0;
-#X connect 74 0 62 0;
-#X connect 75 0 62 0;
-#X connect 76 0 62 0;
+#X connect 63 0 99 0;
+#X connect 64 0 63 0;
+#X connect 67 0 68 0;
+#X connect 71 0 61 0;
+#X connect 72 0 61 0;
+#X connect 73 0 61 0;
+#X connect 74 0 61 0;
+#X connect 75 0 61 0;
+#X connect 76 0 61 0;
 #X connect 77 0 62 0;
-#X connect 78 0 63 0;
-#X connect 79 0 63 0;
-#X connect 80 0 63 0;
-#X connect 81 0 63 0;
-#X connect 82 0 63 0;
-#X connect 83 0 63 0;
-#X connect 84 0 63 0;
-#X connect 85 0 63 0;
-#X connect 86 0 99 0;
-#X connect 87 0 63 0;
-#X connect 88 0 62 0;
-#X connect 89 0 62 0;
-#X connect 90 0 126 0;
-#X connect 93 0 62 0;
-#X connect 95 0 96 0;
-#X connect 126 0 127 0;
+#X connect 78 0 62 0;
+#X connect 79 0 62 0;
+#X connect 80 0 62 0;
+#X connect 81 0 62 0;
+#X connect 82 0 62 0;
+#X connect 83 0 62 0;
+#X connect 84 0 62 0;
+#X connect 85 0 98 0;
+#X connect 86 0 62 0;
+#X connect 87 0 61 0;
+#X connect 88 0 61 0;
+#X connect 89 0 125 0;
+#X connect 92 0 61 0;
+#X connect 94 0 95 0;
+#X connect 125 0 126 0;
 #X coords 0 0 1 1 85 60 0;
