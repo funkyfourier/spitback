@@ -1,4 +1,4 @@
-#N canvas 155 348 888 507 10;
+#N canvas 152 352 888 507 10;
 #X obj 294 478 dac~;
 #N canvas 0 50 450 300 (subpatch) 0;
 #X array outputmonitor 100 float 0;
@@ -256,7 +256,7 @@
 #X obj 357 368 catch~ mainoutputR;
 #X obj 221 440 *~ 0.25;
 #X obj 357 441 *~ 0.25;
-#N canvas 732 534 534 263 lowpass 1;
+#N canvas 729 538 534 263 lowpass 0;
 #X obj 76 22 inlet~;
 #X obj 221 25 inlet~;
 #X obj 76 168 faustreson~;
