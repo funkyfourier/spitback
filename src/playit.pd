@@ -1,4 +1,4 @@
-#N canvas 1914 399 828 578 10;
+#N canvas 1723 251 828 578 10;
 #X obj 21 336 line~;
 #X msg 21 313 \$1 50;
 #X obj 154 272 *~;
@@ -146,7 +146,7 @@
 #X obj 460 536 throw~ \$2-instrumentoutput;
 #X obj 254 96 inlet noteon;
 #X obj 455 42 inlet noteoff;
-#N canvas 259 502 667 357 samplelooper 1;
+#N canvas 259 502 667 357 samplelooper 0;
 #X obj 205 123 inlet~ lfosignal;
 #X obj 179 265 samplelooper~;
 #X obj 180 313 outlet~;
@@ -281,4 +281,3 @@
 #X connect 52 0 46 1;
 #X connect 54 0 2 1;
 #X connect 54 1 7 0;
-#X connect 54 1 15 0;
