@@ -1,4 +1,4 @@
-#N canvas 152 352 888 507 10;
+#N canvas 146 360 888 507 10;
 #X obj 294 478 dac~;
 #N canvas 0 50 450 300 (subpatch) 0;
 #X array outputmonitor 100 float 0;
@@ -232,7 +232,7 @@
 -1;
 #X obj 5 15 controlsui testsampleplayer;
 #X msg 350 85 loadbang;
-#N canvas 1956 399 325 57 test 0;
+#N canvas 1950 407 329 65 test 1;
 #X obj 10 30 drumplayer testdrumplayer;
 #X obj 10 10 sampleplayer testsampleplayer;
 #X restore 7 270 pd test;
@@ -254,8 +254,6 @@
 #X obj 5 44 drumcontrolsui testdrumplayer;
 #X obj 221 368 catch~ mainoutputL;
 #X obj 357 368 catch~ mainoutputR;
-#X obj 221 440 *~ 0.25;
-#X obj 357 441 *~ 0.25;
 #N canvas 729 538 534 263 lowpass 0;
 #X obj 76 22 inlet~;
 #X obj 221 25 inlet~;
@@ -282,6 +280,8 @@
 #X connect 10 0 11 0;
 #X connect 11 0 12 0;
 #X restore 512 391 pd lowpass;
+#X obj 357 441 *~ 0.25;
+#X obj 221 440 *~ 0.25;
 #X connect 3 0 4 0;
 #X connect 4 0 2 0;
 #X connect 7 0 10 0;
@@ -300,7 +300,7 @@
 #X connect 26 2 29 0;
 #X connect 26 3 27 0;
 #X connect 29 0 24 0;
-#X connect 31 0 33 0;
+#X connect 31 0 35 0;
 #X connect 32 0 34 0;
-#X connect 33 0 0 0;
 #X connect 34 0 0 1;
+#X connect 35 0 0 0;
