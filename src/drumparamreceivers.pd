@@ -1,4 +1,4 @@
-#N canvas 213 649 905 87 10;
+#N canvas 128 313 1068 87 10;
 #X obj 15 16 r \$1-samplestart-\$2;
 #X obj 189 16 r \$1-sampleend-\$2;
 #X obj 358 15 r \$1-samplelength-\$2;
@@ -9,8 +9,11 @@
 #X obj 358 44 drumparamwriter \$1 \$2 2;
 #X obj 529 44 drumparamwriter \$1 \$2 3;
 #X obj 701 44 drumparamwriter \$1 \$2 4;
+#X obj 886 15 r \$1-samplerate-\$2;
+#X obj 886 44 drumparamwriter \$1 \$2 5;
 #X connect 0 0 5 0;
 #X connect 1 0 6 0;
 #X connect 2 0 7 0;
 #X connect 3 0 8 0;
 #X connect 4 0 9 0;
+#X connect 10 0 11 0;
