@@ -1,0 +1,8 @@
+#N canvas 1801 476 276 161 10;
+#X obj 30 7 table \$1-mixerparams;
+#X obj 31 46 r \$1-volume;
+#X obj 31 96 r \$1-pan;
+#X obj 31 74 paramwriter \$1-mixerparams 0;
+#X obj 31 124 paramwriter \$1-mixerparams 1;
+#X connect 1 0 3 0;
+#X connect 2 0 4 0;
