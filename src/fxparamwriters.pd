@@ -1,4 +1,4 @@
-#N canvas 1693 130 856 651 10;
+#N canvas 1687 138 856 651 10;
 #X obj 136 14 table \$1-fxparams;
 #X obj 8 109 r \$1-rev-damp;
 #X obj 8 66 r \$1-rev-enable;
@@ -70,6 +70,12 @@
 #X obj 441 429 paramwriter \$1-fxparams 31;
 #X obj 441 477 paramwriter \$1-fxparams 32;
 #X obj 443 527 paramwriter \$1-fxparams 33;
+#X obj 642 352 r \$1-gainer-enable;
+#X obj 642 377 paramwriter \$1-fxparams 34;
+#X obj 642 403 r \$1-gainer-gain;
+#X obj 642 429 paramwriter \$1-fxparams 35;
+#X obj 642 452 r \$1-gainer-pan;
+#X obj 642 477 paramwriter \$1-fxparams 36;
 #X connect 1 0 37 0;
 #X connect 2 0 36 0;
 #X connect 3 0 38 0;
@@ -104,3 +110,6 @@
 #X connect 32 0 68 0;
 #X connect 33 0 69 0;
 #X connect 34 0 55 0;
+#X connect 70 0 71 0;
+#X connect 72 0 73 0;
+#X connect 74 0 75 0;
