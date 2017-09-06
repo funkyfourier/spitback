@@ -1,4 +1,4 @@
-#N canvas 128 313 1068 87 10;
+#N canvas 125 317 1072 86 10;
 #X obj 15 16 r \$1-samplestart-\$2;
 #X obj 189 16 r \$1-sampleend-\$2;
 #X obj 358 15 r \$1-samplelength-\$2;
