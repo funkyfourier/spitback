@@ -1,4 +1,4 @@
-#N canvas 1658 243 1010 605 10;
+#N canvas 1687 263 1010 605 10;
 #X obj 13 338 openpanel;
 #X obj 13 320 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
@@ -16,9 +16,9 @@
 #X obj 13 733 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 13 795 send \$1-filename;
-#X obj 331 321 hsl 128 15 0 22050 0 0 \$1-samplestart-0 \$1-samplestart-ui-0
+#X obj 331 321 hsl 128 15 0 16482 0 0 \$1-samplestart-0 \$1-samplestart-ui-0
 samplestart -2 -8 0 10 -262144 -1 -1 0 1;
-#X obj 332 377 hsl 128 15 0 22050 0 0 \$1-sampleend-0 \$1-sampleend-ui-0
+#X obj 332 377 hsl 128 15 0 16482 0 0 \$1-sampleend-0 \$1-sampleend-ui-0
 sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X floatatom 329 395 10 0 0 0 - #1-sampleend-0 -, f 10;
 #X floatatom 328 342 10 0 0 0 - #1-samplestart-0 -, f 10;
@@ -136,7 +136,6 @@ finetune -2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 483 377 hsl 128 15 0 1 0 0 \$1-volume-0 \$1-volume-0 volume
 -2 -8 0 10 -262144 -1 -1 12700 1;
 #X floatatom 480 397 5 0 0 0 - #1-volume-0 -, f 5;
-#X msg 28 44 35 127;
 #X msg 90 44 36 127;
 #X msg 211 44 38 127;
 #X msg 144 44 37 127;
@@ -216,13 +215,14 @@ finetune -2 -8 0 10 -262144 -1 -1 0 1;
 #X msg 147 334 44100;
 #X msg 201 334 22050;
 #X obj 143 360 s \$1-samplerate-0;
-#X connect 0 0 74 0;
+#X msg 28 44 35 127;
+#X connect 0 0 73 0;
 #X connect 1 0 0 0;
-#X connect 4 0 75 0;
+#X connect 4 0 74 0;
 #X connect 5 0 4 0;
-#X connect 7 0 76 0;
+#X connect 7 0 75 0;
 #X connect 8 0 7 0;
-#X connect 10 0 77 0;
+#X connect 10 0 76 0;
 #X connect 11 0 10 0;
 #X connect 22 0 25 0;
 #X connect 23 0 24 0;
@@ -231,12 +231,12 @@ finetune -2 -8 0 10 -262144 -1 -1 0 1;
 #X connect 34 0 2 0;
 #X connect 35 0 2 0;
 #X connect 36 0 2 0;
-#X connect 37 0 2 0;
-#X connect 65 0 67 0;
-#X connect 67 0 66 0;
-#X connect 74 0 3 0;
-#X connect 75 0 6 0;
-#X connect 76 0 9 0;
-#X connect 77 0 12 0;
-#X connect 79 0 81 0;
-#X connect 80 0 81 0;
+#X connect 64 0 66 0;
+#X connect 66 0 65 0;
+#X connect 73 0 3 0;
+#X connect 74 0 6 0;
+#X connect 75 0 9 0;
+#X connect 76 0 12 0;
+#X connect 78 0 80 0;
+#X connect 79 0 80 0;
+#X connect 81 0 2 0;
