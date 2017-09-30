@@ -1,4 +1,4 @@
-#N canvas 757 299 689 644 10;
+#N canvas 1856 149 689 644 10;
 #X obj 101 10 inlet noteon;
 #N canvas 333 378 654 370 samplelooper 0;
 #X obj 122 254 samplelooper~;
@@ -56,8 +56,8 @@
 #X connect 26 0 25 0;
 #X restore 101 395 pd samplelooper;
 #X obj 101 329 trigger bang bang;
-#X obj 482 557 switch~;
-#X obj 482 532 r \$0-switch;
+#X obj 229 587 switch~;
+#X obj 229 562 r \$0-switch;
 #X obj 217 371 s \$0-switch;
 #X obj 203 417 s \$0-switch;
 #X obj 102 543 *~;
@@ -65,7 +65,7 @@
 #X obj 120 500 r \$0-vel;
 #X obj 120 521 / 127;
 #X obj 169 72 s \$0-vel;
-#X obj 102 589 *~ 1;
+#X obj 102 568 *~ 1, f 5;
 #N canvas 322 630 285 182 calcpitch 0;
 #X obj 57 15 inlet;
 #X obj 57 139 outlet;
@@ -100,7 +100,7 @@
 #X obj 449 239 r \$0-parambang;
 #X obj 216 218 s \$0-parambang;
 #X obj 448 297 tabread;
-#X obj 127 567 r \$0-volume;
+#X obj 134 546 r \$0-volume;
 #X obj 448 357 s \$0-volume;
 #X obj 101 176 t b l l;
 #X obj 505 297 tabread;
@@ -119,17 +119,19 @@
 #X msg 563 275 5;
 #X obj 563 297 tabread;
 #X obj 563 318 s \$0-samplerate;
+#X obj 102 595 *~;
 #X connect 0 0 36 0;
 #X connect 1 0 18 0;
 #X connect 1 1 6 0;
 #X connect 2 0 13 0;
 #X connect 2 1 8 0;
 #X connect 4 0 3 0;
+#X connect 4 0 47 1;
 #X connect 7 0 12 0;
 #X connect 8 0 5 0;
 #X connect 9 0 10 0;
 #X connect 10 0 7 1;
-#X connect 12 0 33 0;
+#X connect 12 0 47 0;
 #X connect 13 0 1 0;
 #X connect 14 0 30 0;
 #X connect 15 0 16 0;
@@ -168,3 +170,4 @@
 #X connect 43 0 31 0;
 #X connect 44 0 45 0;
 #X connect 45 0 46 0;
+#X connect 47 0 33 0;
