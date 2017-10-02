@@ -1,14 +1,14 @@
-#N canvas 157 332 888 507 10;
+#N canvas 302 333 888 507 10;
 #X obj 294 478 dac~;
 #N canvas 0 50 450 300 (subpatch) 0;
 #X array outputmonitor 100 float 0;
 #X coords 0 -1 100 1 200 100 1;
-#X restore 620 318 graph;
-#X obj 482 459 tabwrite~ outputmonitor;
-#X obj 482 411 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X restore 663 293 graph;
+#X obj 572 478 tabwrite~ outputmonitor;
+#X obj 572 430 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 482 435 metro 50;
-#N canvas 321 388 660 331 ticks 1;
+#X obj 572 454 metro 50;
+#N canvas 315 396 660 331 ticks 0;
 #X obj 207 141 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 194 104 receive timerstart;
@@ -78,7 +78,7 @@
 #X connect 16 2 3 0;
 #X connect 18 0 15 0;
 #X restore 10 181 pd ticks;
-#N canvas 836 263 649 363 sampleplayers 0;
+#N canvas 423 267 665 380 sampleplayers 1;
 #N canvas 65 205 450 300 subpatchsampler1 0;
 #X restore 16 38 pd subpatchsampler1;
 #N canvas 65 205 450 300 subpatchsampler2 0;
@@ -205,7 +205,7 @@
 #X restore 493 313 pd subpatchsampler62;
 #N canvas 65 205 450 300 subpatchsampler63 0;
 #X restore 493 334 pd subpatchsampler63;
-#N canvas 65 205 450 300 subpatchsampler0 0;
+#N canvas 65 209 450 300 subpatchsampler0 0;
 #X restore 16 17 pd subpatchsampler0;
 #X restore 7 212 pd sampleplayers;
 #X obj 16 400 r dsp-on;
@@ -282,7 +282,7 @@
 -1;
 #X obj 5 15 controlsui testsampleplayer;
 #X msg 350 85 loadbang;
-#N canvas 2174 477 335 78 test 1;
+#N canvas 2168 485 335 78 test 1;
 #X obj 10 30 drumplayer testdrumplayer;
 #X obj 10 10 sampleplayer testsampleplayer;
 #X restore 7 270 pd test;
@@ -329,7 +329,7 @@
 #X connect 9 0 6 0;
 #X connect 10 0 11 0;
 #X connect 11 0 12 0;
-#X restore 512 391 pd lowpass;
+#X restore 602 410 pd lowpass;
 #X obj 357 441 *~ 0.25;
 #X obj 221 440 *~ 0.25;
 #X connect 3 0 4 0;
