@@ -1,0 +1,13 @@
+#N canvas 386 503 714 156 10;
+#X obj 14 11 inlet~;
+#X obj 13 121 outlet~;
+#X obj 169 36 \$1;
+#X obj 325 39 \$2;
+#X obj 169 8 loadbang;
+#X obj 13 68 expr~ exp((($f2)+($f3-($f2))*$v1)/20*log(10));
+#X connect 0 0 5 0;
+#X connect 2 0 5 1;
+#X connect 3 0 5 2;
+#X connect 4 0 2 0;
+#X connect 4 0 3 0;
+#X connect 5 0 1 0;
