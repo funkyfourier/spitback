@@ -1,4 +1,4 @@
-#N canvas 714 533 465 185 10;
+#N canvas 711 537 439 185 10;
 #X obj 13 66 \$1;
 #X obj 46 66 \$2;
 #X obj 13 101 pack f f f;
@@ -7,6 +7,8 @@
 #X obj 13 151 outlet;
 #X obj 13 127 expr if($f3==0 \, 0 \, exp((($f1)+($f2-($f1))*$f3)/20*log(10)))
 ;
+#X text 99 7 formula from https://www.reddit.com/r/programming/comments/9n2y0/stop_making_linear_volume_controls/c0dgsjj/
+, f 45;
 #X connect 0 0 2 0;
 #X connect 1 0 2 1;
 #X connect 2 0 6 0;
