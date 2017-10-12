@@ -1,10 +1,11 @@
-#N canvas 386 503 714 156 10;
+#N canvas 380 511 467 143 10;
 #X obj 14 11 inlet~;
 #X obj 13 121 outlet~;
-#X obj 169 36 \$1;
-#X obj 325 39 \$2;
-#X obj 169 8 loadbang;
-#X obj 13 68 expr~ exp((($f2)+($f3-($f2))*$v1)/20*log(10));
+#X obj 221 43 \$1;
+#X obj 430 43 \$2;
+#X obj 221 16 loadbang;
+#X obj 13 68 expr~ if($v1==0 \, 0 \, exp((($f2)+($f3-($f2))*$v1)/20*log(10)))
+;
 #X connect 0 0 5 0;
 #X connect 2 0 5 1;
 #X connect 3 0 5 2;

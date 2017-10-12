@@ -1,4 +1,4 @@
-#N canvas 1667 166 1280 636 10;
+#N canvas 1600 178 1280 636 10;
 #X obj 95 124 inlet~;
 #X obj 198 414 outlet~;
 #N canvas 1934 372 420 282 reverb 0;
@@ -455,8 +455,8 @@
 #X obj 544 59 s \$0-fxorder;
 #X obj 35 7 r \$0-fxorder;
 #X obj 329 19 r \$0-fxorder;
-#N canvas 1871 301 463 359 gainer 0;
-#N canvas 1884 403 437 418 internals 0;
+#N canvas 1859 317 463 359 gainer 1;
+#N canvas 1881 407 437 418 internals 0;
 #X obj 129 16 inlet~;
 #X obj 42 16 inlet~;
 #X obj 43 383 outlet~;
@@ -532,7 +532,7 @@
 #X connect 33 0 28 0;
 #X connect 33 0 30 0;
 #X restore 98 161 pd internals;
-#X obj 138 82 r \$1-gainer-gain;
+#X obj 138 54 r \$1-gainer-gain;
 #X obj 158 102 r \$1-gainer-pan;
 #X obj 69 27 inlet~;
 #X obj 119 27 inlet~;
@@ -545,9 +545,10 @@
 #X obj 282 6 loadbang;
 #X obj 282 29 0;
 #X obj 282 53 s \$1-gainer-enable;
+#X obj 138 79 logvolume -50 12;
 #X connect 0 0 8 0;
 #X connect 0 1 9 0;
-#X connect 1 0 0 2;
+#X connect 1 0 14 0;
 #X connect 2 0 0 3;
 #X connect 3 0 0 0;
 #X connect 3 0 6 0;
@@ -561,6 +562,7 @@
 #X connect 10 0 5 0;
 #X connect 11 0 12 0;
 #X connect 12 0 13 0;
+#X connect 14 0 0 2;
 #X restore 682 424 pd gainer;
 #X obj 96 315 fxchain~ 8, f 17;
 #X obj 185 441 s~ \$0-in8L;

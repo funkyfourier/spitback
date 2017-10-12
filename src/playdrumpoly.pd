@@ -1,4 +1,4 @@
-#N canvas 1856 149 689 644 10;
+#N canvas 355 253 689 646 10;
 #X obj 101 10 inlet noteon;
 #N canvas 333 378 654 370 samplelooper 0;
 #X obj 122 254 samplelooper~;
@@ -56,16 +56,16 @@
 #X connect 26 0 25 0;
 #X restore 101 395 pd samplelooper;
 #X obj 101 329 trigger bang bang;
-#X obj 229 587 switch~;
-#X obj 229 562 r \$0-switch;
+#X obj 314 608 switch~;
+#X obj 314 583 r \$0-switch;
 #X obj 217 371 s \$0-switch;
 #X obj 203 417 s \$0-switch;
-#X obj 102 543 *~;
+#X obj 102 529 *~;
 #X msg 217 350 1;
-#X obj 120 500 r \$0-vel;
-#X obj 120 521 / 127;
+#X obj 120 486 r \$0-vel;
+#X obj 120 507 / 127;
 #X obj 169 72 s \$0-vel;
-#X obj 102 568 *~ 1, f 5;
+#X obj 102 578 *~ 1, f 5;
 #N canvas 322 630 285 182 calcpitch 0;
 #X obj 57 15 inlet;
 #X obj 57 139 outlet;
@@ -89,8 +89,8 @@
 #X obj 101 145 pack f s;
 #X obj 154 98 loadbang;
 #X obj 154 119 symbol \$1;
-#X obj 110 454 r \$0-setarray;
-#X obj 101 478 tabread4~;
+#X obj 110 440 r \$0-setarray;
+#X obj 101 464 tabread4~;
 #X obj 124 269 s \$0-setarray;
 #X obj 328 297 tabread;
 #X msg 124 240 set \$2-drum\$1;
@@ -100,12 +100,12 @@
 #X obj 449 239 r \$0-parambang;
 #X obj 216 218 s \$0-parambang;
 #X obj 448 297 tabread;
-#X obj 134 546 r \$0-volume;
+#X obj 134 532 r \$0-volume;
 #X obj 448 357 s \$0-volume;
 #X obj 101 176 t b l l;
 #X obj 505 297 tabread;
 #X obj 505 338 s \$0-finetune;
-#X obj 101 620 throw~ \$1-instrumentoutput;
+#X obj 101 621 throw~ \$1-instrumentoutput;
 #X obj 328 397 s \$0-samplestart-\$3;
 #X obj 389 378 s \$0-sampleend-\$3;
 #X obj 101 34 t l l;
@@ -119,7 +119,8 @@
 #X msg 563 275 5;
 #X obj 563 297 tabread;
 #X obj 563 318 s \$0-samplerate;
-#X obj 102 595 *~;
+#X obj 102 600 *~;
+#X obj 134 555 logvolume -50 0;
 #X connect 0 0 36 0;
 #X connect 1 0 18 0;
 #X connect 1 1 6 0;
@@ -154,7 +155,7 @@
 #X connect 25 0 43 0;
 #X connect 25 0 44 0;
 #X connect 27 0 29 0;
-#X connect 28 0 12 1;
+#X connect 28 0 48 0;
 #X connect 30 0 2 0;
 #X connect 30 1 24 0;
 #X connect 30 1 21 0;
@@ -171,3 +172,4 @@
 #X connect 44 0 45 0;
 #X connect 45 0 46 0;
 #X connect 47 0 33 0;
+#X connect 48 0 12 1;
