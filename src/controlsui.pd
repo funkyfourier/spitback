@@ -1,4 +1,4 @@
-#N canvas 285 205 1209 759 10;
+#N canvas 151 218 1209 759 10;
 #X obj 186 57 vsl 15 128 0 1 0 0 \$1-filtercutoff empty cutoff -10
 -9 0 10 -262144 -1 -1 0 1;
 #X obj 208 92 vradio 15 1 0 3 \$1-filterselect empty empty 0 -8 0 10
@@ -33,11 +33,11 @@ release 52 7 0 10 -262144 -1 -1 4400 1;
 #X obj 986 67 hsl 128 15 0 2000 0 1 \$1-attack \$1-attack-ui attack
 -2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 986 100 hsl 128 15 0 2000 0 1 \$1-decay \$1-decay-ui decay -2
--8 0 10 -262144 -1 -1 200 1;
+-8 0 10 -262144 -1 -1 0 1;
 #X obj 987 133 hsl 128 15 0 1 0 1 \$1-sustain \$1-sustain-ui sustain
 -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 988 165 hsl 128 15 0 2000 0 1 \$1-release \$1-release-ui release
--2 -8 0 10 -262144 -1 -1 12700 1;
+-2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 820 96 hsl 128 15 0 44099 0 0 \$1-loopstart \$1-loopstart-ui
 loopstart -2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 821 152 hsl 128 15 0 44099 0 0 \$1-loopend \$1-loopend-ui loopend
@@ -284,7 +284,7 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 497 251 cnv 15 160 15 empty empty Gainer(0) 10 8 0 12 -191407
 -66577 0;
 #X obj 497 275 tgl 15 0 \$1-gainer-enable empty enable 17 7 0 10 -262144
--1 -1 0 1;
+-1 -1 1 1;
 #X obj 565 275 bng 15 250 50 0 \$1-gainer-moveup empty up 17 7 0 10
 -262144 -1 -1;
 #X obj 612 275 bng 15 250 50 0 \$1-gainer-movedown empty down 17 7
