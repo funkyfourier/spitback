@@ -1,10 +1,10 @@
-#N canvas 1673 327 627 620 10;
+#N canvas 1610 149 627 620 10;
 #X obj 133 101 soundfiler;
 #X obj 277 17 loadbang;
 #X obj 133 26 receive \$1-filename;
 #X obj 133 189 send \$1-samplelength;
 #X msg 133 80 read -resize \$1 \$2-tmp;
-#N canvas 460 327 685 630 makeguardpoints 0;
+#N canvas 457 331 685 630 makeguardpoints 0;
 #X obj 28 32 inlet;
 #X text 24 10 nr of samples;
 #X obj 28 62 trigger bang float float float float float;
@@ -362,9 +362,9 @@
 #X msg 377 209 \; \$2-tmp resize \$1;
 #X obj 176 145 t f f;
 #X obj 14 28 table \$1-wave;
-#N canvas 721 592 184 77 paramwriters 1;
+#N canvas 718 623 184 77 paramwriters 1;
 #X obj 8 30 fxparamwriters \$1;
-#N canvas 1754 455 495 517 samplerparamwriters 0;
+#N canvas 2167 487 495 517 samplerparamwriters 1;
 #X obj 136 12 table \$1-samplerparams;
 #X obj 11 84 r \$1-rootnote;
 #X obj 11 126 r \$1-finetune;
@@ -441,7 +441,7 @@
 #X obj 448 166 symbol \$1;
 #X obj 377 183 pack f s;
 #X obj 379 73 tabwrite \$1-tmp;
-#N canvas 2074 195 658 435 polyconnections 0;
+#N canvas 2071 199 658 435 polyconnections 1;
 #X obj 209 6 receive \$1-noteon;
 #X obj 218 28 receive \$1-noteoff;
 #X obj 218 50 pack 0 0;
