@@ -1,4 +1,4 @@
-#N canvas 1600 178 1280 636 10;
+#N canvas 1613 287 1280 636 10;
 #X obj 95 124 inlet~;
 #X obj 198 414 outlet~;
 #N canvas 1934 372 420 282 reverb 0;
@@ -455,8 +455,8 @@
 #X obj 544 59 s \$0-fxorder;
 #X obj 35 7 r \$0-fxorder;
 #X obj 329 19 r \$0-fxorder;
-#N canvas 1859 317 463 359 gainer 1;
-#N canvas 1881 407 437 418 internals 0;
+#N canvas 784 558 463 359 gainer 1;
+#N canvas 1878 411 437 418 internals 0;
 #X obj 129 16 inlet~;
 #X obj 42 16 inlet~;
 #X obj 43 383 outlet~;
