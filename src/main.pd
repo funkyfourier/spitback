@@ -1,4 +1,4 @@
-#N canvas 207 402 888 574 10;
+#N canvas 204 406 888 574 10;
 #X obj 294 528 dac~;
 #N canvas 0 50 450 300 (subpatch) 0;
 #X array outputmonitor 100 float 0;
@@ -8,7 +8,7 @@
 #X obj 572 430 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 572 454 metro 50;
-#N canvas 242 495 925 331 ticks 1;
+#N canvas 239 499 925 331 ticks 0;
 #X obj 207 141 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 194 104 receive timerstart;
@@ -363,7 +363,7 @@
 -1;
 #X obj 5 15 controlsui testsampleplayer;
 #X msg 350 49 loadbang;
-#N canvas 1688 435 335 78 test 0;
+#N canvas 1685 439 335 78 test 1;
 #X obj 10 30 drumplayer testdrumplayer;
 #X obj 10 10 sampleplayer testsampleplayer;
 #X restore 7 270 pd test;
@@ -412,8 +412,6 @@
 #X connect 12 0 6 0;
 #X restore 277 452 pd lowpass;
 #X obj 292 292 r mastervol;
-#X msg 292 334 \$1 50;
-#X obj 292 356 line~;
 #X obj 423 396 *~;
 #X obj 203 392 *~;
 #X obj 219 318 loadbang;
@@ -423,6 +421,8 @@
 #X obj 232 489 expr~ tanh($v1);
 #X obj 357 489 expr~ tanh($v1);
 #X obj 292 313 logvolume -50 0;
+#X msg 292 334 \$1 50;
+#X obj 292 356 line~;
 #X connect 3 0 4 0;
 #X connect 4 0 2 0;
 #X connect 7 0 10 0;
@@ -441,20 +441,20 @@
 #X connect 26 2 29 0;
 #X connect 26 3 27 0;
 #X connect 29 0 24 0;
-#X connect 31 0 42 0;
-#X connect 32 0 41 0;
-#X connect 33 0 43 0;
-#X connect 33 1 44 0;
-#X connect 34 0 45 0;
-#X connect 35 0 36 0;
-#X connect 36 0 37 1;
-#X connect 36 0 38 1;
-#X connect 37 0 33 1;
-#X connect 38 0 33 0;
-#X connect 39 0 40 0;
+#X connect 31 0 40 0;
+#X connect 32 0 39 0;
+#X connect 33 0 41 0;
+#X connect 33 1 42 0;
+#X connect 34 0 43 0;
+#X connect 35 0 33 1;
+#X connect 36 0 33 0;
+#X connect 37 0 38 0;
+#X connect 38 0 45 0;
+#X connect 39 0 35 0;
 #X connect 40 0 36 0;
-#X connect 41 0 37 0;
-#X connect 42 0 38 0;
-#X connect 43 0 0 0;
-#X connect 44 0 0 1;
-#X connect 45 0 35 0;
+#X connect 41 0 0 0;
+#X connect 42 0 0 1;
+#X connect 43 0 44 0;
+#X connect 44 0 45 0;
+#X connect 45 0 35 1;
+#X connect 45 0 36 1;
