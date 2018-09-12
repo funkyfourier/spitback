@@ -1,4 +1,4 @@
-#N canvas 1624 302 902 688 10;
+#N canvas 1610 219 902 688 10;
 #X obj 158 522 inlet~;
 #X obj 16 553 inlet~;
 #X obj 449 579 outlet~;
@@ -7,7 +7,7 @@
 #X obj 362 316 *~;
 #X obj 361 220 *~ 0.5;
 #X obj 379 253 r \$0-depth;
-#X obj 419 30 s \$0-depth;
+#X obj 419 47 s \$0-depth;
 #X obj 505 5 inlet speed;
 #X obj 505 27 s \$0-speed;
 #X obj 362 187 +~ 1;
@@ -82,6 +82,7 @@
 #X obj 666 112 loadbang;
 #X obj 783 112 loadbang;
 #X obj 511 112 loadbang;
+#X obj 419 26 * 50;
 #X connect 0 0 69 0;
 #X connect 0 0 3 0;
 #X connect 1 0 68 0;
@@ -115,7 +116,7 @@
 #X connect 32 0 38 0;
 #X connect 33 0 30 0;
 #X connect 34 0 29 0;
-#X connect 35 0 8 0;
+#X connect 35 0 82 0;
 #X connect 36 0 44 0;
 #X connect 38 0 51 0;
 #X connect 38 1 52 0;
@@ -160,3 +161,4 @@
 #X connect 79 0 78 0;
 #X connect 80 0 71 0;
 #X connect 81 0 77 0;
+#X connect 82 0 8 0;
