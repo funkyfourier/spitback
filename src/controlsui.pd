@@ -1,6 +1,6 @@
-#N canvas 231 235 1208 759 10;
+#N canvas 276 242 1208 759 10;
 #X obj 186 57 vsl 15 128 20 20000 0 0 \$1-filtercutoff empty cutoff
--10 -9 0 10 -262144 -1 -1 7700 1;
+-10 -9 0 10 -262144 -1 -1 0 1;
 #X obj 208 92 vradio 15 1 0 3 \$1-filterselect empty empty 0 -8 0 10
 -262144 -1 -1 0;
 #X text 224 92 off;
@@ -21,9 +21,9 @@ release 52 7 0 10 -262144 -1 -1 0 1;
 #X obj 421 13 cnv 15 200 25 empty empty LFO 20 12 0 20 -257985 -66577
 0;
 #X obj 432 57 vsl 15 128 0.25 10 0 0 \$1-lforate empty rate -5 -9 0
-10 -262144 -1 -1 5700 1;
+10 -262144 -1 -1 0 1;
 #X obj 468 57 vsl 15 128 0 1 0 0 \$1-lfodepth empty depth -5 -9 0 10
--262144 -1 -1 7100 1;
+-262144 -1 -1 0 1;
 #X obj 511 64 vradio 15 1 0 4 \$1-lfoconnection empty target 0 -8 0
 10 -262144 -1 -1 0;
 #X text 529 78 volume;
@@ -216,16 +216,16 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 987 251 cnv 15 160 15 empty empty Tremolo(3) 10 8 0 12 -191407
 -66577 0;
 #X obj 987 275 tgl 15 0 \$1-tremolo-enable empty enable 17 7 0 10 -262144
--1 -1 0 1;
+-1 -1 1 1;
 #X obj 1055 275 bng 15 250 50 0 \$1-tremolo-moveup empty up 17 7 0
 10 -262144 -1 -1;
 #X obj 1102 275 bng 15 250 50 0 \$1-tremolo-movedown empty down 17
 7 0 10 -262144 -1 -1;
-#X obj 990 313 hsl 128 15 500 20 0 1 \$1-tremolo-rate empty rate -2
--8 0 10 -262144 -1 -1 3500 1;
-#X obj 990 346 hsl 128 15 0 1 0 1 \$1-tremolo-smooth empty smooth -2
--8 0 10 -262144 -1 -1 800 1;
-#X obj 990 378 hsl 128 15 0 1 0 1 \$1-tremolo-depth empty depth -2
+#X obj 990 313 hsl 128 15 0 20 0 1 \$1-tremolo-rate empty rate_(Hz)
+-2 -8 0 10 -262144 -1 -1 900 1;
+#X obj 990 368 hsl 128 15 0 1 0 1 \$1-tremolo-smooth empty smooth -2
+-8 0 10 -262144 -1 -1 0 1;
+#X obj 990 400 hsl 128 15 0 1 0 1 \$1-tremolo-depth empty depth -2
 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 660 251 cnv 15 160 15 empty empty Filter(1) 10 8 0 12 -191407
 -66577 0;
@@ -235,7 +235,7 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 10 -262144 -1 -1;
 #X obj 775 275 bng 15 250 50 0 \$1-fxfilter-movedown empty down 17
 7 0 10 -262144 -1 -1;
-#X obj 667 375 hsl 128 15 20 20000 0 0 \$1-fxfilter-freq empty freq_(hz)
+#X obj 667 375 hsl 128 15 20 20000 0 0 \$1-fxfilter-freq empty freq_(Hz)
 -2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 667 424 hsl 128 15 0 30 0 0 \$1-fxfilter-q empty q_(dB?) -2
 -8 0 10 -262144 -1 -1 0 1;
@@ -252,16 +252,16 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 -1 -1;
 #X obj 938 275 bng 15 250 50 0 \$1-3eq-movedown empty down 17 7 0 10
 -262144 -1 -1;
-#X obj 826 313 hsl 128 15 -36 36 0 1 \$1-3eq-lowgain empty low -2 -8
-0 10 -262144 -1 -1 0 1;
-#X obj 826 346 hsl 128 15 -36 36 0 1 \$1-3eq-midgain empty mid-gain
--2 -8 0 10 -262144 -1 -1 8100 1;
-#X obj 826 378 hsl 128 15 400 3500 0 1 \$1-3eq-midfreq empty mid-freq
+#X obj 826 313 hsl 128 15 -36 36 0 1 \$1-3eq-lowgain empty low_(dB)
 -2 -8 0 10 -262144 -1 -1 0 1;
-#X obj 826 410 hsl 128 15 20 1000 0 1 \$1-3eq-midbw empty mid-bw -2
--8 0 10 -262144 -1 -1 12700 1;
-#X obj 826 442 hsl 128 15 -36 36 0 1 \$1-3eq-highgain empty high -2
--8 0 10 -262144 -1 -1 0 1;
+#X obj 826 346 hsl 128 15 -36 36 0 1 \$1-3eq-midgain empty mid-gain_(dB)
+-2 -8 0 10 -262144 -1 -1 8100 1;
+#X obj 826 378 hsl 128 15 400 3500 0 1 \$1-3eq-midfreq empty mid-freq_(Hz)
+-2 -8 0 10 -262144 -1 -1 0 1;
+#X obj 826 410 hsl 128 15 20 1000 0 1 \$1-3eq-midbw empty mid-bw_(Hz)
+-2 -8 0 10 -262144 -1 -1 12700 1;
+#X obj 826 442 hsl 128 15 -36 36 0 1 \$1-3eq-highgain empty high_(dB)
+-2 -8 0 10 -262144 -1 -1 0 1;
 #X msg 63 487 70 127;
 #X msg 114 488 71 127;
 #X msg 166 488 72 127;
@@ -294,6 +294,7 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X msg 498 698 set \$1 \$2 \$3 \$4 \$5 \$6 \$7 \$8;
 #X msg 498 722 0 1 2 3 4 5 6 7;
 #X floatatom 664 394 5 0 0 0 - - -, f 5;
+#X floatatom 987 330 5 0 0 0 - - -, f 5;
 #X connect 18 0 28 0;
 #X connect 19 0 29 0;
 #X connect 20 0 30 0;
@@ -318,6 +319,7 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X connect 81 0 147 0;
 #X connect 84 0 61 0;
 #X connect 86 0 87 0;
+#X connect 103 0 150 0;
 #X connect 110 0 149 0;
 #X connect 125 0 61 0;
 #X connect 126 0 61 0;
