@@ -1,4 +1,4 @@
-#N canvas 276 242 1208 759 10;
+#N canvas 136 223 1208 759 10;
 #X obj 186 57 vsl 15 128 20 20000 0 0 \$1-filtercutoff empty cutoff
 -10 -9 0 10 -262144 -1 -1 0 1;
 #X obj 208 92 vradio 15 1 0 3 \$1-filterselect empty empty 0 -8 0 10
@@ -38,12 +38,12 @@ release 52 7 0 10 -262144 -1 -1 0 1;
 -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 988 165 hsl 128 15 0 2000 0 1 \$1-release \$1-release-ui release
 -2 -8 0 10 -262144 -1 -1 0 1;
-#X obj 820 96 hsl 128 15 0 44099 0 0 \$1-loopstart \$1-loopstart-ui
+#X obj 820 96 hsl 128 15 0 103897 0 0 \$1-loopstart \$1-loopstart-ui
 loopstart -2 -8 0 10 -262144 -1 -1 0 1;
-#X obj 821 152 hsl 128 15 0 44099 0 0 \$1-loopend \$1-loopend-ui loopend
+#X obj 821 152 hsl 128 15 0 103897 0 0 \$1-loopend \$1-loopend-ui loopend
 -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 818 58 tgl 15 1 \$1-loopon empty loop 17 7 0 10 -262144 -1 -1
-1 1;
+0 1;
 #X obj 11 264 cnv 15 480 30 empty empty CONTROLS 20 12 0 18 -233017
 -66577 0;
 #X floatatom 818 170 10 0 0 0 - - -, f 10;
@@ -56,9 +56,9 @@ loopstart -2 -8 0 10 -262144 -1 -1 0 1;
 -66577 0;
 #X obj 644 13 cnv 15 100 25 sound1-loopon empty SAMPLE 20 12 0 20 -257985
 -66577 0;
-#X obj 649 58 hsl 128 15 0 44099 0 0 \$1-samplestart \$1-samplestart-ui
+#X obj 649 58 hsl 128 15 0 103897 0 0 \$1-samplestart \$1-samplestart-ui
 samplestart -2 -8 0 10 -262144 -1 -1 0 1;
-#X obj 650 113 hsl 128 15 0 44099 0 0 \$1-sampleend \$1-sampleend-ui
+#X obj 650 113 hsl 128 15 0 103897 0 0 \$1-sampleend \$1-sampleend-ui
 sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X floatatom 647 131 10 0 0 0 - - -, f 10;
 #X floatatom 646 79 10 0 0 0 - - -, f 10;
@@ -75,7 +75,7 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 497 469 cnv 15 160 15 empty empty Delay(4) 10 8 0 12 -191407
 -66577 0;
 #X obj 497 493 tgl 15 0 \$1-del-enable empty enable 17 7 0 10 -262144
--1 -1 0 1;
+-1 -1 1 1;
 #X obj 565 493 bng 15 250 50 0 \$1-del-moveup empty up 17 7 0 10 -262144
 -1 -1;
 #X obj 612 493 bng 15 250 50 0 \$1-del-movedown empty down 17 7 0 10
@@ -94,12 +94,12 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 -8 0 10 -262144 -1 -1 8600 1;
 #X obj 991 628 hsl 128 15 0 1 0 1 \$1-rev-wet empty wet -2 -8 0 10
 -262144 -1 -1 9000 1;
-#X obj 504 531 hsl 128 15 0 1 0 0 \$1-del-delay empty delay -2 -8 0
-10 -262144 -1 -1 0 1;
+#X obj 504 531 hsl 128 15 0 1000 0 0 \$1-del-delay empty delay_(ms)
+-2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 504 564 hsl 128 15 0 1 0 0 \$1-del-feedback empty feedback -2
 -8 0 10 -262144 -1 -1 0 1;
 #X obj 504 629 hsl 128 15 0 1 0 0 \$1-del-wet empty wet -2 -8 0 10
--262144 -1 -1 0 1;
+-262144 -1 -1 12700 1;
 #X obj 662 531 hsl 128 15 0 1 0 0 \$1-flg-freq empty freq -2 -8 0 10
 -262144 -1 -1 0 1;
 #X obj 662 564 hsl 128 15 0 1 0 0 \$1-flg-width empty width -2 -8 0
@@ -195,7 +195,7 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 991 596 hsl 128 15 0 4 0 1 \$1-rev-spread empty stereo_spread
 -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 504 596 hsl 128 15 0 1 0 0 \$1-del-spread empty spread -2 -8
-0 10 -262144 -1 -1 0 1;
+0 10 -262144 -1 -1 12700 1;
 #X obj 18 380 s \$1-filename;
 #X obj 824 469 cnv 15 160 15 empty empty Chorus(6) 10 8 0 12 -191407
 -66577 0;
@@ -216,7 +216,7 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 987 251 cnv 15 160 15 empty empty Tremolo(3) 10 8 0 12 -191407
 -66577 0;
 #X obj 987 275 tgl 15 0 \$1-tremolo-enable empty enable 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 1055 275 bng 15 250 50 0 \$1-tremolo-moveup empty up 17 7 0
 10 -262144 -1 -1;
 #X obj 1102 275 bng 15 250 50 0 \$1-tremolo-movedown empty down 17
@@ -280,15 +280,15 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 497 251 cnv 15 160 15 empty empty Gainer(0) 10 8 0 12 -191407
 -66577 0;
 #X obj 497 275 tgl 15 0 \$1-gainer-enable empty enable 17 7 0 10 -262144
--1 -1 0 1;
+-1 -1 1 1;
 #X obj 565 275 bng 15 250 50 0 \$1-gainer-moveup empty up 17 7 0 10
 -262144 -1 -1;
 #X obj 612 275 bng 15 250 50 0 \$1-gainer-movedown empty down 17 7
 0 10 -262144 -1 -1;
 #X obj 504 339 hsl 128 15 -50 12 0 0 \$1-gainer-gain empty gain_(dB)
--2 -8 0 10 -262144 -1 -1 0 1;
+-2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 504 372 hsl 128 15 0 1 0 0 \$1-gainer-pan empty pan -2 -8 0
-10 -262144 -1 -1 0 1;
+10 -262144 -1 -1 6200 1;
 #X msg 265 418 36 127;
 #X msg 413 548 36;
 #X msg 498 698 set \$1 \$2 \$3 \$4 \$5 \$6 \$7 \$8;
