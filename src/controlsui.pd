@@ -25,7 +25,7 @@ release 52 7 0 10 -262144 -1 -1 0 1;
 #X obj 500 57 vsl 15 128 0 1 0 0 \$1-lfodepth empty depth -5 -9 0 10
 -262144 -1 -1 12700 1;
 #X obj 543 64 vradio 15 1 0 4 \$1-lfoconnection empty target 0 -8 0
-10 -262144 -1 -1 1;
+10 -262144 -1 -1 0;
 #X text 561 78 volume;
 #X text 561 93 pitch;
 #X obj 814 13 cnv 15 100 25 sound1-loopon empty LOOP 20 12 0 20 -257985
@@ -62,51 +62,51 @@ samplestart -2 -8 0 10 -262144 -1 -1 0 1;
 sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X floatatom 647 131 10 0 0 0 - - -, f 10;
 #X floatatom 646 79 10 0 0 0 - - -, f 10;
-#X obj 988 469 cnv 15 160 15 empty empty Reverb(7) 10 8 0 12 -191407
+#X obj 988 480 cnv 15 160 15 empty empty Reverb(7) 10 8 0 12 -191407
 -66577 0;
 #X obj 497 214 cnv 15 700 25 empty empty FX 10 12 0 25 -257985 -66577
 0;
-#X obj 988 493 tgl 15 0 \$1-rev-enable empty enable 17 7 0 10 -262144
+#X obj 988 504 tgl 15 0 \$1-rev-enable empty enable 17 7 0 10 -262144
 -1 -1 0 1;
-#X obj 1056 493 bng 15 250 50 0 \$1-rev-moveup empty up 17 7 0 10 -262144
+#X obj 1056 504 bng 15 250 50 0 \$1-rev-moveup empty up 17 7 0 10 -262144
 -1 -1;
-#X obj 1103 493 bng 15 250 50 0 \$1-rev-movedown empty down 17 7 0
+#X obj 1103 504 bng 15 250 50 0 \$1-rev-movedown empty down 17 7 0
 10 -262144 -1 -1;
-#X obj 497 469 cnv 15 160 15 empty empty Delay(4) 10 8 0 12 -191407
+#X obj 497 480 cnv 15 160 15 empty empty Delay(4) 10 8 0 12 -191407
 -66577 0;
-#X obj 497 493 tgl 15 0 \$1-del-enable empty enable 17 7 0 10 -262144
+#X obj 497 504 tgl 15 0 \$1-del-enable empty enable 17 7 0 10 -262144
 -1 -1 0 1;
-#X obj 565 493 bng 15 250 50 0 \$1-del-moveup empty up 17 7 0 10 -262144
+#X obj 565 504 bng 15 250 50 0 \$1-del-moveup empty up 17 7 0 10 -262144
 -1 -1;
-#X obj 612 493 bng 15 250 50 0 \$1-del-movedown empty down 17 7 0 10
+#X obj 612 504 bng 15 250 50 0 \$1-del-movedown empty down 17 7 0 10
 -262144 -1 -1;
-#X obj 660 469 cnv 15 160 15 empty empty Flanger(5) 10 8 0 12 -191407
+#X obj 660 480 cnv 15 160 15 empty empty Flanger(5) 10 8 0 12 -191407
 -66577 0;
-#X obj 660 493 tgl 15 0 \$1-flg-enable empty enable 17 7 0 10 -262144
+#X obj 660 504 tgl 15 0 \$1-flg-enable empty enable 17 7 0 10 -262144
 -1 -1 0 1;
-#X obj 719 493 bng 15 250 50 0 \$1-flg-moveup empty up 17 7 0 10 -262144
+#X obj 719 504 bng 15 250 50 0 \$1-flg-moveup empty up 17 7 0 10 -262144
 -1 -1;
-#X obj 766 493 bng 15 250 50 0 \$1-flg-movedown empty down 17 7 0 10
+#X obj 766 504 bng 15 250 50 0 \$1-flg-movedown empty down 17 7 0 10
 -262144 -1 -1;
-#X obj 991 531 hsl 128 15 0 1 0 1 \$1-rev-damp empty damp -2 -8 0 10
+#X obj 991 542 hsl 128 15 0 1 0 1 \$1-rev-damp empty damp -2 -8 0 10
 -262144 -1 -1 7100 1;
-#X obj 991 564 hsl 128 15 0 1 0 1 \$1-rev-roomsize empty roomsize -2
+#X obj 991 575 hsl 128 15 0 1 0 1 \$1-rev-roomsize empty roomsize -2
 -8 0 10 -262144 -1 -1 8600 1;
-#X obj 991 628 hsl 128 15 0 1 0 1 \$1-rev-wet empty wet -2 -8 0 10
+#X obj 991 639 hsl 128 15 0 1 0 1 \$1-rev-wet empty wet -2 -8 0 10
 -262144 -1 -1 9000 1;
-#X obj 504 531 hsl 128 15 0 1000 0 0 \$1-del-delay empty delay_(ms)
+#X obj 504 542 hsl 128 15 0 1000 0 0 \$1-del-delay empty delay_(ms)
 -2 -8 0 10 -262144 -1 -1 6300 1;
-#X obj 504 580 hsl 128 15 0 0.95 0 0 \$1-del-feedback empty feedback
+#X obj 504 591 hsl 128 15 0 0.95 0 0 \$1-del-feedback empty feedback
 -2 -8 0 10 -262144 -1 -1 7400 1;
-#X obj 504 645 hsl 128 15 0 1 0 0 \$1-del-wet empty wet -2 -8 0 10
+#X obj 504 656 hsl 128 15 0 1 0 0 \$1-del-wet empty wet -2 -8 0 10
 -262144 -1 -1 12700 1;
-#X obj 662 531 hsl 128 15 0 2 0 0 \$1-flg-freq empty freq_(Hz) -2 -8
+#X obj 662 542 hsl 128 15 0 2 0 0 \$1-flg-freq empty freq_(Hz) -2 -8
 0 10 -262144 -1 -1 1300 1;
-#X obj 662 583 hsl 128 15 0 1 0 0 \$1-flg-width empty width -2 -8 0
+#X obj 662 594 hsl 128 15 0 1 0 0 \$1-flg-width empty width -2 -8 0
 10 -262144 -1 -1 12700 1;
-#X obj 662 614 hsl 128 15 0 1 0 0 \$1-flg-feedback empty feedback -2
+#X obj 662 625 hsl 128 15 0 1 0 0 \$1-flg-feedback empty feedback -2
 -8 0 10 -262144 -1 -1 12700 1;
-#X obj 662 648 hsl 128 15 0 1 0 0 \$1-flg-wet empty wet -2 -8 0 10
+#X obj 662 659 hsl 128 15 0 1 0 0 \$1-flg-wet empty wet -2 -8 0 10
 -262144 -1 -1 12700 1;
 #X obj 117 522 send \$1-noteon;
 #X obj 117 582 send \$1-noteoff;
@@ -192,40 +192,40 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 267 225 hsl 128 15 0 1 0 1 \$1-pan \$1-pan empty -2 -8 0 10
 -262144 -1 -1 6400 1;
 #X floatatom 407 240 5 0 0 0 - - -, f 5;
-#X obj 991 596 hsl 128 15 0 1 0 1 \$1-rev-spread empty stereo_spread
+#X obj 991 607 hsl 128 15 0 1 0 1 \$1-rev-spread empty stereo_spread
 -2 -8 0 10 -262144 -1 -1 12700 1;
-#X obj 504 612 hsl 128 15 0 1 0 0 \$1-del-spread empty spread -2 -8
+#X obj 504 623 hsl 128 15 0 1 0 0 \$1-del-spread empty spread -2 -8
 0 10 -262144 -1 -1 12700 1;
 #X obj 18 380 s \$1-filename;
-#X obj 824 469 cnv 15 160 15 empty empty Chorus(6) 10 8 0 12 -191407
+#X obj 824 480 cnv 15 160 15 empty empty Chorus(6) 10 8 0 12 -191407
 -66577 0;
-#X obj 824 493 tgl 15 0 \$1-chorus-enable empty enable 17 7 0 10 -262144
+#X obj 824 504 tgl 15 0 \$1-chorus-enable empty enable 17 7 0 10 -262144
 -1 -1 0 1;
-#X obj 892 493 bng 15 250 50 0 \$1-chorus-moveup empty up 17 7 0 10
+#X obj 892 504 bng 15 250 50 0 \$1-chorus-moveup empty up 17 7 0 10
 -262144 -1 -1;
-#X obj 939 493 bng 15 250 50 0 \$1-chorus-movedown empty down 17 7
+#X obj 939 504 bng 15 250 50 0 \$1-chorus-movedown empty down 17 7
 0 10 -262144 -1 -1;
-#X obj 827 531 hsl 128 15 0 1 0 1 \$1-chorus-depth empty depth -2 -8
+#X obj 827 542 hsl 128 15 0 1 0 1 \$1-chorus-depth empty depth -2 -8
 0 10 -262144 -1 -1 5200 1;
-#X obj 827 564 hsl 128 15 0.01 10 0 1 \$1-chorus-speed empty speed_(Hz)
+#X obj 827 575 hsl 128 15 0.01 10 0 1 \$1-chorus-speed empty speed_(Hz)
 -2 -8 0 10 -262144 -1 -1 3400 1;
-#X obj 827 646 hsl 128 15 0 1 0 1 \$1-chorus-wet empty wet -2 -8 0
+#X obj 827 657 hsl 128 15 0 1 0 1 \$1-chorus-wet empty wet -2 -8 0
 10 -262144 -1 -1 12700 1;
-#X obj 827 614 hsl 128 15 0 1 0 1 \$1-chorus-spread empty spread -2
+#X obj 827 625 hsl 128 15 0 1 0 1 \$1-chorus-spread empty spread -2
 -8 0 10 -262144 -1 -1 12700 1;
-#X obj 992 251 cnv 15 160 15 empty empty Tremolo(3) 10 8 0 12 -191407
+#X obj 988 251 cnv 15 160 15 empty empty Tremolo(3) 10 8 0 12 -191407
 -66577 0;
-#X obj 992 275 tgl 15 0 \$1-tremolo-enable empty enable 17 7 0 10 -262144
+#X obj 988 275 tgl 15 0 \$1-tremolo-enable empty enable 17 7 0 10 -262144
 -1 -1 0 1;
-#X obj 1060 275 bng 15 250 50 0 \$1-tremolo-moveup empty up 17 7 0
+#X obj 1056 275 bng 15 250 50 0 \$1-tremolo-moveup empty up 17 7 0
 10 -262144 -1 -1;
-#X obj 1107 275 bng 15 250 50 0 \$1-tremolo-movedown empty down 17
+#X obj 1103 275 bng 15 250 50 0 \$1-tremolo-movedown empty down 17
 7 0 10 -262144 -1 -1;
-#X obj 995 313 hsl 128 15 0 20 0 1 \$1-tremolo-rate empty rate_(Hz)
+#X obj 991 313 hsl 128 15 0 20 0 1 \$1-tremolo-rate empty rate_(Hz)
 -2 -8 0 10 -262144 -1 -1 900 1;
-#X obj 995 368 hsl 128 15 0 1 0 1 \$1-tremolo-smooth empty smooth -2
+#X obj 991 368 hsl 128 15 0 1 0 1 \$1-tremolo-smooth empty smooth -2
 -8 0 10 -262144 -1 -1 0 1;
-#X obj 995 400 hsl 128 15 0 1 0 1 \$1-tremolo-depth empty depth -2
+#X obj 991 400 hsl 128 15 0 1 0 1 \$1-tremolo-depth empty depth -2
 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 660 251 cnv 15 160 15 empty empty Filter(1) 10 8 0 12 -191407
 -66577 0;
@@ -247,21 +247,21 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 823 251 cnv 15 160 15 empty empty 3_Band_EQ(2) 10 8 0 12 -191407
 -66577 0;
 #X obj 823 275 tgl 15 0 \$1-3eq-enable empty enable 17 7 0 10 -262144
--1 -1 0 1;
+-1 -1 1 1;
 #X obj 891 275 bng 15 250 50 0 \$1-3eq-moveup empty up 17 7 0 10 -262144
 -1 -1;
 #X obj 938 275 bng 15 250 50 0 \$1-3eq-movedown empty down 17 7 0 10
 -262144 -1 -1;
 #X obj 826 313 hsl 128 15 -36 36 0 1 \$1-3eq-lowgain empty low_(dB)
--2 -8 0 10 -262144 -1 -1 0 1;
+-2 -8 0 10 -262144 -1 -1 6400 1;
 #X obj 826 346 hsl 128 15 -36 36 0 1 \$1-3eq-midgain empty mid-gain_(dB)
--2 -8 0 10 -262144 -1 -1 8100 1;
+-2 -8 0 10 -262144 -1 -1 6500 1;
 #X obj 826 378 hsl 128 15 400 3500 0 1 \$1-3eq-midfreq empty mid-freq_(Hz)
 -2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 826 410 hsl 128 15 20 1000 0 1 \$1-3eq-midbw empty mid-bw_(Hz)
--2 -8 0 10 -262144 -1 -1 12700 1;
+-2 -8 0 10 -262144 -1 -1 4300 1;
 #X obj 826 442 hsl 128 15 -36 36 0 1 \$1-3eq-highgain empty high_(dB)
--2 -8 0 10 -262144 -1 -1 0 1;
+-2 -8 0 10 -262144 -1 -1 6400 1;
 #X msg 63 487 70 127;
 #X msg 114 488 71 127;
 #X msg 166 488 72 127;
@@ -294,11 +294,16 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X msg 498 698 set \$1 \$2 \$3 \$4 \$5 \$6 \$7 \$8;
 #X msg 498 722 0 1 2 3 4 5 6 7;
 #X floatatom 664 394 5 0 0 0 - - -, f 5;
-#X floatatom 992 330 5 0 0 0 - - -, f 5;
-#X floatatom 659 550 5 0 0 0 - - -, f 5;
-#X floatatom 824 581 5 0 0 0 - - -, f 5;
+#X floatatom 988 330 5 0 0 0 - - -, f 5;
+#X floatatom 659 561 5 0 0 0 - - -, f 5;
+#X floatatom 824 592 5 0 0 0 - - -, f 5;
 #X floatatom 501 357 5 0 0 0 - - -, f 5;
-#X floatatom 501 550 5 0 0 0 - - -, f 5;
+#X floatatom 501 561 5 0 0 0 - - -, f 5;
+#X floatatom 919 328 5 0 0 0 - - -, f 5;
+#X floatatom 919 361 5 0 0 0 - - -, f 5;
+#X floatatom 919 393 5 0 0 0 - - -, f 5;
+#X floatatom 919 425 5 0 0 0 - - -, f 5;
+#X floatatom 919 457 5 0 0 0 - - -, f 5;
 #X connect 18 0 28 0;
 #X connect 19 0 29 0;
 #X connect 20 0 30 0;
@@ -328,6 +333,11 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X connect 96 0 152 0;
 #X connect 103 0 150 0;
 #X connect 110 0 149 0;
+#X connect 120 0 155 0;
+#X connect 121 0 156 0;
+#X connect 122 0 157 0;
+#X connect 123 0 158 0;
+#X connect 124 0 159 0;
 #X connect 125 0 61 0;
 #X connect 126 0 61 0;
 #X connect 127 0 61 0;
