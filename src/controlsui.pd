@@ -1,4 +1,4 @@
-#N canvas 120 206 1208 759 10;
+#N canvas 117 210 1208 759 10;
 #X obj 186 57 vsl 15 128 20 20000 0 0 \$1-filtercutoff empty cutoff
 -10 -9 0 10 -262144 -1 -1 0 1;
 #X obj 208 92 vradio 15 1 0 3 \$1-filterselect empty empty 0 -8 0 10
@@ -21,9 +21,9 @@ release 52 7 0 10 -262144 -1 -1 0 1;
 #X obj 421 13 cnv 15 200 25 empty empty LFO 20 12 0 20 -257985 -66577
 0;
 #X obj 433 57 vsl 15 128 0.25 10 0 0 \$1-lforate empty rate_(Hz) -5
--9 0 10 -262144 -1 -1 6700 1;
+-9 0 10 -262144 -1 -1 0 1;
 #X obj 500 57 vsl 15 128 0 1 0 0 \$1-lfodepth empty depth -5 -9 0 10
--262144 -1 -1 12700 1;
+-262144 -1 -1 0 1;
 #X obj 543 64 vradio 15 1 0 4 \$1-lfoconnection empty target 0 -8 0
 10 -262144 -1 -1 0;
 #X text 561 78 volume;
@@ -95,19 +95,19 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 991 639 hsl 128 15 0 1 0 1 \$1-rev-wet empty wet -2 -8 0 10
 -262144 -1 -1 9000 1;
 #X obj 504 542 hsl 128 15 0 1000 0 0 \$1-del-delay empty delay_(ms)
--2 -8 0 10 -262144 -1 -1 6300 1;
+-2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 504 578 hsl 128 15 0 0.95 0 0 \$1-del-feedback empty feedback
--2 -8 0 10 -262144 -1 -1 7400 1;
+-2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 504 643 hsl 128 15 0 1 0 0 \$1-del-wet empty wet -2 -8 0 10
--262144 -1 -1 12700 1;
+-262144 -1 -1 0 1;
 #X obj 662 542 hsl 128 15 0 2 0 0 \$1-flg-freq empty freq_(Hz) -2 -8
-0 10 -262144 -1 -1 1300 1;
+0 10 -262144 -1 -1 0 1;
 #X obj 662 578 hsl 128 15 0 1 0 0 \$1-flg-width empty width -2 -8 0
-10 -262144 -1 -1 12700 1;
+10 -262144 -1 -1 0 1;
 #X obj 662 609 hsl 128 15 0 1 0 0 \$1-flg-feedback empty feedback -2
--8 0 10 -262144 -1 -1 12700 1;
+-8 0 10 -262144 -1 -1 0 1;
 #X obj 662 643 hsl 128 15 0 1 0 0 \$1-flg-wet empty wet -2 -8 0 10
--262144 -1 -1 12700 1;
+-262144 -1 -1 0 1;
 #X obj 117 522 send \$1-noteon;
 #X obj 117 582 send \$1-noteoff;
 #X obj 18 360 openpanel;
@@ -195,7 +195,7 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 991 607 hsl 128 15 0 1 0 1 \$1-rev-spread empty stereo_spread
 -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 504 610 hsl 128 15 0 1 0 0 \$1-del-spread empty spread -2 -8
-0 10 -262144 -1 -1 12700 1;
+0 10 -262144 -1 -1 0 1;
 #X obj 18 380 s \$1-filename;
 #X obj 824 480 cnv 15 160 15 empty empty Chorus(6) 10 8 0 12 -191407
 -66577 0;
@@ -222,9 +222,9 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 1103 275 bng 15 250 50 0 \$1-tremolo-movedown empty down 17
 7 0 10 -262144 -1 -1;
 #X obj 991 313 hsl 128 15 0 20 0 1 \$1-tremolo-rate empty rate_(Hz)
--2 -8 0 10 -262144 -1 -1 5300 1;
+-2 -8 0 10 -262144 -1 -1 1400 1;
 #X obj 991 352 hsl 128 15 0 1 0 1 \$1-tremolo-smooth empty smooth -2
--8 0 10 -262144 -1 -1 0 1;
+-8 0 10 -262144 -1 -1 12700 1;
 #X obj 991 384 hsl 128 15 0 1 0 1 \$1-tremolo-depth empty depth -2
 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 660 251 cnv 15 160 15 empty empty Filter(1) 10 8 0 12 -191407
@@ -236,7 +236,7 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 775 275 bng 15 250 50 0 \$1-fxfilter-movedown empty down 17
 7 0 10 -262144 -1 -1;
 #X obj 667 375 hsl 128 15 20 20000 0 0 \$1-fxfilter-freq empty freq_(Hz)
--2 -8 0 10 -262144 -1 -1 100 1;
+-2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 667 424 hsl 128 15 0 30 0 0 \$1-fxfilter-q empty q_(dB?) -2
 -8 0 10 -262144 -1 -1 0 1;
 #X obj 666 318 hradio 15 1 0 3 \$1-fxfilter-mode empty mode 0 -8 0
@@ -286,9 +286,9 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 612 275 bng 15 250 50 0 \$1-gainer-movedown empty down 17 7
 0 10 -262144 -1 -1;
 #X obj 504 339 hsl 128 15 -50 12 0 0 \$1-gainer-gain empty gain_(dB)
--2 -8 0 10 -262144 -1 -1 12700 1;
+-2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 504 397 hsl 128 15 0 1 0 0 \$1-gainer-pan empty pan -2 -8 0
-10 -262144 -1 -1 6200 1;
+10 -262144 -1 -1 0 1;
 #X msg 265 418 36 127;
 #X msg 413 548 36;
 #X msg 498 698 set \$1 \$2 \$3 \$4 \$5 \$6 \$7 \$8;
@@ -304,11 +304,12 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X floatatom 919 425 5 0 0 0 - - -, f 5;
 #X floatatom 919 457 5 0 0 0 - - -, f 5;
 #X obj 744 390 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 177.323 256;
+-262144 -1 -1 0 256;
 #X obj 743 439 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
 -262144 -1 -1 0 256;
 #X obj 414 188 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 5.3937 256;
+-262144 -1 -1 0 256;
+#X floatatom 597 412 5 0 0 0 - - -, f 5;
 #X connect 12 0 161 0;
 #X connect 18 0 28 0;
 #X connect 19 0 29 0;
@@ -357,6 +358,7 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X connect 137 0 136 0;
 #X connect 138 0 136 0;
 #X connect 143 0 152 0;
+#X connect 144 0 162 0;
 #X connect 145 0 61 0;
 #X connect 146 0 62 0;
 #X connect 147 0 148 0;
