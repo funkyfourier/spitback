@@ -1,4 +1,4 @@
-#N canvas 1687 263 1010 605 10;
+#N canvas 1677 255 1010 605 10;
 #X obj 13 338 openpanel;
 #X obj 13 320 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
@@ -16,9 +16,9 @@
 #X obj 13 733 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 13 795 send \$1-filename;
-#X obj 331 321 hsl 128 15 0 16482 0 0 \$1-samplestart-0 \$1-samplestart-ui-0
+#X obj 331 321 hsl 128 15 0 17361 0 0 \$1-samplestart-0 \$1-samplestart-ui-0
 samplestart -2 -8 0 10 -262144 -1 -1 0 1;
-#X obj 332 377 hsl 128 15 0 16482 0 0 \$1-sampleend-0 \$1-sampleend-ui-0
+#X obj 332 377 hsl 128 15 0 17361 0 0 \$1-sampleend-0 \$1-sampleend-ui-0
 sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X floatatom 329 395 10 0 0 0 - #1-sampleend-0 -, f 10;
 #X floatatom 328 342 10 0 0 0 - #1-samplestart-0 -, f 10;
@@ -133,8 +133,8 @@ sampleend -2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 484 320 hsl 128 15 -12 12 0 0 \$1-finetune-0 \$1-finetune-0
 finetune -2 -8 0 10 -262144 -1 -1 0 1;
 #X floatatom 481 340 5 0 0 0 - #1-finetune-0 -, f 5;
-#X obj 483 377 hsl 128 15 0 1 0 0 \$1-volume-0 \$1-volume-0 volume
--2 -8 0 10 -262144 -1 -1 12700 1;
+#X obj 483 377 hsl 128 15 -50 0 0 0 \$1-volume-0 \$1-volume-0 volume
+-2 -8 0 10 -262144 -1 -1 9300 1;
 #X floatatom 480 397 5 0 0 0 - #1-volume-0 -, f 5;
 #X msg 90 44 36 127;
 #X msg 211 44 38 127;
