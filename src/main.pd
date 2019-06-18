@@ -1,4 +1,4 @@
-#N canvas 204 406 888 574 10;
+#N canvas 520 225 888 574 10;
 #X obj 294 528 dac~;
 #N canvas 0 50 450 300 (subpatch) 0;
 #X array outputmonitor 100 float 0;
@@ -8,7 +8,7 @@
 #X obj 572 430 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 572 454 metro 50;
-#N canvas 239 499 925 331 ticks 0;
+#N canvas 547 316 662 331 ticks 1;
 #X obj 207 141 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 194 104 receive timerstart;
@@ -16,7 +16,7 @@
 #X msg 188 81 stop;
 #X obj 188 304 send android-tick;
 #X obj 283 283 send android-semitick;
-#N canvas 701 710 227 314 tickcounter 0;
+#N canvas 320 451 227 314 tickcounter 1;
 #X obj 21 10 inlet;
 #X obj 53 225 outlet tick;
 #X obj 82 131 outlet semitick;
@@ -363,7 +363,7 @@
 -1;
 #X obj 5 15 controlsui testsampleplayer;
 #X msg 350 49 loadbang;
-#N canvas 1685 439 335 78 test 1;
+#N canvas 943 277 335 78 test 0;
 #X obj 10 30 drumplayer testdrumplayer;
 #X obj 10 10 sampleplayer testsampleplayer;
 #X restore 7 270 pd test;
