@@ -1,4 +1,4 @@
-#N canvas 2143 189 690 649 10;
+#N canvas 2089 189 690 649 10;
 #X obj 133 97 soundfiler;
 #X obj 277 13 loadbang;
 #X obj 133 22 receive \$1-filename;
@@ -440,7 +440,7 @@
 #X obj 515 162 symbol \$1;
 #X obj 444 179 pack f s;
 #X obj 446 69 tabwrite \$1-tmp;
-#N canvas 1981 216 658 396 polyconnections 1;
+#N canvas 838 177 658 396 polyconnections 1;
 #X obj 209 23 receive \$1-noteon;
 #X obj 218 45 receive \$1-noteoff;
 #X obj 218 67 pack 0 0;
@@ -452,7 +452,7 @@
 #X msg 223 153 0;
 #X msg 314 153 1;
 #X obj 190 118 pack f f f;
-#N canvas 165 566 277 127 sendnoteon 0;
+#N canvas 138 596 277 127 sendnoteon 0;
 #X obj 7 10 inlet;
 #X obj 7 50 symbol \$1;
 #X msg 84 50 \$2;
