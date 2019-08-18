@@ -1,4 +1,4 @@
-#N canvas 1695 204 713 486 10;
+#N canvas 580 338 713 486 10;
 #X obj 34 365 inlet~;
 #X obj 33 453 outlet~;
 #X obj 247 32 inlet rate;
@@ -21,7 +21,7 @@
 #X msg 268 360 1 \$1;
 #X obj 380 54 r \$0-rate;
 #X obj 300 194 r \$0-rate;
-#X obj 254 85 s \$0-rate;
+#X obj 254 132 s \$0-rate;
 #X obj 108 365 inlet~;
 #X obj 108 429 *~;
 #X obj 107 453 outlet~;
@@ -31,7 +31,7 @@
 #X msg 162 363 \$2 \$1;
 #X obj 587 12 inlet enable;
 #X obj 587 53 switch~;
-#N canvas 1755 698 205 309 hz-to-ms 0;
+#N canvas 1728 715 205 309 hz-to-ms 0;
 #X obj 54 11 inlet hz;
 #X obj 54 257 outlet ms;
 #X obj 54 65 > 0;
@@ -59,13 +59,14 @@
 #X connect 10 0 11 0;
 #X connect 10 1 7 1;
 #X connect 11 0 7 0;
-#X restore 247 60 pd hz-to-ms;
+#X restore 247 107 pd hz-to-ms;
 #X obj 412 105 / 4;
 #X obj 300 217 / 2;
 #X obj 600 33 s \$0-startstop;
 #X obj 215 11 r \$0-startstop;
+#X obj 247 63 t b f;
 #X connect 0 0 4 0;
-#X connect 2 0 32 0;
+#X connect 2 0 37 0;
 #X connect 3 0 11 0;
 #X connect 4 0 1 0;
 #X connect 5 0 7 0;
@@ -102,3 +103,5 @@
 #X connect 33 0 9 1;
 #X connect 34 0 10 0;
 #X connect 36 0 5 0;
+#X connect 37 0 5 0;
+#X connect 37 1 32 0;
