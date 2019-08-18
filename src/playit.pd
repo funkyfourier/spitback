@@ -1,4 +1,4 @@
-#N canvas 1876 217 828 578 10;
+#N canvas 1849 217 828 578 10;
 #X obj 154 272 *~;
 #X msg 411 47 1;
 #X msg 455 91 0;
@@ -8,7 +8,7 @@
 #X msg 599 123 0;
 #X obj 599 92 loadbang;
 #X obj 153 213 tabread4~ \$1;
-#N canvas 1906 221 735 574 filtersmanager 1;
+#N canvas 1879 221 735 574 filtersmanager 1;
 #X obj 33 293 inlet~;
 #X obj 33 503 outlet~;
 #X text 400 373 filter connection 0=none \, 1=highpass \, 2=lowpass
@@ -66,14 +66,14 @@
 #X obj 505 390 r \$2-filterselect;
 #X obj 429 159 adsr 0 0 1 0;
 #X msg 344 287 \$1 30;
-#X obj 344 267 - 20;
-#X obj 329 352 +~ 20;
 #X obj 329 330 *~;
 #X obj 344 308 vline~;
 #X obj 344 247 r \$2-filtercutoff;
+#X obj 344 267 - 200;
+#X obj 329 352 +~ 200;
 #X connect 0 0 6 0;
 #X connect 0 0 7 0;
-#X connect 3 0 26 0;
+#X connect 3 0 24 0;
 #X connect 4 0 3 0;
 #X connect 5 0 6 1;
 #X connect 6 0 1 0;
@@ -94,12 +94,12 @@
 #X connect 21 0 9 0;
 #X connect 21 0 10 0;
 #X connect 22 0 3 1;
-#X connect 23 0 27 0;
-#X connect 24 0 23 0;
-#X connect 25 0 7 1;
-#X connect 26 0 25 0;
-#X connect 27 0 26 1;
-#X connect 28 0 24 0;
+#X connect 23 0 25 0;
+#X connect 24 0 28 0;
+#X connect 25 0 24 1;
+#X connect 26 0 27 0;
+#X connect 27 0 23 0;
+#X connect 28 0 7 1;
 #X restore 460 454 pd filtersmanager;
 #X obj 154 437 *~;
 #X obj 172 387 expr~ 1-$v1;
