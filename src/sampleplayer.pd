@@ -1,4 +1,4 @@
-#N canvas 2089 189 690 649 10;
+#N canvas 2062 189 690 649 10;
 #X obj 133 97 soundfiler;
 #X obj 277 13 loadbang;
 #X obj 133 22 receive \$1-filename;
@@ -84,7 +84,7 @@
 #X connect 35 0 23 0;
 #X restore 203 163 pd makeguardpoints;
 #X obj 133 168 - 1;
-#N canvas 1921 81 863 943 automationhub 0;
+#N canvas 1894 81 863 943 automationhub 1;
 #X obj 14 99 r \$1-auto-attack;
 #X obj 15 40 line;
 #X obj 15 17 r \$1-auto-volume;
@@ -440,7 +440,7 @@
 #X obj 515 162 symbol \$1;
 #X obj 444 179 pack f s;
 #X obj 446 69 tabwrite \$1-tmp;
-#N canvas 838 177 658 396 polyconnections 1;
+#N canvas 838 177 658 396 polyconnections 0;
 #X obj 209 23 receive \$1-noteon;
 #X obj 218 45 receive \$1-noteoff;
 #X obj 218 67 pack 0 0;
