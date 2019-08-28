@@ -1,4 +1,4 @@
-#N canvas 349 172 888 556 10;
+#N canvas 319 148 888 556 10;
 #X obj 294 528 dac~;
 #N canvas 0 50 450 300 (subpatch) 0;
 #X array outputmonitor 100 float 0;
@@ -8,7 +8,7 @@
 #X obj 572 430 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 572 454 metro 50;
-#N canvas 457 357 460 322 ticks 1;
+#N canvas 447 349 460 322 ticks 0;
 #X obj 207 124 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 194 87 receive timerstart;
@@ -362,7 +362,7 @@
 -1;
 #X obj 5 15 controlsui testsampleplayer;
 #X msg 350 49 loadbang;
-#N canvas 920 92 335 78 test 0;
+#N canvas 880 89 335 78 test 1;
 #X obj 10 30 drumplayer testdrumplayer;
 #X obj 10 10 sampleplayer testsampleplayer;
 #X restore 7 270 pd test;
@@ -422,6 +422,41 @@
 #X obj 292 313 logvolume -50 0;
 #X msg 292 334 \$1 50;
 #X obj 292 356 line~;
+#N canvas 860 245 438 405 lfowaves 0;
+#X obj 80 116 soundfiler;
+#X obj 4 22 table \$0-wave;
+#X obj 80 74 float \$0;
+#X obj 80 53 loadbang;
+#X obj 80 143 send samplesize;
+#X obj 80 199 until;
+#X obj 80 292 tabread \$0-wave;
+#X obj 80 259 trigger float float;
+#X obj 80 227 float 0;
+#X obj 144 226 + 1;
+#X obj 80 171 trigger float float;
+#X msg 191 197 resize 44100;
+#X msg 80 95 read -resize ../sounds/sine1hz.wav \$1-wave;
+#X obj 80 322 expr ($f1+1)/2;
+#X obj 165 20 table lfowave-sine;
+#X obj 80 355 tabwrite lfowave-sine;
+#X obj 191 225 s lfowave-sine;
+#X connect 0 0 4 0;
+#X connect 0 0 10 0;
+#X connect 2 0 12 0;
+#X connect 3 0 2 0;
+#X connect 5 0 8 0;
+#X connect 6 0 13 0;
+#X connect 7 0 6 0;
+#X connect 7 1 15 1;
+#X connect 8 0 7 0;
+#X connect 8 0 9 0;
+#X connect 9 0 8 1;
+#X connect 10 0 5 0;
+#X connect 10 1 11 0;
+#X connect 11 0 16 0;
+#X connect 12 0 0 0;
+#X connect 13 0 15 0;
+#X restore 8 298 pd lfowaves;
 #X connect 3 0 4 0;
 #X connect 4 0 2 0;
 #X connect 7 0 10 0;
