@@ -1,4 +1,4 @@
-#N canvas 265 201 888 556 10;
+#N canvas 349 172 888 556 10;
 #X obj 294 528 dac~;
 #N canvas 0 50 450 300 (subpatch) 0;
 #X array outputmonitor 100 float 0;
@@ -8,13 +8,12 @@
 #X obj 572 430 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 572 454 metro 50;
-#N canvas 467 365 460 322 ticks 0;
+#N canvas 457 357 460 322 ticks 1;
 #X obj 207 124 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 194 87 receive timerstart;
 #X obj 21 11 receive timerstop;
 #X msg 188 64 stop;
-#X obj 242 235 send android-tick;
 #N canvas 874 317 453 254 tickcounter 0;
 #X obj 21 10 inlet;
 #X obj 80 96 + 1;
@@ -63,23 +62,20 @@
 #X obj 231 110 receive semitickperiod;
 #X msg 231 135 tempo \$1 samp;
 #X obj 188 163 metro;
-#X obj 188 256 send android-tick;
+#X obj 188 238 send android-tick;
 #X obj 188 211 0;
-#X obj 242 211 2;
 #X obj 21 46 t b b;
-#X connect 0 0 9 0;
-#X connect 1 0 9 0;
-#X connect 2 0 13 0;
-#X connect 3 0 9 0;
-#X connect 5 0 11 0;
-#X connect 5 2 12 0;
+#X connect 0 0 8 0;
+#X connect 1 0 8 0;
+#X connect 2 0 11 0;
+#X connect 3 0 8 0;
+#X connect 4 0 10 0;
+#X connect 6 0 7 0;
 #X connect 7 0 8 0;
-#X connect 8 0 9 0;
-#X connect 9 0 5 0;
-#X connect 11 0 10 0;
-#X connect 12 0 4 0;
-#X connect 13 0 6 0;
-#X connect 13 1 3 0;
+#X connect 8 0 4 0;
+#X connect 10 0 9 0;
+#X connect 11 0 5 0;
+#X connect 11 1 3 0;
 #X restore 10 181 pd ticks;
 #N canvas 47 297 645 379 sampleplayers 0;
 #N canvas 65 546 450 300 subpatchsampler1 0;
@@ -366,7 +362,7 @@
 -1;
 #X obj 5 15 controlsui testsampleplayer;
 #X msg 350 49 loadbang;
-#N canvas 947 92 335 78 test 0;
+#N canvas 920 92 335 78 test 0;
 #X obj 10 30 drumplayer testdrumplayer;
 #X obj 10 10 sampleplayer testsampleplayer;
 #X restore 7 270 pd test;
