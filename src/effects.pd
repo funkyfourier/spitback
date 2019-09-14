@@ -362,7 +362,7 @@
 #X obj 683 267 s \$0-moveup;
 #X obj 683 218 r \$1-3eq-moveup;
 #X obj 833 218 r \$1-3eq-movedown;
-#N canvas 1891 449 476 277 fxfilter 1;
+#N canvas 1891 449 476 277 fxfilter 0;
 #X obj 92 7 inlet~;
 #X obj 129 253 outlet~;
 #X obj 321 7 loadbang;
@@ -372,7 +372,7 @@
 #X obj 45 139 == 0;
 #X obj 27 164 *~;
 #X obj 57 164 *~;
-#N canvas 732 555 633 228 filter 1;
+#N canvas 732 555 633 228 filter 0;
 #X obj 14 106 faustreson~;
 #X obj 150 106 faustreson~;
 #X obj 151 16 inlet~;
