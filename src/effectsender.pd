@@ -1,4 +1,4 @@
-#N canvas 848 410 348 218 10;
+#N canvas 821 410 348 218 10;
 #X obj 70 22 inlet;
 #X obj 70 54 t f b;
 #X obj 70 99 pack;
@@ -7,7 +7,9 @@
 #X msg 59 145 set \$2-\$1L;
 #X obj 59 171 s fx-\$1-\$2L;
 #X obj 141 171 s fx-\$1-\$2R;
+#X obj 180 53 print fx \$2;
 #X connect 0 0 1 0;
+#X connect 0 0 8 0;
 #X connect 1 0 2 0;
 #X connect 1 1 3 0;
 #X connect 2 0 4 0;

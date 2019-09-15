@@ -1,4 +1,4 @@
-#N canvas 691 328 592 489 10;
+#N canvas 779 304 592 489 10;
 #X obj 16 181 catch~ \$1-instrumentoutput;
 #X obj 235 20 receive \$1-noteon;
 #X obj 33 263 line~;
@@ -296,7 +296,7 @@
 #X obj 35 307 r \$1-pan;
 #X obj 17 328 pan;
 #X obj 17 439 throw~ mainoutputL;
-#X obj 83 418 throw~ mainoutputR;
+#X obj 111 418 throw~ mainoutputR;
 #X obj 281 194 playdrumpoly \$1;
 #X obj 235 254 playdrumpoly \$1;
 #X obj 250 234 playdrumpoly \$1;
@@ -304,14 +304,14 @@
 #X msg 151 246 1 0;
 #X obj 16 283 *~;
 #X obj 33 223 logvolume -50 0;
-#X obj 103 311 r \$1-mute;
-#X msg 103 350 \$1 50;
-#X obj 103 372 line~;
+#X obj 126 311 r \$1-mute;
+#X msg 126 350 \$1 50;
+#X obj 126 372 line~;
 #X obj 17 396 *~;
-#X obj 84 396 *~;
-#X obj 182 334 loadbang;
-#X msg 182 355 1 0;
-#X obj 103 331 expr 1-$i1;
+#X obj 110 396 *~;
+#X obj 205 334 loadbang;
+#X msg 205 355 1 0;
+#X obj 126 331 expr 1-$i1;
 #X obj 265 214 playdrumpoly \$1;
 #X obj 342 111 playdrumpoly \$1;
 #X obj 296 173 playdrumpoly \$1;
@@ -319,7 +319,7 @@
 #X obj 327 132 playdrumpoly \$1;
 #X obj 235 87 route 1 2 3 4 5 6 7 8;
 #X obj 235 41 poly 8 1;
-#X obj 14 362 effectschain~;
+#X obj 16 365 effectschain~ \$1;
 #X connect 0 0 21 0;
 #X connect 1 0 37 0;
 #X connect 2 0 21 1;
