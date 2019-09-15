@@ -1,4 +1,4 @@
-#N canvas 1984 244 851 294 10;
+#N canvas 1964 228 796 294 10;
 #X obj 61 6 inlet~;
 #X obj 313 4 inlet~;
 #X obj 211 159 outlet~;
@@ -25,7 +25,7 @@
 #X obj 694 23 inlet spread;
 #X obj 694 65 s \$0-spread;
 #X obj 109 78 *~ 1;
-#N canvas 1575 419 590 501 LEFT 1;
+#N canvas 1575 419 590 501 LEFT 0;
 #N canvas 65 205 522 372 comb-1 0;
 #X obj 216 112 r \$0-damping;
 #X obj 152 208 delwrite~ \$0-rev1 26;
@@ -128,7 +128,7 @@
 #X connect 5 0 2 1;
 #X connect 6 0 1 0;
 #X restore 366 190 pd comb-6;
-#N canvas 739 205 474 324 comb-7 1;
+#N canvas 739 205 474 324 comb-7 0;
 #X obj 193 101 r \$0-damping;
 #X obj 131 135 lop~ 20000;
 #X obj 131 158 *~ 0.5;
@@ -484,8 +484,6 @@
 #X connect 14 0 12 0;
 #X connect 15 0 8 0;
 #X restore 178 30 pd RIGHT;
-#X obj 791 23 inlet;
-#X obj 791 56 switch~;
 #X text 42 192 'spread' is the stretch factor of the stereo field:
 spread = 0: mono spread < 1: decrease in stereo width spread = 1: no
 change spread > 1: increase in stereo width, f 42;
@@ -511,22 +509,21 @@ change spread > 1: increase in stereo width, f 42;
 #X connect 14 0 13 0;
 #X connect 15 0 14 0;
 #X connect 16 0 10 0;
-#X connect 19 0 38 0;
+#X connect 19 0 36 0;
 #X connect 20 0 17 0;
 #X connect 21 0 18 0;
 #X connect 22 0 4 2;
-#X connect 23 0 39 0;
+#X connect 23 0 37 0;
 #X connect 25 0 4 0;
 #X connect 26 0 25 0;
 #X connect 27 0 25 1;
 #X connect 28 0 4 1;
 #X connect 29 0 28 1;
 #X connect 30 0 28 0;
-#X connect 31 0 32 0;
-#X connect 34 0 36 0;
-#X connect 34 1 35 1;
-#X connect 35 0 37 0;
-#X connect 36 0 35 0;
-#X connect 37 0 15 0;
-#X connect 38 0 34 0;
-#X connect 39 0 24 0;
+#X connect 32 0 34 0;
+#X connect 32 1 33 1;
+#X connect 33 0 35 0;
+#X connect 34 0 33 0;
+#X connect 35 0 15 0;
+#X connect 36 0 32 0;
+#X connect 37 0 24 0;
