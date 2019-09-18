@@ -1,4 +1,4 @@
-#N canvas 1736 257 943 681 10;
+#N canvas 1709 257 943 681 10;
 #X obj 54 20 inlet~;
 #X obj 53 466 outlet~;
 #X obj 229 22 inlet~;
@@ -635,7 +635,6 @@
 #X obj 515 227 fxlist 8, f 28;
 #X obj 778 363 table \$1-fxlist;
 #X obj 630 364 effectsender \$0 6;
-#X obj 762 440 print setinput \$1;
 #X obj 647 342 effectsender \$0 7;
 #X obj 564 446 effectsender \$0 2;
 #X obj 548 466 effectsender \$0 1;
@@ -643,8 +642,6 @@
 #X obj 581 425 effectsender \$0 3;
 #X obj 614 385 effectsender \$0 5;
 #X obj 597 405 effectsender \$0 4;
-#X obj 778 340 print list \$1;
-#X obj 434 554 print setoutput \$1;
 #X connect 0 0 14 0;
 #X connect 2 0 13 0;
 #X connect 7 0 33 0;
@@ -663,17 +660,14 @@
 #X connect 31 0 32 0;
 #X connect 32 0 33 0;
 #X connect 33 0 21 0;
-#X connect 33 0 45 0;
-#X connect 33 1 40 0;
-#X connect 33 2 39 0;
-#X connect 33 3 38 0;
-#X connect 33 4 41 0;
-#X connect 33 5 43 0;
-#X connect 33 6 42 0;
+#X connect 33 1 39 0;
+#X connect 33 2 38 0;
+#X connect 33 3 37 0;
+#X connect 33 4 40 0;
+#X connect 33 5 42 0;
+#X connect 33 6 41 0;
 #X connect 33 7 35 0;
-#X connect 33 8 37 0;
+#X connect 33 8 36 0;
 #X connect 33 9 18 0;
-#X connect 33 9 36 0;
 #X connect 33 10 9 0;
 #X connect 33 10 8 0;
-#X connect 33 10 44 0;
