@@ -1,4 +1,4 @@
-#N canvas 521 518 275 209 10;
+#N canvas 501 562 275 209 10;
 #X obj 30 7 table \$1-mixerparams;
 #X obj 31 46 r \$1-volume;
 #X obj 31 96 r \$1-pan;
