@@ -308,7 +308,7 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 743 439 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
 -262144 -1 -1 0 256;
 #X obj 414 188 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 0.25 256;
+-262144 -1 -1 0 256;
 #X floatatom 597 412 5 0 0 0 - - -, f 5;
 #X obj 167 188 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
 -262144 -1 -1 0 256;
