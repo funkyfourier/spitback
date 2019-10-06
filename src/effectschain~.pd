@@ -1,4 +1,4 @@
-#N canvas 1860 281 943 681 10;
+#N canvas 1833 281 943 681 10;
 #X obj 54 20 inlet~;
 #X obj 53 466 outlet~;
 #X obj 229 22 inlet~;
@@ -613,7 +613,7 @@
 #X obj 359 135 s \$1-rev-enable;
 #X obj 127 380 throw~ \$0-fxoutputL;
 #X obj 308 381 throw~ \$0-fxoutputR;
-#N canvas 444 436 450 300 feedback 0;
+#N canvas 1918 343 450 300 feedback 1;
 #X obj 179 59 inlet;
 #X obj 179 224 outlet;
 #X obj 179 177 * 0.28;
