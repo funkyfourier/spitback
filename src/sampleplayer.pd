@@ -1,4 +1,4 @@
-#N canvas 1941 157 690 649 10;
+#N canvas 1887 157 690 649 10;
 #N canvas 1894 81 863 943 automationhub 0;
 #X obj 14 99 r \$1-auto-attack;
 #X obj 15 40 line;
@@ -351,7 +351,7 @@
 #X obj 515 162 symbol \$1;
 #X obj 444 179 pack f s;
 #X obj 446 69 tabwrite \$1-tmp;
-#N canvas 1652 334 1060 562 polyconnections 0;
+#N canvas 1625 334 1060 562 polyconnections 1;
 #X obj 413 14 receive \$1-noteon;
 #X obj 422 36 receive \$1-noteoff;
 #X obj 422 58 pack 0 0;
@@ -405,7 +405,7 @@
 #X obj 896 347 playit \$1-wave \$1;
 #X obj 394 228 route 1 2 3 4 5 6 7 8;
 #X obj 545 228 route 1 2 3 4 5 6 7 8;
-#X obj 413 81 poly 8 1;
+#X obj 413 83 poly 8 1;
 #X connect 0 0 27 0;
 #X connect 1 0 2 0;
 #X connect 2 0 27 0;
