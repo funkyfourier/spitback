@@ -1,4 +1,4 @@
-#N canvas 1661 243 902 688 10;
+#N canvas 1634 243 902 688 10;
 #X obj 250 482 inlet~;
 #X obj 114 490 inlet~;
 #X obj 449 579 outlet~;
@@ -27,6 +27,9 @@
 #X obj 774 34 inlet wet;
 #X obj 774 75 s \$0-wet;
 #X obj 529 223 faustchorus~;
+#X obj 423 72 loadbang;
+#X msg 423 114 samplerate \$1;
+#X obj 423 93 samplerate~;
 #X connect 0 0 3 0;
 #X connect 0 0 27 1;
 #X connect 1 0 2 0;
@@ -60,3 +63,6 @@
 #X connect 27 1 10 0;
 #X connect 27 2 11 0;
 #X connect 27 3 13 0;
+#X connect 28 0 30 0;
+#X connect 29 0 27 0;
+#X connect 30 0 29 0;
