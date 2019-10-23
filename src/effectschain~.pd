@@ -1,4 +1,4 @@
-#N canvas 1667 343 943 681 10;
+#N canvas 1640 343 943 681 10;
 #X obj 54 20 inlet~;
 #X obj 53 466 outlet~;
 #X obj 229 22 inlet~;
@@ -585,10 +585,10 @@
 #X connect 11 0 12 0;
 #X connect 12 0 13 0;
 #X restore 53 206 pd flanger;
-#N canvas 1856 440 450 300 chorus 0;
+#N canvas 1829 440 450 300 chorus 1;
 #X obj 294 22 r \$1-chorus-enable;
-#X obj 81 50 r \$1-chorus-depth;
-#X obj 99 72 r \$1-chorus-speed;
+#X obj 99 71 r \$1-chorus-depth;
+#X obj 81 51 r \$1-chorus-speed;
 #X obj 116 94 r \$1-chorus-spread;
 #X obj 134 116 r \$1-chorus-wet;
 #X obj 294 49 switch~;
@@ -603,8 +603,8 @@
 #X obj 134 203 throw~ \$0-fxoutputR;
 #X obj 47 150 chorus~, f 15;
 #X connect 0 0 5 0;
-#X connect 1 0 15 2;
-#X connect 2 0 15 3;
+#X connect 1 0 15 3;
+#X connect 2 0 15 2;
 #X connect 3 0 15 4;
 #X connect 4 0 15 5;
 #X connect 6 0 15 0;
@@ -616,7 +616,7 @@
 #X connect 15 0 13 0;
 #X connect 15 1 14 0;
 #X restore 53 227 pd chorus;
-#N canvas 1907 342 709 658 reverb 1;
+#N canvas 1907 342 709 658 reverb 0;
 #X obj 171 106 r \$1-rev-damp;
 #X obj 133 84 r \$1-rev-roomsize;
 #X obj 112 387 r \$1-rev-wet;
