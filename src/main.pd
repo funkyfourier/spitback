@@ -1,4 +1,4 @@
-#N canvas 1600 149 888 556 10;
+#N canvas 1600 148 888 556 10;
 #X obj 294 528 dac~;
 #N canvas 0 50 450 300 (subpatch) 0;
 #X array outputmonitor 100 float 0;
@@ -362,7 +362,7 @@
 -1;
 #X obj 5 15 controlsui testsampleplayer;
 #X msg 350 49 loadbang;
-#N canvas 1600 506 953 470 test 1;
+#N canvas 1669 468 953 470 test 0;
 #X obj 10 30 drumplayer testdrumplayer;
 #X obj 202 26 //clone sampleplayer 100;
 #X obj 10 10 sampleplayer testsampleplayer;
