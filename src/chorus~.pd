@@ -1,4 +1,4 @@
-#N canvas 1705 214 772 688 10;
+#N canvas 1651 214 772 688 10;
 #X obj 322 65 inlet~;
 #X obj 226 53 inlet~;
 #X obj 13 598 outlet~;
@@ -27,6 +27,8 @@
 #X obj 349 429 expr 0.5-$f1;
 #X obj 456 401 r \$0-spread;
 #X obj 456 423 expr 0.5+$f1;
+#X obj 299 17 r clearfx;
+#X msg 299 39 clear;
 #X connect 0 0 3 0;
 #X connect 0 0 20 1;
 #X connect 1 0 2 0;
@@ -60,3 +62,5 @@
 #X connect 25 0 22 1;
 #X connect 26 0 27 0;
 #X connect 27 0 24 1;
+#X connect 28 0 29 0;
+#X connect 29 0 20 0;
