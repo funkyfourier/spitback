@@ -206,7 +206,7 @@
 #X restore 486 348 pd subpatchsampler63;
 #N canvas 161 697 450 300 subpatchsampler0 0;
 #X restore 9 31 pd subpatchsampler0;
-#N canvas 218 388 440 476 addsamplertrack 1;
+#N canvas 191 388 440 476 addsamplertrack 0;
 #X obj 64 5 r addsamplertrack;
 #X msg 78 406 \; pd-subpatchsampler\$1 obj 0 0 sampleplayer sound\$1
 ;
@@ -254,7 +254,7 @@
 #X msg 99 429 \; pd dsp 0 \;;
 #X obj 99 400 r dsp-off;
 #X msg 16 429 \; pd dsp 1 \;;
-#N canvas 168 350 294 370 drumplayers 1;
+#N canvas 141 380 294 370 drumplayers 0;
 #N canvas 65 209 450 300 subpatchdrum0 0;
 #X restore 11 30 pd subpatchdrum0;
 #N canvas 65 205 450 300 subpatchdrum1 0;
@@ -319,7 +319,7 @@
 #X restore 155 325 pd subpatchdrum30;
 #N canvas 65 205 450 300 subpatchdrum31 0;
 #X restore 156 347 pd subpatchdrum31;
-#N canvas 698 234 416 523 adddrumtrack 1;
+#N canvas 671 234 416 523 adddrumtrack 0;
 #X obj 46 362 f;
 #X msg 170 161 \; mastervol 0;
 #X msg 114 288 \; mastervol 1;
@@ -456,8 +456,8 @@
 #X connect 11 0 14 0;
 #X connect 12 0 11 0;
 #X restore 8 298 pd lfowaves;
-#X obj 204 287 *~ 0.4;
-#X obj 424 288 *~ 0.4;
+#X obj 204 287 *~ 0.3;
+#X obj 424 288 *~ 0.3;
 #X connect 3 0 4 0;
 #X connect 4 0 2 0;
 #X connect 7 0 10 0;
