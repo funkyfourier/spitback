@@ -1,9 +1,9 @@
-#N canvas 1742 343 943 681 10;
+#N canvas 1773 222 943 681 10;
 #X obj 54 20 inlet~;
 #X obj 53 466 outlet~;
 #X obj 229 22 inlet~;
 #X obj 229 466 outlet~;
-#N canvas 441 332 507 505 3bandeq 1;
+#N canvas 441 332 507 505 3bandeq 0;
 #N canvas 1600 177 998 378 eq 0;
 #X obj 7 9 inlet~;
 #X obj 7 267 outlet~;
@@ -75,7 +75,7 @@
 #X connect 35 0 3 2;
 #X connect 36 0 8 2;
 #X connect 38 0 17 0;
-#X restore 89 280 pd eq, f 17;
+#X restore 89 280 pd eq;
 #X obj 122 75 r \$1-3eq-lowgain;
 #X obj 138 156 r \$1-3eq-midgain;
 #X obj 155 178 r \$1-3eq-midfreq;
@@ -508,7 +508,7 @@
 #X connect 11 0 12 0;
 #X connect 12 0 13 0;
 #X restore 53 160 pd tremolo;
-#N canvas 453 209 926 603 delay 1;
+#N canvas 453 209 926 603 delay 0;
 #X obj 242 109 r \$1-del-delay;
 #X obj 258 134 r \$1-del-feedback;
 #X obj 274 204 r \$1-del-wet;
@@ -661,7 +661,7 @@
 #X connect 15 0 13 0;
 #X connect 15 1 14 0;
 #X restore 53 227 pd chorus;
-#N canvas 1897 201 709 658 reverb 1;
+#N canvas 1870 201 709 658 reverb 1;
 #X obj 171 106 r \$1-rev-damp;
 #X obj 133 84 r \$1-rev-roomsize;
 #X obj 112 387 r \$1-rev-wet;
@@ -691,16 +691,16 @@
 #X obj 290 383 delread4~ \$0-spread;
 #X obj 133 149 * 0.9;
 #X obj 112 243 delwrite~ \$0-spread 200;
-#X obj 290 314 * 200;
 #X obj 96 37 r clearfx;
 #X obj 113 60 r \$1-rev-enable;
 #X obj 113 83 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
+#X obj 290 314 * 100;
 #X connect 0 0 23 2;
 #X connect 1 0 27 0;
 #X connect 2 0 21 0;
 #X connect 3 0 9 0;
-#X connect 4 0 29 0;
+#X connect 4 0 32 0;
 #X connect 5 0 13 0;
 #X connect 5 0 23 0;
 #X connect 6 0 14 0;
@@ -719,14 +719,15 @@
 #X connect 22 0 23 0;
 #X connect 23 0 15 0;
 #X connect 23 0 28 0;
+#X connect 23 0 14 0;
 #X connect 24 0 25 0;
 #X connect 25 0 26 0;
 #X connect 26 0 17 0;
 #X connect 27 0 23 1;
-#X connect 29 0 24 0;
-#X connect 30 0 22 0;
-#X connect 31 0 32 0;
-#X connect 32 0 22 0;
+#X connect 29 0 22 0;
+#X connect 30 0 31 0;
+#X connect 31 0 22 0;
+#X connect 32 0 24 0;
 #X restore 53 249 pd reverb;
 #X obj 540 132 r \$0-movedown;
 #X msg 540 153 movedown \$1;
