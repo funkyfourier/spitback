@@ -1,4 +1,4 @@
-#N canvas 1773 222 943 681 10;
+#N canvas 1719 222 943 681 10;
 #X obj 54 20 inlet~;
 #X obj 53 466 outlet~;
 #X obj 229 22 inlet~;
@@ -661,7 +661,7 @@
 #X connect 15 0 13 0;
 #X connect 15 1 14 0;
 #X restore 53 227 pd chorus;
-#N canvas 1870 201 709 658 reverb 1;
+#N canvas 1843 201 709 658 reverb 1;
 #X obj 171 106 r \$1-rev-damp;
 #X obj 133 84 r \$1-rev-roomsize;
 #X obj 112 387 r \$1-rev-wet;
@@ -710,6 +710,7 @@
 #X connect 10 0 11 0;
 #X connect 11 0 12 0;
 #X connect 15 0 13 0;
+#X connect 15 0 14 0;
 #X connect 16 0 20 0;
 #X connect 17 0 14 0;
 #X connect 18 0 15 1;
@@ -719,7 +720,6 @@
 #X connect 22 0 23 0;
 #X connect 23 0 15 0;
 #X connect 23 0 28 0;
-#X connect 23 0 14 0;
 #X connect 24 0 25 0;
 #X connect 25 0 26 0;
 #X connect 26 0 17 0;
