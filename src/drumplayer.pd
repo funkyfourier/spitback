@@ -1,4 +1,4 @@
-#N canvas 547 326 670 525 10;
+#N canvas 184 179 670 525 10;
 #X obj 16 181 catch~ \$1-instrumentoutput;
 #X obj 347 67 receive \$1-noteon;
 #X obj 33 263 line~;

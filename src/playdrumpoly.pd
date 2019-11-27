@@ -1,4 +1,4 @@
-#N canvas 1689 237 783 677 10;
+#N canvas 780 219 783 677 10;
 #X obj 101 10 inlet noteon;
 #N canvas 279 378 654 370 samplelooper 0;
 #X obj 122 254 samplelooper~;
