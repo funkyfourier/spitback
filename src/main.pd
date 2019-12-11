@@ -77,7 +77,7 @@
 #X connect 11 0 5 0;
 #X connect 11 1 3 0;
 #X restore 10 181 pd ticks;
-#N canvas 164 334 645 379 sampleplayers 1;
+#N canvas 855 580 645 379 sampleplayers 0;
 #N canvas 65 546 450 300 subpatchsampler1 0;
 #X restore 9 52 pd subpatchsampler1;
 #N canvas 65 209 450 300 subpatchsampler2 0;
@@ -206,7 +206,7 @@
 #X restore 486 348 pd subpatchsampler63;
 #N canvas 161 697 450 300 subpatchsampler0 0;
 #X restore 9 31 pd subpatchsampler0;
-#N canvas 2115 311 440 476 addsamplertrack 1;
+#N canvas 2115 311 442 489 addsamplertrack 1;
 #X obj 64 5 r addsamplertrack;
 #X msg 78 406 \; pd-subpatchsampler\$1 obj 0 0 sampleplayer sound\$1
 ;
@@ -251,7 +251,7 @@
 #X msg 99 429 \; pd dsp 0 \;;
 #X obj 99 400 r dsp-off;
 #X msg 16 429 \; pd dsp 1 \;;
-#N canvas 114 410 294 370 drumplayers 1;
+#N canvas 114 410 294 370 drumplayers 0;
 #N canvas 65 209 450 300 subpatchdrum0 0;
 #X restore 11 30 pd subpatchdrum0;
 #N canvas 65 205 450 300 subpatchdrum1 0;
@@ -316,7 +316,7 @@
 #X restore 155 325 pd subpatchdrum30;
 #N canvas 65 205 450 300 subpatchdrum31 0;
 #X restore 156 347 pd subpatchdrum31;
-#N canvas 228 213 416 523 adddrumtrack 1;
+#N canvas 228 213 416 523 adddrumtrack 0;
 #X obj 46 362 f;
 #X msg 218 148 \; mastervol 0;
 #X msg 114 288 \; mastervol 1;
@@ -363,7 +363,7 @@
 -1;
 #X obj 5 15 controlsui testsampleplayer;
 #X msg 350 49 loadbang;
-#N canvas 1733 219 953 470 test 1;
+#N canvas 1733 219 953 470 test 0;
 #X obj 10 30 drumplayer testdrumplayer;
 #X obj 202 26 //clone sampleplayer 100;
 #X obj 10 10 sampleplayer testsampleplayer;

@@ -1,4 +1,4 @@
-#N canvas 1600 217 828 578 10;
+#N canvas 1602 217 828 578 10;
 #X obj 154 272 *~;
 #X msg 411 47 1;
 #X msg 455 91 0;
@@ -8,7 +8,7 @@
 #X msg 599 123 0;
 #X obj 599 92 loadbang;
 #X obj 153 213 tabread4~ \$1;
-#N canvas 1600 221 735 574 filtersmanager 1;
+#N canvas 1600 221 735 574 filtersmanager 0;
 #X obj 33 293 inlet~;
 #X obj 33 503 outlet~;
 #X text 400 373 filter connection 0=none \, 1=highpass \, 2=lowpass
@@ -17,7 +17,7 @@
 #X obj 329 150 expr~ 1-$v1;
 #X obj 226 285 r \$0-bypass;
 #X obj 201 310 *~ 1;
-#N canvas 1716 537 543 287 filter 1;
+#N canvas 1716 537 543 287 filter 0;
 #X obj 104 26 inlet~;
 #X obj 129 49 inlet~;
 #X obj 103 185 outlet~;
@@ -125,7 +125,7 @@
 #X obj 460 548 throw~ \$2-instrumentoutput;
 #X obj 254 96 inlet noteon;
 #X obj 455 27 inlet noteoff;
-#N canvas 2000 256 765 405 samplelooper 0;
+#N canvas 2000 256 765 405 samplelooper 1;
 #X obj 205 123 inlet~ lfosignal;
 #X obj 179 265 samplelooper~;
 #X obj 180 313 outlet~;
