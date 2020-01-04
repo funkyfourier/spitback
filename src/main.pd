@@ -1,4 +1,4 @@
-#N canvas 1885 193 888 556 10;
+#N canvas 1885 119 888 556 10;
 #X obj 294 528 dac~;
 #N canvas 0 50 450 300 (subpatch) 0;
 #X array outputmonitor 100 float 0;
@@ -312,7 +312,7 @@
 -1;
 #X obj 5 15 controlsui testsampleplayer;
 #X msg 350 49 loadbang;
-#N canvas 1733 219 338 120 test 1;
+#N canvas 1733 71 338 120 test 0;
 #X obj 10 30 drumplayer testdrumplayer;
 #X obj 10 10 sampleplayer testsampleplayer;
 #X restore 7 270 pd test;
@@ -399,10 +399,8 @@
 #X connect 11 0 14 0;
 #X connect 12 0 11 0;
 #X restore 8 298 pd lfowaves;
-#X obj 204 287 *~ 0.3;
-#X obj 424 288 *~ 0.3;
 #X msg 292 334 \$1 100;
-#N canvas 1735 58 450 368 onpause 1;
+#N canvas 1735 58 450 368 onpause 0;
 #X obj 91 33 r onpause;
 #X obj 118 239 s clearfx, f 10;
 #X obj 91 289 s android-onpause;
@@ -427,6 +425,8 @@
 #X connect 7 4 10 0;
 #X connect 10 0 11 0;
 #X restore 705 166 pd onpause;
+#X obj 204 287 *~ 0.4;
+#X obj 424 288 *~ 0.4;
 #X connect 3 0 4 0;
 #X connect 4 0 2 0;
 #X connect 7 0 10 0;
@@ -445,11 +445,11 @@
 #X connect 26 2 29 0;
 #X connect 26 3 27 0;
 #X connect 29 0 24 0;
-#X connect 31 0 43 0;
-#X connect 32 0 44 0;
+#X connect 31 0 45 0;
+#X connect 32 0 46 0;
 #X connect 33 0 39 0;
 #X connect 33 1 40 0;
-#X connect 34 0 45 0;
+#X connect 34 0 43 0;
 #X connect 35 0 33 1;
 #X connect 36 0 33 0;
 #X connect 37 0 38 0;
@@ -458,6 +458,6 @@
 #X connect 40 0 0 1;
 #X connect 41 0 35 1;
 #X connect 41 0 36 1;
-#X connect 43 0 36 0;
-#X connect 44 0 35 0;
-#X connect 45 0 41 0;
+#X connect 43 0 41 0;
+#X connect 45 0 36 0;
+#X connect 46 0 35 0;
