@@ -1,4 +1,4 @@
-#N canvas 1885 119 888 556 10;
+#N canvas 333 244 888 556 10;
 #X obj 294 528 dac~;
 #N canvas 0 50 450 300 (subpatch) 0;
 #X array outputmonitor 100 float 0;
@@ -425,8 +425,8 @@
 #X connect 7 4 10 0;
 #X connect 10 0 11 0;
 #X restore 705 166 pd onpause;
-#X obj 204 287 *~ 0.4;
-#X obj 424 288 *~ 0.4;
+#X obj 204 287 *~ 0.3;
+#X obj 424 288 *~ 0.3;
 #X connect 3 0 4 0;
 #X connect 4 0 2 0;
 #X connect 7 0 10 0;
