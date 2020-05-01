@@ -1,10 +1,10 @@
-#N canvas 1780 58 943 555 10;
+#N canvas 1935 127 943 555 10;
 #X obj 54 20 inlet~;
 #X obj 53 466 outlet~;
 #X obj 229 22 inlet~;
 #X obj 229 466 outlet~;
-#N canvas 441 332 507 505 3bandeq 0;
-#N canvas 1600 177 998 378 eq 0;
+#N canvas 441 258 507 505 3bandeq 0;
+#N canvas 1602 103 998 378 eq 0;
 #X obj 7 9 inlet~;
 #X obj 7 267 outlet~;
 #X obj 6 87 faustlowshelf~;
@@ -111,7 +111,7 @@
 #X connect 17 0 0 2;
 #X connect 18 0 17 0;
 #X restore 53 138 pd 3bandeq;
-#N canvas 307 360 434 224 fxfilter 0;
+#N canvas 307 286 434 224 fxfilter 0;
 #N canvas 705 555 633 228 filter 0;
 #X obj 14 106 faustreson~;
 #X obj 150 106 faustreson~;
@@ -190,8 +190,8 @@
 #X connect 10 0 11 0;
 #X connect 11 0 12 0;
 #X restore 53 116 pd fxfilter;
-#N canvas 520 348 414 239 gainer 0;
-#N canvas 1851 411 437 418 internals 0;
+#N canvas 1688 502 414 239 gainer 0;
+#N canvas 1851 337 437 418 internals 0;
 #X obj 129 16 inlet~;
 #X obj 42 16 inlet~;
 #X obj 43 383 outlet~;
@@ -302,7 +302,7 @@
 #X obj 53 441 catch~ \$0-fxoutputL;
 #X obj 229 441 catch~ \$0-fxoutputR;
 #X obj 277 29 r \$0-setoutputfxR;
-#N canvas 1081 301 404 427 setinput 0;
+#N canvas 1081 227 404 427 setinput 0;
 #X obj 49 34 inlet;
 #X obj 49 66 moses 0;
 #X obj 76 303 s \$0-setoutputfxR;
@@ -338,7 +338,7 @@
 #X obj 515 58 r \$1-fxorder;
 #X obj 448 187 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#N canvas 220 548 450 300 setoutput 0;
+#N canvas 1731 587 450 300 setoutput 0;
 #X obj 61 64 moses 0;
 #X obj 100 115 t f b;
 #X obj 100 160 pack;
@@ -353,7 +353,7 @@
 #X connect 3 0 2 1;
 #X connect 4 0 0 0;
 #X restore 515 508 pd setoutput;
-#N canvas 440 155 658 324 move 0;
+#N canvas 817 444 658 324 move 0;
 #X obj 349 15 r \$1-del-moveup;
 #X obj 499 15 r \$1-del-movedown;
 #X obj 499 64 s \$0-movedown;
@@ -435,7 +435,7 @@
 #X connect 46 0 42 0;
 #X connect 47 0 46 0;
 #X restore 469 26 pd move;
-#N canvas 883 386 575 225 enable 0;
+#N canvas 883 238 575 225 enable 0;
 #X obj 19 31 r \$1-gainer-enable;
 #X obj 19 81 s \$0-enable;
 #X obj 139 31 r \$1-fxfilter-enable;
@@ -679,7 +679,7 @@
 #X obj 581 425 effectsender \$0 3;
 #X obj 614 385 effectsender \$0 5;
 #X obj 597 405 effectsender \$0 4;
-#N canvas 452 264 901 518 reverb 0;
+#N canvas 452 190 901 518 reverb 0;
 #X obj 143 13 catch~ \$0-7L;
 #X obj 337 176 catch~ \$0-7R;
 #X obj 144 229 faustrevstereo~;

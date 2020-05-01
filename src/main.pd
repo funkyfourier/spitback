@@ -8,7 +8,7 @@
 #X obj 572 430 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 572 454 metro 50;
-#N canvas 420 201 460 322 ticks 1;
+#N canvas 420 182 460 322 ticks 0;
 #X obj 207 124 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 194 87 receive timerstart;
@@ -318,7 +318,7 @@
 -1;
 #X obj 5 15 controlsui testsampleplayer;
 #X msg 350 49 loadbang;
-#N canvas 1733 71 338 120 test 0;
+#N canvas 1733 58 338 120 test 0;
 #X obj 10 30 drumplayer testdrumplayer;
 #X obj 10 10 sampleplayer testsampleplayer;
 #X restore 7 270 pd test;
@@ -374,11 +374,10 @@
 #X obj 232 489 expr~ tanh($v1);
 #X obj 357 489 expr~ tanh($v1);
 #X obj 292 356 line~;
-#N canvas 978 197 438 405 lfowaves 0;
+#N canvas 978 182 438 405 lfowaves 0;
 #X obj 80 108 soundfiler;
 #X obj 80 65 loadbang;
 #X obj 226 11 table tmpwave;
-#X msg 80 87 read -resize ../sounds/sine1hz.wav tmpwave;
 #X obj 226 34 table lfowavesine;
 #X obj 80 165 until;
 #X obj 80 225 trigger float float;
@@ -390,20 +389,21 @@
 #X obj 80 258 tabread tmpwave;
 #X obj 191 191 s lfowavesine;
 #X obj 80 321 tabwrite lfowavesine;
-#X connect 0 0 9 0;
-#X connect 1 0 3 0;
-#X connect 3 0 0 0;
-#X connect 5 0 7 0;
-#X connect 6 0 12 0;
-#X connect 6 1 14 1;
-#X connect 7 0 6 0;
-#X connect 7 0 8 0;
-#X connect 8 0 7 1;
-#X connect 9 0 5 0;
-#X connect 9 1 10 0;
+#X msg 80 87 read -resize ../wavs/sine1hz.wav tmpwave;
+#X connect 0 0 8 0;
+#X connect 1 0 14 0;
+#X connect 4 0 6 0;
+#X connect 5 0 11 0;
+#X connect 5 1 13 1;
+#X connect 6 0 5 0;
+#X connect 6 0 7 0;
+#X connect 7 0 6 1;
+#X connect 8 0 4 0;
+#X connect 8 1 9 0;
+#X connect 9 0 12 0;
 #X connect 10 0 13 0;
-#X connect 11 0 14 0;
-#X connect 12 0 11 0;
+#X connect 11 0 10 0;
+#X connect 14 0 0 0;
 #X restore 8 298 pd lfowaves;
 #X msg 292 334 \$1 100;
 #N canvas 1735 58 450 368 onpause 0;
