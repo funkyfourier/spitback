@@ -1,6 +1,6 @@
 ## Spitback
 
-**Spitback** is a PD patch with some externals intended for use with [libpd](https://github.com/libpd/libpd). It consists of a simple wavetable synth/sampler, a simple drum player, and eight stereo effects. The aim is to make something proportionally powerful to current smartphones.
+**Spitback** is a PD patch with some externals intended for use with [libpd](https://github.com/libpd/libpd). It consists of a simple wavetable synth/sampler, a simple drum player, and eight stereo effects. The aim is to make something proportionally powerful to current smartphones, and ideal for making audio and music apps for mobile platforms.
 
 Spitback is the audio backend for Android sequencer app [Sputter](https://play.google.com/store/apps/details?id=info.casualcomputing.sputter), currently in beta phase.
 
