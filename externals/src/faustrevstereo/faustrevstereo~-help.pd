@@ -1,0 +1,43 @@
+#N canvas 607 351 560 503 12;
+#X obj 42 244 *~ 0;
+#X obj 116 144 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 104 172 1;
+#X obj 131 196 0;
+#X text 95 113 trigger a short sound, f 11;
+#X obj 91 425 dac~;
+#X obj 40 174 noise~;
+#X obj 131 172 delay 300;
+#X obj 54 383 faustrevstereo~;
+#X obj 133 306 hsl 128 15 0 1 0 1 \$1-rev-damp empty damp -2 -8 0 10
+-262144 -1 -1 5800 1;
+#X obj 108 262 hsl 128 15 0 1 0 1 \$1-rev-roomsize empty roomsize -2
+-8 0 10 -262144 -1 -1 12700 1;
+#X obj 159 360 hsl 128 15 0 1 0 1 \$1-rev-spread empty stereo_spread
+-2 -8 0 10 -262144 -1 -1 12700 1;
+#X floatatom 205 277 5 0 0 0 - - -;
+#X floatatom 231 321 5 0 0 0 - - -;
+#X floatatom 256 375 5 0 0 0 - - -;
+#X obj 41 198 *~ 0.3;
+#X text 253 20 a stereo reverb written in faust \, and manually implemented
+as a pd external from the c code output from faust. it is a standard
+"freeverb" schroeder reverb \, largely implemented on basis of what
+is explained in CCRMA Faust Workshop 2015 video: https://www.youtube.com/watch?v=DkUoczS7Abk
+, f 41;
+#X connect 0 0 8 0;
+#X connect 0 0 8 1;
+#X connect 1 0 2 0;
+#X connect 1 0 7 0;
+#X connect 2 0 0 1;
+#X connect 3 0 0 1;
+#X connect 6 0 15 0;
+#X connect 7 0 3 0;
+#X connect 8 0 5 0;
+#X connect 8 1 5 1;
+#X connect 9 0 8 3;
+#X connect 9 0 13 0;
+#X connect 10 0 8 2;
+#X connect 10 0 12 0;
+#X connect 11 0 8 4;
+#X connect 11 0 14 0;
+#X connect 15 0 0 0;

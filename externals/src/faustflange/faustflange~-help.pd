@@ -1,0 +1,39 @@
+#N canvas 186 264 297 394 10;
+#X obj 61 313 faustflange~;
+#X obj 86 361 dac~;
+#X obj 98 166 hsl 128 15 0 2 0 0 empty empty freq_(Hz) -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 133 251 hsl 128 15 0 1 0 0 empty empty width -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 115 212 hsl 128 15 0 1 0 0 empty empty feedback -2 -8 0 10 -262144
+-1 -1 0 1;
+#X floatatom 199 181 5 0 0 0 - - -;
+#X floatatom 234 266 5 0 0 0 - - -;
+#X floatatom 217 227 5 0 0 0 - - -;
+#X obj 130 292 + 2;
+#X obj 130 272 * 18;
+#X obj 39 159 noise~;
+#X obj 39 180 *~ 0.4;
+#X obj 61 210 *~ 0;
+#X obj 85 120 hsl 128 15 0 1 0 1 empty empty volume -2 -8 0 10 -262144
+-1 -1 0 1;
+#X floatatom 183 135 5 0 0 0 - - -;
+#X text 18 16 a stereo flanger written in faust \, and manually implemented
+as a pd external from the c code output from faust. TODO: Move the
+"* 18" and "+ 2" to faust code., f 41;
+#X connect 0 0 1 0;
+#X connect 0 1 1 1;
+#X connect 2 0 5 0;
+#X connect 2 0 0 2;
+#X connect 3 0 6 0;
+#X connect 3 0 9 0;
+#X connect 4 0 7 0;
+#X connect 4 0 0 3;
+#X connect 8 0 0 4;
+#X connect 9 0 8 0;
+#X connect 10 0 11 0;
+#X connect 11 0 12 0;
+#X connect 12 0 0 0;
+#X connect 12 0 0 1;
+#X connect 13 0 14 0;
+#X connect 13 0 12 1;

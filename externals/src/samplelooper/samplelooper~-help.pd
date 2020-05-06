@@ -1,0 +1,49 @@
+#N canvas 82 314 684 586 12;
+#X obj 269 431 samplelooper~;
+#X msg 344 296 enablelfo 0;
+#X obj 320 232 osc~ 5;
+#X obj 188 213 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 169 157 a bang triggers playback, f 8;
+#X obj 77 330 1.37;
+#X obj 77 307 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X text 68 255 a float sets the playback rate, f 13;
+#X text 317 181 signal inlet controlles pitch, f 14;
+#X msg 334 267 enableloop 0;
+#X text 26 11 samplelooper~ is a index counter intended to be used
+with tabread4~ as a more elaborate alternative to using phasor~. it
+can set start and end points \, as well as loop start and end points.
+it supports pitch signal inlet so the pitch can be controlled with
+an lfo. you should switch~ the sub patch off when not in use \, and
+switch~ on before triggering., f 54;
+#X text 322 364 second inlet sets playback start point third inlet
+sets playback end point fourth inlet sets start point of loop fifth
+inlet sets end point of loop;
+#X obj 71 524 switch~;
+#X obj 71 498 r \$0-switch;
+#X obj 357 456 0;
+#X obj 357 480 s \$0-switch;
+#X obj 54 473 0;
+#X obj 54 448 loadbang;
+#X text 441 441 the second outlet outputs a bang when playback is finished
+(if loop is disabled)., f 29;
+#X obj 188 237 t b b;
+#X obj 220 287 s \$0-switch;
+#X obj 220 263 1;
+#X msg 530 31 \; pd dsp 0;
+#X msg 444 31 \; pd dsp 1;
+#X connect 0 1 14 0;
+#X connect 1 0 0 0;
+#X connect 2 0 0 0;
+#X connect 3 0 19 0;
+#X connect 5 0 0 0;
+#X connect 6 0 5 0;
+#X connect 9 0 0 0;
+#X connect 13 0 12 0;
+#X connect 14 0 15 0;
+#X connect 16 0 12 0;
+#X connect 17 0 16 0;
+#X connect 19 0 0 0;
+#X connect 19 1 21 0;
+#X connect 21 0 20 0;

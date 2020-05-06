@@ -1,0 +1,26 @@
+#N canvas 120 301 337 333 10;
+#X obj 174 204 hsl 128 15 -36 36 0 1 empty empty amount_(dB) -2 -8
+0 10 -262144 -1 -1 9800 1;
+#X floatatom 276 219 5 0 0 0 - - -;
+#X floatatom 218 170 7 0 0 0 - - -;
+#X obj 61 155 noise~;
+#X obj 61 176 *~ 0.4;
+#X obj 83 206 *~ 0;
+#X obj 107 113 hsl 128 15 0 1 0 1 empty empty volume -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 73 277 dac~;
+#X obj 84 235 faustlowshelf~;
+#X obj 127 155 hsl 128 15 10 3000 0 0 empty empty freq -2 -8 0 10 -262144
+-1 -1 0 1;
+#X text 19 26 a low shelf written in faust \, and manually implemented
+as a pd external from the c code output from faust., f 41;
+#X connect 0 0 1 0;
+#X connect 0 0 8 2;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 8 0;
+#X connect 6 0 5 1;
+#X connect 8 0 7 0;
+#X connect 8 0 7 1;
+#X connect 9 0 2 0;
+#X connect 9 0 8 1;

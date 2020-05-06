@@ -1,4 +1,5 @@
 #N canvas 257 137 492 295 10;
+#X declare -path ../externals/;
 #N canvas 420 153 460 322 ticks 0;
 #X obj 207 124 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
@@ -422,5 +423,6 @@
 #X restore 14 122 pd output;
 #X text 263 29 start in one of these;
 #X obj 264 53 samplercontrolsui testsampleplayer;
+#X obj 14 261 declare -path ../externals/;
 #X connect 2 0 5 0;
 #X connect 4 0 3 0;

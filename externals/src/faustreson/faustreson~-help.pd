@@ -1,0 +1,38 @@
+#N canvas 453 464 387 443 10;
+#X obj 126 396 dac~;
+#X obj 134 325 faustreson~;
+#X obj 167 205 hsl 128 15 20 20000 0 0 empty empty freq_(Hz) -2 -8
+0 10 -262144 -1 -1 100 1;
+#X obj 164 247 line~;
+#X msg 164 225 \$1 30;
+#X obj 200 299 hsl 128 15 0 15 0 0 empty empty q -2 -8 0 10 -262144
+-1 -1 12700 1;
+#X msg 39 243 bp;
+#X msg 38 278 hp;
+#X msg 39 311 lp;
+#X obj 102 146 noise~;
+#X obj 102 169 *~ 0.4;
+#X obj 133 194 *~ 0;
+#X obj 157 161 hsl 128 15 0 1 0 1 empty empty volume -2 -8 0 10 -262144
+-1 -1 11400 1;
+#X floatatom 269 220 7 0 0 0 - - -;
+#X floatatom 301 314 5 0 0 0 - - -;
+#X text 14 35 a resonant filter written in faust \, and manually implemented
+as a pd external from the c code output from faust., f 34;
+#X floatatom 261 176 5 0 0 0 - - -;
+#X connect 1 0 0 0;
+#X connect 1 0 0 1;
+#X connect 2 0 4 0;
+#X connect 2 0 13 0;
+#X connect 3 0 1 1;
+#X connect 4 0 3 0;
+#X connect 5 0 1 2;
+#X connect 5 0 14 0;
+#X connect 6 0 1 0;
+#X connect 7 0 1 0;
+#X connect 8 0 1 0;
+#X connect 9 0 10 0;
+#X connect 10 0 11 0;
+#X connect 11 0 1 0;
+#X connect 12 0 11 1;
+#X connect 12 0 16 0;

@@ -1,0 +1,26 @@
+#N canvas 374 373 450 300 10;
+#X obj 144 221 fausthighshelf~;
+#X obj 234 190 hsl 128 15 -36 36 0 1 empty empty amount_(dB) -2 -8
+0 10 -262144 -1 -1 5400 1;
+#X floatatom 336 205 5 0 0 0 - - -;
+#X obj 190 137 hsl 128 15 3000 16000 0 0 empty empty freq_(Hz) -2 -8
+0 10 -262144 -1 -1 3800 1;
+#X floatatom 292 152 7 0 0 0 - - -;
+#X obj 121 141 noise~;
+#X obj 121 162 *~ 0.4;
+#X obj 143 192 *~ 0;
+#X obj 167 99 hsl 128 15 0 1 0 1 empty empty volume -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 133 263 dac~;
+#X text 18 16 a high shelf written in faust \, and manually implemented
+as a pd external from the c code output from faust., f 41;
+#X connect 0 0 9 0;
+#X connect 0 0 9 1;
+#X connect 1 0 2 0;
+#X connect 1 0 0 2;
+#X connect 3 0 4 0;
+#X connect 3 0 0 1;
+#X connect 5 0 6 0;
+#X connect 6 0 7 0;
+#X connect 7 0 0 0;
+#X connect 8 0 7 1;
