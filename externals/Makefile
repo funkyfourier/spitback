@@ -1,4 +1,4 @@
-#Note: Do 'make install installpath=bin' to install to ./bin/ instead of /usr/local/lib/pd-externals/spitlib
+#Note: Do 'make install installpath=bin' to install to ./bin/ instead of pd externals folder
 
 lib.name = spitlib
 
