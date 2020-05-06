@@ -31,13 +31,13 @@ release 52 7 0 10 -262144 -1 -1 600 1;
 #X obj 814 13 cnv 15 100 25 sound1-loopon empty LOOP 20 12 0 20 -257985
 -66577 0;
 #X obj 986 67 hsl 128 15 0 2000 0 1 \$1-attack \$1-attack-ui attack
--2 -8 0 10 -262144 -1 -1 2800 1;
+-2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 986 100 hsl 128 15 0 2000 0 1 \$1-decay \$1-decay-ui decay -2
 -8 0 10 -262144 -1 -1 2000 1;
 #X obj 987 133 hsl 128 15 0 1 0 1 \$1-sustain \$1-sustain-ui sustain
 -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 988 165 hsl 128 15 0 2000 0 1 \$1-release \$1-release-ui release
--2 -8 0 10 -262144 -1 -1 7800 1;
+-2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 820 96 hsl 128 15 0 44099 0 0 \$1-loopstart \$1-loopstart-ui
 loopstart -2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 821 152 hsl 128 15 0 44099 0 0 \$1-loopend \$1-loopend-ui loopend
@@ -152,7 +152,7 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 403 198 pack f 127;
 #X obj 460 115 expr $i1;
 #X obj 93 138 hsl 128 15 0 127 0 0 \$0-note empty Note -2 -8 0 10 -262144
--1 -1 3100 1;
+-1 -1 2400 1;
 #X floatatom 195 153 5 0 0 0 - #0-noteval -;
 #X obj 403 18 r \$0-note;
 #X obj 413 69 s \$0-noteval;
@@ -161,7 +161,7 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 328 21 r \$0-onoff;
 #X obj 460 91 r \$0-velocity;
 #X obj 94 182 hsl 128 15 0 127 0 0 \$0-velocity empty Velocity -2 -8
-0 10 -262144 -1 -1 10600 1;
+0 10 -262144 -1 -1 12700 1;
 #X floatatom 196 197 5 0 0 0 - #0-velval -;
 #X obj 460 141 s \$0-velval;
 #X msg 343 260 \$1;
@@ -173,7 +173,7 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 50 120 36;
 #X obj 43 164 127;
 #X obj 94 232 hsl 128 15 -50 50 0 0 \$1-finetune empty finetune -2
--8 0 10 -262144 -1 -1 7250 1;
+-8 0 10 -262144 -1 -1 5500 1;
 #X floatatom 196 247 5 0 0 0 - - -;
 #X obj 36 214 0;
 #X obj 94 279 hsl 128 15 0 127 0 0 empty empty Root_note -2 -8 0 10
@@ -219,7 +219,7 @@ sampleend -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 496 221 cnv 15 700 25 empty empty FX 10 12 0 25 -257985 -66577
 0;
 #X obj 496 253 fxcontrolsui \$1;
-#X msg 496 734 fx0 fx1 fx2 fx3 fx4 fx5 fx6 fx7;
+#X msg 496 734 fx0 fx1 fx2 fx3 fx4 fx7 fx5 fx6;
 #X connect 0 0 53 0;
 #X connect 12 0 52 0;
 #X connect 13 0 54 0;

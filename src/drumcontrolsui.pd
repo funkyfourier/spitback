@@ -1,29 +1,37 @@
-#N canvas 125 137 1415 708 10;
+#N canvas 148 198 1415 708 10;
 #X obj 677 20 cnv 15 700 25 empty empty FX 10 12 0 25 -257985 -66577
 0;
-#X obj 11 253 cnv 15 616 25 empty empty DRUMSLOTS 10 12 0 25 -257985
+#X obj 11 117 cnv 15 616 25 empty empty DRUMSLOTS 10 12 0 25 -257985
 -66577 0;
-#X obj 174 159 hsl 128 15 0 1 0 0 \$1-pan \$1-pan empty -2 -8 0 10
--262144 -1 -1 0 1;
-#X obj 26 160 hsl 128 15 0 1 0 0 \$1-volume \$1-volume empty -2 -8
-0 10 -262144 -1 -1 0 1;
-#X obj 13 220 drumplayer \$1;
+#X obj 472 27 drumplayer \$1;
 #X obj 677 52 fxcontrolsui \$1;
 #X msg 677 559 fx0 fx1 fx2 fx3 fx4 fx5 fx6 fx7;
-#X obj 13 300 drumcontrolsslotui \$1 0;
-#X obj 13 450 drumcontrolsslotui \$1 1;
-#X obj 13 600 drumcontrolsslotui \$1 2;
-#X obj 13 750 drumcontrolsslotui \$1 3;
-#X obj 13 900 drumcontrolsslotui \$1 4;
-#X obj 13 1050 drumcontrolsslotui \$1 5;
-#X obj 13 1200 drumcontrolsslotui \$1 6;
-#X obj 13 1350 drumcontrolsslotui \$1 7;
-#X obj 13 1500 drumcontrolsslotui \$1 8;
-#X obj 13 1650 drumcontrolsslotui \$1 9;
-#X obj 13 1800 drumcontrolsslotui \$1 10;
-#X obj 13 1950 drumcontrolsslotui \$1 11;
-#X obj 13 2100 drumcontrolsslotui \$1 12;
-#X obj 13 2250 drumcontrolsslotui \$1 13;
-#X obj 13 2400 drumcontrolsslotui \$1 14;
-#X obj 13 2550 drumcontrolsslotui \$1 15;
-#X connect 5 0 6 0;
+#X obj 13 164 drumcontrolsslotui \$1 0;
+#X obj 13 314 drumcontrolsslotui \$1 1;
+#X obj 13 464 drumcontrolsslotui \$1 2;
+#X obj 13 614 drumcontrolsslotui \$1 3;
+#X obj 13 764 drumcontrolsslotui \$1 4;
+#X obj 13 914 drumcontrolsslotui \$1 5;
+#X obj 13 1064 drumcontrolsslotui \$1 6;
+#X obj 13 1214 drumcontrolsslotui \$1 7;
+#X obj 13 1364 drumcontrolsslotui \$1 8;
+#X obj 13 1514 drumcontrolsslotui \$1 9;
+#X obj 13 1664 drumcontrolsslotui \$1 10;
+#X obj 13 1814 drumcontrolsslotui \$1 11;
+#X obj 13 1964 drumcontrolsslotui \$1 12;
+#X obj 13 2114 drumcontrolsslotui \$1 13;
+#X obj 13 2264 drumcontrolsslotui \$1 14;
+#X obj 13 2414 drumcontrolsslotui \$1 15;
+#X obj 18 29 cnv 15 230 25 empty empty VOLUME 20 12 0 20 -257985 -66577
+0;
+#X obj 27 60 hsl 128 15 -50 0 0 1 \$1-volume empty empty -2 -8 0 10
+-262144 -1 -1 12700 1;
+#X floatatom 167 75 5 0 0 0 - - -;
+#X obj 255 29 cnv 15 100 25 empty empty PAN 20 12 0 20 -257985 -66577
+0;
+#X obj 264 60 hsl 128 15 0 1 0 1 \$1-pan \$1-pan empty -2 -8 0 10 -262144
+-1 -1 6400 1;
+#X floatatom 404 75 5 0 0 0 - - -;
+#X connect 3 0 4 0;
+#X connect 22 0 23 0;
+#X connect 25 0 26 0;
