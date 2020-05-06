@@ -1,6 +1,6 @@
-#N canvas 815 234 783 677 10;
+#N canvas 490 194 783 677 10;
 #X obj 101 10 inlet noteon;
-#N canvas 530 427 723 437 samplelooper 1;
+#N canvas 431 362 723 437 samplelooper 0;
 #X obj 122 254 samplelooper~;
 #X obj 121 291 outlet~;
 #X obj 210 306 outlet;
@@ -65,7 +65,7 @@
 #X obj 120 494 / 127;
 #X obj 128 84 s \$0-vel;
 #X obj 102 565 *~ 1, f 5;
-#N canvas 322 630 285 182 calcpitch 0;
+#N canvas 322 629 285 182 calcpitch 0;
 #X obj 57 15 inlet;
 #X obj 57 139 outlet;
 #X msg 57 51 1;
