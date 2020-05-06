@@ -1,0 +1,32 @@
+#N canvas 516 344 568 373 12;
+#X obj 186 217 hsl 128 15 -36 36 0 1 empty empty gain_(dB) -2 -8 0
+10 -262144 -1 -1 12700 1;
+#X obj 159 171 hsl 128 15 400 3500 0 1 empty empty freq_(Hz) -2 -8
+0 10 -262144 -1 -1 5500 1;
+#X obj 213 258 hsl 128 15 20 1000 0 1 \$1-3eq-midbw empty mid-bw_(Hz)
+-2 -8 0 10 -262144 -1 -1 500 1;
+#X floatatom 283 232 5 0 0 0 - - -;
+#X floatatom 256 186 5 0 0 0 - - -;
+#X floatatom 311 273 5 0 0 0 - - -;
+#X obj 58 185 noise~;
+#X obj 58 214 *~ 0.4;
+#X obj 80 244 *~ 0;
+#X obj 108 124 hsl 128 15 0 1 0 1 empty empty volume -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 118 338 dac~;
+#X obj 129 294 faustpeakeq~;
+#X text 20 12 a parametric/peak eq written in faust \, and manually
+implemented as a pd external from the c code output from faust., f
+32;
+#X connect 0 0 3 0;
+#X connect 0 0 11 2;
+#X connect 1 0 4 0;
+#X connect 1 0 11 1;
+#X connect 2 0 5 0;
+#X connect 2 0 11 3;
+#X connect 6 0 7 0;
+#X connect 7 0 8 0;
+#X connect 8 0 11 0;
+#X connect 9 0 8 1;
+#X connect 11 0 10 0;
+#X connect 11 0 10 1;

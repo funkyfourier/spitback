@@ -1,0 +1,44 @@
+#N canvas 268 182 396 527 10;
+#X obj 135 340 faustdelay~;
+#X obj 169 233 hsl 128 15 0 1000 0 0 empty empty delay_(ms) -2 -8 0
+10 -262144 -1 -1 0 1;
+#X obj 185 271 hsl 128 15 0 1 0 0 empty empty feedback -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 201 313 hsl 128 15 0 1 0 0 empty empty wet -2 -8 0 10 -262144
+-1 -1 0 1;
+#X floatatom 302 328 5 0 0 0 - - -;
+#X floatatom 300 286 5 0 0 0 - - -;
+#X floatatom 289 248 5 0 0 0 - - -;
+#X obj 42 158 osc~ 440;
+#X obj 43 182 *~ 0.4;
+#X obj 156 441 dac~;
+#X text 202 372 the first and last outlets are the dry signal. the
+two in the middle are wet signal, f 23;
+#X obj 44 228 *~ 0;
+#X obj 121 120 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 106 156 1;
+#X obj 133 180 0;
+#X obj 133 156 delay 100;
+#X text 100 89 trigger a short sound, f 11;
+#X text 17 16 a stereo delay written in faust \, and manually implemented
+as a pd external from the c code output from faust., f 41;
+#X connect 0 0 9 0;
+#X connect 0 1 9 0;
+#X connect 0 2 9 1;
+#X connect 0 3 9 1;
+#X connect 1 0 6 0;
+#X connect 1 0 0 2;
+#X connect 2 0 5 0;
+#X connect 2 0 0 3;
+#X connect 3 0 0 4;
+#X connect 3 0 4 0;
+#X connect 7 0 8 0;
+#X connect 8 0 11 0;
+#X connect 11 0 0 1;
+#X connect 11 0 0 0;
+#X connect 12 0 13 0;
+#X connect 12 0 15 0;
+#X connect 13 0 11 1;
+#X connect 14 0 11 1;
+#X connect 15 0 14 0;
