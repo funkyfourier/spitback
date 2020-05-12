@@ -89,6 +89,7 @@ typedef struct _faustrevstereo_tilde
 
 void faustrevstereo_instance_clear(t_faustrevstereo_tilde *this_object)
 {
+	post("faustrev fewer");
 	this_object->IOTA = 0;
 	/* C99 loop */
 	{
