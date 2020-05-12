@@ -18,11 +18,10 @@ allpassfeed = 0.5;
 scaledamp = 0.85;
 fixedgain = 0.1;
 
-monoFreeverb(fb1, damp, spread) = _ <: par(i,8,lpcf(combtuningL(i, spread),fb1,damp)) :> 
-seq(i,4,allpass_comb(1024,allpasstuningL(i),-allpassfeed));
+combBank(fb1, damp, spread) = _ <: par(i,6,lpcf(combtuningL(i, spread),fb1,damp)) :> _ ;
 
 combfeed = hslider("RoomSize",0.5,0,1,0.01)*scaleroom*SR/origSR + offsetroom;
 damping = hslider("Damping",0.5,0,1,0.01)*scaledamp*SR/origSR;
-spatSpread = hslider("Spatial Spread",0.5,0,1,0.01)*46*SR/origSR : int;
+spatSpread = hslider("SpatialSpread",0.5,0,1,0.01)*46*SR/origSR : int;
 
-process = *(fixedgain),*(fixedgain) : + <: monoFreeverb(combfeed, damping, 0), monoFreeverb(combfeed, damping, spatSpread);
+process = *(fixedgain),*(fixedgain) : + : seq(i,4,allpass_comb(1024,allpasstuningL(i),-allpassfeed)) <: combBank(combfeed, damping, 0), combBank(combfeed, damping, spatSpread);
