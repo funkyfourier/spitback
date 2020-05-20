@@ -16,7 +16,7 @@ It should work on any platform including Android and iOS, but the externals will
 
 ### Future outlook
 
-Spitback is currently being used in Android sequencer app [Sputter](https://play.google.com/store/apps/details?id=infocasualcomputing.sputter). By open sourcing the audio backend, I am hoping to:
+Spitback is currently being used in Android sequencer app [Sputter](https://play.google.com/store/apps/details?id=info.casualcomputing.sputter). By open sourcing the audio backend, I am hoping to:
 
 * Give something back to the community in which I have found most valuable tools and knowledge to build my app. Without these, there would be no Sputter.
 * Make it easier for others to build sequencer and music apps for mobile platforms.
