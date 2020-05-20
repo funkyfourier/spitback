@@ -2,7 +2,7 @@
 
 **Spitback** is a PD patch with some externals intended for use with [libpd](https://github.com/libpd/libpd). It consists of a simple wavetable synth/sampler, a simple drum player, and eight stereo effects. The aim is to make something proportionally powerful to current smartphones, and ideal for making audio and music apps for mobile platforms.
 
-Spitback is the audio backend for Android sequencer app [Sputter](https://play.google.com/store/apps/details?id=info.casualcomputing.sputter), currently in beta phase.
+Spitback is the audio backend for Android sequencer app [Sputter](https://play.google.com/store/apps/details?id=info.casualcomputing.sputter).
 
 ### Getting started
 
@@ -18,7 +18,7 @@ It should work on any platform including Android and iOS, but the externals will
 
 Spitback is currently being used in Android sequencer app [Sputter](https://play.google.com/store/apps/details?id=infocasualcomputing.sputter). By open sourcing the audio backend, I am hoping to:
 
-* Give something back to the community in which I have found most valuable tools and knowledge to build my app. Without these, the would be no Sputter.
+* Give something back to the community in which I have found most valuable tools and knowledge to build my app. Without these, there would be no Sputter.
 * Make it easier for others to build sequencer and music apps for mobile platforms.
 * Build connections with other developers.
 * Make it possible for others to build tools related to Sputter for either mobile or desktop, for example song players, instrument preset editors or effects and other features.
@@ -28,6 +28,7 @@ Things which could be improved:
 * Performance can probably be better. Is it cheaper to send floats to and from libpd instead of strings? 
 * There should be a "swing" feature. Can we still use [metro]?
 * Could waves be read with [soundfiler] instead of writing to an array from the libpd host?
+* Ping-pong looping in external [samplelooper~] would be desirable.
 
 ## Usage with LibPD
 
