@@ -4,6 +4,8 @@
 
 Spitback is the audio backend for Android sequencer app [Sputter](https://play.google.com/store/apps/details?id=info.casualcomputing.sputter).
 
+![Spitback screenshot](https://casualcomputing.info/images/spitback01.png "Spitback screenshot")
+
 ### Getting started
 
 Download the patch and open `src/main.pd`. Open [samplercontrolsui testsampleplayer] or [drumcontrolsui testdrumplayer]. In [samplercontrolsui testsampleplayer] click the bang labeled "open wave file". A rudimentary note triggering tool is provided, but you might want to connect a MIDI keyboard or sequencer. In [drumcontrolsui testdrumplayer] you can load a wave into each of the 16 drum slots. There is also a trigger for each drum slot.
