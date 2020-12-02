@@ -1,11 +1,11 @@
 #N canvas 1008 254 492 295 10;
 #X declare -path ../externals/bin;
-#N canvas 528 182 438 474 ticks 1;
+#N canvas 626 87 438 474 ticks 1;
 #X obj 59 395 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 177 13 receive timerstart;
-#X obj 23 40 receive timerstop;
-#X msg 107 91 stop;
+#X obj 23 33 receive timerstop;
+#X msg 107 84 stop;
 #N canvas 335 399 453 316 tickcounter 0;
 #X obj 21 10 inlet;
 #X obj 80 124 + 1;
@@ -52,10 +52,10 @@
 #X restore 177 350 pd tickcounter;
 #X obj 23 128 s stopallnotes;
 #X obj 177 327 metro;
-#X obj 23 73 t b b;
-#X msg 204 293 tempo \$1 permin;
-#X obj 204 249 receive bpm;
-#X obj 204 271 * 4;
+#X obj 23 66 t b b;
+#X msg 204 249 tempo \$1 permin;
+#X obj 204 205 receive bpm;
+#X obj 204 227 * 4;
 #X obj 177 408 send libpdhost-tick;
 #X obj 177 102 delay;
 #X obj 177 381 -1;
@@ -67,11 +67,17 @@
 #X obj 20 223 t b b b;
 #X obj 39 267 s \$0-reset;
 #X obj 177 62 t b f;
-#X obj 234 172 print delay;
+#X obj 204 280 loadbang;
+#X obj 204 302 0.25;
+#X text 18 185 TODO force parameter running?;
+#X text 228 82 //TODO not needed;
+#X text 206 372 //TODO revert this \, as we don't need delay info from
+pd no more;
 #X connect 0 0 6 0;
 #X connect 1 0 20 0;
 #X connect 2 0 7 0;
 #X connect 3 0 6 0;
+#X connect 3 0 12 0;
 #X connect 4 0 13 0;
 #X connect 6 0 4 0;
 #X connect 7 0 5 0;
@@ -90,7 +96,8 @@
 #X connect 20 0 12 0;
 #X connect 20 1 14 0;
 #X connect 20 1 12 1;
-#X connect 20 1 21 0;
+#X connect 21 0 22 0;
+#X connect 22 0 6 1;
 #X restore 14 17 pd ticks;
 #N canvas 1617 337 645 379 sampleplayers 0;
 #N canvas 65 546 450 300 subpatchsampler1 0;
