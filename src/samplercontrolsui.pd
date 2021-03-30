@@ -1,4 +1,4 @@
-#N canvas 144 137 1208 767 10;
+#N canvas 53 218 1208 767 10;
 #X obj 186 57 vsl 15 128 200 20000 0 0 \$1-filtercutoff empty cutoff
 -10 -9 0 10 -262144 -1 -1 0 1;
 #X obj 208 92 vradio 15 1 0 3 \$1-filterselect empty empty 0 -8 0 10
@@ -37,7 +37,7 @@ release 52 7 0 10 -262144 -1 -1 600 1;
 #X obj 987 133 hsl 128 15 0 1 0 1 \$1-sustain \$1-sustain-ui sustain
 -2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 988 165 hsl 128 15 0 2000 0 1 \$1-release \$1-release-ui release
--2 -8 0 10 -262144 -1 -1 0 1;
+-2 -8 0 10 -262144 -1 -1 5900 1;
 #X obj 820 96 hsl 128 15 0 44099 0 0 \$1-loopstart \$1-loopstart-ui
 loopstart -2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 821 152 hsl 128 15 0 44099 0 0 \$1-loopend \$1-loopend-ui loopend
