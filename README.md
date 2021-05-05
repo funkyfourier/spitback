@@ -89,7 +89,7 @@ This is a message saying that Spitback is done with cutting master volume and tu
 
 ##### Drum tracks
 
-1. Send a float with the sample rate of the waveform to `[track-id]-samplerate`
+1. Send a float with the sample rate of the waveform to `[track-id]-samplerate-[drum slot (between 0 and 15)]`
 2. Send a float with the length of the waveform to `[track-id]-resize`
 3. Write the float array to `[track-id]-drum-[drum slot (between 0 and 15)]`
 
