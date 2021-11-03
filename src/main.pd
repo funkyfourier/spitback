@@ -1,4 +1,4 @@
-#N canvas 1095 227 492 295 10;
+#N canvas 1067 205 492 295 10;
 #X declare -path ../externals/bin;
 #N canvas 386 88 438 474 ticks 0;
 #X obj 59 395 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
@@ -434,7 +434,7 @@
 #X obj 264 77 drumcontrolsui testdrumplayer;
 #X obj 264 53 samplercontrolsui testsampleplayer;
 #X obj 14 261 declare -path ../externals/bin;
-#N canvas 354 245 576 389 synctick 1;
+#N canvas 326 223 576 389 synctick 0;
 #X obj 50 128 metro 500;
 #X obj 112 160 + 1;
 #X obj 50 161 float;
@@ -509,7 +509,7 @@
 #X obj 122 113 r \$0-counterreset;
 #X obj 120 292 s \$0-counterreset;
 #X msg 261 168 0 70;
-#N canvas 471 336 855 625 reverb 1;
+#N canvas 850 414 855 625 reverb 0;
 #X obj 144 229 faustrevstereo~;
 #X obj 187 129 * 0.9;
 #X obj 103 414 r fx-\$0-7L;

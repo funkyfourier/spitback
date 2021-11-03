@@ -13,6 +13,8 @@ src/faustflange/faustflange~.c \
 src/faustchorus/faustchorus~.c \
 src/faustrevstereo/faustrevstereo~.c \
 src/samplelooper/samplelooper~.c \
+src/quantizer/quantizer~.c \
+src/downsample/downsample~.c \
 
 
 datafiles = \
