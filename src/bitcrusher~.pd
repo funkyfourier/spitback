@@ -7,7 +7,7 @@
 #N canvas 1198 468 583 426 crusher 1;
 #X obj 27 364 outlet~;
 #X obj 28 49 inlet~;
-#X text 300 347 Part of ELSE \; https://github.com/porres/pd-else;
+#X text 297 347 Part of ELSE \; https://github.com/porres/pd-else;
 #X text 300 330 Alexandre Torres Porres (2018);
 #X obj 376 24 inlet;
 #X msg 41 285 interp \$1;
