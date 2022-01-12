@@ -1,5 +1,5 @@
-#N canvas 747 238 690 727 10;
-#N canvas 842 227 564 697 automationhub 1;
+#N canvas 2702 303 690 727 10;
+#N canvas 2672 252 709 848 automationhub 1;
 #X obj 12 11 autoline \$1 samplerparams 9 attack;
 #X obj 12 31 autoline \$1 samplerparams 10 decay;
 #X obj 12 51 autoline \$1 samplerparams 11 sustain;
@@ -43,6 +43,10 @@
 #X obj 296 697 autoline \$1 fxparams 39 bitcrusher-crush;
 #X obj 296 717 autoline \$1 fxparams 40 bitcrusher-rate;
 #X obj 296 737 autoline \$1 fxparams 41 bitcrusher-noise;
+#X obj 296 774 autoline \$1 fxparams 43 distortion-drive;
+#X obj 296 794 autoline \$1 fxparams 44 distortion-fuzziness;
+#X obj 296 814 autoline \$1 fxparams 45 distortion-fuzzfreq;
+#X obj 296 834 autoline \$1 fxparams 46 distortion-blend;
 #X restore 142 340 pd automationhub;
 #N canvas 1731 170 681 397 lfoconnections 0;
 #X obj 296 97 select 1;
@@ -114,7 +118,7 @@
 #X obj 518 159 loadbang;
 #X msg 447 224 \; \$2-tmp resize \$1;
 #X obj 17 43 table \$1-wave;
-#N canvas 731 348 202 100 paramwriters 0;
+#N canvas 2851 481 202 100 paramwriters 1;
 #X obj 8 30 fxparamwriters \$1;
 #N canvas 712 137 498 538 samplerparamwriters 0;
 #X obj 136 12 table \$1-samplerparams;
@@ -265,8 +269,8 @@
 #X obj 25 99 f;
 #X obj 56 99 + 1;
 #X obj 115 59 mod 128;
-#X obj 25 50 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
--1;
+#X obj 25 50 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000;
 #X connect 0 0 7 0;
 #X connect 2 0 4 0;
 #X connect 3 0 2 1;

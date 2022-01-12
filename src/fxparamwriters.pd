@@ -1,4 +1,4 @@
-#N canvas 2087 247 856 850 10;
+#N canvas 1480 223 856 885 10;
 #X obj 136 14 table \$1-fxparams;
 #X obj 8 109 r \$1-rev-damp;
 #X obj 8 66 r \$1-rev-enable;
@@ -88,6 +88,16 @@
 #X obj 23 820 r \$1-bitcrusher-noise;
 #X text 18 603 -------------------------------------------------------------------------------------------
 , f 92;
+#X obj 243 623 r \$1-distortion-enable;
+#X obj 243 674 r \$1-distortion-drive;
+#X obj 243 723 r \$1-distortion-fuzziness;
+#X obj 243 770 r \$1-distortion-fuzzfreq;
+#X obj 243 820 r \$1-distortion-blend;
+#X obj 243 648 paramwriter \$1-fxparams 42;
+#X obj 243 700 paramwriter \$1-fxparams 43;
+#X obj 243 748 paramwriter \$1-fxparams 44;
+#X obj 243 795 paramwriter \$1-fxparams 45;
+#X obj 243 845 paramwriter \$1-fxparams 46;
 #X connect 1 0 37 0;
 #X connect 2 0 36 0;
 #X connect 3 0 38 0;
@@ -130,3 +140,8 @@
 #X connect 80 0 81 0;
 #X connect 82 0 83 0;
 #X connect 85 0 84 0;
+#X connect 87 0 92 0;
+#X connect 88 0 93 0;
+#X connect 89 0 94 0;
+#X connect 90 0 95 0;
+#X connect 91 0 96 0;
