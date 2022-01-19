@@ -152,7 +152,7 @@
 0 10 #fcfcfc #000000 #000000;
 #X obj 499 114 bng 15 250 50 0 \$1-bitcrusher-movedown empty down 17
 7 0 10 #fcfcfc #000000 #000000;
-#X obj 387 152 hsl 128 15 1 8 0 1 \$1-bitcrusher-drive empty drive
+#X obj 387 152 hsl 128 15 1 15 0 1 \$1-bitcrusher-drive empty drive
 -2 -8 0 10 #fcfcfc #000000 #000000 8800 1;
 #X obj 387 185 hsl 128 15 0 1 0 1 \$1-bitcrusher-crush empty crush
 -2 -8 0 10 #fcfcfc #000000 #000000 9800 1;
@@ -160,7 +160,7 @@
 -2 -8 0 10 #fcfcfc #000000 #000000 8400 1;
 #X obj 387 217 hsl 128 15 0 1 0 1 \$1-bitcrusher-rate empty rate -2
 -8 0 10 #fcfcfc #000000 #000000 10900 1;
-#X obj 387 251 hsl 128 15 0 1 0 1 \$1-bitcrusher-noise empty noise
+#X obj 387 251 hsl 128 15 0 3 0 1 \$1-bitcrusher-noise empty noise
 -2 -8 0 10 #fcfcfc #000000 #000000 12700 1;
 #X obj 206 90 cnv 15 160 15 empty empty Distortion(fx1) 10 8 0 12 #b8b8b8
 #404040 0;
