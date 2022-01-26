@@ -1,4 +1,4 @@
-#N canvas 983 342 943 555 10;
+#N canvas 623 316 943 555 10;
 #X obj 54 20 inlet~;
 #X obj 53 466 outlet~;
 #X obj 229 22 inlet~;
@@ -765,7 +765,7 @@ subjectively makes the reverb a bit too loud compared to the dry signal
 #X connect 26 0 10 0;
 #X restore 54 289 pd reverb;
 #X obj 638 312 effectsender \$0 8;
-#N canvas 738 275 803 687 bitcrusher 1;
+#N canvas 738 275 803 687 bitcrusher 0;
 #X obj 109 109 noise~;
 #X obj 108 189 *~ 1;
 #N canvas 734 608 293 381 noiseenv 0;
