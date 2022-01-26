@@ -156,7 +156,7 @@
 -2 -8 0 10 #fcfcfc #000000 #000000 8800 1;
 #X obj 387 185 hsl 128 15 0 1 0 1 \$1-bitcrusher-crush empty crush
 -2 -8 0 10 #fcfcfc #000000 #000000 9800 1;
-#X obj 387 288 hsl 128 15 0 1 0 1 \$1-bitcrusher-wet empty wet_(skal_denne_heite_mix?)
+#X obj 387 288 hsl 128 15 0 1 0 1 \$1-bitcrusher-wet empty wet_(or_mix?)
 -2 -8 0 10 #fcfcfc #000000 #000000 8400 1;
 #X obj 387 217 hsl 128 15 0 1 0 1 \$1-bitcrusher-rate empty rate -2
 -8 0 10 #fcfcfc #000000 #000000 10900 1;
@@ -188,6 +188,16 @@ fuzzfreq -2 -8 0 10 #fcfcfc #000000 #000000 4100 1;
 #fcfcfc #000000 #000000 0 256;
 #X obj 289 273 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
 #fcfcfc #000000 #000000 0 256;
+#X obj 466 167 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+#fcfcfc #000000 #000000 0 256;
+#X obj 466 200 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+#fcfcfc #000000 #000000 0 256;
+#X obj 466 232 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+#fcfcfc #000000 #000000 0 256;
+#X obj 466 266 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+#fcfcfc #000000 #000000 0 256;
+#X obj 466 303 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+#fcfcfc #000000 #000000 0 256;
 #X connect 14 0 79 0;
 #X connect 15 0 69 0;
 #X connect 18 0 66 0;
@@ -204,6 +214,11 @@ fuzzfreq -2 -8 0 10 #fcfcfc #000000 #000000 4100 1;
 #X connect 58 0 74 0;
 #X connect 63 0 68 0;
 #X connect 64 0 77 0;
+#X connect 86 0 104 0;
+#X connect 87 0 105 0;
+#X connect 88 0 108 0;
+#X connect 89 0 106 0;
+#X connect 90 0 107 0;
 #X connect 95 0 100 0;
 #X connect 96 0 80 0;
 #X connect 97 0 101 0;
