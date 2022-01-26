@@ -1,4 +1,4 @@
-#N canvas 1932 728 559 643 12;
+#N canvas 1492 569 442 643 12;
 #X obj 45 23 inlet~;
 #X obj 44 581 outlet~;
 #X obj 295 23 inlet fuzzfreq;
@@ -50,18 +50,15 @@
 #X obj 208 464 line~;
 #X msg 208 442 \$1 30;
 #X msg 63 150 \$1 30;
-#X obj 44 345 wavearc~;
-#X obj 97 319 r \$0-drive;
-#X obj 435 71 loadbang;
-#X obj 435 117 s \$0-drive;
-#X obj 435 94 1;
+#X obj 125 319 r \$0-drive;
+#X obj 44 345 transferarc~;
 #X connect 0 0 28 0;
 #X connect 2 0 3 0;
 #X connect 4 0 5 0;
 #X connect 6 0 26 0;
 #X connect 7 0 8 1;
 #X connect 8 0 9 0;
-#X connect 9 0 34 0;
+#X connect 9 0 35 0;
 #X connect 10 0 9 1;
 #X connect 11 0 10 0;
 #X connect 12 0 11 0;
@@ -87,7 +84,5 @@
 #X connect 31 0 14 3;
 #X connect 32 0 31 0;
 #X connect 33 0 7 0;
-#X connect 34 0 14 0;
-#X connect 35 0 34 1;
-#X connect 36 0 38 0;
-#X connect 38 0 37 0;
+#X connect 34 0 35 1;
+#X connect 35 0 14 0;

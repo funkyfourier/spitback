@@ -1,9 +1,9 @@
-#N canvas 707 415 749 643 12;
+#N canvas 707 415 575 643 12;
 #X obj 63 27 inlet~;
 #X obj 62 577 outlet~;
 #X obj 113 166 inlet~ noise;
 #X obj 62 244 crossfadeequal~;
-#N canvas 1222 356 609 528 crusher 1;
+#N canvas 1222 356 609 528 crusher 0;
 #X obj 27 454 outlet~;
 #X obj 28 49 inlet~;
 #X text 297 347 Part of ELSE \; https://github.com/porres/pd-else;
@@ -55,7 +55,7 @@
 #X obj 326 56 s \$0-crush;
 #X obj 226 27 inlet drive;
 #X obj 226 56 s \$0-drive;
-#X obj 90 55 r \$0-drive;
+#X obj 80 55 r \$0-drive;
 #X obj 84 277 r \$0-crush;
 #X obj 86 407 r \$0-crush;
 #X obj 106 300 r \$0-rate;
@@ -71,9 +71,9 @@
 #X connect 4 0 1 0;
 #X restore 164 218 pd noiseratio;
 #X obj 164 194 r \$0-crush;
-#X obj 61 128 wavearc~;
 #X obj 62 92 *~;
-#X connect 0 0 20 0;
+#X obj 61 128 transferarc~;
+#X connect 0 0 19 0;
 #X connect 2 0 3 1;
 #X connect 3 0 4 0;
 #X connect 4 0 5 0;
@@ -82,12 +82,12 @@
 #X connect 7 0 8 0;
 #X connect 9 0 10 0;
 #X connect 11 0 12 0;
-#X connect 13 0 20 1;
 #X connect 13 0 19 1;
+#X connect 13 0 20 1;
 #X connect 14 0 4 1;
 #X connect 15 0 6 0;
 #X connect 16 0 4 2;
 #X connect 17 0 3 2;
 #X connect 18 0 17 0;
-#X connect 19 0 3 0;
-#X connect 20 0 19 0;
+#X connect 19 0 20 0;
+#X connect 20 0 3 0;
