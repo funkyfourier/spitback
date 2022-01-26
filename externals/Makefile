@@ -14,7 +14,10 @@ src/faustchorus/faustchorus~.c \
 src/faustrevstereo/faustrevstereo~.c \
 src/samplelooper/samplelooper~.c \
 src/quantizer/quantizer~.c \
-src/downsample/downsample~.c \
+src/elselowshelf/elselowshelf~.c \
+src/elsehighshelf/elsehighshelf~.c \
+src/elsequantizer/elsequantizer~.c \
+src/elsedownsample/elsedownsample~.c \
 
 
 datafiles = \
@@ -28,6 +31,10 @@ src/faustflange/faustflange~-help.pd \
 src/faustchorus/faustchorus~-help.pd \
 src/faustrevstereo/faustrevstereo~-help.pd \
 src/samplelooper/samplelooper~-help.pd \
+src/elselowshelf/elselowshelf~-help.pd \
+src/elsehighshelf/elsehighshelf~-help.pd \
+src/elsequantizer/elsequantizer~-help.pd \
+src/elsedownsample/elsedownsample~-help.pd \
 
 
 include pd-lib-builder/Makefile.pdlibbuilder

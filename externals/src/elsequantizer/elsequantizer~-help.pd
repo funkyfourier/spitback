@@ -1,0 +1,38 @@
+#N canvas 1160 300 775 533 12;
+#X obj 44 166 elsequantizer~;
+#X obj 44 299 dac~;
+#X obj 142 142 hsl 128 15 0 1 0 0 empty empty crush -2 -8 0 10 #fcfcfc
+#000000 #000000 0 1;
+#X floatatom 239 157 5 0 0 0 - - - 0;
+#X obj 45 120 osc~ 440;
+#X obj 44 261 *~ 0;
+#X obj 72 236 hsl 128 15 0 1 0 1 empty empty volume -2 -8 0 10 #fcfcfc
+#000000 #000000 3300 1;
+#X obj 45 194 *~ 0.4;
+#X text 36 15 quantizer~ from ELSE library by Alexandre Torres Porres
+https://github.com/porres/pd-else;
+#X text 36 54 [quantizer~] approximates a value to step values defined
+by the argument. There are 4 approximation modes: round (default) \,
+int \, floor & ceil., f 64;
+#X text 40 337 INLETS, f 37;
+#X text 40 385 OUTLETS;
+#X text 41 418 ARGUMENTS;
+#X text 40 349 0 (signal): signal to be quantized, f 65;
+#X text 40 396 0 (signal): quantized signal;
+#X text 40 432 1 (float): step value (default = 0 \, no approximation)
+, f 54;
+#X text 40 448 2 (float): approximarion mode: 0 (round) \, 1 (truncate)
+\, 2 (floor) or 3 (ceil), f 86;
+#X text 40 479 FLAG;
+#X text 40 493 -mode <float>: sets approximation mode <0 \, 1 \, 2
+or 3>;
+#X text 54 363 (mode <float>): sets approximarion mode: 0 (round) \,
+1 (truncate) \, 2 (floor) or 3 (ceil), f 91;
+#X connect 0 0 7 0;
+#X connect 2 0 3 0;
+#X connect 2 0 0 1;
+#X connect 4 0 0 0;
+#X connect 5 0 1 0;
+#X connect 5 0 1 1;
+#X connect 6 0 5 1;
+#X connect 7 0 5 0;

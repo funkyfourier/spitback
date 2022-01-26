@@ -1,0 +1,35 @@
+#N canvas 139 654 637 487 10;
+#X obj 116 248 elsedownsample~;
+#X obj 95 146 noise~;
+#X obj 95 175 *~ 0.4;
+#X obj 117 205 *~ 0;
+#X obj 141 148 hsl 128 15 0 1 0 1 empty empty volume -2 -8 0 10 #fcfcfc
+#000000 #000000 2000 1;
+#X obj 116 285 dac~;
+#X obj 206 221 hsl 128 15 10 44100 0 1 empty empty freq_(Hz) -2 -8
+0 10 #fcfcfc #000000 #000000 5400 1;
+#X floatatom 296 236 7 0 0 0 - - - 0;
+#X text 36 15 downsample~ from ELSE library by Alexandre Torres Porres
+https://github.com/porres/pd-else;
+#X text 26 331 INLETS;
+#X text 26 344 0 (signal): signal to be downsampled;
+#X text 26 379 OUTLETS;
+#X text 26 390 0 (signal): downsampled signal;
+#X text 27 412 ARGUMENTS;
+#X text 26 426 1 (float): rate in hertz (default is Pd's sample rate)
+;
+#X text 26 440 2 (float): interpolation 0 (off \, default) or 1 (on)
+;
+#X text 35 59 [downsample~] samples a signal received in the left inlet
+at a frequency rate in hertz. It can operate with or without interpolation.
+;
+#X text 37 357 (interp <float>): interpolation 0 (off \, default) or
+1 (on);
+#X connect 0 0 5 0;
+#X connect 0 0 5 1;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 0 0;
+#X connect 4 0 3 1;
+#X connect 6 0 7 0;
+#X connect 6 0 0 1;

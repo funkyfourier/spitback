@@ -1,0 +1,47 @@
+#N canvas 1145 360 721 609 12;
+#X obj 38 103 noise~;
+#X obj 38 132 *~ 0.4;
+#X obj 75 162 *~ 0;
+#X obj 103 105 hsl 128 15 0 1 0 1 empty empty volume -2 -8 0 10 #fcfcfc
+#000000 #000000 900 1;
+#X obj 116 304 dac~;
+#X obj 150 140 hsl 128 15 20 20000 0 1 empty empty freq\\\ (Hz) -2
+-8 0 10 #fcfcfc #000000 #000000 1300 1;
+#X floatatom 227 155 8 0 0 0 - - - 0;
+#X obj 116 267 elsehighshelf~;
+#X obj 182 182 hsl 128 15 0.1 1 0 1 empty empty slope -2 -8 0 10 #fcfcfc
+#000000 #000000 4700 1;
+#X floatatom 284 197 5 0 0 0 - - - 0;
+#X obj 214 228 hsl 128 15 -24 24 0 1 empty empty gain\\\ (dB) -2 -8
+0 10 #fcfcfc #000000 #000000 12700 1;
+#X floatatom 316 243 5 0 0 0 - - - 0;
+#X text 36 15 highshelf~ from ELSE library by Alexandre Torres Porres
+https://github.com/porres/pd-else;
+#X text 34 61 [highshelf~] is a 2nd order highshelf filter.;
+#X text 26 341 INLETS;
+#X text 26 451 OUTLETS;
+#X text 27 485 ARGUMENTS;
+#X text 26 354 0 (signal): signal to be filtered;
+#X text 26 462 0 (signal): filtered signal;
+#X text 26 499 1 (float): shelving frequency in Hertz (default 0);
+#X text 26 513 2 (float): slope from 0 to 1 (default 0);
+#X text 26 527 3 (float): gain in dB (default 0);
+#X text 26 395 1 (float/signal): shelving frequency in Hertz, f 71
+;
+#X text 26 410 2 (float/signal): slope (from 0 to 1), f 71;
+#X text 26 426 3 (float/signal): gain in dB, f 71;
+#X text 40 367 (clear): clears filter's memory if you blow it up;
+#X text 40 380 (bypass <float>): 1 (bypasses input signal) or 0 (doesn't
+bypass), f 71;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 7 0;
+#X connect 3 0 2 1;
+#X connect 5 0 6 0;
+#X connect 5 0 7 1;
+#X connect 7 0 4 0;
+#X connect 7 0 4 1;
+#X connect 8 0 9 0;
+#X connect 8 0 7 2;
+#X connect 10 0 11 0;
+#X connect 10 0 7 3;

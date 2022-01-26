@@ -3,9 +3,9 @@
 #include "m_pd.h"
 #include "math.h"
 
-static t_class *downsample_class;
+static t_class *elsedownsample_class;
 
-typedef struct _downsample
+typedef struct _elsedownsample
 {
     t_object x_obj;
     double  x_phase;
@@ -14,16 +14,16 @@ typedef struct _downsample
     t_float  x_interp;
     t_inlet  *x_inlet;
     float    x_sr;
-} t_downsample;
+} t_elsedownsample;
 
-static void downsample_interp(t_downsample *x, t_floatarg f)
+static void elsedownsample_interp(t_elsedownsample *x, t_floatarg f)
 {
     x->x_interp = f != 0;
 }
 
-static t_int *downsample_perform(t_int *w)
+static t_int *elsedownsample_perform(t_int *w)
 {
-    t_downsample *x = (t_downsample *)(w[1]);
+    t_elsedownsample *x = (t_elsedownsample *)(w[1]);
     int nblock = (t_int)(w[2]);
     t_float *in1 = (t_float *)(w[3]);
     t_float *in2 = (t_float *)(w[4]);
@@ -77,21 +77,21 @@ static t_int *downsample_perform(t_int *w)
     return (w + 6);
 }
 
-static void downsample_dsp(t_downsample *x, t_signal **sp)
+static void elsedownsample_dsp(t_elsedownsample *x, t_signal **sp)
 {
     x->x_sr = sp[0]->s_sr;
-    dsp_add(downsample_perform, 5, x, sp[0]->s_n,
+    dsp_add(elsedownsample_perform, 5, x, sp[0]->s_n,
             sp[0]->s_vec, sp[1]->s_vec, sp[2]->s_vec);
 }
 
-static void *downsample_free(t_downsample *x)
+static void *elsedownsample_free(t_elsedownsample *x)
 {
     inlet_free(x->x_inlet);
     return (void *)x;
 }
 
-static void *downsample_new(t_symbol *s, int argc, t_atom *argv){
-    t_downsample *x = (t_downsample *)pd_new(downsample_class);
+static void *elsedownsample_new(t_symbol *s, int argc, t_atom *argv){
+    t_elsedownsample *x = (t_elsedownsample *)pd_new(elsedownsample_class);
     t_symbol *dummy = s;
     dummy = NULL;
     t_float init_freq = sys_getsr();
@@ -126,22 +126,21 @@ static void *downsample_new(t_symbol *s, int argc, t_atom *argv){
     outlet_new((t_object *)x, &s_signal);
     return (x);
     errstate:
-        pd_error(x, "[downsample~]: improper args");
+        pd_error(x, "[elsedownsample~]: improper args");
         return NULL;
 }
 
 
-void downsample_tilde_setup(void)
+void elsedownsample_tilde_setup(void)
 {
-    downsample_class = class_new(gensym("downsample~"),
-        (t_newmethod)downsample_new,
-        (t_method)downsample_free,
-        sizeof(t_downsample),
+    elsedownsample_class = class_new(gensym("elsedownsample~"),
+        (t_newmethod)elsedownsample_new,
+        (t_method)elsedownsample_free,
+        sizeof(t_elsedownsample),
         CLASS_DEFAULT,
         A_GIMME,
         0);
-    class_addmethod(downsample_class, nullfn, gensym("signal"), 0);
-    class_addmethod(downsample_class, (t_method)downsample_dsp, gensym("dsp"), A_CANT, 0);
-    class_addmethod(downsample_class, (t_method)downsample_interp, gensym("interp"), A_DEFFLOAT, 0);
+    class_addmethod(elsedownsample_class, nullfn, gensym("signal"), 0);
+    class_addmethod(elsedownsample_class, (t_method)elsedownsample_dsp, gensym("dsp"), A_CANT, 0);
+    class_addmethod(elsedownsample_class, (t_method)elsedownsample_interp, gensym("interp"), A_DEFFLOAT, 0);
 }
-
