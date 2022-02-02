@@ -1,4 +1,4 @@
-#N canvas 1113 424 508 355 10;
+#N canvas 915 175 508 355 10;
 #X declare -path ../externals/bin;
 #N canvas 386 88 438 474 ticks 0;
 #X obj 59 395 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
@@ -617,8 +617,8 @@
 #X connect 36 0 11 0;
 #X connect 36 1 12 0;
 #X restore 14 145 pd synctick;
-#N canvas 364 348 433 297 transferfunctions 1;
-#N canvas 1154 405 893 473 transferarc 1;
+#N canvas 364 348 433 297 transferfunctions 0;
+#N canvas 451 692 893 473 transferarc 0;
 #X obj 374 85 until;
 #X obj 408 128 + 1;
 #X obj 374 128 f;
