@@ -155,13 +155,13 @@
 #X obj 387 152 hsl 128 15 1 15 0 1 \$1-bitcrusher-drive empty drive
 -2 -8 0 10 #fcfcfc #000000 #000000 2900 1;
 #X obj 387 185 hsl 128 15 0 1 0 1 \$1-bitcrusher-crush empty crush
--2 -8 0 10 #fcfcfc #000000 #000000 900 1;
+-2 -8 0 10 #fcfcfc #000000 #000000 12700 1;
 #X obj 387 288 hsl 128 15 0 1 0 1 \$1-bitcrusher-mix empty mix -2 -8
 0 10 #fcfcfc #000000 #000000 12700 1;
 #X obj 387 217 hsl 128 15 0 1 0 1 \$1-bitcrusher-rate empty rate -2
--8 0 10 #fcfcfc #000000 #000000 1200 1;
+-8 0 10 #fcfcfc #000000 #000000 3600 1;
 #X obj 387 251 hsl 128 15 0 3 0 1 \$1-bitcrusher-noise empty noise
--2 -8 0 10 #fcfcfc #000000 #000000 3700 1;
+-2 -8 0 10 #fcfcfc #000000 #000000 5400 1;
 #X obj 206 90 cnv 15 160 15 empty empty Distortion(fx1) 10 8 0 12 #b8b8b8
 #404040 0;
 #X obj 206 114 tgl 15 0 \$1-distortion-enable empty enable 17 7 0 10
@@ -174,10 +174,10 @@
 -2 -8 0 10 #fcfcfc #000000 #000000 100 1;
 #X msg 750 286 set fx\$1 fx\$2 fx\$3 fx\$4 fx\$5 fx\$6 fx\$7 fx\$8
 fx\$9 fx\$10;
-#X obj 209 188 hsl 128 15 0 60 0 1 \$1-distortion-fuzziness empty fuzziness
+#X obj 209 188 hsl 128 15 0 1 0 1 \$1-distortion-fuzziness empty fuzziness
 -2 -8 0 10 #fcfcfc #000000 #000000 12700 1;
 #X obj 209 222 hsl 128 15 200 16000 0 1 \$1-distortion-fuzzfreq empty
-fuzzfreq -2 -8 0 10 #fcfcfc #000000 #000000 0 1;
+fuzzfreq -2 -8 0 10 #fcfcfc #000000 #000000 4600 1;
 #X obj 209 258 hsl 128 15 0 1 0 1 \$1-distortion-mix empty mix -2 -8
 0 10 #fcfcfc #000000 #000000 12700 1;
 #X obj 288 167 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
