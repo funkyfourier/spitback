@@ -3,7 +3,7 @@
 #X obj 38 132 *~ 0.4;
 #X obj 75 162 *~ 0;
 #X obj 103 105 hsl 128 15 0 1 0 1 empty empty volume -2 -8 0 10 #fcfcfc
-#000000 #000000 0 1;
+#000000 #000000 900 1;
 #X obj 116 304 dac~;
 #X obj 150 140 hsl 128 15 20 20000 0 1 empty empty freq\\\ (Hz) -2
 -8 0 10 #fcfcfc #000000 #000000 1300 1;
