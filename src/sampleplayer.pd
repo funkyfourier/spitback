@@ -1,5 +1,5 @@
 #N canvas 1520 163 708 800 10;
-#N canvas 529 201 709 848 automationhub 1;
+#N canvas 1370 337 709 848 automationhub 1;
 #X obj 12 11 autoline \$1 samplerparams 9 attack;
 #X obj 12 31 autoline \$1 samplerparams 10 decay;
 #X obj 12 51 autoline \$1 samplerparams 11 sustain;
@@ -46,7 +46,8 @@
 #X obj 296 794 autoline \$1 fxparams 43 distortion-drive;
 #X obj 296 814 autoline \$1 fxparams 44 distortion-fuzziness;
 #X obj 295 834 autoline \$1 fxparams 45 distortion-fuzzfreq;
-#X obj 296 854 autoline \$1 fxparams 46 distortion-mix;
+#X obj 295 855 autoline \$1 fxparams 46 distortion-postgain;
+#X obj 295 876 autoline \$1 fxparams 47 distortion-mix;
 #X restore 159 346 pd automationhub;
 #N canvas 1731 170 681 397 lfoconnections 0;
 #X obj 296 97 select 1;

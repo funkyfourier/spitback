@@ -2,7 +2,7 @@
 #X obj 16 181 catch~ \$1-instrumentoutput;
 #X obj 347 67 receive \$1-noteon;
 #X obj 359 176 receive \$1-noteoff;
-#N canvas 211 322 327 80 paramwriters 1;
+#N canvas 211 322 327 80 paramwriters 0;
 #N canvas 131 299 343 348 slotparams 0;
 #X obj 7 15 drumparamreceivers \$1 0;
 #X obj 196 15 table \$1-params-0;
@@ -156,7 +156,8 @@
 #X obj 12 789 autoline \$1 fxparams 43 distortion-drive;
 #X obj 12 809 autoline \$1 fxparams 44 distortion-fuzziness;
 #X obj 12 829 autoline \$1 fxparams 45 distortion-fuzzfreq;
-#X obj 12 849 autoline \$1 fxparams 46 distortion-mix;
+#X obj 12 872 autoline \$1 fxparams 47 distortion-mix;
+#X obj 12 850 autoline \$1 fxparams 46 distortion-postgain;
 #X restore 26 96 pd automationhub;
 #X obj 35 211 r \$1-pan;
 #X obj 17 232 pan;

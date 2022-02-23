@@ -87,7 +87,7 @@
 #X obj 243 674 r \$1-distortion-drive;
 #X obj 243 723 r \$1-distortion-fuzziness;
 #X obj 243 770 r \$1-distortion-fuzzfreq;
-#X obj 243 820 r \$1-distortion-mix;
+#X obj 243 875 r \$1-distortion-mix;
 #X obj 23 817 r \$1-bitcrusher-mix;
 #X obj 23 697 paramwriter \$1-fxparams 38;
 #X obj 23 744 paramwriter \$1-fxparams 39;
@@ -97,7 +97,9 @@
 #X obj 243 700 paramwriter \$1-fxparams 43;
 #X obj 243 748 paramwriter \$1-fxparams 44;
 #X obj 243 795 paramwriter \$1-fxparams 45;
-#X obj 243 845 paramwriter \$1-fxparams 46;
+#X obj 243 846 paramwriter \$1-fxparams 46;
+#X obj 243 821 r \$1-distortion-postgain;
+#X obj 243 900 paramwriter \$1-fxparams 47;
 #X connect 1 0 37 0;
 #X connect 2 0 36 0;
 #X connect 3 0 38 0;
@@ -143,5 +145,6 @@
 #X connect 83 0 93 0;
 #X connect 84 0 94 0;
 #X connect 85 0 95 0;
-#X connect 86 0 96 0;
+#X connect 86 0 98 0;
 #X connect 87 0 91 0;
+#X connect 97 0 96 0;
