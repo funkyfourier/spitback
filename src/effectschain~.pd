@@ -894,7 +894,7 @@ subjectively makes the reverb a bit too loud compared to the dry signal
 #X msg 63 142 1 0;
 #X obj 20 164 line~;
 #X obj 20 57 inlet;
-#X obj 20 85 logvolume -20 0 1;
+#X obj 20 85 logvolume -30 0 1;
 #X connect 1 0 4 0;
 #X connect 2 0 3 0;
 #X connect 3 0 4 0;
