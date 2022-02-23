@@ -1,82 +1,82 @@
 #N canvas 1248 351 1146 597 12;
-#X obj 206 553 cnv 15 160 15 empty empty Reverb(fx9) 10 8 0 12 #b8b8b8
+#X obj 206 535 cnv 15 160 15 empty empty Reverb(fx9) 10 8 0 12 #b8b8b8
 #404040 0;
-#X obj 206 577 tgl 15 0 \$1-rev-enable empty enable 17 7 0 10 #fcfcfc
+#X obj 206 559 tgl 15 0 \$1-rev-enable empty enable 17 7 0 10 #fcfcfc
 #000000 #000000 0 1;
-#X obj 274 577 bng 15 250 50 0 \$1-rev-moveup empty up 17 7 0 10 #fcfcfc
+#X obj 274 559 bng 15 250 50 0 \$1-rev-moveup empty up 17 7 0 10 #fcfcfc
 #000000 #000000;
-#X obj 321 577 bng 15 250 50 0 \$1-rev-movedown empty down 17 7 0 10
+#X obj 321 559 bng 15 250 50 0 \$1-rev-movedown empty down 17 7 0 10
 #fcfcfc #000000 #000000;
-#X obj 369 320 cnv 15 160 15 empty empty Delay(fx6) 10 8 0 12 #b8b8b8
+#X obj 369 302 cnv 15 160 15 empty empty Delay(fx6) 10 8 0 12 #b8b8b8
 #404040 0;
-#X obj 369 344 tgl 15 0 \$1-del-enable empty enable 17 7 0 10 #fcfcfc
+#X obj 369 326 tgl 15 0 \$1-del-enable empty enable 17 7 0 10 #fcfcfc
 #000000 #000000 0 1;
-#X obj 437 344 bng 15 250 50 0 \$1-del-moveup empty up 17 7 0 10 #fcfcfc
+#X obj 437 326 bng 15 250 50 0 \$1-del-moveup empty up 17 7 0 10 #fcfcfc
 #000000 #000000;
-#X obj 484 344 bng 15 250 50 0 \$1-del-movedown empty down 17 7 0 10
+#X obj 484 326 bng 15 250 50 0 \$1-del-movedown empty down 17 7 0 10
 #fcfcfc #000000 #000000;
-#X obj 532 320 cnv 15 160 15 empty empty Flanger(fx7) 10 8 0 12 #b8b8b8
+#X obj 532 302 cnv 15 160 15 empty empty Flanger(fx7) 10 8 0 12 #b8b8b8
 #404040 0;
-#X obj 532 344 tgl 15 0 \$1-flg-enable empty enable 17 7 0 10 #fcfcfc
+#X obj 532 326 tgl 15 0 \$1-flg-enable empty enable 17 7 0 10 #fcfcfc
 #000000 #000000 0 1;
-#X obj 591 344 bng 15 250 50 0 \$1-flg-moveup empty up 17 7 0 10 #fcfcfc
+#X obj 591 326 bng 15 250 50 0 \$1-flg-moveup empty up 17 7 0 10 #fcfcfc
 #000000 #000000;
-#X obj 638 344 bng 15 250 50 0 \$1-flg-movedown empty down 17 7 0 10
+#X obj 638 326 bng 15 250 50 0 \$1-flg-movedown empty down 17 7 0 10
 #fcfcfc #000000 #000000;
-#X obj 209 615 hsl 128 15 0 1 0 1 \$1-rev-damp empty damp -2 -8 0 10
+#X obj 209 597 hsl 128 15 0 1 0 1 \$1-rev-damp empty damp -2 -8 0 10
 #fcfcfc #000000 #000000 11000 1;
-#X obj 209 648 hsl 128 15 0 1 0 1 \$1-rev-roomsize empty roomsize -2
+#X obj 209 630 hsl 128 15 0 1 0 1 \$1-rev-roomsize empty roomsize -2
 -8 0 10 #fcfcfc #000000 #000000 12700 1;
-#X obj 209 712 hsl 128 15 0 1 0 1 \$1-rev-wet empty wet -2 -8 0 10
+#X obj 209 694 hsl 128 15 0 1 0 1 \$1-rev-wet empty wet -2 -8 0 10
 #fcfcfc #000000 #000000 10200 1;
-#X obj 376 382 hsl 128 15 0 1000 0 0 \$1-del-delay empty delay_(ms)
+#X obj 376 364 hsl 128 15 0 1000 0 0 \$1-del-delay empty delay_(ms)
 -2 -8 0 10 #fcfcfc #000000 #000000 0 1;
-#X obj 376 418 hsl 128 15 0 1 0 0 \$1-del-feedback empty feedback -2
+#X obj 376 400 hsl 128 15 0 1 0 0 \$1-del-feedback empty feedback -2
 -8 0 10 #fcfcfc #000000 #000000 0 1;
-#X obj 376 483 hsl 128 15 0 1 0 0 \$1-del-wet empty wet -2 -8 0 10
+#X obj 376 465 hsl 128 15 0 1 0 0 \$1-del-wet empty wet -2 -8 0 10
 #fcfcfc #000000 #000000 0 1;
-#X obj 534 382 hsl 128 15 0 2 0 0 \$1-flg-freq empty freq_(Hz) -2 -8
+#X obj 534 364 hsl 128 15 0 2 0 0 \$1-flg-freq empty freq_(Hz) -2 -8
 0 10 #fcfcfc #000000 #000000 0 1;
-#X obj 534 418 hsl 128 15 0 1 0 0 \$1-flg-width empty width -2 -8 0
+#X obj 534 400 hsl 128 15 0 1 0 0 \$1-flg-width empty width -2 -8 0
 10 #fcfcfc #000000 #000000 0 1;
-#X obj 534 449 hsl 128 15 0 1 0 0 \$1-flg-feedback empty feedback -2
+#X obj 534 431 hsl 128 15 0 1 0 0 \$1-flg-feedback empty feedback -2
 -8 0 10 #fcfcfc #000000 #000000 0 1;
-#X obj 534 483 hsl 128 15 0 1 0 0 \$1-flg-wet empty wet -2 -8 0 10
+#X obj 534 465 hsl 128 15 0 1 0 0 \$1-flg-wet empty wet -2 -8 0 10
 #fcfcfc #000000 #000000 0 1;
 #X obj 750 264 r \$1-fxlistctl;
-#X obj 209 680 hsl 128 15 0 1 0 1 \$1-rev-spread empty stereo_spread
+#X obj 209 662 hsl 128 15 0 1 0 1 \$1-rev-spread empty stereo_spread
 -2 -8 0 10 #fcfcfc #000000 #000000 12700 1;
-#X obj 376 450 hsl 128 15 0 1 0 0 \$1-del-spread empty spread -2 -8
+#X obj 376 432 hsl 128 15 0 1 0 0 \$1-del-spread empty spread -2 -8
 0 10 #fcfcfc #000000 #000000 0 1;
-#X obj 43 553 cnv 15 160 15 empty empty Chorus(fx8) 10 8 0 12 #b8b8b8
+#X obj 43 535 cnv 15 160 15 empty empty Chorus(fx8) 10 8 0 12 #b8b8b8
 #404040 0;
-#X obj 43 577 tgl 15 0 \$1-chorus-enable empty enable 17 7 0 10 #fcfcfc
+#X obj 43 559 tgl 15 0 \$1-chorus-enable empty enable 17 7 0 10 #fcfcfc
 #000000 #000000 0 1;
-#X obj 111 577 bng 15 250 50 0 \$1-chorus-moveup empty up 17 7 0 10
+#X obj 111 559 bng 15 250 50 0 \$1-chorus-moveup empty up 17 7 0 10
 #fcfcfc #000000 #000000;
-#X obj 158 577 bng 15 250 50 0 \$1-chorus-movedown empty down 17 7
+#X obj 158 559 bng 15 250 50 0 \$1-chorus-movedown empty down 17 7
 0 10 #fcfcfc #000000 #000000;
-#X obj 46 615 hsl 128 15 0 1 0 1 \$1-chorus-depth empty depth -2 -8
+#X obj 46 597 hsl 128 15 0 1 0 1 \$1-chorus-depth empty depth -2 -8
 0 10 #fcfcfc #000000 #000000 12700 1;
-#X obj 46 648 hsl 128 15 0.01 10 0 1 \$1-chorus-speed empty speed_(Hz)
+#X obj 46 630 hsl 128 15 0.01 10 0 1 \$1-chorus-speed empty speed_(Hz)
 -2 -8 0 10 #fcfcfc #000000 #000000 6400 1;
-#X obj 46 723 hsl 128 15 0 1 0 1 \$1-chorus-wet empty wet -2 -8 0 10
+#X obj 46 705 hsl 128 15 0 1 0 1 \$1-chorus-wet empty wet -2 -8 0 10
 #fcfcfc #000000 #000000 0 1;
-#X obj 46 691 hsl 128 15 0 1 0 1 \$1-chorus-spread empty spread -2
+#X obj 46 673 hsl 128 15 0 1 0 1 \$1-chorus-spread empty spread -2
 -8 0 10 #fcfcfc #000000 #000000 0 1;
-#X obj 206 320 cnv 15 160 15 empty empty Tremolo(fx5) 10 8 0 12 #b8b8b8
+#X obj 206 302 cnv 15 160 15 empty empty Tremolo(fx5) 10 8 0 12 #b8b8b8
 #404040 0;
-#X obj 206 344 tgl 15 0 \$1-tremolo-enable empty enable 17 7 0 10 #fcfcfc
+#X obj 206 326 tgl 15 0 \$1-tremolo-enable empty enable 17 7 0 10 #fcfcfc
 #000000 #000000 0 1;
-#X obj 274 344 bng 15 250 50 0 \$1-tremolo-moveup empty up 17 7 0 10
+#X obj 274 326 bng 15 250 50 0 \$1-tremolo-moveup empty up 17 7 0 10
 #fcfcfc #000000 #000000;
-#X obj 321 344 bng 15 250 50 0 \$1-tremolo-movedown empty down 17 7
+#X obj 321 326 bng 15 250 50 0 \$1-tremolo-movedown empty down 17 7
 0 10 #fcfcfc #000000 #000000;
-#X obj 209 382 hsl 128 15 1 20 0 1 \$1-tremolo-rate empty rate_(Hz)
+#X obj 209 364 hsl 128 15 1 20 0 1 \$1-tremolo-rate empty rate_(Hz)
 -2 -8 0 10 #fcfcfc #000000 #000000 12500 1;
-#X obj 209 421 hsl 128 15 0.05 1 0 1 \$1-tremolo-smooth empty smooth
+#X obj 209 403 hsl 128 15 0.05 1 0 1 \$1-tremolo-smooth empty smooth
 -2 -8 0 10 #fcfcfc #000000 #000000 12700 1;
-#X obj 209 469 hsl 128 15 0 1 0 1 \$1-tremolo-depth empty depth -2
+#X obj 209 451 hsl 128 15 0 1 0 1 \$1-tremolo-depth empty depth -2
 -8 0 10 #fcfcfc #000000 #000000 12400 1;
 #X obj 551 90 cnv 15 160 15 empty empty Filter(fx3) 10 8 0 12 #b8b8b8
 #404040 0;
@@ -95,23 +95,23 @@
 #X text 553 177 lp;
 #X text 570 177 hp;
 #X text 587 177 bp;
-#X obj 43 320 cnv 15 160 15 empty empty 3_Band_EQ(fx4) 10 8 0 12 #b8b8b8
+#X obj 43 302 cnv 15 160 15 empty empty 3_Band_EQ(fx4) 10 8 0 12 #b8b8b8
 #404040 0;
-#X obj 43 344 tgl 15 0 \$1-3eq-enable empty enable 17 7 0 10 #fcfcfc
+#X obj 43 326 tgl 15 0 \$1-3eq-enable empty enable 17 7 0 10 #fcfcfc
 #000000 #000000 0 1;
-#X obj 111 344 bng 15 250 50 0 \$1-3eq-moveup empty up 17 7 0 10 #fcfcfc
+#X obj 111 326 bng 15 250 50 0 \$1-3eq-moveup empty up 17 7 0 10 #fcfcfc
 #000000 #000000;
-#X obj 158 344 bng 15 250 50 0 \$1-3eq-movedown empty down 17 7 0 10
+#X obj 158 326 bng 15 250 50 0 \$1-3eq-movedown empty down 17 7 0 10
 #fcfcfc #000000 #000000;
-#X obj 46 382 hsl 128 15 -36 36 0 1 \$1-3eq-lowgain empty low_(dB)
+#X obj 46 364 hsl 128 15 -36 36 0 1 \$1-3eq-lowgain empty low_(dB)
 -2 -8 0 10 #fcfcfc #000000 #000000 6400 1;
-#X obj 46 415 hsl 128 15 -36 36 0 1 \$1-3eq-midgain empty mid-gain_(dB)
+#X obj 46 397 hsl 128 15 -36 36 0 1 \$1-3eq-midgain empty mid-gain_(dB)
 -2 -8 0 10 #fcfcfc #000000 #000000 9400 1;
-#X obj 46 447 hsl 128 15 400 3500 0 1 \$1-3eq-midfreq empty mid-freq_(Hz)
+#X obj 46 429 hsl 128 15 400 3500 0 1 \$1-3eq-midfreq empty mid-freq_(Hz)
 -2 -8 0 10 #fcfcfc #000000 #000000 3500 1;
-#X obj 46 479 hsl 128 15 20 1000 0 1 \$1-3eq-midbw empty mid-bw_(Hz)
+#X obj 46 461 hsl 128 15 20 1000 0 1 \$1-3eq-midbw empty mid-bw_(Hz)
 -2 -8 0 10 #fcfcfc #000000 #000000 10800 1;
-#X obj 46 511 hsl 128 15 -36 36 0 1 \$1-3eq-highgain empty high_(dB)
+#X obj 46 493 hsl 128 15 -36 36 0 1 \$1-3eq-highgain empty high_(dB)
 -2 -8 0 10 #fcfcfc #000000 #000000 6400 1;
 #X obj 38 90 cnv 15 160 15 empty empty Gainer(fx0) 10 8 0 12 #b8b8b8
 #404040 0;
@@ -125,23 +125,23 @@
 -2 -8 0 10 #fcfcfc #000000 #000000 0 1;
 #X obj 41 236 hsl 128 15 0 1 0 0 \$1-gainer-pan empty pan -2 -8 0 10
 #fcfcfc #000000 #000000 0 1;
-#X floatatom 302 397 5 0 0 0 - - - 0;
-#X floatatom 628 397 5 0 0 0 - - - 0;
-#X floatatom 139 663 5 0 0 0 - - - 0;
+#X floatatom 302 379 5 0 0 0 - - - 0;
+#X floatatom 628 379 5 0 0 0 - - - 0;
+#X floatatom 139 645 5 0 0 0 - - - 0;
 #X floatatom 135 183 5 0 0 0 - - - 0;
-#X floatatom 469 397 5 0 0 0 - - - 0;
-#X floatatom 139 397 5 0 0 0 - - - 0;
-#X floatatom 139 430 5 0 0 0 - - - 0;
-#X floatatom 139 462 5 0 0 0 - - - 0;
-#X floatatom 139 494 5 0 0 0 - - - 0;
-#X floatatom 139 526 5 0 0 0 - - - 0;
+#X floatatom 469 379 5 0 0 0 - - - 0;
+#X floatatom 139 379 5 0 0 0 - - - 0;
+#X floatatom 139 412 5 0 0 0 - - - 0;
+#X floatatom 139 444 5 0 0 0 - - - 0;
+#X floatatom 139 476 5 0 0 0 - - - 0;
+#X floatatom 139 508 5 0 0 0 - - - 0;
 #X obj 635 229 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
 #fcfcfc #000000 #000000 0 256;
 #X obj 634 278 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
 #fcfcfc #000000 #000000 0 256;
 #X floatatom 134 251 5 0 0 0 - - - 0;
-#X floatatom 302 484 5 0 0 0 - - - 0;
-#X floatatom 319 727 5 0 0 0 - - - 0;
+#X floatatom 302 466 5 0 0 0 - - - 0;
+#X floatatom 319 709 5 0 0 0 - - - 0;
 #X obj 750 312 outlet;
 #X text 747 238 order of effects;
 #X obj 384 90 cnv 15 160 15 empty empty Bitcrusher(fx2) 10 8 0 12 #b8b8b8
@@ -152,15 +152,13 @@
 0 10 #fcfcfc #000000 #000000;
 #X obj 499 114 bng 15 250 50 0 \$1-bitcrusher-movedown empty down 17
 7 0 10 #fcfcfc #000000 #000000;
-#X obj 387 152 hsl 128 15 1 15 0 1 \$1-bitcrusher-drive empty drive
--2 -8 0 10 #fcfcfc #000000 #000000 2900 1;
-#X obj 387 185 hsl 128 15 0 1 0 1 \$1-bitcrusher-crush empty crush
+#X obj 387 154 hsl 128 15 0 1 0 1 \$1-bitcrusher-crush empty crush
 -2 -8 0 10 #fcfcfc #000000 #000000 12700 1;
-#X obj 387 288 hsl 128 15 0 1 0 1 \$1-bitcrusher-mix empty mix -2 -8
+#X obj 387 257 hsl 128 15 0 1 0 1 \$1-bitcrusher-mix empty mix -2 -8
 0 10 #fcfcfc #000000 #000000 12700 1;
-#X obj 387 217 hsl 128 15 0 1 0 1 \$1-bitcrusher-rate empty rate -2
+#X obj 387 186 hsl 128 15 0 1 0 1 \$1-bitcrusher-rate empty rate -2
 -8 0 10 #fcfcfc #000000 #000000 3600 1;
-#X obj 387 251 hsl 128 15 0 3 0 1 \$1-bitcrusher-noise empty noise
+#X obj 387 220 hsl 128 15 0 3 0 1 \$1-bitcrusher-noise empty noise
 -2 -8 0 10 #fcfcfc #000000 #000000 5400 1;
 #X obj 206 90 cnv 15 160 15 empty empty Distortion(fx1) 10 8 0 12 #b8b8b8
 #404040 0;
@@ -188,20 +186,18 @@ fuzzfreq -2 -8 0 10 #fcfcfc #000000 #000000 4600 1;
 #fcfcfc #000000 #000000 0 256;
 #X obj 289 273 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
 #fcfcfc #000000 #000000 0 256;
-#X obj 466 167 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+#X obj 466 169 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
 #fcfcfc #000000 #000000 0 256;
-#X obj 466 200 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+#X obj 466 201 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
 #fcfcfc #000000 #000000 0 256;
-#X obj 466 232 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+#X obj 466 235 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
 #fcfcfc #000000 #000000 0 256;
-#X obj 466 266 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
-#fcfcfc #000000 #000000 0 256;
-#X obj 466 303 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+#X obj 466 272 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
 #fcfcfc #000000 #000000 0 256;
 #X connect 14 0 79 0;
 #X connect 15 0 69 0;
 #X connect 18 0 66 0;
-#X connect 22 0 96 0;
+#X connect 22 0 95 0;
 #X connect 30 0 67 0;
 #X connect 37 0 65 0;
 #X connect 39 0 78 0;
@@ -214,14 +210,13 @@ fuzzfreq -2 -8 0 10 #fcfcfc #000000 #000000 4600 1;
 #X connect 58 0 74 0;
 #X connect 63 0 68 0;
 #X connect 64 0 77 0;
-#X connect 86 0 104 0;
-#X connect 87 0 105 0;
-#X connect 88 0 108 0;
-#X connect 89 0 106 0;
-#X connect 90 0 107 0;
-#X connect 95 0 100 0;
-#X connect 96 0 80 0;
+#X connect 86 0 103 0;
+#X connect 87 0 106 0;
+#X connect 88 0 104 0;
+#X connect 89 0 105 0;
+#X connect 94 0 99 0;
+#X connect 95 0 80 0;
+#X connect 96 0 100 0;
 #X connect 97 0 101 0;
 #X connect 98 0 102 0;
-#X connect 99 0 103 0;
 #X coords 0 -1 1 1 700 700 1 20 60;
