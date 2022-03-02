@@ -180,6 +180,15 @@ To get and set parameters, you will use these unique id's:
 * gainer-enable
 * gainer-gain
 * gainer-pan
+* distortion-drive
+* distortion-fuzziness
+* distortion-fuzzfreq
+* distortion-postgain
+* distortion-mix
+* bitcrusher-crush
+* bitcrusher-rate
+* bitcrusher-noise
+* bitcrusher-mix
 
 #### Setting parameters
 
