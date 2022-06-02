@@ -1,4 +1,5 @@
 #include "m_pd.h"
+#include <stdlib.h>
 #include "math.h"
 
 static t_class *faustchorus_tilde_class;

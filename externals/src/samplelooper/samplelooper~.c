@@ -1,4 +1,5 @@
 #include "m_pd.h"
+#include <math.h>
 
 static t_class *samplelooper_tilde_class;
 
@@ -13,6 +14,7 @@ typedef struct _samplelooper {
 	t_int lfo_enabled;
 	t_int loop_enabled;
 	t_outlet *index_out;
+	t_outlet *start_frame_out;
 	t_outlet *finished_out;
 	t_inlet *samplestart_in;
 	t_inlet *sampleend_in;
@@ -24,6 +26,7 @@ static t_float pdsr;
 
 void samplelooper_tilde_noteon_bang(t_samplelooper_tilde *x){
 	x->position = x->samplestart;
+	outlet_float(x->start_frame_out, x->position);
 }
 
 void samplelooper_tilde_enable_lfo(t_samplelooper_tilde *x, t_floatarg argument){
@@ -46,6 +49,7 @@ void samplelooper_tilde_disable_loop(t_samplelooper_tilde *x){
 
 void samplelooper_tilde_free(t_samplelooper_tilde *x){
   	outlet_free(x->index_out);
+	outlet_free(x->start_frame_out);
 	outlet_free(x->finished_out);
 	inlet_free(x->samplestart_in);
 	inlet_free(x->sampleend_in);
@@ -73,6 +77,8 @@ void *samplelooper_tilde_new(void){
 
 	x->index_out = outlet_new(&x->x_obj, &s_signal);
 
+	x->start_frame_out = outlet_new(&x->x_obj, &s_float); 
+
 	x->finished_out = outlet_new(&x->x_obj, &s_bang); 
 
   	return (void *)x;
@@ -96,6 +102,7 @@ t_int *samplelooper_tilde_perform(t_int *w){
 			if(position >= loopend){
 				float range = loopend - loopstart;
 				position = fmod(position - loopstart, range) + loopstart;
+				outlet_float(x->start_frame_out, position);
 			}
 		}
 		else {

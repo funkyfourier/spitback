@@ -1,4 +1,5 @@
 #include "m_pd.h"
+#include <stdlib.h>
 
 static t_class *fxlist_class;
 

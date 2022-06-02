@@ -1,4 +1,5 @@
 #include "m_pd.h"
+#include <stdlib.h>
 #include "math.h"
 
 static t_class *faustflange_tilde_class;
