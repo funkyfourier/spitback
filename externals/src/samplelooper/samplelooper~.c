@@ -41,10 +41,9 @@ void samplelooper_tilde_enable_loop(t_samplelooper_tilde *x, t_floatarg argument
 	if(loop_enabled == 0 || loop_enabled == 1){
 		x->loop_enabled = loop_enabled;
 	}
-}
-
-void samplelooper_tilde_disable_loop(t_samplelooper_tilde *x){
-	x->loop_enabled = 0; 
+	if(x->loop_enabled == 0){
+		outlet_float(x->start_frame_out, x->position);
+	}
 }
 
 void samplelooper_tilde_free(t_samplelooper_tilde *x){
