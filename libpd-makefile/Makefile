@@ -110,7 +110,7 @@ PD_EXTRA_FILES = \
     externals/src/elsedownsample/elsedownsample~.c\
     externals/src/elsehighshelf/elsehighshelf~.c\
     externals/src/elselowshelf/elselowshelf~.c\
-    externals/src/elsequantizer/elsequantizer~.c
+    externals/src/elsequantizer/elsequantizer~.c \
     externals/src/faustchorus/faustchorus~.c \
     externals/src/faustdelay/faustdelay~.c \
     externals/src/faustflange/faustflange~.c \
