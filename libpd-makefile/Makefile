@@ -121,7 +121,6 @@ PD_EXTRA_FILES = \
     externals/src/faustrevstereo/faustrevstereo~.c \
     externals/src/fxlist/fxlist.c \
     externals/src/samplelooper/samplelooper~.c\
-    externals/src/quantizer/quantizer~.c\
 
 LIBPD_UTILS = \
     libpd_wrapper/util/z_print_util.c \
