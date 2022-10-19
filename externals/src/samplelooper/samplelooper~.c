@@ -14,7 +14,7 @@ typedef struct _samplelooper {
 	t_int lfo_enabled;
 	t_int loop_enabled;
 	t_outlet *index_out;
-	t_outlet *start_frame_out;
+	t_outlet *playback_frames_out;
 	t_outlet *finished_out;
 	t_inlet *samplestart_in;
 	t_inlet *sampleend_in;
@@ -26,7 +26,6 @@ static t_float pdsr;
 
 void samplelooper_tilde_noteon_bang(t_samplelooper_tilde *x){
 	x->position = x->samplestart;
-	outlet_float(x->start_frame_out, x->position);
 }
 
 void samplelooper_tilde_enable_lfo(t_samplelooper_tilde *x, t_floatarg argument){
@@ -41,14 +40,11 @@ void samplelooper_tilde_enable_loop(t_samplelooper_tilde *x, t_floatarg argument
 	if(loop_enabled == 0 || loop_enabled == 1){
 		x->loop_enabled = loop_enabled;
 	}
-	if(x->loop_enabled == 0){
-		outlet_float(x->start_frame_out, x->position);
-	}
 }
 
 void samplelooper_tilde_free(t_samplelooper_tilde *x){
   	outlet_free(x->index_out);
-	outlet_free(x->start_frame_out);
+	outlet_free(x->playback_frames_out);
 	outlet_free(x->finished_out);
 	inlet_free(x->samplestart_in);
 	inlet_free(x->sampleend_in);
@@ -76,11 +72,18 @@ void *samplelooper_tilde_new(void){
 
 	x->index_out = outlet_new(&x->x_obj, &s_signal);
 
-	x->start_frame_out = outlet_new(&x->x_obj, &s_float); 
+	x->playback_frames_out = outlet_new(&x->x_obj, &s_list); 
 
 	x->finished_out = outlet_new(&x->x_obj, &s_bang); 
 
   	return (void *)x;
+}
+
+void output_playback_frames(t_samplelooper_tilde *x, t_float start_position, t_float end_position){
+	t_atom playback_frames[2];
+	SETFLOAT(playback_frames, (t_float)start_position);
+	SETFLOAT(playback_frames+1, (t_float)end_position);
+	outlet_list(x->playback_frames_out, gensym("list"), 2, playback_frames);
 }
 
 t_int *samplelooper_tilde_perform(t_int *w){
@@ -93,26 +96,36 @@ t_int *samplelooper_tilde_perform(t_int *w){
 	double pitch_ratio = (double)x->pitch_ratio;
 	float loopstart = x->loopstart;
     float loopend = x->loopend;
-	
+
+	t_float playback_start = x->position;
+	t_float playback_end = x->position;
+
 	while (n--){
 		double sig = *in++;
 		double sig_pitch = (x->lfo_enabled == 1) ? (1-sig) : 1;	
+
+		//post("position %f", position);
 		if(x->loop_enabled == 1){
 			if(position >= loopend){
 				float range = loopend - loopstart;
 				position = fmod(position - loopstart, range) + loopstart;
-				outlet_float(x->start_frame_out, position);
 			}
 		}
 		else {
-			if(x->position >= x->sampleend){
+			if(position >= x->sampleend){
+				//post("finished %f %f", position, (pitch_ratio * sig_pitch));
+				position = x->sampleend - 1;
 				x->position = x->samplestart;
 				outlet_bang(x->finished_out);
+				break;
 			}
 		}
+		playback_end = position;
 		*out++ = (position);
 		position += pitch_ratio * sig_pitch; 
 	}
+
+	output_playback_frames(x, playback_start, playback_end);
 
 	x->position = position;
 
