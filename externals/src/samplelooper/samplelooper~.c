@@ -14,6 +14,7 @@ typedef struct _samplelooper {
 	t_float pitch_ratio;
 	t_int lfo_enabled;
 	t_int loop_enabled;
+	t_int note_stopped;
 	t_outlet *index_out;
 	t_outlet *playback_frames_out;
 	t_outlet *finished_out;
@@ -27,6 +28,11 @@ static t_float pdsr;
 
 void samplelooper_tilde_noteon_bang(t_samplelooper_tilde *x){
 	x->position = x->samplestart;
+	x->note_stopped = 0;
+}
+
+void samplelooper_tilde_on_note_off(t_samplelooper_tilde *x){
+	x->note_stopped = 1;
 }
 
 void samplelooper_tilde_enable_lfo(t_samplelooper_tilde *x, t_floatarg argument){
@@ -57,14 +63,6 @@ void *samplelooper_tilde_new(t_floatarg output_playback_frames){
 
   	t_samplelooper_tilde *x = (t_samplelooper_tilde *)pd_new(samplelooper_tilde_class);
 	x->output_playback_frames = output_playback_frames;
-	x->position = 0;
-	x->samplestart = 0;
-	x->sampleend = 44099;
-	x->loopstart = 0;
-	x->loopend = 44099;
-	x->pitch_ratio = 1;
-	x->lfo_enabled = 0;
-	x->loop_enabled = 0;
 	
 	x->samplestart_in = floatinlet_new(&x->x_obj, &x->samplestart);
 	x->sampleend_in = floatinlet_new(&x->x_obj, &x->sampleend);
@@ -81,12 +79,13 @@ void *samplelooper_tilde_new(t_floatarg output_playback_frames){
   	return (void *)x;
 }
 
-void output_playback_frames(t_samplelooper_tilde *x, t_float start_position, t_float end_position, t_float pitch){
-	t_atom playback_frames[3];
+void output_playback_frames(t_samplelooper_tilde *x, t_float start_position, t_float end_position, t_float pitch, t_float note_stopped){
+	t_atom playback_frames[4];
 	SETFLOAT(playback_frames, (t_float)start_position);
 	SETFLOAT(playback_frames+1, (t_float)end_position);
 	SETFLOAT(playback_frames+2, (t_float)pitch);
-	outlet_list(x->playback_frames_out, gensym("list"), 3, playback_frames);
+	SETFLOAT(playback_frames+3, (t_float)note_stopped);
+	outlet_list(x->playback_frames_out, gensym("list"), 4, playback_frames);
 }
 
 t_int *samplelooper_tilde_perform(t_int *w){
@@ -117,6 +116,7 @@ t_int *samplelooper_tilde_perform(t_int *w){
 		}
 		else {
 			if(position >= x->sampleend){
+				x->note_stopped = 1;
 				position = x->sampleend - 1;
 				x->position = x->samplestart;
 				outlet_bang(x->finished_out);
@@ -129,7 +129,7 @@ t_int *samplelooper_tilde_perform(t_int *w){
 	}
 
 	if(x->output_playback_frames == 1){
-		output_playback_frames(x, playback_start, playback_end, sig_pitch);
+		output_playback_frames(x, playback_start, playback_end, sig_pitch, x->note_stopped);
 	}
 
 	x->position = position;
@@ -159,6 +159,13 @@ void samplelooper_tilde_setup(void){
 	class_addbang(samplelooper_tilde_class, samplelooper_tilde_noteon_bang);  
 
 	class_addmethod(samplelooper_tilde_class, (t_method)samplelooper_tilde_dsp, gensym("dsp"), 0);
+
+	class_addmethod(
+		samplelooper_tilde_class, 
+		(t_method)samplelooper_tilde_on_note_off, 
+		gensym("onnoteoff"),
+		0
+	);
 
 	class_addmethod(
 		samplelooper_tilde_class, 
