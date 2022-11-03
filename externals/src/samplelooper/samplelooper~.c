@@ -19,7 +19,6 @@ typedef struct _samplelooper {
 	t_float playback_frames_end;
 	t_int note_stopped;
 	t_float processed_seconds;
-	t_int stop_frame_sent;
 	t_outlet *index_out;
 	t_outlet *playback_frames_out;
 	t_outlet *finished_out;
@@ -37,7 +36,6 @@ void samplelooper_tilde_noteon_bang(t_samplelooper_tilde *x){
 	x->output_playback_frames_counter = 0;
 	x->position = x->samplestart;
 	x->note_stopped = 0;
-	x->stop_frame_sent = 0;
 }
 
 void samplelooper_tilde_on_note_off(t_samplelooper_tilde *x){
@@ -59,14 +57,12 @@ void samplelooper_tilde_enable_loop(t_samplelooper_tilde *x, t_floatarg argument
 }
 
 void output_playback_frames(t_samplelooper_tilde *x){
-	if(x->stop_frame_sent == 1) return;
 	t_atom playback_frames[4];
 	SETFLOAT(playback_frames, (t_float)x->playback_frames_start);
 	SETFLOAT(playback_frames+1, (t_float)x->playback_frames_end);
 	SETFLOAT(playback_frames+2, (t_float)x->processed_seconds);
 	SETFLOAT(playback_frames+3, (t_float)x->note_stopped);
 	outlet_list(x->playback_frames_out, gensym("list"), 4, playback_frames);
-	if(x->note_stopped == 1) x->stop_frame_sent = 1;
 }
 
 void samplelooper_tilde_free(t_samplelooper_tilde *x){
@@ -113,7 +109,7 @@ t_int *samplelooper_tilde_perform(t_int *w){
 	}
 
 	x->processed_seconds += (t_float)n/(t_float)pdsr;
-	x->output_playback_frames_counter += 1;
+	x->output_playback_frames_counter += x->output_playback_frames_counter >= 0 ? 1 : 0;
 
 	double position = x->position;
 	double pitch_ratio = (double)x->pitch_ratio;
@@ -147,9 +143,10 @@ t_int *samplelooper_tilde_perform(t_int *w){
 		position += pitch_ratio * sig_pitch; 
 	}
 
-	if((x->output_playback_frames == 1 && x->output_playback_frames_counter >= output_playback_frames_every) || x->note_stopped == 1){
-		output_playback_frames(x);
-		x->output_playback_frames_counter = 0;
+	if(x->output_playback_frames == 1 && (x->output_playback_frames_counter >= output_playback_frames_every || x->note_stopped == 1)){
+		if(x->output_playback_frames_counter >= 0) output_playback_frames(x);
+		//set x->output_playback_frames_counter to negative if note is stopped, so we don't keep on sending stop messages
+		x->output_playback_frames_counter = x->note_stopped == 1 ? -1 : 0;
 	}
 
 	x->position = position;
