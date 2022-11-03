@@ -4,17 +4,22 @@
 static t_class *samplelooper_tilde_class;
 
 typedef struct _samplelooper {
-  	t_object  x_obj;
+  	t_object x_obj;
 	t_float samplestart;
 	t_float sampleend;
 	t_float loopstart;
 	t_float loopend;
-	t_float output_playback_frames;
 	double position;
 	t_float pitch_ratio;
 	t_int lfo_enabled;
 	t_int loop_enabled;
+	t_float output_playback_frames;
+	int output_playback_frames_counter;
+	t_float playback_frames_start;
+	t_float playback_frames_end;
 	t_int note_stopped;
+	t_float processed_seconds;
+	t_int stop_frame_sent;
 	t_outlet *index_out;
 	t_outlet *playback_frames_out;
 	t_outlet *finished_out;
@@ -25,10 +30,14 @@ typedef struct _samplelooper {
 } t_samplelooper_tilde;
 
 static t_float pdsr;
+static int output_playback_frames_every = 5;
 
 void samplelooper_tilde_noteon_bang(t_samplelooper_tilde *x){
+	x->processed_seconds = 0;
+	x->output_playback_frames_counter = 0;
 	x->position = x->samplestart;
 	x->note_stopped = 0;
+	x->stop_frame_sent = 0;
 }
 
 void samplelooper_tilde_on_note_off(t_samplelooper_tilde *x){
@@ -47,6 +56,17 @@ void samplelooper_tilde_enable_loop(t_samplelooper_tilde *x, t_floatarg argument
 	if(loop_enabled == 0 || loop_enabled == 1){
 		x->loop_enabled = loop_enabled;
 	}
+}
+
+void output_playback_frames(t_samplelooper_tilde *x){
+	if(x->stop_frame_sent == 1) return;
+	t_atom playback_frames[4];
+	SETFLOAT(playback_frames, (t_float)x->playback_frames_start);
+	SETFLOAT(playback_frames+1, (t_float)x->playback_frames_end);
+	SETFLOAT(playback_frames+2, (t_float)x->processed_seconds);
+	SETFLOAT(playback_frames+3, (t_float)x->note_stopped);
+	outlet_list(x->playback_frames_out, gensym("list"), 4, playback_frames);
+	if(x->note_stopped == 1) x->stop_frame_sent = 1;
 }
 
 void samplelooper_tilde_free(t_samplelooper_tilde *x){
@@ -76,16 +96,9 @@ void *samplelooper_tilde_new(t_floatarg output_playback_frames){
 
 	x->finished_out = outlet_new(&x->x_obj, &s_bang); 
 
-  	return (void *)x;
-}
+	pdsr = sys_getsr();
 
-void output_playback_frames(t_samplelooper_tilde *x, t_float start_position, t_float end_position, t_float pitch, t_float note_stopped){
-	t_atom playback_frames[4];
-	SETFLOAT(playback_frames, (t_float)start_position);
-	SETFLOAT(playback_frames+1, (t_float)end_position);
-	SETFLOAT(playback_frames+2, (t_float)pitch);
-	SETFLOAT(playback_frames+3, (t_float)note_stopped);
-	outlet_list(x->playback_frames_out, gensym("list"), 4, playback_frames);
+  	return (void *)x;
 }
 
 t_int *samplelooper_tilde_perform(t_int *w){
@@ -94,13 +107,18 @@ t_int *samplelooper_tilde_perform(t_int *w){
 	t_float  *out = (t_float *)(w[3]); /* outlet */
 	int n = (int)(w[4]);
 
+	if(x->output_playback_frames_counter == 0){
+		x->playback_frames_start = x->position;
+		x->playback_frames_end = x->position;
+	}
+
+	x->processed_seconds += (t_float)n/(t_float)pdsr;
+	x->output_playback_frames_counter += 1;
+
 	double position = x->position;
 	double pitch_ratio = (double)x->pitch_ratio;
 	float loopstart = x->loopstart;
     float loopend = x->loopend;
-
-	t_float playback_start = x->position;
-	t_float playback_end = x->position;
 
 	double sig_pitch;
 
@@ -118,18 +136,20 @@ t_int *samplelooper_tilde_perform(t_int *w){
 			if(position >= x->sampleend){
 				x->note_stopped = 1;
 				position = x->sampleend - 1;
+				x->playback_frames_end = position;
 				x->position = x->samplestart;
 				outlet_bang(x->finished_out);
 				break;
 			}
 		}
-		playback_end = position;
+		x->playback_frames_end = position;
 		*out++ = (position);
 		position += pitch_ratio * sig_pitch; 
 	}
 
-	if(x->output_playback_frames == 1){
-		output_playback_frames(x, playback_start, playback_end, sig_pitch, x->note_stopped);
+	if((x->output_playback_frames == 1 && x->output_playback_frames_counter >= output_playback_frames_every) || x->note_stopped == 1){
+		output_playback_frames(x);
+		x->output_playback_frames_counter = 0;
 	}
 
 	x->position = position;
@@ -143,8 +163,6 @@ void samplelooper_tilde_dsp(t_samplelooper_tilde *x, t_signal **sp){
 
 
 void samplelooper_tilde_setup(void){
-
-	pdsr = sys_getsr();
 
 	samplelooper_tilde_class = class_new(
 		gensym("samplelooper~"),
