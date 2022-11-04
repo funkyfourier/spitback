@@ -1,22 +1,22 @@
-#N canvas 533 137 981 570 12;
-#X obj 235 287 openpanel;
-#X obj 235 164 bng 15 250 50 0 empty empty load_wave 17 7 0 10 -262144
--1 -1;
-#X obj 235 335 send \$1-filename;
-#X obj 497 137 hsl 128 15 0 17361 0 0 empty empty samplestart -2 -8
-0 10 -262144 -1 -1 0 1;
-#X floatatom 556 212 10 0 0 0 - - -;
-#X floatatom 559 152 10 0 0 0 - - -;
+#N canvas 769 548 981 570 12;
+#X obj 52 149 openpanel;
+#X obj 205 134 bng 15 250 50 0 empty empty load_wave 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 52 197 send \$1-filename;
+#X obj 497 137 hsl 128 15 0 161280 0 0 empty empty samplestart -2 -8
+0 10 #fcfcfc #000000 #000000 0 1;
+#X floatatom 556 212 10 0 0 0 - - - 0;
+#X floatatom 559 152 10 0 0 0 - - - 0;
 #X obj 651 141 hsl 128 15 -12 12 0 0 empty empty finetune -2 -8 0 10
--262144 -1 -1 6350 1;
-#X floatatom 749 156 5 0 0 0 - - -;
-#X obj 650 198 hsl 128 15 -50 0 0 0 empty empty volume -2 -8 0 10 -262144
--1 -1 12700 1;
-#X floatatom 747 213 5 0 0 0 - - -;
-#X obj 235 312 pack s \$2;
+#fcfcfc #000000 #000000 0 1;
+#X floatatom 749 156 5 0 0 0 - - - 0;
+#X obj 650 198 hsl 128 15 -50 0 0 0 empty empty volume -2 -8 0 10 #fcfcfc
+#000000 #000000 0 1;
+#X floatatom 747 213 5 0 0 0 - - - 0;
+#X obj 52 174 pack s \$2;
 #X obj 424 45 s \$1-samplestart-\$2;
-#X obj 494 197 hsl 128 15 0 17361 0 0 empty empty sampleend -2 -8 0
-10 -262144 -1 -1 12700 1;
+#X obj 494 197 hsl 128 15 0 161280 0 0 empty empty sampleend -2 -8
+0 10 #fcfcfc #000000 #000000 0 1;
 #X obj 491 262 s \$1-sampleend-\$2;
 #X obj 636 44 loadbang;
 #X obj 636 67 0;
@@ -52,12 +52,12 @@ range 0 \$1;
 #X connect 9 0 10 2;
 #X connect 10 0 8 0;
 #X restore 27 435 pd setsamplelength;
-#X obj 369 125 bng 15 250 50 0 \$0-trig empty trigger 17 7 0 10 -262144
--1 -1;
+#X obj 369 125 bng 15 250 50 0 \$0-trig empty trigger 17 7 0 10 #fcfcfc
+#000000 #000000;
 #X obj 448 405 + 35;
 #X obj 336 187 hsl 128 15 0 127 0 0 empty empty Velocity -2 -8 0 10
--262144 -1 -1 12700 1;
-#X floatatom 432 202 5 0 0 0 - #0-vel -;
+#fcfcfc #000000 #000000 0 1;
+#X floatatom 432 202 5 0 0 0 - \$0-vel - 0;
 #X obj 333 246 expr $i1;
 #X obj 448 471 pack f f;
 #X obj 448 380 f;
@@ -69,6 +69,13 @@ range 0 \$1;
 #X obj 333 47 loadbang;
 #X obj 333 74 127;
 #X obj 466 355 \$2;
+#X obj 205 199 bng 15 250 50 0 \$0-waveplaybackstart empty waveplaybackstart
+17 7 0 10 #fcfcfc #000000 #000000;
+#X obj 205 222 bng 15 250 50 0 \$1-waveplaybackstop empty waveplaybackstop
+17 7 0 10 #fcfcfc #000000 #000000;
+#X obj 603 299 r \$0-waveplaybackstart;
+#X obj 603 350 s \$1-waveplaybackstart;
+#X obj 603 325 f \$2;
 #X connect 0 0 10 0;
 #X connect 1 0 0 0;
 #X connect 3 0 11 0;
@@ -98,4 +105,6 @@ range 0 \$1;
 #X connect 36 0 37 0;
 #X connect 37 0 26 0;
 #X connect 38 0 30 1;
+#X connect 41 0 43 0;
+#X connect 43 0 42 0;
 #X coords 0 -1 1 1 600 140 1 200 100;

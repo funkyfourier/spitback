@@ -488,7 +488,7 @@
 #X connect 8 0 9 1;
 #X connect 9 0 11 0;
 #X restore 146 615 pd volume;
-#N canvas 3214 651 450 300 waveplayback 1;
+#N canvas 2670 233 448 300 waveplayback 1;
 #X obj 37 186 playit \$1-wave \$1 1;
 #X obj 37 111 tabread \$1-samplerparams;
 #X obj 37 88 1;

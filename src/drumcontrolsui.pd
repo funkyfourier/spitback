@@ -1,4 +1,4 @@
-#N canvas 148 198 1415 795 10;
+#N canvas 1069 180 1415 795 10;
 #X obj 677 20 cnv 15 700 25 empty empty FX 10 12 0 25 #f8fc00 #404040
 0;
 #X obj 11 117 cnv 15 616 25 empty empty DRUMSLOTS 10 12 0 25 #f8fc00
