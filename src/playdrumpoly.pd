@@ -1,6 +1,6 @@
-#N canvas 972 547 783 677 10;
+#N canvas 1258 428 783 677 10;
 #X obj 101 10 inlet noteon;
-#N canvas 2943 640 723 494 samplelooper 1;
+#N canvas 2943 640 723 494 samplelooper 0;
 #X obj 121 291 outlet~;
 #X obj 215 306 outlet;
 #X obj 300 94 s \$0-trigger;
@@ -33,8 +33,7 @@
 #X obj 168 359 unpack f f f f;
 #X obj 249 382 moses 1;
 #X obj 239 252 r \$0-switchoff;
-#X obj 288 403 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
-#000000 #000000;
+#X obj 288 403 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000;
 #X obj 288 421 s \$0-switchoff;
 #X msg 122 54 onnoteoff;
 #X obj 122 32 r \$0-slnoteoff;
@@ -138,13 +137,14 @@
 #X obj 102 587 *~;
 #X obj 134 542 logvolume -50 0;
 #X obj 101 34 t l l;
-#X obj 445 40 0;
+#X obj 445 80 0;
 #X obj 445 19 r muteallnotes;
-#X obj 445 64 s \$0-switch;
+#X obj 445 104 s \$0-switch;
 #X obj 405 401 s \$0-samplestart;
 #X obj 466 382 s \$0-sampleend;
 #X obj 290 12 inlet waveplaybackoff;
 #X obj 290 35 s \$0-slnoteoff;
+#X obj 452 44 r stopallnotes;
 #X connect 0 0 46 0;
 #X connect 1 0 18 0;
 #X connect 1 1 6 0;
@@ -200,3 +200,4 @@
 #X connect 47 0 49 0;
 #X connect 48 0 47 0;
 #X connect 52 0 53 0;
+#X connect 54 0 47 0;

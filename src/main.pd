@@ -1,8 +1,7 @@
-#N canvas 915 175 508 355 10;
+#N canvas 929 277 508 355 10;
 #X declare -path ../externals/bin;
-#N canvas 386 88 438 474 ticks 0;
-#X obj 59 395 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#N canvas 386 88 438 474 ticks 1;
+#X obj 59 395 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X obj 177 13 receive timerstart;
 #X obj 23 33 receive timerstop;
 #X msg 107 84 stop;
@@ -58,14 +57,15 @@
 #X obj 204 227 * 4;
 #X obj 177 408 send libpdhost-tick;
 #X obj 177 102 delay;
-#X obj 216 116 send libpdhost-tick;
+#X obj 211 156 send libpdhost-tick;
 #X obj 204 280 loadbang;
 #X obj 204 302 0.25;
 #X obj 177 381 0;
-#X obj 177 62 t b f b;
-#X obj 216 89 1;
+#X obj 211 129 1;
+#X obj 177 62 t b f b b;
+#X obj 228 87 s stopallnotes;
 #X connect 0 0 6 0;
-#X connect 1 0 17 0;
+#X connect 1 0 18 0;
 #X connect 2 0 7 0;
 #X connect 3 0 6 0;
 #X connect 3 0 12 0;
@@ -80,10 +80,11 @@
 #X connect 14 0 15 0;
 #X connect 15 0 6 1;
 #X connect 16 0 11 0;
-#X connect 17 0 12 0;
-#X connect 17 1 12 1;
-#X connect 17 2 18 0;
-#X connect 18 0 13 0;
+#X connect 17 0 13 0;
+#X connect 18 0 12 0;
+#X connect 18 1 12 1;
+#X connect 18 2 17 0;
+#X connect 18 3 19 0;
 #X restore 14 17 pd ticks;
 #N canvas 1617 337 645 379 sampleplayers 0;
 #N canvas 65 546 450 300 subpatchsampler1 0;
@@ -216,8 +217,7 @@
 #X restore 9 31 pd subpatchsampler0;
 #N canvas 1705 53 459 347 addsamplertrack 0;
 #X obj 38 36 r addsamplertrack;
-#X msg 104 185 \; pd-subpatchsampler\$1 obj 0 0 sampleplayer sound\$1
-;
+#X msg 104 185 \; pd-subpatchsampler\$1 obj 0 0 sampleplayer sound\$1;
 #X msg 89 125 \; pd dsp 0 \;;
 #X msg 38 277 \; pd dsp 1 \;;
 #X msg 72 221 \; pd-subpatchsampler\$1 loadbang;
@@ -433,7 +433,7 @@
 #X connect 12 0 11 0;
 #X connect 13 0 6 0;
 #X connect 14 0 5 0;
-#X restore 14 167 pd output;
+#X restore 14 166 pd output;
 #X text 263 29 start in one of these;
 #X obj 264 77 drumcontrolsui testdrumplayer;
 #X obj 264 53 samplercontrolsui testsampleplayer;
@@ -461,22 +461,16 @@
 #X obj 296 66 osc~ 880;
 #X obj 296 112 *~ 0.4;
 #X obj 106 134 *~ 0.3;
-#X obj 142 112 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 332 92 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 #fcfcfc
-#000000 #000000 0 1;
+#X obj 142 112 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 332 92 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 #fcfcfc #000000 #000000 0 1;
 #X obj 468 118 *~ 0.4;
-#X obj 504 98 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 #fcfcfc
-#000000 #000000 0 1;
+#X obj 504 98 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 #fcfcfc #000000 #000000 0 1;
 #X obj 105 193 lop~;
 #X floatatom 126 164 0 0 0 0 - - - 0;
 #X obj 468 74 osc~ 1760;
-#X obj 408 107 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
-#fcfcfc #000000 #000000 0 256;
-#X obj 580 113 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
-#fcfcfc #000000 #000000 0 256;
-#X obj 218 127 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
-#fcfcfc #000000 #000000 0 256;
+#X obj 408 107 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10 #fcfcfc #000000 #000000 0 256;
+#X obj 580 113 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10 #fcfcfc #000000 #000000 0 256;
+#X obj 218 127 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10 #fcfcfc #000000 #000000 0 256;
 #X obj 107 86 phasor~ 440;
 #X obj 288 319 outlet~;
 #X connect 0 0 1 0;
@@ -502,11 +496,9 @@
 #X obj 458 236 0;
 #X obj 458 209 r synctickstop;
 #X obj 425 271 switch~;
-#X obj 426 49 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000;
+#X obj 426 49 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000;
 #X obj 426 68 s synctickstart;
-#X obj 426 101 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
-#000000 #000000;
+#X obj 426 101 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000;
 #X obj 426 120 s synctickstop;
 #X obj 50 326 2;
 #X obj 50 351 s libpdhost-tick;
@@ -529,22 +521,14 @@
 #X obj 257 100 1;
 #X obj 222 16 loadbang;
 #X obj 172 297 loadbang;
-#X obj 355 69 hsl 128 15 0 1 0 0 empty empty damp -2 -8 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 355 22 hsl 128 15 0 1 0 0 empty empty roomsize -2 -8 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 357 115 hsl 128 15 0 1 0 0 empty empty spread -2 -8 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 431 84 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
-#fcfcfc #000000 #000000 0 256;
-#X obj 431 37 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
-#fcfcfc #000000 #000000 0 256;
-#X obj 433 130 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
-#fcfcfc #000000 #000000 0 256;
-#X obj 420 260 hsl 128 15 0 1 0 0 empty empty wet -2 -8 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 496 275 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
-#fcfcfc #000000 #000000 0 256;
+#X obj 355 69 hsl 128 15 0 1 0 0 empty empty damp -2 -8 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 355 22 hsl 128 15 0 1 0 0 empty empty roomsize -2 -8 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 357 115 hsl 128 15 0 1 0 0 empty empty spread -2 -8 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 431 84 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10 #fcfcfc #000000 #000000 0 256;
+#X obj 431 37 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10 #fcfcfc #000000 #000000 0 256;
+#X obj 433 130 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10 #fcfcfc #000000 #000000 0 256;
+#X obj 420 260 hsl 128 15 0 1 0 0 empty empty wet -2 -8 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 496 275 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10 #fcfcfc #000000 #000000 0 256;
 #X obj 187 99 0.6;
 #X obj 225 99 0.74;
 #X obj 170 324 0.7;
@@ -632,8 +616,7 @@
 #X obj 374 299 /;
 #X obj 416 252 / 2;
 #X obj 374 347 *;
-#X obj 634 61 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000;
+#X obj 634 61 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000;
 #X obj 653 145 t f f;
 #X obj 717 192 \$0;
 #X obj 685 217 pack f f;

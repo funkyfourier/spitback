@@ -1,8 +1,6 @@
-#N canvas 1069 180 1415 795 10;
-#X obj 677 20 cnv 15 700 25 empty empty FX 10 12 0 25 #f8fc00 #404040
-0;
-#X obj 11 117 cnv 15 616 25 empty empty DRUMSLOTS 10 12 0 25 #f8fc00
-#404040 0;
+#N canvas 91 470 1415 795 10;
+#X obj 677 20 cnv 15 700 25 empty empty FX 10 12 0 25 #f8fc00 #404040 0;
+#X obj 11 117 cnv 15 616 25 empty empty DRUMSLOTS 10 12 0 25 #f8fc00 #404040 0;
 #X obj 472 27 drumplayer \$1;
 #X obj 677 72 fxcontrolsui \$1;
 #X msg 677 50 fx0 fx1 fx2 fx3 fx4 fx5 fx6 fx7 fx8 fx9;
@@ -22,15 +20,11 @@
 #X obj 13 2114 drumcontrolsslotui \$1 13;
 #X obj 13 2264 drumcontrolsslotui \$1 14;
 #X obj 13 2414 drumcontrolsslotui \$1 15;
-#X obj 18 29 cnv 15 230 25 empty empty VOLUME 20 12 0 20 #f8fc00 #404040
-0;
-#X obj 27 60 hsl 128 15 -50 0 0 1 \$1-volume empty empty -2 -8 0 10
-#fcfcfc #000000 #000000 12700 1;
+#X obj 18 29 cnv 15 230 25 empty empty VOLUME 20 12 0 20 #f8fc00 #404040 0;
+#X obj 27 60 hsl 128 15 -50 0 0 1 \$1-volume empty empty -2 -8 0 10 #fcfcfc #000000 #000000 12700 1;
 #X floatatom 167 75 5 0 0 0 - - - 0;
-#X obj 255 29 cnv 15 100 25 empty empty PAN 20 12 0 20 #f8fc00 #404040
-0;
-#X obj 264 60 hsl 128 15 0 1 0 1 \$1-pan \$1-pan empty -2 -8 0 10 #fcfcfc
-#000000 #000000 6400 1;
+#X obj 255 29 cnv 15 100 25 empty empty PAN 20 12 0 20 #f8fc00 #404040 0;
+#X obj 264 60 hsl 128 15 0 1 0 1 \$1-pan \$1-pan empty -2 -8 0 10 #fcfcfc #000000 #000000 6400 1;
 #X floatatom 404 75 5 0 0 0 - - - 0;
 #X connect 3 0 4 0;
 #X connect 22 0 23 0;
