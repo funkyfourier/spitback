@@ -1,5 +1,6 @@
 #include "m_pd.h"
 #include "math.h"
+#include <stdlib.h>
 
 static t_class *faustrevstereo_tilde_class;
 
