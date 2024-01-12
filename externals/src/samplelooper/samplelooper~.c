@@ -1,5 +1,5 @@
-#include "m_pd.h"
 #include <math.h>
+#include "m_pd.h"
 
 static t_class *samplelooper_tilde_class;
 
@@ -9,7 +9,8 @@ typedef struct _samplelooper {
 	t_float sampleend;
 	t_float loopstart;
 	t_float loopend;
-	double position;
+	t_float seamsize;
+	t_float position;
 	t_float pitch_ratio;
 	t_int lfo_enabled;
 	t_int loop_enabled;
@@ -26,6 +27,7 @@ typedef struct _samplelooper {
 	t_inlet *sampleend_in;
 	t_inlet *loopstart_in;
 	t_inlet *loopend_in;
+	t_inlet *seamsize_in;
 } t_samplelooper_tilde;
 
 static t_float pdsr;
@@ -86,6 +88,8 @@ void *samplelooper_tilde_new(t_floatarg output_playback_frames){
 	x->loopstart_in = floatinlet_new(&x->x_obj, &x->loopstart);
 	x->loopend_in = floatinlet_new(&x->x_obj, &x->loopend);
 
+	x->seamsize_in = floatinlet_new(&x->x_obj, &x->seamsize);
+
 	x->index_out = outlet_new(&x->x_obj, &s_signal);
 
 	x->playback_frames_out = outlet_new(&x->x_obj, &s_list); 
@@ -103,6 +107,7 @@ t_int *samplelooper_tilde_perform(t_int *w){
 	t_float  *out = (t_float *)(w[3]); /* outlet */
 	int n = (int)(w[4]);
 
+	//post("%f", x->seamsize);
 	if(x->output_playback_frames_counter == 0){
 		x->playback_frames_start = x->position;
 		x->playback_frames_end = x->position;
@@ -111,10 +116,10 @@ t_int *samplelooper_tilde_perform(t_int *w){
 	x->processed_seconds += (t_float)n/(t_float)pdsr;
 	x->output_playback_frames_counter += x->output_playback_frames_counter >= 0 ? 1 : 0;
 
-	double position = x->position;
-	double pitch_ratio = (double)x->pitch_ratio;
-	float loopstart = x->loopstart;
-    float loopend = x->loopend;
+	t_float position = x->position;
+	t_float pitch_ratio = (t_float)x->pitch_ratio;
+	t_float loopstart = x->loopstart;
+    t_float loopend = x->loopend;
 
 	double sig_pitch;
 
@@ -123,9 +128,10 @@ t_int *samplelooper_tilde_perform(t_int *w){
 		sig_pitch = (x->lfo_enabled == 1) ? (1-sig) : 1;	
 
 		if(x->loop_enabled == 1){
-			if(position >= loopend){
-				float range = loopend - loopstart;
-				position = fmod(position - loopstart, range) + loopstart;
+			if(position >= loopend - x->seamsize){
+				float range = loopend - loopstart - x->seamsize;
+				position = fmod(position - loopstart - x->seamsize, range) + loopstart;
+				//post("position: %f, seamsize: %f", position, x->seamsize);
 			}
 		}
 		else {

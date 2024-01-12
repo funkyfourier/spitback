@@ -18,6 +18,7 @@ src/elselowshelf/elselowshelf~.c \
 src/elsehighshelf/elsehighshelf~.c \
 src/elsequantizer/elsequantizer~.c \
 src/elsedownsample/elsedownsample~.c \
+src/seamless/seamless~.c \
 
 
 datafiles = \

@@ -1,6 +1,6 @@
 #N canvas 929 277 508 355 10;
 #X declare -path ../externals/bin;
-#N canvas 386 88 438 474 ticks 1;
+#N canvas 1477 330 438 474 ticks 0;
 #X obj 59 395 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X obj 177 13 receive timerstart;
 #X obj 23 33 receive timerstop;
