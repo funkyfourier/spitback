@@ -8,7 +8,11 @@ typedef struct _seamless {
 	t_float seamsize_ratio;
 	t_float loopstart;
 	t_float loopend;
+	t_float loopstart_current;
+	t_float loopend_current;
 	t_float loop_enabled;
+	t_float prev_frame;
+	t_float seamsize;
 	t_outlet* outlet_index_0;
 	t_outlet* outlet_ratio_0;
 	t_outlet* outlet_index_1;
@@ -16,7 +20,7 @@ typedef struct _seamless {
 	t_inlet* inlet_seamsize_ratio;
 	t_inlet* inlet_loopstart;
 	t_inlet* inlet_loopend;
-	t_inlet* inlet_loopenabled
+	t_inlet* inlet_loopenabled;
 } t_seamless_tilde;
 
 void seamless_tilde_free(t_seamless_tilde* x){
@@ -32,6 +36,7 @@ void seamless_tilde_free(t_seamless_tilde* x){
 
 void *seamless_tilde_new(){
 	t_seamless_tilde* x = (t_seamless_tilde*)pd_new(seamless_tilde_class);
+	x->prev_frame = -1;
 	x->inlet_seamsize_ratio = floatinlet_new(&x->x_obj, &x->seamsize_ratio);
 	x->inlet_loopstart = floatinlet_new(&x->x_obj, &x->loopstart);
 	x->inlet_loopend = floatinlet_new(&x->x_obj, &x->loopend);
@@ -53,26 +58,31 @@ t_int *seamless_tilde_perform(t_int *w){
 	int n = (int)(w[7]);
 
 	t_int loop_enabled = (t_int)x->loop_enabled;
-	t_float seamsize = (x->loopend - x->loopstart) * x->seamsize_ratio;
 
 	while (n--){
 		t_float frame1 = *in++;
-		if(frame1 > x->loopstart + seamsize || !loop_enabled || seamsize <= 0){
+		if(frame1 < x->prev_frame || x->prev_frame < 0){
+			x->seamsize = (x->loopend - x->loopstart) * x->seamsize_ratio;
+			x->loopstart_current = x->loopstart;
+			x->loopend_current = x->loopend;
+		}
+		if(frame1 > x->loopstart_current + x->seamsize || !loop_enabled || x->seamsize <= 0){
 			*out_index_0++ = frame1;
 			*out_ratio_0++ = 1;
 			*out_index_1++ = 0;
 			*out_ratio_1++ = 0;
 		}
 		else {
-			t_float loop_position = frame1 - x->loopstart;
-			t_float frame2 = x->loopend - seamsize + loop_position;
-			t_float ratio = loop_position/(seamsize);
+			t_float loop_position = frame1 - x->loopstart_current;
+			t_float frame2 = x->loopend_current - x->seamsize + loop_position;
+			t_float ratio = loop_position/(x->seamsize);
 			
 			*out_index_0++ = frame1;
 			*out_index_1++ = frame2;
 			*out_ratio_0++ = ratio;
 			*out_ratio_1++ = 1 - ratio;
 		}
+		x->prev_frame = frame1;
 	}
 
 	return (w+8);
