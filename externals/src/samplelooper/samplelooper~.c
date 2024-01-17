@@ -107,7 +107,7 @@ t_int *samplelooper_tilde_perform(t_int *w){
 	t_float  *out = (t_float *)(w[3]); /* outlet */
 	int n = (int)(w[4]);
 
-	//post("%f", x->seamsize);
+	//post("seamsize: %f x->loopend: %f", x->seamsize, x->loopend);
 	if(x->output_playback_frames_counter == 0){
 		x->playback_frames_start = x->position;
 		x->playback_frames_end = x->position;
@@ -119,7 +119,7 @@ t_int *samplelooper_tilde_perform(t_int *w){
 	t_float position = x->position;
 	t_float pitch_ratio = (t_float)x->pitch_ratio;
 	t_float loopstart = x->loopstart;
-    t_float loopend = x->loopend;
+    t_float loopend = x->loopend - x->seamsize;
 
 	double sig_pitch;
 
@@ -128,10 +128,9 @@ t_int *samplelooper_tilde_perform(t_int *w){
 		sig_pitch = (x->lfo_enabled == 1) ? (1-sig) : 1;	
 
 		if(x->loop_enabled == 1){
-			if(position >= loopend - x->seamsize){
-				float range = loopend - loopstart - x->seamsize;
-				position = fmod(position - loopstart - x->seamsize, range) + loopstart;
-				//post("position: %f, seamsize: %f", position, x->seamsize);
+			if(position >= loopend){
+				float range = loopend - loopstart;
+				position = fmod(position - loopstart, range) + loopstart;
 			}
 		}
 		else {

@@ -10,7 +10,9 @@ typedef struct _seamless {
 	t_float loopend;
 	t_float loop_enabled;
 	t_outlet* outlet_index_0;
+	t_outlet* outlet_ratio_0;
 	t_outlet* outlet_index_1;
+	t_outlet* outlet_ratio_1;
 	t_inlet* inlet_seamsize;
 	t_inlet* inlet_loopstart;
 	t_inlet* inlet_loopend;
@@ -21,9 +23,11 @@ void seamless_tilde_free(t_seamless_tilde* x){
 	inlet_free(x->inlet_seamsize);
 	inlet_free(x->inlet_loopstart);
 	inlet_free(x->inlet_loopend);
-	outlet_free(x->inlet_loopenabled);
+	inlet_free(x->inlet_loopenabled);
 	outlet_free(x->outlet_index_0);
+	outlet_free(x->outlet_ratio_0);
 	outlet_free(x->outlet_index_1);
+	outlet_free(x->outlet_ratio_1);
 }
 
 void *seamless_tilde_new(){
@@ -33,33 +37,48 @@ void *seamless_tilde_new(){
 	x->inlet_loopend = floatinlet_new(&x->x_obj, &x->loopend);
 	x->inlet_loopenabled = floatinlet_new(&x->x_obj, &x->loop_enabled);
     x->outlet_index_0 = outlet_new(&x->x_obj, &s_signal);
+    x->outlet_ratio_0 = outlet_new(&x->x_obj, &s_signal);
     x->outlet_index_1 = outlet_new(&x->x_obj, &s_signal);
+    x->outlet_ratio_1 = outlet_new(&x->x_obj, &s_signal);
 	return (void*)x;
 }
 
 t_int *seamless_tilde_perform(t_int *w){
 	t_seamless_tilde* x = (t_seamless_tilde*)(w[1]);
-	t_sample* in1 =      (t_sample*)(w[2]);
+	t_sample* in = (t_sample*)(w[2]);
 	t_sample* out_index_0 = (t_sample *)(w[3]);
-	t_sample* out_index_1 = (t_sample *)(w[4]);
-	int n = (int)(w[5]);
+	t_sample* out_ratio_0 = (t_sample *)(w[4]);
+	t_sample* out_index_1 = (t_sample *)(w[5]);
+	t_sample* out_ratio_1 = (t_sample *)(w[6]);
+	int n = (int)(w[7]);
 
 	t_int loop_enabled = (t_int)x->loop_enabled;
 
-	post("perform seamsize: %f loopstart: %f loopend: %f loopenabled: %d", x->seamsize, x->loopstart, x->loopend, loop_enabled);
-
 	while (n--){
-
-		*out_index_0++ = 3;
-		*out_index_1++ = 3;
-
+		t_float frame1 = *in++;
+		if(frame1 > x->loopstart + x->seamsize || !loop_enabled || x->seamsize <= 0){
+			*out_index_0++ = frame1;
+			*out_ratio_0++ = 1;
+			*out_index_1++ = 0;
+			*out_ratio_1++ = 0;
+		}
+		else {
+			t_float loop_position = frame1 - x->loopstart;
+			t_float frame2 = x->loopend - x->seamsize + loop_position;
+			t_float ratio = loop_position/(x->seamsize);
+			
+			*out_index_0++ = frame1;
+			*out_index_1++ = frame2;
+			*out_ratio_0++ = ratio;
+			*out_ratio_1++ = 1 - ratio;
+		}
 	}
 
-	 return (w+6);
+	return (w+8);
 }
 
 void seamless_tilde_dsp(t_seamless_tilde *x, t_signal **sp){
-  	dsp_add(seamless_tilde_perform, 5, x, sp[0]->s_vec, sp[1]->s_vec, sp[2]->s_vec, sp[0]->s_n);
+  	dsp_add(seamless_tilde_perform, 7, x, sp[0]->s_vec, sp[1]->s_vec, sp[2]->s_vec, sp[3]->s_vec, sp[4]->s_vec, sp[0]->s_n);
 }
 
 void seamless_tilde_setup(void){
