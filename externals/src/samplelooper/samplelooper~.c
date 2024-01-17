@@ -9,7 +9,7 @@ typedef struct _samplelooper {
 	t_float sampleend;
 	t_float loopstart;
 	t_float loopend;
-	t_float seamsize;
+	t_float seamsize_ratio;
 	t_float position;
 	t_float pitch_ratio;
 	t_int lfo_enabled;
@@ -27,7 +27,7 @@ typedef struct _samplelooper {
 	t_inlet *sampleend_in;
 	t_inlet *loopstart_in;
 	t_inlet *loopend_in;
-	t_inlet *seamsize_in;
+	t_inlet *seamsize_ratio_in;
 } t_samplelooper_tilde;
 
 static t_float pdsr;
@@ -88,7 +88,7 @@ void *samplelooper_tilde_new(t_floatarg output_playback_frames){
 	x->loopstart_in = floatinlet_new(&x->x_obj, &x->loopstart);
 	x->loopend_in = floatinlet_new(&x->x_obj, &x->loopend);
 
-	x->seamsize_in = floatinlet_new(&x->x_obj, &x->seamsize);
+	x->seamsize_ratio_in = floatinlet_new(&x->x_obj, &x->seamsize_ratio);
 
 	x->index_out = outlet_new(&x->x_obj, &s_signal);
 
@@ -106,8 +106,7 @@ t_int *samplelooper_tilde_perform(t_int *w){
 	t_float  *in = (t_float *)(w[2]); /* inlet */
 	t_float  *out = (t_float *)(w[3]); /* outlet */
 	int n = (int)(w[4]);
-
-	//post("seamsize: %f x->loopend: %f", x->seamsize, x->loopend);
+	
 	if(x->output_playback_frames_counter == 0){
 		x->playback_frames_start = x->position;
 		x->playback_frames_end = x->position;
@@ -119,7 +118,6 @@ t_int *samplelooper_tilde_perform(t_int *w){
 	t_float position = x->position;
 	t_float pitch_ratio = (t_float)x->pitch_ratio;
 	t_float loopstart = x->loopstart;
-    t_float loopend = x->loopend - x->seamsize;
 
 	double sig_pitch;
 
@@ -128,6 +126,8 @@ t_int *samplelooper_tilde_perform(t_int *w){
 		sig_pitch = (x->lfo_enabled == 1) ? (1-sig) : 1;	
 
 		if(x->loop_enabled == 1){
+			t_float seamsize = (x->loopend - x->loopstart) * x->seamsize_ratio;
+			t_float loopend = x->loopend - seamsize;
 			if(position >= loopend){
 				float range = loopend - loopstart;
 				position = fmod(position - loopstart, range) + loopstart;

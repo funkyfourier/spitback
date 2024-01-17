@@ -5,7 +5,7 @@ static t_class* seamless_tilde_class;
 typedef struct _seamless {
   	t_object x_obj;
 	t_float signal_inlet_dummy;
-	t_float seamsize;
+	t_float seamsize_ratio;
 	t_float loopstart;
 	t_float loopend;
 	t_float loop_enabled;
@@ -13,14 +13,14 @@ typedef struct _seamless {
 	t_outlet* outlet_ratio_0;
 	t_outlet* outlet_index_1;
 	t_outlet* outlet_ratio_1;
-	t_inlet* inlet_seamsize;
+	t_inlet* inlet_seamsize_ratio;
 	t_inlet* inlet_loopstart;
 	t_inlet* inlet_loopend;
 	t_inlet* inlet_loopenabled
 } t_seamless_tilde;
 
 void seamless_tilde_free(t_seamless_tilde* x){
-	inlet_free(x->inlet_seamsize);
+	inlet_free(x->inlet_seamsize_ratio);
 	inlet_free(x->inlet_loopstart);
 	inlet_free(x->inlet_loopend);
 	inlet_free(x->inlet_loopenabled);
@@ -32,7 +32,7 @@ void seamless_tilde_free(t_seamless_tilde* x){
 
 void *seamless_tilde_new(){
 	t_seamless_tilde* x = (t_seamless_tilde*)pd_new(seamless_tilde_class);
-	x->inlet_seamsize = floatinlet_new(&x->x_obj, &x->seamsize);
+	x->inlet_seamsize_ratio = floatinlet_new(&x->x_obj, &x->seamsize_ratio);
 	x->inlet_loopstart = floatinlet_new(&x->x_obj, &x->loopstart);
 	x->inlet_loopend = floatinlet_new(&x->x_obj, &x->loopend);
 	x->inlet_loopenabled = floatinlet_new(&x->x_obj, &x->loop_enabled);
@@ -53,10 +53,11 @@ t_int *seamless_tilde_perform(t_int *w){
 	int n = (int)(w[7]);
 
 	t_int loop_enabled = (t_int)x->loop_enabled;
+	t_float seamsize = (x->loopend - x->loopstart) * x->seamsize_ratio;
 
 	while (n--){
 		t_float frame1 = *in++;
-		if(frame1 > x->loopstart + x->seamsize || !loop_enabled || x->seamsize <= 0){
+		if(frame1 > x->loopstart + seamsize || !loop_enabled || seamsize <= 0){
 			*out_index_0++ = frame1;
 			*out_ratio_0++ = 1;
 			*out_index_1++ = 0;
@@ -64,8 +65,8 @@ t_int *seamless_tilde_perform(t_int *w){
 		}
 		else {
 			t_float loop_position = frame1 - x->loopstart;
-			t_float frame2 = x->loopend - x->seamsize + loop_position;
-			t_float ratio = loop_position/(x->seamsize);
+			t_float frame2 = x->loopend - seamsize + loop_position;
+			t_float ratio = loop_position/(seamsize);
 			
 			*out_index_0++ = frame1;
 			*out_index_1++ = frame2;
