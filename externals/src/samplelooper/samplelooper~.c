@@ -13,7 +13,7 @@ typedef struct _samplelooper {
 	t_float position;
 	t_float pitch_ratio;
 	t_int lfo_enabled;
-	t_int loop_enabled;
+	t_int loop_mode;
 	t_float output_playback_frames;
 	int output_playback_frames_counter;
 	t_float playback_frames_start;
@@ -31,7 +31,12 @@ typedef struct _samplelooper {
 } t_samplelooper_tilde;
 
 static t_float pdsr;
-static int output_playback_frames_every = 5;
+static const int output_playback_frames_every = 5;
+
+static const t_int LOOP_MODE_NONE = 0;
+static const t_int LOOP_MODE_FORWARD = 1;
+static const t_int LOOP_MODE_BACKWARD = 2;
+static const t_int LOOP_MODE_PINGPONG = 3;
 
 void samplelooper_tilde_noteon_bang(t_samplelooper_tilde *x){
 	x->processed_seconds = 0;
@@ -51,11 +56,8 @@ void samplelooper_tilde_enable_lfo(t_samplelooper_tilde *x, t_floatarg argument)
 	}
 }
 
-void samplelooper_tilde_enable_loop(t_samplelooper_tilde *x, t_floatarg argument){
-	t_int loop_enabled = (t_int)argument;
-	if(loop_enabled == 0 || loop_enabled == 1){
-		x->loop_enabled = loop_enabled;
-	}
+void samplelooper_tilde_loop_mode(t_samplelooper_tilde *x, t_floatarg argument){
+	x->loop_mode = (t_int)argument;
 }
 
 void output_playback_frames(t_samplelooper_tilde *x){
@@ -101,10 +103,12 @@ void *samplelooper_tilde_new(t_floatarg output_playback_frames){
   	return (void *)x;
 }
 
-t_int *samplelooper_tilde_perform(t_int *w){
-	t_samplelooper_tilde *x = (t_samplelooper_tilde *)(w[1]);
-	t_float  *in = (t_float *)(w[2]); /* inlet */
-	t_float  *out = (t_float *)(w[3]); /* outlet */
+
+
+t_int* samplelooper_tilde_perform(t_int* w){
+	t_samplelooper_tilde* x = (t_samplelooper_tilde*)(w[1]);
+	t_float* in = (t_float*)(w[2]); /* inlet */
+	t_float* out = (t_float*)(w[3]); /* outlet */
 	int n = (int)(w[4]);
 	
 	if(x->output_playback_frames_counter == 0){
@@ -119,13 +123,13 @@ t_int *samplelooper_tilde_perform(t_int *w){
 	t_float pitch_ratio = (t_float)x->pitch_ratio;
 	t_float loopstart = x->loopstart;
 
-	double sig_pitch;
+	t_float sig_pitch;
 
 	while (n--){
-		double sig = *in++;
+		t_float sig = *in++;
 		sig_pitch = (x->lfo_enabled == 1) ? (1-sig) : 1;	
 
-		if(x->loop_enabled == 1){
+		if(x->loop_mode == 1){
 			t_float seamsize = (x->loopend - x->loopstart) * x->seamsize_ratio;
 			t_float loopend = x->loopend - seamsize;
 			if(position >= loopend){
@@ -144,7 +148,7 @@ t_int *samplelooper_tilde_perform(t_int *w){
 			}
 		}
 		x->playback_frames_end = position;
-		*out++ = (position);
+		*out++ = position;
 		position += pitch_ratio * sig_pitch; 
 	}
 
@@ -159,7 +163,7 @@ t_int *samplelooper_tilde_perform(t_int *w){
 	return (w+5);
 }
 
-void samplelooper_tilde_dsp(t_samplelooper_tilde *x, t_signal **sp){
+void samplelooper_tilde_dsp(t_samplelooper_tilde* x, t_signal**sp){
   	dsp_add(samplelooper_tilde_perform, 4, x, sp[0]->s_vec, sp[1]->s_vec, sp[0]->s_n);
 }
 
@@ -197,8 +201,8 @@ void samplelooper_tilde_setup(void){
 
 	class_addmethod(
 		samplelooper_tilde_class, 
-		(t_method)samplelooper_tilde_enable_loop, 
-		gensym("enableloop"),
+		(t_method)samplelooper_tilde_loop_mode, 
+		gensym("loopmode"),
 		A_DEFFLOAT,
 		0
 	);
