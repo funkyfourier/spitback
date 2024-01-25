@@ -20,8 +20,10 @@ typedef struct _samplelooper {
 	t_float playback_frames_end;
 	t_int note_stopped;
 	t_float processed_seconds;
+	t_int playback_direction;
 	t_outlet *index_out;
 	t_outlet *playback_frames_out;
+	t_outlet *playback_direction_out;
 	t_outlet *finished_out;
 	t_inlet *samplestart_in;
 	t_inlet *sampleend_in;
@@ -38,11 +40,21 @@ static const t_int LOOP_MODE_FORWARD = 1;
 static const t_int LOOP_MODE_BACKWARD = 2;
 static const t_int LOOP_MODE_PINGPONG = 3;
 
+static const t_int PLAYBACK_DIRECTION_FORWARD = 0;
+static const t_int PLAYBACK_DIRECTION_BACKWARD = 1;
+
+void samplelooper_tilde_set_playback_direction(t_samplelooper_tilde *x, t_int direction){
+	post("direction");
+	x->playback_direction = direction;
+	outlet_float(x->playback_direction_out, x->playback_direction);
+}
+
 void samplelooper_tilde_noteon_bang(t_samplelooper_tilde *x){
 	x->processed_seconds = 0;
 	x->output_playback_frames_counter = 0;
 	x->position = x->samplestart;
 	x->note_stopped = 0;
+	samplelooper_tilde_set_playback_direction(x, PLAYBACK_DIRECTION_FORWARD);
 }
 
 void samplelooper_tilde_on_note_off(t_samplelooper_tilde *x){
@@ -58,6 +70,7 @@ void samplelooper_tilde_enable_lfo(t_samplelooper_tilde *x, t_floatarg argument)
 
 void samplelooper_tilde_loop_mode(t_samplelooper_tilde *x, t_floatarg argument){
 	x->loop_mode = (t_int)argument;
+	post("x->loop_mode samplelooper: %d", x->loop_mode);
 }
 
 void output_playback_frames(t_samplelooper_tilde *x){
@@ -72,6 +85,7 @@ void output_playback_frames(t_samplelooper_tilde *x){
 void samplelooper_tilde_free(t_samplelooper_tilde *x){
   	outlet_free(x->index_out);
 	outlet_free(x->playback_frames_out);
+	outlet_free(x->playback_direction_out);
 	outlet_free(x->finished_out);
 	inlet_free(x->samplestart_in);
 	inlet_free(x->sampleend_in);
@@ -80,22 +94,17 @@ void samplelooper_tilde_free(t_samplelooper_tilde *x){
 } 
 
 void *samplelooper_tilde_new(t_floatarg output_playback_frames){
-
   	t_samplelooper_tilde *x = (t_samplelooper_tilde *)pd_new(samplelooper_tilde_class);
 	x->output_playback_frames = output_playback_frames;
-	
 	x->samplestart_in = floatinlet_new(&x->x_obj, &x->samplestart);
 	x->sampleend_in = floatinlet_new(&x->x_obj, &x->sampleend);
-
 	x->loopstart_in = floatinlet_new(&x->x_obj, &x->loopstart);
 	x->loopend_in = floatinlet_new(&x->x_obj, &x->loopend);
-
 	x->seamsize_ratio_in = floatinlet_new(&x->x_obj, &x->seamsize_ratio);
 
 	x->index_out = outlet_new(&x->x_obj, &s_signal);
-
 	x->playback_frames_out = outlet_new(&x->x_obj, &s_list); 
-
+	x->playback_direction_out = outlet_new(&x->x_obj, &s_float); 
 	x->finished_out = outlet_new(&x->x_obj, &s_bang); 
 
 	pdsr = sys_getsr();
@@ -103,7 +112,110 @@ void *samplelooper_tilde_new(t_floatarg output_playback_frames){
   	return (void *)x;
 }
 
+void samplelooper_tilde_loop_none(t_samplelooper_tilde* x, t_float* in, t_float* out, int n){
+	t_float position = x->position;
+	t_float pitch_ratio = (t_float)x->pitch_ratio;
+	t_float loopstart = x->loopstart;
+	t_float sig_pitch;
+	while (n--){
+		t_float sig = *in++;
+		sig_pitch = (x->lfo_enabled == 1) ? (1-sig) : 1;
+		if(position >= x->sampleend){
+			x->note_stopped = 1;
+			position = x->sampleend - 1;
+			x->playback_frames_end = position;
+			x->position = x->samplestart;
+			outlet_bang(x->finished_out);
+			break;
+		}
+		x->playback_frames_end = position;
+		*out++ = position;
+		position += pitch_ratio * sig_pitch; 
+	}
+	x->position = position;
+}
 
+void samplelooper_tilde_loop_forward(t_samplelooper_tilde* x, t_float* in, t_float* out, int n){
+	t_float position = x->position;
+	t_float pitch_ratio = (t_float)x->pitch_ratio;
+	t_float loopstart = x->loopstart;
+	t_float sig_pitch;
+	while (n--){
+		t_float sig = *in++;
+		sig_pitch = (x->lfo_enabled == 1) ? (1-sig) : 1;	
+		t_float seamsize = (x->loopend - x->loopstart) * x->seamsize_ratio;
+		t_float loopend = x->loopend - seamsize;
+		if(position >= loopend){
+			samplelooper_tilde_set_playback_direction(x, PLAYBACK_DIRECTION_FORWARD);
+			float range = loopend - loopstart;
+			position = fmod(position - loopstart, range) + loopstart;
+		}
+		x->playback_frames_end = position;
+		*out++ = position;
+		position += pitch_ratio * sig_pitch; 
+	}
+	x->position = position;
+}
+
+void samplelooper_tilde_loop_backward(t_samplelooper_tilde* x, t_float* in, t_float* out, int n){
+	t_float position = x->position;
+	t_float pitch_ratio = (t_float)x->pitch_ratio;
+	t_float loopstart = x->loopstart;
+	t_float sig_pitch;
+
+	while (n--){
+		t_float sig = *in++;
+		sig_pitch = (x->lfo_enabled == 1) ? (1-sig) : 1;
+		t_float seamsize = (x->loopend - x->loopstart) * x->seamsize_ratio;
+		t_float loopend = x->loopend - seamsize;
+		if(x->playback_direction == PLAYBACK_DIRECTION_FORWARD && position >= loopend){
+			samplelooper_tilde_set_playback_direction(x, PLAYBACK_DIRECTION_BACKWARD);
+		}
+		if(x->playback_direction == PLAYBACK_DIRECTION_BACKWARD && position <= loopstart){
+			float range = loopend - loopstart;
+			position = loopend - fmod(loopend - position, range);
+		}
+		x->playback_frames_end = position;
+		*out++ = position;
+		t_float position_change = pitch_ratio * sig_pitch;
+		position_change *= x->playback_direction == PLAYBACK_DIRECTION_BACKWARD ? -1 : 1;
+		position += position_change; 
+	}
+
+	x->position = position;
+}
+
+void samplelooper_tilde_loop_pingpong(t_samplelooper_tilde* x, t_float* in, t_float* out, int n){
+	t_float position = x->position;
+	t_float pitch_ratio = (t_float)x->pitch_ratio;
+	t_float loopstart = x->loopstart;
+	t_float sig_pitch;
+
+	while (n--){
+		t_float sig = *in++;
+		sig_pitch = (x->lfo_enabled == 1) ? (1-sig) : 1;
+		t_float seamsize = (x->loopend - x->loopstart) * x->seamsize_ratio;
+		if(x->playback_direction == PLAYBACK_DIRECTION_FORWARD){
+			if(position > x->loopend - seamsize/2){
+				post("direction position: %f", position);
+				samplelooper_tilde_set_playback_direction(x, PLAYBACK_DIRECTION_BACKWARD);
+			}
+		}
+		if(x->playback_direction == PLAYBACK_DIRECTION_BACKWARD){
+			if(position < x->loopstart + seamsize/2){
+				post("direction position: %f", position);
+				samplelooper_tilde_set_playback_direction(x, PLAYBACK_DIRECTION_FORWARD);
+			}
+		}
+		x->playback_frames_end = position;
+		*out++ = position;
+		t_float position_change = pitch_ratio * sig_pitch;
+		position_change *= x->playback_direction == PLAYBACK_DIRECTION_BACKWARD ? -1 : 1;
+		position += position_change; 
+	}
+
+	x->position = position;
+}
 
 t_int* samplelooper_tilde_perform(t_int* w){
 	t_samplelooper_tilde* x = (t_samplelooper_tilde*)(w[1]);
@@ -119,37 +231,20 @@ t_int* samplelooper_tilde_perform(t_int* w){
 	x->processed_seconds += (t_float)n/(t_float)pdsr;
 	x->output_playback_frames_counter += x->output_playback_frames_counter >= 0 ? 1 : 0;
 
-	t_float position = x->position;
-	t_float pitch_ratio = (t_float)x->pitch_ratio;
-	t_float loopstart = x->loopstart;
+	if(x->loop_mode == LOOP_MODE_NONE){
+		samplelooper_tilde_loop_none(x, in, out, n);
+	}
 
-	t_float sig_pitch;
+	if(x->loop_mode == LOOP_MODE_FORWARD){
+		samplelooper_tilde_loop_forward(x, in, out, n);
+	}
 
-	while (n--){
-		t_float sig = *in++;
-		sig_pitch = (x->lfo_enabled == 1) ? (1-sig) : 1;	
+	if(x->loop_mode == LOOP_MODE_BACKWARD){
+		samplelooper_tilde_loop_backward(x, in, out, n);
+	}
 
-		if(x->loop_mode == 1){
-			t_float seamsize = (x->loopend - x->loopstart) * x->seamsize_ratio;
-			t_float loopend = x->loopend - seamsize;
-			if(position >= loopend){
-				float range = loopend - loopstart;
-				position = fmod(position - loopstart, range) + loopstart;
-			}
-		}
-		else {
-			if(position >= x->sampleend){
-				x->note_stopped = 1;
-				position = x->sampleend - 1;
-				x->playback_frames_end = position;
-				x->position = x->samplestart;
-				outlet_bang(x->finished_out);
-				break;
-			}
-		}
-		x->playback_frames_end = position;
-		*out++ = position;
-		position += pitch_ratio * sig_pitch; 
+	if(x->loop_mode == LOOP_MODE_PINGPONG){
+		samplelooper_tilde_loop_pingpong(x, in, out, n);
 	}
 
 	if(x->output_playback_frames == 1 && (x->output_playback_frames_counter >= output_playback_frames_every || x->note_stopped == 1)){
@@ -157,8 +252,6 @@ t_int* samplelooper_tilde_perform(t_int* w){
 		//set x->output_playback_frames_counter to negative if note is stopped, so we don't keep on sending stop messages
 		x->output_playback_frames_counter = x->note_stopped == 1 ? -1 : 0;
 	}
-
-	x->position = position;
 
 	return (w+5);
 }
