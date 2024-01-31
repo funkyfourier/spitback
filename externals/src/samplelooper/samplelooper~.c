@@ -202,7 +202,7 @@ void samplelooper_tilde_loop_pingpong(t_samplelooper_tilde* x, t_float* in, t_fl
 		}
 
 		if(position >= x->loopend - seamsize || position <= x->loopstart + seamsize){
-			post("position: %f x->playback_direction: %d n: %d", position, x->playback_direction, n);
+			//post("position: %f x->playback_direction: %d n: %d", position, x->playback_direction, n);
 		}
 
 		x->playback_frames_end = position;

@@ -86,10 +86,10 @@ void seamless_none(t_int* w){
 void seamless_forward(t_int* w){
 	t_seamless_tilde* x = (t_seamless_tilde*)(w[1]);
 	t_sample* in = (t_sample*)(w[2]);
-	t_sample* out_index_0 = (t_sample *)(w[3]);
-	t_sample* out_ratio_0 = (t_sample *)(w[4]);
-	t_sample* out_index_1 = (t_sample *)(w[5]);
-	t_sample* out_ratio_1 = (t_sample *)(w[6]);
+	t_sample* out_index_0 = (t_sample*)(w[3]);
+	t_sample* out_ratio_0 = (t_sample*)(w[4]);
+	t_sample* out_index_1 = (t_sample*)(w[5]);
+	t_sample* out_ratio_1 = (t_sample*)(w[6]);
 	int n = (int)(w[7]);
 
 	while (n--){
@@ -118,10 +118,10 @@ void seamless_pingpong(t_int* w){
 	t_seamless_tilde* x = (t_seamless_tilde*)(w[1]);
 	t_sample* in_position = (t_sample*)(w[2]);
 	t_sample* in_direction = (t_sample*)(w[3]);
-	t_sample* out_index_0 = (t_sample *)(w[4]);
-	t_sample* out_ratio_0 = (t_sample *)(w[5]);
-	t_sample* out_index_1 = (t_sample *)(w[6]);
-	t_sample* out_ratio_1 = (t_sample *)(w[7]);
+	t_sample* out_index_0 = (t_sample*)(w[4]);
+	t_sample* out_ratio_0 = (t_sample*)(w[5]);
+	t_sample* out_index_1 = (t_sample*)(w[6]);
+	t_sample* out_ratio_1 = (t_sample*)(w[7]);
 	int n = (int)(w[8]);
 
 	while (n--){
@@ -136,55 +136,48 @@ void seamless_pingpong(t_int* w){
 			continue;
 		}
 
+		t_float frame2;
+		t_float frame1_ratio;
+		t_float frame2_ratio;
+
 		if(x->playback_direction == PLAYBACK_DIRECTION_FORWARD){
 			if(frame1 >= x->loopend_current - x->seamsize){
 				const t_float loop_position = frame1 - x->loopend_current + x->seamsize;
-				const t_float ratio = loop_position/x->seamsize;
-				const t_float frame2 = x->loopend_current - loop_position;
-				post("frame1a: %f loop_position: %f x->seamsize: %f ratio: %f frame2: %f", frame1, loop_position, x->seamsize, ratio, frame2);
-				*out_index_0++ = frame1;
-				*out_index_1++ = frame2;
-				*out_ratio_0++ = 1 - ratio;
-				*out_ratio_1++ = ratio;
-				continue;
+				frame2_ratio = loop_position/x->seamsize;
+				frame1_ratio = 1 - frame2_ratio;
+				frame2 = x->loopend_current - loop_position;
+				post("frame1a: %f frame2: %f loop_position: %f x->seamsize: %f frame1_ratio: %f frame2_ratio: %f", frame1, frame2, loop_position, x->seamsize, frame1_ratio, frame2_ratio);
 			}
 			else {
-				const t_float loop_position = frame1;
-				const t_float ratio = loop_position/x->seamsize;
-				const t_float frame2 = x->seamsize - frame1;
-				post("frame1b: %f loop_position: %f x->seamsize: %f ratio: %f frame2: %f", frame1, loop_position, x->seamsize, ratio, frame2);
-				*out_index_0++ = frame1;
-				*out_index_1++ = frame2;
-				*out_ratio_0++ = ratio;
-				*out_ratio_1++ = 1 - ratio;
-				continue;
+				const t_float loop_position = frame1 - x->loopstart_current;
+				frame1_ratio = loop_position/x->seamsize;
+				frame2_ratio = 1 - frame1_ratio;
+				frame2 = x->loopstart_current + x->seamsize - frame1 + x->loopstart_current;
+				post("frame1b: %f frame2: %f loop_position: %f x->seamsize: %f frame1_ratio: %f frame2_ratio: %f", frame1, frame2, loop_position, x->seamsize, frame1_ratio, frame2_ratio);
 			}
 		}
 		if(x->playback_direction == PLAYBACK_DIRECTION_BACKWARD){
 			if(frame1 >= x->loopend_current - x->seamsize){
 				const t_float seam_center = x->loopend_current - x->seamsize/2;
 				const t_float loop_position = seam_center - frame1 + x->seamsize/2;
-				const t_float frame2 = seam_center + (seam_center - frame1);
-				const t_float ratio = loop_position/x->seamsize;
-				post("frame1c: %f loop_position: %f x->seamsize: %f ratio: %f frame2: %f", frame1, loop_position, x->seamsize, ratio, frame2);
-				*out_index_0++ = frame1;
-				*out_index_1++ = frame2;
-				*out_ratio_0++ = ratio;
-				*out_ratio_1++ = 1 - ratio;
-				continue;
+				frame2 = seam_center + (seam_center - frame1);
+				frame1_ratio = loop_position/x->seamsize;
+				frame2_ratio = 1 - frame1_ratio;
+				post("frame1c: %f frame2: %f loop_position: %f x->seamsize: %f frame1_ratio: %f frame2_ratio: %f", frame1, frame2, loop_position, x->seamsize, frame1_ratio, frame2_ratio);
 			}
 			else {
-				const t_float loop_position = x->seamsize - frame1;
-				const t_float ratio = loop_position/x->seamsize;
-				const t_float frame2 = x->seamsize - frame1;
-				post("frame1d: %f loop_position: %f x->seamsize: %f ratio: %f frame2: %f", frame1, loop_position, x->seamsize, ratio, frame2);
-				*out_index_0++ = frame1;
-				*out_index_1++ = frame2;
-				*out_ratio_0++ = 1 - ratio;
-				*out_ratio_1++ = ratio;
-				continue;
+				frame2 = x->loopstart_current + x->seamsize - frame1 + x->loopstart_current;
+				const t_float loop_position = frame2 - x->loopstart_current;
+				frame2_ratio = loop_position/x->seamsize;
+				frame1_ratio = 1 - frame2_ratio;
+				post("frame1d: %f frame2: %f loop_position: %f x->seamsize: %f frame1_ratio: %f frame2_ratio: %f", frame1, frame2, loop_position, x->seamsize, frame1_ratio, frame2_ratio);
 			}
 		}
+
+		*out_index_0++ = frame1;
+		*out_index_1++ = frame2;
+		*out_ratio_0++ = frame1_ratio;
+		*out_ratio_1++ = frame2_ratio;
 		
 	}
 
