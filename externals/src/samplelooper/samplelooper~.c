@@ -43,18 +43,13 @@ static const t_int LOOP_MODE_PINGPONG = 3;
 static const t_int PLAYBACK_DIRECTION_FORWARD = 0;
 static const t_int PLAYBACK_DIRECTION_BACKWARD = 1;
 
-void samplelooper_tilde_set_playback_direction(t_samplelooper_tilde *x, t_int direction){
-	post("direction");
-	x->playback_direction = direction;
-	outlet_float(x->playback_direction_out, x->playback_direction);
-}
-
 void samplelooper_tilde_noteon_bang(t_samplelooper_tilde *x){
+	post("samplelooper_tilde_noteon_bang");
 	x->processed_seconds = 0;
 	x->output_playback_frames_counter = 0;
 	x->position = x->samplestart;
 	x->note_stopped = 0;
-	samplelooper_tilde_set_playback_direction(x, PLAYBACK_DIRECTION_FORWARD);
+	x->playback_direction = PLAYBACK_DIRECTION_FORWARD;
 }
 
 void samplelooper_tilde_on_note_off(t_samplelooper_tilde *x){
@@ -103,8 +98,8 @@ void *samplelooper_tilde_new(t_floatarg output_playback_frames){
 	x->seamsize_ratio_in = floatinlet_new(&x->x_obj, &x->seamsize_ratio);
 
 	x->index_out = outlet_new(&x->x_obj, &s_signal);
+	x->playback_direction_out = outlet_new(&x->x_obj, &s_signal); 
 	x->playback_frames_out = outlet_new(&x->x_obj, &s_list); 
-	x->playback_direction_out = outlet_new(&x->x_obj, &s_float); 
 	x->finished_out = outlet_new(&x->x_obj, &s_bang); 
 
 	pdsr = sys_getsr();
@@ -146,7 +141,6 @@ void samplelooper_tilde_loop_forward(t_samplelooper_tilde* x, t_float* in, t_flo
 		t_float seamsize = (x->loopend - x->loopstart) * x->seamsize_ratio;
 		t_float loopend = x->loopend - seamsize;
 		if(position >= loopend){
-			samplelooper_tilde_set_playback_direction(x, PLAYBACK_DIRECTION_FORWARD);
 			float range = loopend - loopstart;
 			position = fmod(position - loopstart, range) + loopstart;
 		}
@@ -169,7 +163,7 @@ void samplelooper_tilde_loop_backward(t_samplelooper_tilde* x, t_float* in, t_fl
 		t_float seamsize = (x->loopend - x->loopstart) * x->seamsize_ratio;
 		t_float loopend = x->loopend - seamsize;
 		if(x->playback_direction == PLAYBACK_DIRECTION_FORWARD && position >= loopend){
-			samplelooper_tilde_set_playback_direction(x, PLAYBACK_DIRECTION_BACKWARD);
+			x->playback_direction = PLAYBACK_DIRECTION_BACKWARD;
 		}
 		if(x->playback_direction == PLAYBACK_DIRECTION_BACKWARD && position <= loopstart){
 			float range = loopend - loopstart;
@@ -185,8 +179,9 @@ void samplelooper_tilde_loop_backward(t_samplelooper_tilde* x, t_float* in, t_fl
 	x->position = position;
 }
 
-void samplelooper_tilde_loop_pingpong(t_samplelooper_tilde* x, t_float* in, t_float* out, int n){
+void samplelooper_tilde_loop_pingpong(t_samplelooper_tilde* x, t_float* in, t_float* out_position, t_float* out_direction, int n){
 	t_float position = x->position;
+	t_int playback_direction = x->playback_direction;
 	t_float pitch_ratio = (t_float)x->pitch_ratio;
 	t_float loopstart = x->loopstart;
 	t_float sig_pitch;
@@ -194,24 +189,24 @@ void samplelooper_tilde_loop_pingpong(t_samplelooper_tilde* x, t_float* in, t_fl
 	while (n--){
 		t_float sig = *in++;
 		sig_pitch = (x->lfo_enabled == 1) ? (1-sig) : 1;
-		t_float seamsize = (x->loopend - x->loopstart) * x->seamsize_ratio;
+		t_float seamsize = (t_int)((x->loopend - x->loopstart) * x->seamsize_ratio);
 		if(x->playback_direction == PLAYBACK_DIRECTION_FORWARD){
-			if(position > x->loopend - seamsize/2){
-				post("direction position: %f", position);
-				samplelooper_tilde_set_playback_direction(x, PLAYBACK_DIRECTION_BACKWARD);
+			if(position >= x->loopend - seamsize/2){
+				post("direction position from forward to backward: %f", position);
+				playback_direction = PLAYBACK_DIRECTION_BACKWARD;
 			}
 		}
 		if(x->playback_direction == PLAYBACK_DIRECTION_BACKWARD){
-			if(position < x->loopstart + seamsize/2){
-				post("direction position: %f", position);
-				samplelooper_tilde_set_playback_direction(x, PLAYBACK_DIRECTION_FORWARD);
+			if(position <= x->loopstart + seamsize/2){
+				post("direction position from backward to forward: %f", position);
+				playback_direction = PLAYBACK_DIRECTION_FORWARD;
 			}
 		}
 		x->playback_frames_end = position;
-		*out++ = position;
-		t_float position_change = pitch_ratio * sig_pitch;
-		position_change *= x->playback_direction == PLAYBACK_DIRECTION_BACKWARD ? -1 : 1;
-		position += position_change; 
+		*out_position++ = position;
+		*out_direction++ = x->playback_direction;
+		position += pitch_ratio * sig_pitch * (x->playback_direction == PLAYBACK_DIRECTION_BACKWARD ? -1 : 1);
+		x->playback_direction = playback_direction;
 	}
 
 	x->position = position;
@@ -220,8 +215,9 @@ void samplelooper_tilde_loop_pingpong(t_samplelooper_tilde* x, t_float* in, t_fl
 t_int* samplelooper_tilde_perform(t_int* w){
 	t_samplelooper_tilde* x = (t_samplelooper_tilde*)(w[1]);
 	t_float* in = (t_float*)(w[2]); /* inlet */
-	t_float* out = (t_float*)(w[3]); /* outlet */
-	int n = (int)(w[4]);
+	t_float* out_position = (t_float*)(w[3]); /* outlet */
+	t_float* out_direction = (t_float*)(w[4]); /* outlet */
+	int n = (int)(w[5]);
 	
 	if(x->output_playback_frames_counter == 0){
 		x->playback_frames_start = x->position;
@@ -232,19 +228,19 @@ t_int* samplelooper_tilde_perform(t_int* w){
 	x->output_playback_frames_counter += x->output_playback_frames_counter >= 0 ? 1 : 0;
 
 	if(x->loop_mode == LOOP_MODE_NONE){
-		samplelooper_tilde_loop_none(x, in, out, n);
+		samplelooper_tilde_loop_none(x, in, out_position, n);
 	}
 
 	if(x->loop_mode == LOOP_MODE_FORWARD){
-		samplelooper_tilde_loop_forward(x, in, out, n);
+		samplelooper_tilde_loop_forward(x, in, out_position, n);
 	}
 
 	if(x->loop_mode == LOOP_MODE_BACKWARD){
-		samplelooper_tilde_loop_backward(x, in, out, n);
+		samplelooper_tilde_loop_backward(x, in, out_position, n);
 	}
 
 	if(x->loop_mode == LOOP_MODE_PINGPONG){
-		samplelooper_tilde_loop_pingpong(x, in, out, n);
+		samplelooper_tilde_loop_pingpong(x, in, out_position, out_direction, n);
 	}
 
 	if(x->output_playback_frames == 1 && (x->output_playback_frames_counter >= output_playback_frames_every || x->note_stopped == 1)){
@@ -253,11 +249,11 @@ t_int* samplelooper_tilde_perform(t_int* w){
 		x->output_playback_frames_counter = x->note_stopped == 1 ? -1 : 0;
 	}
 
-	return (w+5);
+	return (w+6);
 }
 
 void samplelooper_tilde_dsp(t_samplelooper_tilde* x, t_signal**sp){
-  	dsp_add(samplelooper_tilde_perform, 4, x, sp[0]->s_vec, sp[1]->s_vec, sp[0]->s_n);
+  	dsp_add(samplelooper_tilde_perform, 5, x, sp[0]->s_vec, sp[1]->s_vec, sp[2]->s_vec, sp[0]->s_n);
 }
 
 
