@@ -125,7 +125,7 @@ void seamless_pingpong(t_int* w){
 	int n = (int)(w[8]);
 
 	while (n--){
-		const t_float frame1 = *in_position++;
+		const t_float frame1 = *(in_position++);
 		seamless_tilde_check_playback_direction(x, (t_int)*in_direction++);
 
 		if((frame1 < x->loopend_current - x->seamsize && frame1 > x->loopstart_current + x->seamsize) || x->seamsize <= 0){
@@ -141,7 +141,7 @@ void seamless_pingpong(t_int* w){
 				const t_float loop_position = frame1 - x->loopend_current + x->seamsize;
 				const t_float ratio = loop_position/x->seamsize;
 				const t_float frame2 = x->loopend_current - loop_position;
-				post("frame1a: %f loop_position: %f x->seamsize: %f ratio: %f frame2: %f", frame1, loop_position, x->seamsize, ratio, frame2);
+				//post("frame1a: %f loop_position: %f x->seamsize: %f ratio: %f frame2: %f", frame1, loop_position, x->seamsize, ratio, frame2);
 				*out_index_0++ = frame1;
 				*out_index_1++ = frame2;
 				*out_ratio_0++ = 1 - ratio;
@@ -152,7 +152,7 @@ void seamless_pingpong(t_int* w){
 				const t_float loop_position = frame1;
 				const t_float ratio = loop_position/x->seamsize;
 				const t_float frame2 = x->seamsize - frame1;
-				post("frame1b: %f loop_position: %f x->seamsize: %f ratio: %f frame2: %f", frame1, loop_position, x->seamsize, ratio, frame2);
+				//post("frame1b: %f loop_position: %f x->seamsize: %f ratio: %f frame2: %f", frame1, loop_position, x->seamsize, ratio, frame2);
 				*out_index_0++ = frame1;
 				*out_index_1++ = frame2;
 				*out_ratio_0++ = ratio;
@@ -166,7 +166,7 @@ void seamless_pingpong(t_int* w){
 				const t_float loop_position = seam_center - frame1 + x->seamsize/2;
 				const t_float frame2 = seam_center + (seam_center - frame1);
 				const t_float ratio = loop_position/x->seamsize;
-				post("frame1c: %f loop_position: %f x->seamsize: %f ratio: %f frame2: %f", frame1, loop_position, x->seamsize, ratio, frame2);
+				//post("frame1c: %f loop_position: %f x->seamsize: %f ratio: %f frame2: %f", frame1, loop_position, x->seamsize, ratio, frame2);
 				*out_index_0++ = frame1;
 				*out_index_1++ = frame2;
 				*out_ratio_0++ = ratio;
@@ -177,7 +177,7 @@ void seamless_pingpong(t_int* w){
 				const t_float loop_position = x->seamsize - frame1;
 				const t_float ratio = loop_position/x->seamsize;
 				const t_float frame2 = x->seamsize - frame1;
-				post("frame1d: %f loop_position: %f x->seamsize: %f ratio: %f frame2: %f", frame1, loop_position, x->seamsize, ratio, frame2);
+				//post("frame1d: %f loop_position: %f x->seamsize: %f ratio: %f frame2: %f", frame1, loop_position, x->seamsize, ratio, frame2);
 				*out_index_0++ = frame1;
 				*out_index_1++ = frame2;
 				*out_ratio_0++ = 1 - ratio;
