@@ -43,7 +43,7 @@
 #X obj 164 12 cnv 15 230 25 empty empty FILTER 20 12 0 20 #f8fc00 #404040 0;
 #X obj 30 251 hsl 128 15 -50 0 0 1 \$1-volume empty empty -2 -8 0 10 #fcfcfc #000000 #000000 12700 1;
 #X floatatom 170 266 5 0 0 0 - - - 0;
-#N canvas 283 261 440 482 setsamplelength 1;
+#N canvas 283 261 440 482 setsamplelength 0;
 #X msg 59 217 set \$1;
 #X obj 22 84 trigger b f f;
 #X msg 22 202 0;
@@ -198,6 +198,9 @@
 #X msg 716 183 0.002;
 #X msg 97 686 ../../wavs/sweep-rev.wav;
 #X msg 653 158 0.008;
+#X obj 329 655 loadbang;
+#X msg 776 30 58897;
+#X msg 761 85 138582;
 #X connect 0 0 53 0;
 #X connect 12 0 52 0;
 #X connect 13 0 54 0;
@@ -224,4 +227,7 @@
 #X connect 78 0 67 0;
 #X connect 79 0 51 0;
 #X connect 80 0 67 0;
+#X connect 81 0 75 0;
+#X connect 82 0 22 0;
+#X connect 83 0 23 0;
 #X coords 0 0 1 1 85 60 0;
