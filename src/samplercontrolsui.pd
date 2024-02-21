@@ -187,7 +187,7 @@
 #X obj 821 188 hsl 128 15 0 0.4 0 0 \$1-seamsize empty seamsize -2 -8 0 10 #fcfcfc #000000 #000000 0 1;
 #X floatatom 818 206 10 0 0 0 - - - 0;
 #X msg 97 735 ../../wavs/aaahh.wav;
-#X obj 959 60 vradio 15 1 1 4 \$1-loopmode empty loop\ mode 0 -8 0 10 #fcfcfc #000000 #000000 3;
+#X obj 959 60 vradio 15 1 1 4 \$1-loopmode empty loop\ mode 0 -8 0 10 #fcfcfc #000000 #000000 1;
 #X text 977 59 none;
 #X text 976 74 forward;
 #X text 977 89 backward;

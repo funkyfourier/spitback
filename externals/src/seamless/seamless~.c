@@ -2,7 +2,6 @@
 
 static t_class* seamless_tilde_class;
 
-
 static const t_int LOOP_MODE_NONE = 0;
 static const t_int LOOP_MODE_FORWARD = 1;
 static const t_int LOOP_MODE_BACKWARD = 2;
@@ -31,6 +30,10 @@ typedef struct _seamless {
 	enum Phase phase;
 	t_int play_seam;
 } t_seamless_tilde;
+
+
+void seamless_tilde_determine_phase_forward(t_seamless_tilde* x, t_float frame, t_float seamsize);
+void seamless_tilde_determine_play_seam(t_seamless_tilde* x);
 
 void seamless_tilde_free(t_seamless_tilde* x){
 	inlet_free(x->inlet_playback_direction);
@@ -73,17 +76,24 @@ void seamless_none(t_int* w){
 
 void seamless_forward(t_int* w){
 	t_seamless_tilde* x = (t_seamless_tilde*)(w[1]);
-	t_sample* in = (t_sample*)(w[2]);
-	t_sample* out_index_0 = (t_sample*)(w[3]);
-	t_sample* out_ratio_0 = (t_sample*)(w[4]);
-	t_sample* out_index_1 = (t_sample*)(w[5]);
-	t_sample* out_ratio_1 = (t_sample*)(w[6]);
-	int n = (int)(w[7]);
+	t_sample* in_position = (t_sample*)(w[2]);
+	t_sample* out_index_0 = (t_sample*)(w[4]);
+	t_sample* out_ratio_0 = (t_sample*)(w[5]);
+	t_sample* out_index_1 = (t_sample*)(w[6]);
+	t_sample* out_ratio_1 = (t_sample*)(w[7]);
+	int n = (int)(w[8]);
 
 	while (n--){
-		t_float frame1 = *in++;
-		t_float seamsize = (t_int)((x->loopend - x->loopstart) * x->seamsize_ratio);
-		if(frame1 > x->loopstart + seamsize || x->seamsize_ratio <= 0){
+		const t_float frame1 = *(in_position++);
+		const t_float seamsize = (t_int)((x->loopend - x->loopstart) * x->seamsize_ratio);
+		seamless_tilde_determine_phase_forward(x, frame1, seamsize);
+		seamless_tilde_determine_play_seam(x);
+
+		if(frame1 > 44090 || frame1 < 10){
+			post("frame1: %f", frame1);
+		}
+
+		if(x->phase != InStartSeam || !x->play_seam){
 			*out_index_0++ = frame1;
 			*out_ratio_0++ = 1;
 			*out_index_1++ = 0;
@@ -101,7 +111,19 @@ void seamless_forward(t_int* w){
 	}
 }
 
-void seamless_tilde_determine_phase(t_seamless_tilde* x, t_float frame, t_float seamsize){
+void seamless_tilde_determine_phase_forward(t_seamless_tilde* x, t_float frame, t_float seamsize){
+	if(frame < x->loopstart){
+		x->phase = PreLoopStart;
+	}
+	if(frame >= x->loopstart && frame <= x->loopstart + seamsize){
+		x->phase = InStartSeam;
+	}
+	if(frame > x->loopstart + seamsize){
+		x->phase = OutsideSeam;
+	}
+}
+
+void seamless_tilde_determine_phase_pingpong(t_seamless_tilde* x, t_float frame, t_float seamsize){
 	if(frame < x->loopstart){
 		x->phase = PreLoopStart;
 	}
@@ -139,7 +161,7 @@ void seamless_pingpong(t_int* w){
 		const t_int playback_direction = (t_int)*in_direction++;
 		t_float seamsize = (t_int)((x->loopend - x->loopstart) * x->seamsize_ratio);
 
-		seamless_tilde_determine_phase(x, frame1, seamsize);
+		seamless_tilde_determine_phase_pingpong(x, frame1, seamsize);
 		seamless_tilde_determine_play_seam(x);	
 
 		if((x->phase != InStartSeam && x->phase != InEndSeam) || !x->play_seam){
@@ -201,12 +223,10 @@ t_int *seamless_tilde_perform(t_int* w){
 	t_seamless_tilde* x = (t_seamless_tilde*)(w[1]);
 
 	if(x->loop_mode == LOOP_MODE_NONE){
-		//seamless_none(w);
-		seamless_pingpong(w);
+		seamless_none(w);
 	}
 	if(x->loop_mode == LOOP_MODE_FORWARD){
-		//seamless_forward(w);
-		seamless_pingpong(w);
+		seamless_forward(w);
 	}
 	if(x->loop_mode == LOOP_MODE_PINGPONG){
 		seamless_pingpong(w);

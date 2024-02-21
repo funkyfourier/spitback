@@ -130,7 +130,7 @@ void samplelooper_tilde_loop_none(t_samplelooper_tilde* x, t_float* in, t_float*
 	x->position = position;
 }
 
-void samplelooper_tilde_loop_forward(t_samplelooper_tilde* x, t_float* in, t_float* out, int n){
+void samplelooper_tilde_loop_forward(t_samplelooper_tilde* x, t_float* in, t_float* out_position, t_float* out_direction, int n){
 	t_float position = x->position;
 	t_float pitch_ratio = (t_float)x->pitch_ratio;
 	t_float loopstart = x->loopstart;
@@ -145,13 +145,14 @@ void samplelooper_tilde_loop_forward(t_samplelooper_tilde* x, t_float* in, t_flo
 			position = fmod(position - loopstart, range) + loopstart;
 		}
 		x->playback_frames_end = position;
-		*out++ = position;
+		*out_position++ = position;
+		*out_direction++ = PLAYBACK_DIRECTION_FORWARD;
 		position += pitch_ratio * sig_pitch; 
 	}
 	x->position = position;
 }
 
-void samplelooper_tilde_loop_backward(t_samplelooper_tilde* x, t_float* in, t_float* out, int n){
+void samplelooper_tilde_loop_backward(t_samplelooper_tilde* x, t_float* in, t_float* out_position,  t_float* out_direction, int n){
 	t_float position = x->position;
 	t_float pitch_ratio = (t_float)x->pitch_ratio;
 	t_float loopstart = x->loopstart;
@@ -170,7 +171,7 @@ void samplelooper_tilde_loop_backward(t_samplelooper_tilde* x, t_float* in, t_fl
 			position = loopend - fmod(loopend - position, range);
 		}
 		x->playback_frames_end = position;
-		*out++ = position;
+		*out_position++ = position;
 		t_float position_change = pitch_ratio * sig_pitch;
 		position_change *= x->playback_direction == PLAYBACK_DIRECTION_BACKWARD ? -1 : 1;
 		position += position_change; 
@@ -200,11 +201,6 @@ void samplelooper_tilde_loop_pingpong(t_samplelooper_tilde* x, t_float* in, t_fl
 				x->playback_direction = PLAYBACK_DIRECTION_FORWARD;
 			}
 		}
-
-		if(position >= x->loopend - seamsize || position <= x->loopstart + seamsize){
-			//post("position: %f x->playback_direction: %d n: %d", position, x->playback_direction, n);
-		}
-
 		x->playback_frames_end = position;
 		*out_position++ = position;
 		*out_direction++ = x->playback_direction;
@@ -229,15 +225,15 @@ t_int* samplelooper_tilde_perform(t_int* w){
 	x->processed_seconds += (t_float)n/(t_float)pdsr;
 	x->output_playback_frames_counter += x->output_playback_frames_counter >= 0 ? 1 : 0;
 
-	/*if(x->loop_mode == LOOP_MODE_NONE){
+	if(x->loop_mode == LOOP_MODE_NONE){
 		samplelooper_tilde_loop_none(x, in, out_position, n);
 	}
 
 	if(x->loop_mode == LOOP_MODE_FORWARD){
-		samplelooper_tilde_loop_forward(x, in, out_position, n);
+		samplelooper_tilde_loop_forward(x, in, out_position, out_direction, n);
 	}
 
-	if(x->loop_mode == LOOP_MODE_BACKWARD){
+	/*if(x->loop_mode == LOOP_MODE_BACKWARD){
 		samplelooper_tilde_loop_backward(x, in, out_position, n);
 	}*/
 
