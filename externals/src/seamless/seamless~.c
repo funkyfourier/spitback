@@ -12,6 +12,13 @@ static const t_int PLAYBACK_DIRECTION_BACKWARD = 1;
 
 static enum Phase {PreLoopStart, InStartSeam, OutsideSeam, InEndSeam, PostLoopEnd};
 
+typedef struct {
+	t_float frame1;
+	t_float frame2;
+	t_float frame1_ratio;
+	t_float frame2_ratio;
+} seam_values_struct;
+
 typedef struct _seamless {
   	t_object x_obj;
 	t_float signal_inlet_dummy;
@@ -30,10 +37,14 @@ typedef struct _seamless {
 	t_inlet* inlet_seamsize_ratio;
 	enum Phase phase;
 	t_int play_seam;
+	seam_values_struct seam_values;
+	t_int backward_pingpong;
 } t_seamless_tilde;
 
-
 void seamless_tilde_determine_phase_forward(t_seamless_tilde* x, t_float frame);
+void seamless_tilde_determine_phase_backward(t_seamless_tilde* x, t_float frame);
+void seamless_tilde_determine_phase_pingpong(t_seamless_tilde* x, t_float frame);
+void seamless_tilde_do_pingpong(t_seamless_tilde* x, const t_float frame1, const t_int playback_direction);
 void seamless_tilde_determine_play_seam(t_seamless_tilde* x);
 void seamless_tilde_update_seamsize(t_seamless_tilde* x);
 
@@ -67,7 +78,7 @@ void seamless_none(t_int* w){
 	t_sample* out_ratio_0 = (t_sample*)(w[4]);
 	t_sample* out_index_1 = (t_sample*)(w[5]);
 	t_sample* out_ratio_1 = (t_sample*)(w[6]);
-	int n = (int)(w[7]);
+	int n = (int)(w[8]);
 	while (n--){
 		*out_index_0++ = *in++;
 		*out_ratio_0++ = 1;
@@ -84,8 +95,6 @@ void seamless_forward(t_int* w){
 	t_sample* out_index_1 = (t_sample*)(w[6]);
 	t_sample* out_ratio_1 = (t_sample*)(w[7]);
 	int n = (int)(w[8]);
-
-	int count = 0;
 
 	while (n--){
 		const t_float frame1 = *(in_position++);
@@ -106,6 +115,138 @@ void seamless_forward(t_int* w){
 			*out_ratio_0++ = ratio;
 			*out_ratio_1++ = 1 - ratio;
 		}
+	}
+}
+
+void seamless_backward(t_int* w){
+	t_seamless_tilde* x = (t_seamless_tilde*)(w[1]);
+	t_sample* in_position = (t_sample*)(w[2]);
+	t_sample* in_direction = (t_sample*)(w[3]);
+	t_sample* out_index_0 = (t_sample*)(w[4]);
+	t_sample* out_ratio_0 = (t_sample*)(w[5]);
+	t_sample* out_index_1 = (t_sample*)(w[6]);
+	t_sample* out_ratio_1 = (t_sample*)(w[7]);
+	int n = (int)(w[8]);
+
+	while (n--){
+		const t_float frame1 = *(in_position++);
+		const t_int playback_direction = (t_int)*in_direction++;
+
+		if(playback_direction == PLAYBACK_DIRECTION_FORWARD){
+			seamless_tilde_determine_phase_pingpong(x, frame1);
+			seamless_tilde_determine_play_seam(x);
+			seamless_tilde_do_pingpong(x, frame1, playback_direction);
+			x->backward_pingpong = 1;
+		}
+		else {
+			if(!x->backward_pingpong){
+				seamless_tilde_determine_phase_backward(x, frame1);
+				seamless_tilde_determine_play_seam(x);
+				if(x->phase != InEndSeam || !x->play_seam){
+					x->seam_values.frame1 = frame1;
+					x->seam_values.frame1_ratio = 1;
+					x->seam_values.frame2 = 0;
+					x->seam_values.frame2_ratio = 0;
+				}
+				else {
+					t_float loop_position = x->loopend - frame1;
+					t_float ratio = loop_position/x->seamsize;
+					x->seam_values.frame1= frame1;
+					x->seam_values.frame2 = x->loopstart + x->seamsize - loop_position;
+					x->seam_values.frame1_ratio = ratio;
+					x->seam_values.frame2_ratio = 1 - ratio;
+				}
+			}
+			else {
+				seamless_tilde_determine_phase_pingpong(x, frame1);
+				seamless_tilde_determine_play_seam(x);
+				seamless_tilde_do_pingpong(x, frame1, playback_direction);
+				x->backward_pingpong = frame1 > x->loopend - x->seamsize;
+			}
+		}
+
+		*out_index_0++ = x->seam_values.frame1;
+		*out_ratio_0++ = x->seam_values.frame1_ratio;
+		*out_index_1++ = x->seam_values.frame2;
+		*out_ratio_1++ = x->seam_values.frame2_ratio;
+	}
+}
+
+void seamless_pingpong(t_int* w){
+	t_seamless_tilde* x = (t_seamless_tilde*)(w[1]);
+	t_sample* in_position = (t_sample*)(w[2]);
+	t_sample* in_direction = (t_sample*)(w[3]);
+	t_sample* out_index_0 = (t_sample*)(w[4]);
+	t_sample* out_ratio_0 = (t_sample*)(w[5]);
+	t_sample* out_index_1 = (t_sample*)(w[6]);
+	t_sample* out_ratio_1 = (t_sample*)(w[7]);
+	int n = (int)(w[8]);
+
+	while (n--){
+		const t_float frame1 = *(in_position++);
+		const t_int playback_direction = (t_int)*in_direction++;
+		seamless_tilde_determine_phase_pingpong(x, frame1);
+		seamless_tilde_determine_play_seam(x);	
+		seamless_tilde_do_pingpong(x, frame1, playback_direction);
+		*out_index_0++ = x->seam_values.frame1;
+		*out_index_1++ = x->seam_values.frame2;
+		*out_ratio_0++ = x->seam_values.frame1_ratio;
+		*out_ratio_1++ = x->seam_values.frame2_ratio;
+	}
+}
+
+void seamless_tilde_do_pingpong(t_seamless_tilde* x, const t_float frame1, const t_int playback_direction){
+	
+	x->seam_values.frame1 = frame1;
+	
+	if((x->phase != InStartSeam && x->phase != InEndSeam) || !x->play_seam){
+		x->seam_values.frame1 = frame1;
+		x->seam_values.frame1_ratio = 1;
+		x->seam_values.frame2 = 0;
+		x->seam_values.frame2_ratio = 0;
+		return;
+	}
+
+	if(playback_direction == PLAYBACK_DIRECTION_FORWARD){
+		if(frame1 >= x->loopend - x->seamsize){
+			const t_float loop_position = frame1 - x->loopend + x->seamsize;
+			x->seam_values.frame2_ratio = loop_position/x->seamsize;
+			x->seam_values.frame1_ratio = 1 - x->seam_values.frame2_ratio;
+			x->seam_values.frame2 = x->loopend - loop_position;
+		}
+		else {
+			const t_float loop_position = frame1 - x->loopstart;
+			x->seam_values.frame1_ratio = loop_position/x->seamsize;
+			x->seam_values.frame2_ratio = 1 - x->seam_values.frame1_ratio;
+			x->seam_values.frame2 = x->loopstart + x->seamsize - frame1 + x->loopstart;
+		}
+	}
+	else {
+		if(frame1 >= x->loopend - x->seamsize){
+			const t_float seam_center = x->loopend - x->seamsize/2;
+			const t_float loop_position = seam_center - frame1 + x->seamsize/2;
+			x->seam_values.frame2 = seam_center + (seam_center - frame1);
+			x->seam_values.frame1_ratio = loop_position/x->seamsize;
+			x->seam_values.frame2_ratio = 1 - x->seam_values.frame1_ratio;
+		}
+		else {
+			x->seam_values.frame2 = x->loopstart + x->seamsize - frame1 + x->loopstart;
+			const t_float loop_position = x->seam_values.frame2 - x->loopstart;
+			x->seam_values.frame2_ratio = loop_position/x->seamsize;
+			x->seam_values.frame1_ratio = 1 - x->seam_values.frame2_ratio;
+		}
+	}
+}
+
+void seamless_tilde_determine_phase_backward(t_seamless_tilde* x, t_float frame){
+	if(frame >= x->loopend - x->seamsize && frame <= x->loopend){
+		x->phase = InEndSeam;
+	}
+	if(frame < x->loopend - x->seamsize){
+		x->phase = OutsideSeam;
+	}
+	if(frame > x->loopend){
+		x->phase = PostLoopEnd;
 	}
 }
 
@@ -144,78 +285,6 @@ void seamless_tilde_determine_play_seam(t_seamless_tilde* x){
 	x->play_seam = 1;
 }
 
-void seamless_pingpong(t_int* w){
-	t_seamless_tilde* x = (t_seamless_tilde*)(w[1]);
-	t_sample* in_position = (t_sample*)(w[2]);
-	t_sample* in_direction = (t_sample*)(w[3]);
-	t_sample* out_index_0 = (t_sample*)(w[4]);
-	t_sample* out_ratio_0 = (t_sample*)(w[5]);
-	t_sample* out_index_1 = (t_sample*)(w[6]);
-	t_sample* out_ratio_1 = (t_sample*)(w[7]);
-	int n = (int)(w[8]);
-
-	while (n--){
-		const t_float frame1 = *(in_position++);
-		const t_int playback_direction = (t_int)*in_direction++;
-
-		seamless_tilde_determine_phase_pingpong(x, frame1);
-		seamless_tilde_determine_play_seam(x);	
-
-		if((x->phase != InStartSeam && x->phase != InEndSeam) || !x->play_seam){
-			*out_index_0++ = frame1;
-			*out_ratio_0++ = 1;
-			*out_index_1++ = 0;
-			*out_ratio_1++ = 0;
-			continue;
-		}
-
-		t_float frame2;
-		t_float frame1_ratio;
-		t_float frame2_ratio;
-
-		if(playback_direction == PLAYBACK_DIRECTION_FORWARD){
-			if(frame1 >= x->loopend - x->seamsize){
-				const t_float loop_position = frame1 - x->loopend + x->seamsize;
-				frame2_ratio = loop_position/x->seamsize;
-				frame1_ratio = 1 - frame2_ratio;
-				frame2 = x->loopend - loop_position;
-				//post("frame1a: %f frame2: %f loop_position: %f frame1_ratio: %f frame2_ratio: %f seamsize: %f", frame1, frame2, loop_position, frame1_ratio, frame2_ratio, seamsize);
-			}
-			else {
-				const t_float loop_position = frame1 - x->loopstart;
-				frame1_ratio = loop_position/x->seamsize;
-				frame2_ratio = 1 - frame1_ratio;
-				frame2 = x->loopstart + x->seamsize - frame1 + x->loopstart;
-				//post("frame1b: %f frame2: %f loop_position: %f frame1_ratio: %f frame2_ratio: %f seamsize: %f", frame1, frame2, loop_position, frame1_ratio, frame2_ratio, seamsize);
-			}
-		}
-		else {
-			if(frame1 >= x->loopend - x->seamsize){
-				const t_float seam_center = x->loopend - x->seamsize/2;
-				const t_float loop_position = seam_center - frame1 + x->seamsize/2;
-				frame2 = seam_center + (seam_center - frame1);
-				frame1_ratio = loop_position/x->seamsize;
-				frame2_ratio = 1 - frame1_ratio;
-				//post("frame1c: %f frame2: %f loop_position: %f frame1_ratio: %f frame2_ratio: %f seamsize: %f", frame1, frame2, loop_position, frame1_ratio, frame2_ratio, seamsize);
-			}
-			else {
-				frame2 = x->loopstart + x->seamsize - frame1 + x->loopstart;
-				const t_float loop_position = frame2 - x->loopstart;
-				frame2_ratio = loop_position/x->seamsize;
-				frame1_ratio = 1 - frame2_ratio;
-				//post("frame1d: %f frame2: %f loop_position: %f frame1_ratio: %f frame2_ratio: %f seamsize: %f", frame1, frame2, loop_position, frame1_ratio, frame2_ratio, seamsize);
-			}
-		}
-
-		*out_index_0++ = frame1;
-		*out_index_1++ = frame2;
-		*out_ratio_0++ = frame1_ratio;
-		*out_ratio_1++ = frame2_ratio;
-		
-	}
-
-}
-
 t_int *seamless_tilde_perform(t_int* w){
 	t_seamless_tilde* x = (t_seamless_tilde*)(w[1]);
 
@@ -224,6 +293,9 @@ t_int *seamless_tilde_perform(t_int* w){
 	}
 	if(x->loop_mode == LOOP_MODE_FORWARD){
 		seamless_forward(w);
+	}
+	if(x->loop_mode == LOOP_MODE_BACKWARD){
+		seamless_backward(w);
 	}
 	if(x->loop_mode == LOOP_MODE_PINGPONG){
 		seamless_pingpong(w);

@@ -128,27 +128,33 @@ void samplelooper_tilde_loop_forward(t_samplelooper_tilde* x, t_float* in, t_flo
 	x->position = position;
 }
 
-void samplelooper_tilde_loop_backward(t_samplelooper_tilde* x, t_float* in, t_float* out_position,  t_float* out_direction, int n){
+void samplelooper_tilde_loop_backward(t_samplelooper_tilde* x, t_float* in, t_float* out_position, t_float* out_direction, int n){
 	t_float position = x->position;
 	t_float pitch_ratio = (t_float)x->pitch_ratio;
-	t_float sig_pitch;
 
 	while (n--){
-		t_float sig = *in++;
-		sig_pitch = (x->lfo_enabled == 1) ? (1-sig) : 1;
-		t_float loopend = x->loopend - x->seamsize;
-		if(x->playback_direction == PLAYBACK_DIRECTION_FORWARD && position >= loopend){
-			x->playback_direction = PLAYBACK_DIRECTION_BACKWARD;
+		const t_float sig = *in++;
+		const t_float sig_pitch = (x->lfo_enabled == 1) ? (1-sig) : 1;
+		const t_float position_increment = pitch_ratio * sig_pitch;
+
+		if(x->playback_direction == PLAYBACK_DIRECTION_BACKWARD){
+			t_float loopstart = x->loopstart + x->seamsize;
+			if(position <= loopstart){
+				float range = x->loopend - loopstart;
+				position = x->loopend - fmod(x->loopend - position, range);
+			}
 		}
-		if(x->playback_direction == PLAYBACK_DIRECTION_BACKWARD && position <= x->loopstart){
-			float range = loopend - x->loopstart;
-			position = loopend - fmod(loopend - position, range);
+
+		if(x->playback_direction == PLAYBACK_DIRECTION_FORWARD){
+			if(position >= x->loopend - x->seamsize/2 - position_increment){
+				x->playback_direction = PLAYBACK_DIRECTION_BACKWARD;
+			}
 		}
+
 		x->playback_frames_end = position;
 		*out_position++ = position;
-		t_float position_change = pitch_ratio * sig_pitch;
-		position_change *= x->playback_direction == PLAYBACK_DIRECTION_BACKWARD ? -1 : 1;
-		position += position_change; 
+		*out_direction++ = x->playback_direction;
+		position += position_increment * (x->playback_direction == PLAYBACK_DIRECTION_BACKWARD ? -1 : 1);
 	}
 
 	x->position = position;
@@ -204,9 +210,9 @@ t_int* samplelooper_tilde_perform(t_int* w){
 		samplelooper_tilde_loop_forward(x, in, out_position, out_direction, n);
 	}
 
-	/*if(x->loop_mode == LOOP_MODE_BACKWARD){
-		samplelooper_tilde_loop_backward(x, in, out_position, n);
-	}*/
+	if(x->loop_mode == LOOP_MODE_BACKWARD){
+		samplelooper_tilde_loop_backward(x, in, out_position, out_direction, n);
+	}
 
 	if(x->loop_mode == LOOP_MODE_PINGPONG){
 		samplelooper_tilde_loop_pingpong(x, in, out_position, out_direction, n);
