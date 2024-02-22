@@ -157,13 +157,13 @@ void samplelooper_tilde_loop_backward(t_samplelooper_tilde* x, t_float* in, t_fl
 void samplelooper_tilde_loop_pingpong(t_samplelooper_tilde* x, t_float* in, t_float* out_position, t_float* out_direction, int n){
 	t_float position = x->position;
 	t_float pitch_ratio = (t_float)x->pitch_ratio;
-	t_float sig_pitch;
 
 	while (n--){
-		t_float sig = *in++;
-		sig_pitch = (x->lfo_enabled == 1) ? (1-sig) : 1;
+		const t_float sig = *in++;
+		const t_float sig_pitch = (x->lfo_enabled == 1) ? (1-sig) : 1;
+		const t_float position_increment = pitch_ratio * sig_pitch;
 		if(x->playback_direction == PLAYBACK_DIRECTION_FORWARD){
-			if(position >= x->loopend - x->seamsize/2){
+			if(position >= x->loopend - x->seamsize/2 - position_increment){
 				x->playback_direction = PLAYBACK_DIRECTION_BACKWARD;
 			}
 		}
@@ -175,7 +175,7 @@ void samplelooper_tilde_loop_pingpong(t_samplelooper_tilde* x, t_float* in, t_fl
 		x->playback_frames_end = position;
 		*out_position++ = position;
 		*out_direction++ = x->playback_direction;
-		position += pitch_ratio * sig_pitch * (x->playback_direction == PLAYBACK_DIRECTION_BACKWARD ? -1 : 1);
+		position += position_increment * (x->playback_direction == PLAYBACK_DIRECTION_BACKWARD ? -1 : 1);
 	}
 
 	x->position = position;
