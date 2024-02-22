@@ -18,6 +18,7 @@ typedef struct _seamless {
 	t_float loopstart;
 	t_float loopend;
 	t_float seamsize_ratio;
+	t_float seamsize;
 	t_int loop_mode;
 	t_outlet* outlet_index_0;
 	t_outlet* outlet_ratio_0;
@@ -32,8 +33,9 @@ typedef struct _seamless {
 } t_seamless_tilde;
 
 
-void seamless_tilde_determine_phase_forward(t_seamless_tilde* x, t_float frame, t_float seamsize);
+void seamless_tilde_determine_phase_forward(t_seamless_tilde* x, t_float frame);
 void seamless_tilde_determine_play_seam(t_seamless_tilde* x);
+void seamless_tilde_update_seamsize(t_seamless_tilde* x);
 
 void seamless_tilde_free(t_seamless_tilde* x){
 	inlet_free(x->inlet_playback_direction);
@@ -87,8 +89,7 @@ void seamless_forward(t_int* w){
 
 	while (n--){
 		const t_float frame1 = *(in_position++);
-		const t_float seamsize = (t_int)((x->loopend - x->loopstart) * x->seamsize_ratio);
-		seamless_tilde_determine_phase_forward(x, frame1, seamsize);
+		seamless_tilde_determine_phase_forward(x, frame1);
 		seamless_tilde_determine_play_seam(x);
 		if(x->phase != InStartSeam || !x->play_seam){
 			*out_index_0++ = frame1;
@@ -98,8 +99,8 @@ void seamless_forward(t_int* w){
 		}
 		else {
 			t_float loop_position = frame1 - x->loopstart;
-			t_float frame2 = x->loopend - seamsize + loop_position;
-			t_float ratio = loop_position/seamsize;
+			t_float frame2 = x->loopend - x->seamsize + loop_position;
+			t_float ratio = loop_position/x->seamsize;
 			*out_index_0++ = frame1;
 			*out_index_1++ = frame2;
 			*out_ratio_0++ = ratio;
@@ -108,29 +109,29 @@ void seamless_forward(t_int* w){
 	}
 }
 
-void seamless_tilde_determine_phase_forward(t_seamless_tilde* x, t_float frame, t_float seamsize){
+void seamless_tilde_determine_phase_forward(t_seamless_tilde* x, t_float frame){
 	if(frame < x->loopstart){
 		x->phase = PreLoopStart;
 	}
-	if(frame >= x->loopstart && frame <= x->loopstart + seamsize){
+	if(frame >= x->loopstart && frame <= x->loopstart + x->seamsize){
 		x->phase = InStartSeam;
 	}
-	if(frame > x->loopstart + seamsize){
+	if(frame > x->loopstart + x->seamsize){
 		x->phase = OutsideSeam;
 	}
 }
 
-void seamless_tilde_determine_phase_pingpong(t_seamless_tilde* x, t_float frame, t_float seamsize){
+void seamless_tilde_determine_phase_pingpong(t_seamless_tilde* x, t_float frame){
 	if(frame < x->loopstart){
 		x->phase = PreLoopStart;
 	}
-	if(frame >= x->loopstart && frame <= x->loopstart + seamsize){
+	if(frame >= x->loopstart && frame <= x->loopstart + x->seamsize){
 		x->phase = InStartSeam;
 	}
-	if(frame > x->loopstart + seamsize && frame < x->loopend - seamsize){
+	if(frame > x->loopstart + x->seamsize && frame < x->loopend - x->seamsize){
 		x->phase = OutsideSeam;
 	}
-	if(frame >= x->loopend - seamsize && frame <= x->loopend){
+	if(frame >= x->loopend - x->seamsize && frame <= x->loopend){
 		x->phase = InEndSeam;
 	}
 	if(frame > x->loopend){
@@ -156,9 +157,8 @@ void seamless_pingpong(t_int* w){
 	while (n--){
 		const t_float frame1 = *(in_position++);
 		const t_int playback_direction = (t_int)*in_direction++;
-		t_float seamsize = (t_int)((x->loopend - x->loopstart) * x->seamsize_ratio);
 
-		seamless_tilde_determine_phase_pingpong(x, frame1, seamsize);
+		seamless_tilde_determine_phase_pingpong(x, frame1);
 		seamless_tilde_determine_play_seam(x);	
 
 		if((x->phase != InStartSeam && x->phase != InEndSeam) || !x->play_seam){
@@ -174,34 +174,34 @@ void seamless_pingpong(t_int* w){
 		t_float frame2_ratio;
 
 		if(playback_direction == PLAYBACK_DIRECTION_FORWARD){
-			if(frame1 >= x->loopend - seamsize){
-				const t_float loop_position = frame1 - x->loopend + seamsize;
-				frame2_ratio = loop_position/seamsize;
+			if(frame1 >= x->loopend - x->seamsize){
+				const t_float loop_position = frame1 - x->loopend + x->seamsize;
+				frame2_ratio = loop_position/x->seamsize;
 				frame1_ratio = 1 - frame2_ratio;
 				frame2 = x->loopend - loop_position;
 				//post("frame1a: %f frame2: %f loop_position: %f frame1_ratio: %f frame2_ratio: %f seamsize: %f", frame1, frame2, loop_position, frame1_ratio, frame2_ratio, seamsize);
 			}
 			else {
 				const t_float loop_position = frame1 - x->loopstart;
-				frame1_ratio = loop_position/seamsize;
+				frame1_ratio = loop_position/x->seamsize;
 				frame2_ratio = 1 - frame1_ratio;
-				frame2 = x->loopstart + seamsize - frame1 + x->loopstart;
+				frame2 = x->loopstart + x->seamsize - frame1 + x->loopstart;
 				//post("frame1b: %f frame2: %f loop_position: %f frame1_ratio: %f frame2_ratio: %f seamsize: %f", frame1, frame2, loop_position, frame1_ratio, frame2_ratio, seamsize);
 			}
 		}
 		else {
-			if(frame1 >= x->loopend - seamsize){
-				const t_float seam_center = x->loopend - seamsize/2;
-				const t_float loop_position = seam_center - frame1 + seamsize/2;
+			if(frame1 >= x->loopend - x->seamsize){
+				const t_float seam_center = x->loopend - x->seamsize/2;
+				const t_float loop_position = seam_center - frame1 + x->seamsize/2;
 				frame2 = seam_center + (seam_center - frame1);
-				frame1_ratio = loop_position/seamsize;
+				frame1_ratio = loop_position/x->seamsize;
 				frame2_ratio = 1 - frame1_ratio;
 				//post("frame1c: %f frame2: %f loop_position: %f frame1_ratio: %f frame2_ratio: %f seamsize: %f", frame1, frame2, loop_position, frame1_ratio, frame2_ratio, seamsize);
 			}
 			else {
-				frame2 = x->loopstart + seamsize - frame1 + x->loopstart;
+				frame2 = x->loopstart + x->seamsize - frame1 + x->loopstart;
 				const t_float loop_position = frame2 - x->loopstart;
-				frame2_ratio = loop_position/seamsize;
+				frame2_ratio = loop_position/x->seamsize;
 				frame1_ratio = 1 - frame2_ratio;
 				//post("frame1d: %f frame2: %f loop_position: %f frame1_ratio: %f frame2_ratio: %f seamsize: %f", frame1, frame2, loop_position, frame1_ratio, frame2_ratio, seamsize);
 			}
@@ -238,24 +238,33 @@ void seamless_tilde_dsp(t_seamless_tilde* x, t_signal** sp){
 
 void seamless_tilde_loop_mode(t_seamless_tilde *x, t_floatarg argument){
 	x->loop_mode = (t_int)argument;
+	seamless_tilde_update_seamsize(x);
 }
 
 void seamless_tilde_noteon(t_seamless_tilde *x, t_floatarg argument){
+	seamless_tilde_update_seamsize(x);
 	x->play_seam = 0;
+}
+
+void seamless_tilde_update_seamsize(t_seamless_tilde* x){
+	x->seamsize = (t_int)((x->loopend - x->loopstart) * x->seamsize_ratio);
 }
 
 void seamless_tilde_seamsize_ratio(t_seamless_tilde* x, t_floatarg seamsize_ratio){
 	x->seamsize_ratio = seamsize_ratio;
+	seamless_tilde_update_seamsize(x);
 	x->play_seam = 0;
 }
 
 void seamless_tilde_loopstart(t_seamless_tilde* x, t_floatarg loopstart){
-	x->loopstart = loopstart;
+	x->loopstart = (t_int)loopstart;
+	seamless_tilde_update_seamsize(x);
 	x->play_seam = 0;
 }
 
 void seamless_tilde_loopend(t_seamless_tilde* x, t_floatarg loopend){
-	x->loopend = loopend;
+	x->loopend = (t_int)loopend;
+	seamless_tilde_update_seamsize(x);
 	x->play_seam = 0;
 }
 

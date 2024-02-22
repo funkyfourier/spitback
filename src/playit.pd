@@ -121,7 +121,7 @@
 #X obj 340 538 throw~ \$2-instrumentoutput;
 #X obj 134 116 inlet noteon;
 #X obj 335 24 inlet noteoff;
-#N canvas 1120 393 857 533 samplelooper 1;
+#N canvas 1120 393 857 533 samplelooper 0;
 #X obj 176 149 inlet~ lfosignal;
 #X obj 175 475 outlet~;
 #X obj 268 400 outlet;
@@ -252,12 +252,14 @@
 #X obj 160 30 r \$0-noteon;
 #X msg 160 55 noteon;
 #X obj 227 147 inlet~;
-#X obj 150 313 +~ 1;
-#X obj 279 313 +~ 1;
+#X obj 137 280 +~ 1;
+#X obj 309 288 +~ 1;
 #X connect 0 0 2 0;
 #X connect 2 0 16 0;
+#X connect 2 0 3 0;
 #X connect 2 1 5 1;
 #X connect 2 2 17 0;
+#X connect 2 2 4 0;
 #X connect 2 3 6 1;
 #X connect 3 0 5 0;
 #X connect 4 0 6 0;
@@ -272,8 +274,6 @@
 #X connect 13 0 14 0;
 #X connect 14 0 2 0;
 #X connect 15 0 2 1;
-#X connect 16 0 3 0;
-#X connect 17 0 4 0;
 #X restore 33 241 pd seamless;
 #X connect 0 0 9 0;
 #X connect 1 0 4 0;
