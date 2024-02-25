@@ -1,4 +1,4 @@
-#N canvas 694 240 1105 853 12;
+#N canvas 879 463 1105 853 12;
 #X obj 224 147 osc~ 5;
 #X obj 153 48 bng 20 250 50 0 empty empty a\ bang\ triggers\ playback 24 8 0 12 #fcfcfc #000000 #000000;
 #X obj 109 41 1.37;
@@ -16,7 +16,7 @@
 #X msg 951 706 \; pd dsp 0;
 #X msg 865 706 \; pd dsp 1;
 #X text 442 630 the last outlet outputs a bang when playback is finished (if loop is disabled)., f 26;
-#X obj 45 206 vradio 15 1 1 4 \$1-loopmode empty loop\ mode 0 -8 0 10 #fcfcfc #000000 #000000 3;
+#X obj 45 206 vradio 15 1 1 4 empty empty loop\ mode 0 -8 0 10 #fcfcfc #000000 #000000 3;
 #X text 63 205 none;
 #X text 62 220 forward;
 #X text 63 235 backward;
@@ -42,10 +42,10 @@
 #X obj 440 529 nbx 5 18 -1e+37 1e+37 0 0 empty empty empty 0 -10 0 12 #fcfcfc #000000 #000000 0 256;
 #X msg 45 278 loopmode \$1;
 #X obj 749 640 bng 20 250 50 0 empty empty switch~\ subpatch\ off\ to\ stop\ playback 24 8 0 12 #fcfcfc #000000 #000000;
-#X text 686 107 4 loop modes are supported: \; * none \; * forward \; * backward \; * ping pong \;, f 54;
 #X text 686 203 samplelooper~ can be used in combination with loopoverlap~ to achieve overlapped ("seam less") looping. the last inlet takes the overlap ratio which is the portion of the area between loop start and loop and end to be overlapped. the second outlet outputs a signal indicating the playback direction (0 = forward \, 1 = backward)., f 54;
 #X text 686 17 samplelooper~ is an index counter intended to be used with tabread4~ as a more elaborate alternative to using phasor~. it can set start and end points as well as loop start and end points. it supports pitch signal inlet so the pitch can be controlled with an lfo., f 54;
 #X text 686 328 use a switch~ on the subpatch to switch playback off., f 54;
+#X text 686 107 4 loop modes are supported: \; * none (0) \; * forward (1) \; * backward (2) \; * ping pong (3) \;, f 54;
 #X connect 0 0 24 0;
 #X connect 1 0 11 0;
 #X connect 2 0 24 0;

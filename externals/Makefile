@@ -36,6 +36,7 @@ src/elselowshelf/elselowshelf~-help.pd \
 src/elsehighshelf/elsehighshelf~-help.pd \
 src/elsequantizer/elsequantizer~-help.pd \
 src/elsedownsample/elsedownsample~-help.pd \
+src/loopoverlap/loopoverlap~-help.pd \
 
 
 include pd-lib-builder/Makefile.pdlibbuilder
