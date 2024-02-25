@@ -47,6 +47,7 @@ static const t_int PLAYBACK_DIRECTION_BACKWARD = 1;
 void samplelooper_tilde_update_overlap_size(t_samplelooper_tilde* x);
 
 void output_playback_frames(t_samplelooper_tilde *x){
+	post("output_playback_frames");
 	t_atom playback_frames[4];
 	SETFLOAT(playback_frames, (t_float)x->playback_frames_start);
 	SETFLOAT(playback_frames+1, (t_float)x->playback_frames_end);
