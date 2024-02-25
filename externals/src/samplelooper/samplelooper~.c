@@ -9,8 +9,8 @@ typedef struct _samplelooper {
 	t_float sampleend;
 	t_float loopstart;
 	t_float loopend;
-	t_float seamsize_ratio;
-	t_float seamsize;
+	t_float overlap_ratio;
+	t_float overlap_size;
 	t_float position;
 	t_float pitch_ratio;
 	t_int lfo_enabled;
@@ -30,7 +30,7 @@ typedef struct _samplelooper {
 	t_inlet *sampleend_in;
 	t_inlet *loopstart_in;
 	t_inlet *loopend_in;
-	t_inlet *seamsize_ratio_in;
+	t_inlet *overlap_ratio_in;
 } t_samplelooper_tilde;
 
 static t_float pdsr;
@@ -44,7 +44,7 @@ static const t_int LOOP_MODE_PINGPONG = 3;
 static const t_int PLAYBACK_DIRECTION_FORWARD = 0;
 static const t_int PLAYBACK_DIRECTION_BACKWARD = 1;
 
-void samplelooper_tilde_update_seamsize(t_samplelooper_tilde* x);
+void samplelooper_tilde_update_overlap_size(t_samplelooper_tilde* x);
 
 void output_playback_frames(t_samplelooper_tilde *x){
 	t_atom playback_frames[4];
@@ -64,7 +64,7 @@ void samplelooper_tilde_free(t_samplelooper_tilde *x){
 	inlet_free(x->sampleend_in);
 	inlet_free(x->loopstart_in);
 	inlet_free(x->loopend_in);
-	inlet_free(x->seamsize_ratio_in);
+	inlet_free(x->overlap_ratio_in);
 } 
 
 void* samplelooper_tilde_new(t_floatarg output_playback_frames){
@@ -74,7 +74,7 @@ void* samplelooper_tilde_new(t_floatarg output_playback_frames){
 	x->sampleend_in = inlet_new(&x->x_obj, &x->x_obj.ob_pd, gensym("float"), gensym("sampleend"));
 	x->loopstart_in = inlet_new(&x->x_obj, &x->x_obj.ob_pd, gensym("float"), gensym("loopstart"));
 	x->loopend_in = inlet_new(&x->x_obj, &x->x_obj.ob_pd, gensym("float"), gensym("loopend"));
-	x->seamsize_ratio_in = inlet_new(&x->x_obj, &x->x_obj.ob_pd, gensym("float"), gensym("seamsize_ratio"));
+	x->overlap_ratio_in = inlet_new(&x->x_obj, &x->x_obj.ob_pd, gensym("float"), gensym("overlap_ratio"));
 
 	x->index_out = outlet_new(&x->x_obj, &s_signal);
 	x->playback_direction_out = outlet_new(&x->x_obj, &s_signal); 
@@ -115,7 +115,7 @@ void samplelooper_tilde_loop_forward(t_samplelooper_tilde* x, t_float* in, t_flo
 	while (n--){
 		t_float sig = *in++;
 		sig_pitch = (x->lfo_enabled == 1) ? (1-sig) : 1;
-		t_float loopend = x->loopend - x->seamsize;
+		t_float loopend = x->loopend - x->overlap_size;
 		if(position >= loopend){
 			float range = loopend - x->loopstart;
 			position = fmod(position - x->loopstart, range) + x->loopstart;
@@ -138,7 +138,7 @@ void samplelooper_tilde_loop_backward(t_samplelooper_tilde* x, t_float* in, t_fl
 		const t_float position_increment = pitch_ratio * sig_pitch;
 
 		if(x->playback_direction == PLAYBACK_DIRECTION_BACKWARD){
-			t_float loopstart = x->loopstart + x->seamsize;
+			t_float loopstart = x->loopstart + x->overlap_size;
 			if(position <= loopstart){
 				float range = x->loopend - loopstart;
 				position = x->loopend - fmod(x->loopend - position, range);
@@ -146,7 +146,7 @@ void samplelooper_tilde_loop_backward(t_samplelooper_tilde* x, t_float* in, t_fl
 		}
 
 		if(x->playback_direction == PLAYBACK_DIRECTION_FORWARD){
-			if(position >= x->loopend - x->seamsize/2 - position_increment){
+			if(position >= x->loopend - x->overlap_size/2 - position_increment){
 				x->playback_direction = PLAYBACK_DIRECTION_BACKWARD;
 			}
 		}
@@ -169,12 +169,12 @@ void samplelooper_tilde_loop_pingpong(t_samplelooper_tilde* x, t_float* in, t_fl
 		const t_float sig_pitch = (x->lfo_enabled == 1) ? (1-sig) : 1;
 		const t_float position_increment = pitch_ratio * sig_pitch;
 		if(x->playback_direction == PLAYBACK_DIRECTION_FORWARD){
-			if(position >= x->loopend - x->seamsize/2 - position_increment){
+			if(position >= x->loopend - x->overlap_size/2 - position_increment){
 				x->playback_direction = PLAYBACK_DIRECTION_BACKWARD;
 			}
 		}
 		if(x->playback_direction == PLAYBACK_DIRECTION_BACKWARD){
-			if(position <= x->loopstart + x->seamsize/2){
+			if(position <= x->loopstart + x->overlap_size/2){
 				x->playback_direction = PLAYBACK_DIRECTION_FORWARD;
 			}
 		}
@@ -252,26 +252,26 @@ void samplelooper_tilde_enable_lfo(t_samplelooper_tilde *x, t_floatarg argument)
 
 void samplelooper_tilde_loop_mode(t_samplelooper_tilde *x, t_floatarg argument){
 	x->loop_mode = (t_int)argument;
-	samplelooper_tilde_update_seamsize(x);
+	samplelooper_tilde_update_overlap_size(x);
 }
 
-void samplelooper_tilde_update_seamsize(t_samplelooper_tilde* x){
-	x->seamsize = (t_int)((x->loopend - x->loopstart) * x->seamsize_ratio);
+void samplelooper_tilde_update_overlap_size(t_samplelooper_tilde* x){
+	x->overlap_size = (t_int)((x->loopend - x->loopstart) * x->overlap_ratio);
 }
 
-void samplelooper_tilde_seamsize_ratio(t_samplelooper_tilde* x, t_floatarg seamsize_ratio){
-	x->seamsize_ratio = seamsize_ratio;
-	samplelooper_tilde_update_seamsize(x);
+void samplelooper_tilde_overlap_ratio(t_samplelooper_tilde* x, t_floatarg overlap_ratio){
+	x->overlap_ratio = overlap_ratio;
+	samplelooper_tilde_update_overlap_size(x);
 }
 
 void samplelooper_tilde_loopstart(t_samplelooper_tilde* x, t_floatarg loopstart){
 	x->loopstart = (t_int)loopstart;
-	samplelooper_tilde_update_seamsize(x);
+	samplelooper_tilde_update_overlap_size(x);
 }
 
 void samplelooper_tilde_loopend(t_samplelooper_tilde* x, t_floatarg loopend){
 	x->loopend = (t_int)loopend;
-	samplelooper_tilde_update_seamsize(x);
+	samplelooper_tilde_update_overlap_size(x);
 }
 
 void samplelooper_tilde_samplestart(t_samplelooper_tilde* x, t_floatarg samplestart){
@@ -323,8 +323,8 @@ void samplelooper_tilde_setup(void){
 
 	class_addmethod(
 		samplelooper_tilde_class,
-		(t_method)samplelooper_tilde_seamsize_ratio, 
-		gensym("seamsize_ratio"),
+		(t_method)samplelooper_tilde_overlap_ratio, 
+		gensym("overlap_ratio"),
 		A_DEFFLOAT,
 		0
 	);
