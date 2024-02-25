@@ -74,10 +74,10 @@ void *loopoverlap_tilde_new(){
 
 void loopoverlap_none(t_int* w){
 	t_sample* in = (t_sample*)(w[2]);
-	t_sample* out_index_0 = (t_sample*)(w[3]);
-	t_sample* out_ratio_0 = (t_sample*)(w[4]);
-	t_sample* out_index_1 = (t_sample*)(w[5]);
-	t_sample* out_ratio_1 = (t_sample*)(w[6]);
+	t_sample* out_index_0 = (t_sample*)(w[4]);
+	t_sample* out_ratio_0 = (t_sample*)(w[5]);
+	t_sample* out_index_1 = (t_sample*)(w[6]);
+	t_sample* out_ratio_1 = (t_sample*)(w[7]);
 	int n = (int)(w[8]);
 	while (n--){
 		*out_index_0++ = *in++;

@@ -21,8 +21,8 @@
 #X obj 1056 100 hsl 128 15 0 2000 0 1 \$1-decay \$1-decay-ui decay -2 -8 0 10 #fcfcfc #000000 #000000 0 1;
 #X obj 1057 133 hsl 128 15 0 1 0 1 \$1-sustain \$1-sustain-ui sustain -2 -8 0 10 #fcfcfc #000000 #000000 12700 1;
 #X obj 1058 165 hsl 128 15 0 2000 0 1 \$1-release \$1-release-ui release -2 -8 0 10 #fcfcfc #000000 #000000 0 1;
-#X obj 820 63 hsl 128 15 0 219999 0 0 \$1-loopstart \$1-loopstart-ui loopstart -2 -8 0 10 #fcfcfc #000000 #000000 0 1;
-#X obj 821 119 hsl 128 15 0 219999 0 0 \$1-loopend \$1-loopend-ui loopend -2 -8 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 820 63 hsl 128 15 0 44099 0 0 \$1-loopstart \$1-loopstart-ui loopstart -2 -8 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 821 119 hsl 128 15 0 44099 0 0 \$1-loopend \$1-loopend-ui loopend -2 -8 0 10 #fcfcfc #000000 #000000 0 1;
 #X obj 11 290 cnv 15 480 30 empty empty CONTROLS 20 12 0 18 #e0e0e0 #404040 0;
 #X floatatom 818 137 10 0 0 0 - - - 0;
 #X floatatom 817 84 10 0 0 0 - - - 0;
@@ -32,8 +32,8 @@
 #X floatatom 1116 180 10 0 0 0 - - - 0;
 #X obj 1049 14 cnv 15 150 25 empty empty VOL-ENV 20 12 0 25 #f8fc00 #404040 0;
 #X obj 644 13 cnv 15 100 25 sound1-loopon empty SAMPLE 20 12 0 20 #f8fc00 #404040 0;
-#X obj 649 58 hsl 128 15 0 219999 0 0 \$1-samplestart \$1-samplestart-ui samplestart -2 -8 0 10 #fcfcfc #000000 #000000 0 1;
-#X obj 650 113 hsl 128 15 0 219999 0 0 \$1-sampleend \$1-sampleend-ui sampleend -2 -8 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 649 58 hsl 128 15 0 44099 0 0 \$1-samplestart \$1-samplestart-ui samplestart -2 -8 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 650 113 hsl 128 15 0 44099 0 0 \$1-sampleend \$1-sampleend-ui sampleend -2 -8 0 10 #fcfcfc #000000 #000000 0 1;
 #X floatatom 647 131 10 0 0 0 - - - 0;
 #X floatatom 646 79 10 0 0 0 - - - 0;
 #X obj 23 667 openpanel;
@@ -186,7 +186,7 @@
 #X obj 821 172 hsl 128 15 0 0.4 0 0 \$1-overlapratio empty overlap\ ratio -2 -8 0 10 #fcfcfc #000000 #000000 0 1;
 #X floatatom 818 190 10 0 0 0 - - - 0;
 #X msg 131 830 ../../wavs/aaahh.wav;
-#X obj 959 60 vradio 15 1 1 4 \$1-loopmode empty loop\ mode 0 -8 0 10 #fcfcfc #000000 #000000 1;
+#X obj 959 60 vradio 15 1 1 4 \$1-loopmode empty loop\ mode 0 -8 0 10 #fcfcfc #000000 #000000 0;
 #X text 977 59 none;
 #X text 976 74 forward;
 #X text 977 89 backward;
