@@ -315,29 +315,26 @@ void loopoverlap_tilde_loop_mode(t_loopoverlap_tilde *x, t_floatarg argument){
 
 void loopoverlap_tilde_noteon(t_loopoverlap_tilde *x, t_floatarg argument){
 	loopoverlap_tilde_update_overlap_size(x);
-	x->play_overlapped = 0;
 }
 
 void loopoverlap_tilde_update_overlap_size(t_loopoverlap_tilde* x){
 	x->overlap_size = (t_int)((x->loopend - x->loopstart) * x->overlap_ratio);
+	x->play_overlapped = 0;
 }
 
 void loopoverlap_tilde_overlap_ratio(t_loopoverlap_tilde* x, t_floatarg overlap_ratio){
 	x->overlap_ratio = overlap_ratio;
 	loopoverlap_tilde_update_overlap_size(x);
-	x->play_overlapped = 0;
 }
 
 void loopoverlap_tilde_loopstart(t_loopoverlap_tilde* x, t_floatarg loopstart){
 	x->loopstart = (t_int)loopstart;
 	loopoverlap_tilde_update_overlap_size(x);
-	x->play_overlapped = 0;
 }
 
 void loopoverlap_tilde_loopend(t_loopoverlap_tilde* x, t_floatarg loopend){
 	x->loopend = (t_int)loopend;
 	loopoverlap_tilde_update_overlap_size(x);
-	x->play_overlapped = 0;
 }
 
 void loopoverlap_tilde_setup(void){
