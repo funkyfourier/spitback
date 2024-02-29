@@ -1,4 +1,4 @@
-#N canvas 2939 708 828 691 10;
+#N canvas 2939 708 691 605 10;
 #X obj 34 292 *~;
 #X msg 291 67 1;
 #X msg 335 111 0;
@@ -120,7 +120,7 @@
 #X obj 340 538 throw~ \$2-instrumentoutput;
 #X obj 134 116 inlet noteon;
 #X obj 335 24 inlet noteoff;
-#N canvas 1415 636 849 540 samplelooper 0;
+#N canvas 1415 636 849 540 samplelooper 1;
 #X obj 171 160 inlet~ lfosignal;
 #X obj 170 514 outlet~;
 #X obj 263 435 outlet;
@@ -261,7 +261,7 @@
 #X obj 566 52 0;
 #X obj 566 31 r muteallnotes;
 #X obj 342 46 s \$0-slnoteoff;
-#N canvas 2663 766 730 642 overlap 1;
+#N canvas 2663 766 486 512 overlap 0;
 #X obj 213 122 inlet~;
 #X obj 222 435 outlet~;
 #X obj 157 325 tabread4~ \$1;
