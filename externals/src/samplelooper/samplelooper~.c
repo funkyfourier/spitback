@@ -170,7 +170,7 @@ void samplelooper_tilde_loop_pingpong(t_samplelooper_tilde* x, t_float* in, t_fl
 		const t_float sig_pitch = (x->lfo_enabled == 1) ? (1-sig) : 1;
 		const t_float position_increment = pitch_ratio * sig_pitch;
 		if(x->playback_direction == PLAYBACK_DIRECTION_FORWARD){
-			if(position >= x->loopend - x->overlap_size/2 - position_increment){
+			if(position >= x->loopend - x->overlap_size/2){
 				x->playback_direction = PLAYBACK_DIRECTION_BACKWARD;
 			}
 		}

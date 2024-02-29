@@ -208,41 +208,46 @@ void loopoverlap_tilde_do_pingpong(t_loopoverlap_tilde* x, const t_float frame1,
 	}
 
 	if(playback_direction == PLAYBACK_DIRECTION_FORWARD){
-		if(frame1 >= x->loopend - x->overlap_size){
+		if(frame1 > x->loopend - x->overlap_size){
 			const t_float loop_position = frame1 - x->loopend + x->overlap_size;
 			x->seam_values.frame2_ratio = loop_position/x->overlap_size;
 			x->seam_values.frame1_ratio = 1 - x->seam_values.frame2_ratio;
 			x->seam_values.frame2 = x->loopend - loop_position;
+			//post("frame1 ratio forw END: %f frame1: %f frame2: %f loop_position: %f", x->seam_values.frame1_ratio, frame1, x->seam_values.frame2, loop_position);
 		}
 		else {
 			const t_float loop_position = frame1 - x->loopstart;
 			x->seam_values.frame1_ratio = loop_position/x->overlap_size;
 			x->seam_values.frame2_ratio = 1 - x->seam_values.frame1_ratio;
 			x->seam_values.frame2 = x->loopstart + x->overlap_size - frame1 + x->loopstart;
+			//post("frame1 ratio forw START: %f frame1: %f frame2: %f loop_position: %f", x->seam_values.frame1_ratio, frame1, x->seam_values.frame2, loop_position);
 		}
 	}
 	else {
-		if(frame1 >= x->loopend - x->overlap_size){
-			const t_float seam_center = x->loopend - x->overlap_size/2;
-			const t_float loop_position = seam_center - frame1 + x->overlap_size/2;
-			x->seam_values.frame2 = seam_center + (seam_center - frame1);
+		if(frame1 > x->loopend - x->overlap_size){
+			const float edgeIndex = x->loopend - x->overlap_size;
+			const float distanceEdge = frame1 - edgeIndex;
+			x->seam_values.frame2 = x->loopend - distanceEdge;
+			const float loop_position = x->seam_values.frame2 - edgeIndex;
 			x->seam_values.frame1_ratio = loop_position/x->overlap_size;
 			x->seam_values.frame2_ratio = 1 - x->seam_values.frame1_ratio;
+			//post("frame1 ratio backw END: %f frame1: %f frame2: %f loop_position: %f", x->seam_values.frame1_ratio, frame1, x->seam_values.frame2, loop_position);
 		}
 		else {
 			x->seam_values.frame2 = x->loopstart + x->overlap_size - frame1 + x->loopstart;
 			const t_float loop_position = x->seam_values.frame2 - x->loopstart;
 			x->seam_values.frame2_ratio = loop_position/x->overlap_size;
 			x->seam_values.frame1_ratio = 1 - x->seam_values.frame2_ratio;
+			//post("frame1 ratio backw START: %f frame1: %f frame2: %f loop_position: %f", x->seam_values.frame1_ratio, frame1, x->seam_values.frame2, loop_position);
 		}
 	}
 }
 
 void loopoverlap_tilde_determine_phase_backward(t_loopoverlap_tilde* x, t_float frame){
-	if(frame >= x->loopend - x->overlap_size && frame <= x->loopend){
+	if(frame > x->loopend - x->overlap_size && frame <= x->loopend){
 		x->phase = InEndOverlap;
 	}
-	if(frame < x->loopend - x->overlap_size){
+	if(frame <= x->loopend - x->overlap_size){
 		x->phase = OutsideOverlap;
 	}
 	if(frame > x->loopend){
@@ -254,10 +259,10 @@ void loopoverlap_tilde_determine_phase_forward(t_loopoverlap_tilde* x, t_float f
 	if(frame < x->loopstart){
 		x->phase = PreLoopStart;
 	}
-	if(frame >= x->loopstart && frame <= x->loopstart + x->overlap_size){
+	if(frame >= x->loopstart && frame < x->loopstart + x->overlap_size){
 		x->phase = InStartOverlap;
 	}
-	if(frame > x->loopstart + x->overlap_size){
+	if(frame >= x->loopstart + x->overlap_size){
 		x->phase = OutsideOverlap;
 	}
 }
@@ -266,13 +271,13 @@ void loopoverlap_tilde_determine_phase_pingpong(t_loopoverlap_tilde* x, t_float 
 	if(frame < x->loopstart){
 		x->phase = PreLoopStart;
 	}
-	if(frame >= x->loopstart && frame <= x->loopstart + x->overlap_size){
+	if(frame >= x->loopstart && frame < x->loopstart + x->overlap_size){
 		x->phase = InStartOverlap;
 	}
-	if(frame > x->loopstart + x->overlap_size && frame < x->loopend - x->overlap_size){
+	if(frame >= x->loopstart + x->overlap_size && frame <= x->loopend - x->overlap_size){
 		x->phase = OutsideOverlap;
 	}
-	if(frame >= x->loopend - x->overlap_size && frame <= x->loopend){
+	if(frame > x->loopend - x->overlap_size && frame <= x->loopend){
 		x->phase = InEndOverlap;
 	}
 	if(frame > x->loopend){
