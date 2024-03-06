@@ -120,7 +120,7 @@
 #X obj 340 538 throw~ \$2-instrumentoutput;
 #X obj 134 116 inlet noteon;
 #X obj 335 24 inlet noteoff;
-#N canvas 1415 636 849 540 samplelooper 1;
+#N canvas 1415 636 863 591 samplelooper 1;
 #X obj 171 160 inlet~ lfosignal;
 #X obj 170 514 outlet~;
 #X obj 263 435 outlet;
@@ -166,7 +166,7 @@
 #X obj 202 483 outlet~;
 #X obj 244 344 + 1;
 #X obj 263 365 r \$2-overlapratio;
-#N canvas 1820 709 319 308 playbackupdate 0;
+#N canvas 1820 709 319 308 playbackupdate 1;
 #X obj 46 45 inlet~;
 #X obj 104 140 metro 2;
 #X obj 104 46 loadbang;
