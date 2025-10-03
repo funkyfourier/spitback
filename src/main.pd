@@ -468,7 +468,7 @@
 #X obj 264 77 drumcontrolsui testdrumplayer;
 #X obj 264 53 samplercontrolsui testsampleplayer;
 #X obj 14 301 declare -path ../externals/bin;
-#N canvas 2578 611 576 389 synctick 1;
+#N canvas 2780 819 589 428 synctick 1;
 #X obj 50 128 metro 500;
 #X obj 112 160 + 1;
 #X obj 50 161 float;
@@ -530,7 +530,7 @@
 #X obj 426 68 s synctickstart;
 #X obj 426 101 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000;
 #X obj 426 120 s synctickstop;
-#X obj 50 351 s libpdhost-tick;
+#X obj 50 389 s libpdhost-tick;
 #X obj 122 113 r \$0-counterreset;
 #X obj 120 292 s \$0-counterreset;
 #X msg 261 168 0 70;
@@ -593,7 +593,10 @@
 #X connect 25 0 6 0;
 #X connect 25 0 7 0;
 #X restore 244 274 pd reverb;
-#X obj 50 326 4;
+#X obj 50 364 4;
+#X obj 77 320 bng 18 250 50 0 empty empty empty 0 -9 0 10 #fcfcfc #000000 #000000;
+#X obj 77 341 5;
+#X obj 77 362 s libpdhost-tick;
 #X connect 0 0 2 0;
 #X connect 1 0 2 1;
 #X connect 2 0 1 0;
@@ -606,6 +609,7 @@
 #X connect 6 0 19 0;
 #X connect 7 0 8 0;
 #X connect 8 0 36 0;
+#X connect 8 1 37 0;
 #X connect 9 0 35 0;
 #X connect 9 0 35 1;
 #X connect 10 0 9 1;
@@ -630,6 +634,8 @@
 #X connect 35 0 11 0;
 #X connect 35 1 12 0;
 #X connect 36 0 31 0;
+#X connect 37 0 38 0;
+#X connect 38 0 39 0;
 #X restore 14 145 pd synctick;
 #N canvas 364 348 433 297 transferfunctions 0;
 #N canvas 451 692 893 473 transferarc 0;
